@@ -58,7 +58,7 @@ The name suggests composition, sequencing, context propagation, and controlled e
 
 ```text
 monad
-````
+```
 
 ### 2.4 Repository Name
 
@@ -114,7 +114,7 @@ Monad should become the developer’s command center for a polyglot repository.
 
 The central thesis is:
 
-A polyglot repository should not require the developer to manually coordinate dozens of unrelated tools. The repository should expose one coherent runtime interface while still preserving the strengths of each language ecosystem’s native tools.
+> A polyglot repository should not require the developer to manually coordinate dozens of unrelated tools. The repository should expose one coherent runtime interface while still preserving the strengths of each language ecosystem’s native tools.
 
 Monad should make a repository feel intentional, inspectable, reproducible, evolvable, and easier to operate without forcing developers into a heavy build-system universe like Bazel, Pants, or Buck2.
 
@@ -532,23 +532,27 @@ Monad should learn from Moon’s toolchain ergonomics and workspace approach whi
 
 ### 17.6 Compared to Foundry
 
-Monad includes what Foundry was intended to become, a monorepo generator and repo evolution CLI, but expands upon that concept.
+Foundry was originally envisioned as a monorepo generator and repo evolution CLI.
 
-Monad will absorb the best Foundry ideas, especially, but not limited to:
+Monad should absorb and supersede the best Foundry ideas, especially:
 
 * generators
 * repo evolution
 * provenance
 * docs/spec-first workflows
 * verification discipline
+* safe upgrade workflows
+* architecture-aware scaffolding
 
-Monad should be a combination of runtime-oriented and workspace-execution-oriented with monorepo generator and repo evolution features.
+However, Monad should be broader than Foundry. Monad is not only a generator or upgrade tool. Monad is a runtime-oriented, workspace-execution-oriented, polyglot repo command surface that also includes generator and repo evolution capabilities.
 
 ### 17.7 Compared to Charon
 
-Charon is a context bridge / repo-native memory system for AI assistants.
+Charon is a context bridge and repo-native memory system for AI assistants.
 
-Monad will include Charon-like context generation.
+Monad should include Charon-like context generation as an integrated capability. This means Monad should eventually be able to generate AI-readable repo context, current-state files, handoff files, project summaries, and structured workspace metadata.
+
+Monad should not begin as a full AI memory system. The initial goal is to make the repository easier for humans and AI assistants to understand, verify, and evolve safely.
 
 ## 18. Core Commands
 
@@ -764,24 +768,51 @@ tempfile for fixture workspaces
 
 ## 22. Ecosystem Adapter Strategy
 
-Monad should use adapters for language ecosystems.
+Monad should use adapters for language ecosystems, infrastructure toolchains, documentation systems, and repository capabilities.
 
-Initial adapters should include:
+Adapters should allow Monad to understand, inspect, coordinate, and verify ecosystem-native tools without replacing those tools unnecessarily.
+
+### 22.1 Phase 0 Adapters
+
+Phase 0 should focus on the minimum adapter set required to prove the architecture:
 
 1. Rust / Cargo
 2. JavaScript / TypeScript with Bun first
-3. Python
-4. Go
-5. Java
-6. PHP
-7. Ruby
-8. .NET
-9. Kotlin
-10. Swift
-11. Docker/Compose
-12. Terraform/OpenTofu
-13. Kubernetes
-14. documentation toolchains
+
+### 22.2 Phase 1 and Phase 2 Adapters
+
+After the adapter interface is proven, Monad should add:
+
+1. Python
+2. Go
+
+### 22.3 Later Language Adapters
+
+Later language adapters should include:
+
+1. Java
+2. PHP
+3. Ruby
+4. .NET
+5. Kotlin
+6. Swift
+
+### 22.4 Later Toolchain and Infrastructure Adapters
+
+Later non-language adapters should include:
+
+1. Docker / Docker Compose
+2. Terraform / OpenTofu
+3. Kubernetes
+4. documentation toolchains
+5. CI/CD systems
+6. release and versioning systems
+
+### 22.5 Adapter Principle
+
+Adapters should be introduced in phases. Monad should not attempt to support every ecosystem at once.
+
+The goal is to design the adapter system broadly enough to support many ecosystems while implementing the first adapters narrowly enough to keep the early product buildable.
 
 ## 23. JavaScript and TypeScript Position
 
@@ -818,7 +849,7 @@ These tools may be studied for ideas but should not be required.
 
 The project’s posture is:
 
-Learn from serious monorepo tools, but do not force their adoption.
+> Learn from serious monorepo tools, but do not force their adoption.
 
 ## 25. Repo Manifest Hypothesis
 
