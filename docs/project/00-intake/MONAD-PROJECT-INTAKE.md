@@ -4,7 +4,7 @@ description: "Initial project intake for Monad, a Rust-native polyglot repo runt
 project_name: "Monad"
 project_slug: "monad"
 document_type: "project-intake"
-document_status: "draft"
+document_status: "approved"
 version: "0.1.0"
 created: "2026-05-20"
 last_updated: "2026-05-20"
