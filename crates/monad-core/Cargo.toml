@@ -1,0 +1,9 @@
+[package]
+name = "monad-core"
+version.workspace = true
+edition.workspace = true
+repository.workspace = true
+publish = false
+
+[lints]
+workspace = true

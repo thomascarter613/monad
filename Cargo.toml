@@ -1,0 +1,24 @@
+[workspace]
+members = [
+  "crates/monad-cli",
+  "crates/monad-core",
+]
+resolver = "3"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+repository = "https://github.com/thomascarter613/monad"
+
+[workspace.dependencies]
+monad-core = { path = "crates/monad-core" }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+dbg_macro = "warn"
+todo = "warn"
+unwrap_used = "warn"
+expect_used = "warn"

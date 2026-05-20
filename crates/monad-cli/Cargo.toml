@@ -1,0 +1,17 @@
+[package]
+name = "monad-cli"
+version.workspace = true
+edition.workspace = true
+repository.workspace = true
+publish = false
+
+[[bin]]
+name = "monad"
+path = "src/main.rs"
+
+[dependencies]
+monad-core.workspace = true
+tokio.workspace = true
+
+[lints]
+workspace = true
