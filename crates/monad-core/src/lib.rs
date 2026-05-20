@@ -15,10 +15,10 @@ pub const NAME: &str = "monad";
 /// Current crate version, inherited from Cargo package metadata.
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 
-/// Returns a short runtime description used by the initial CLI scaffold.
-///
-/// This is intentionally small. Real command behavior will be introduced in
-/// later implementation commits.
+/// Canonical Monad manifest filename.
+pub const MANIFEST_FILE_NAME: &str = "monad.toml";
+
+/// Returns a short runtime description used by the initial CLI.
 #[must_use]
 pub fn runtime_description() -> &'static str {
     "Rust-native polyglot repo runtime and developer-experience CLI"
@@ -33,5 +33,10 @@ mod tests {
         assert_eq!(NAME, "monad");
         assert!(!VERSION.is_empty());
         assert!(runtime_description().contains("polyglot repo runtime"));
+    }
+
+    #[test]
+    fn exposes_manifest_file_name() {
+        assert_eq!(MANIFEST_FILE_NAME, "monad.toml");
     }
 }

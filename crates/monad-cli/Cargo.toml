@@ -10,6 +10,7 @@ name = "monad"
 path = "src/main.rs"
 
 [dependencies]
+clap.workspace = true
 monad-core.workspace = true
 tokio.workspace = true
 
