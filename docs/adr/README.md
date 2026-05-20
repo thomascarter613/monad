@@ -403,33 +403,35 @@ ADRs should be written clearly enough that an AI assistant can use them as durab
 
 ## 18. Initial ADR Backlog
 
-The initial ADR backlog is:
+The initial ADR backlog has been completed through ADR-0008.
 
-| ADR      | Title                                            | Status  | Purpose                                               |
-| -------- | ------------------------------------------------ | ------- | ----------------------------------------------------- |
-| ADR-0001 | Use Rust for Monad runtime                       | Planned | Records the Rust-first implementation decision.       |
-| ADR-0002 | Coordinate native tools rather than replace them | Planned | Records the native-tool coordination strategy.        |
-| ADR-0003 | Use a multi-crate Rust workspace                 | Planned | Records the approved multi-crate workspace direction. |
-| ADR-0004 | Use latest stable Rust as MSRV policy            | Planned | Records the minimum supported Rust version policy.    |
-| ADR-0005 | Introduce Tokio immediately                      | Planned | Records the async runtime decision.                   |
-| ADR-0006 | Use `monad.toml` as the canonical manifest       | Planned | Records the manifest source-of-truth decision.        |
-| ADR-0007 | Maintain a Monad lock or state file              | Planned | Records the lock/state file decision.                 |
-| ADR-0008 | Support multiple graph output formats            | Planned | Records the `monad graph` output-format decision.     |
+| ADR | Title | Status | Purpose |
+| --- | --- | --- | --- |
+| ADR-0001 | Use Rust for Monad runtime | Accepted | Records the Rust-first implementation decision. |
+| ADR-0002 | Coordinate native tools rather than replace them | Accepted | Records the native-tool coordination strategy. |
+| ADR-0003 | Use a multi-crate Rust workspace | Accepted | Records the approved multi-crate workspace direction. |
+| ADR-0004 | Use latest stable Rust as MSRV policy | Accepted | Records the minimum supported Rust version policy. |
+| ADR-0005 | Introduce Tokio immediately | Accepted | Records the async runtime decision. |
+| ADR-0006 | Use `monad.toml` as the canonical manifest | Accepted | Records the manifest source-of-truth decision. |
+| ADR-0007 | Maintain a Monad lock or state file | Accepted | Records the lock/state file decision. |
+| ADR-0008 | Support multiple graph output formats | Accepted | Records the `monad graph` output-format decision. |
 
 Only ADR-0001 and ADR-0002 are required before the first code scaffold, unless a later implementation step depends on one of the other decisions being formalized first.
 
+Future ADRs should be added as new architectural decisions become necessary.   |
+
 ## 19. ADR Index
 
-| ADR      | Title                                            | Status  | Date       | File                                                                    |
-| -------- | ------------------------------------------------ | ------- | ---------- | ----------------------------------------------------------------------- |
-| ADR-0001 | Use Rust for Monad runtime                       | Planned | 2026-05-20 | `docs/adr/ADR-0001-use-rust-for-monad-runtime.md`                       |
-| ADR-0002 | Coordinate native tools rather than replace them | Planned | 2026-05-20 | `docs/adr/ADR-0002-coordinate-native-tools-rather-than-replace-them.md` |
-| ADR-0003 | Use a multi-crate Rust workspace                 | Planned | 2026-05-20 | `docs/adr/ADR-0003-use-a-multi-crate-rust-workspace.md`                 |
-| ADR-0004 | Use latest stable Rust as MSRV policy            | Planned | 2026-05-20 | `docs/adr/ADR-0004-use-latest-stable-rust-as-msrv-policy.md`            |
-| ADR-0005 | Introduce Tokio immediately                      | Planned | 2026-05-20 | `docs/adr/ADR-0005-introduce-tokio-immediately.md`                      |
-| ADR-0006 | Use monad.toml as canonical manifest             | Planned | 2026-05-20 | `docs/adr/ADR-0006-use-monad-toml-as-canonical-manifest.md`             |
-| ADR-0007 | Maintain a Monad lock or state file              | Planned | 2026-05-20 | `docs/adr/ADR-0007-maintain-a-monad-lock-or-state-file.md`              |
-| ADR-0008 | Support multiple graph output formats            | Planned | 2026-05-20 | `docs/adr/ADR-0008-support-multiple-graph-output-formats.md`            |
+| ADR | Title | Status | Date | File |
+| --- | --- | --- | --- | --- |
+| ADR-0001 | Use Rust for Monad runtime | Accepted | 2026-05-20 | `docs/adr/ADR-0001-use-rust-for-monad-runtime.md` |
+| ADR-0002 | Coordinate native tools rather than replace them | Accepted | 2026-05-20 | `docs/adr/ADR-0002-coordinate-native-tools-rather-than-replace-them.md` |
+| ADR-0003 | Use a multi-crate Rust workspace | Accepted | 2026-05-20 | `docs/adr/ADR-0003-use-a-multi-crate-rust-workspace.md` |
+| ADR-0004 | Use latest stable Rust as MSRV policy | Accepted | 2026-05-20 | `docs/adr/ADR-0004-use-latest-stable-rust-as-msrv-policy.md` |
+| ADR-0005 | Introduce Tokio immediately | Accepted | 2026-05-20 | `docs/adr/ADR-0005-introduce-tokio-immediately.md` |
+| ADR-0006 | Use `monad.toml` as canonical manifest | Accepted | 2026-05-20 | `docs/adr/ADR-0006-use-monad-toml-as-canonical-manifest.md` |
+| ADR-0007 | Maintain a Monad lock or state file | Accepted | 2026-05-20 | `docs/adr/ADR-0007-maintain-a-monad-lock-or-state-file.md` |
+| ADR-0008 | Support multiple graph output formats | Accepted | 2026-05-20 | `docs/adr/ADR-0008-support-multiple-graph-output-formats.md` |         |
 
 ## 20. Initial Accepted Decisions from Product Charter
 
@@ -454,12 +456,20 @@ This ADR index exists to ensure these decisions become traceable implementation 
 
 ## 21. Required ADRs Before Initial Code Scaffold
 
-Before creating the initial Rust workspace scaffold, Monad should have at least these ADRs accepted:
+The required pre-scaffold ADRs have been accepted.
+
+The following foundational decisions are now available as implementation constraints:
 
 1. `ADR-0001-use-rust-for-monad-runtime.md`
 2. `ADR-0002-coordinate-native-tools-rather-than-replace-them.md`
+3. `ADR-0003-use-a-multi-crate-rust-workspace.md`
+4. `ADR-0004-use-latest-stable-rust-as-msrv-policy.md`
+5. `ADR-0005-introduce-tokio-immediately.md`
+6. `ADR-0006-use-monad-toml-as-canonical-manifest.md`
+7. `ADR-0007-maintain-a-monad-lock-or-state-file.md`
+8. `ADR-0008-support-multiple-graph-output-formats.md`
 
-These two decisions establish the foundation for all early implementation work.
+The repository may now proceed to the initial Rust workspace scaffold.
 
 ## 22. Conventional Commit Guidance
 
@@ -504,5 +514,6 @@ This ADR index is complete when:
 Status:
 
 ```text
-Approved.
+Approved and updated through ADR-0008.
+```
 ```
