@@ -9,6 +9,8 @@
 //! The CLI crate should depend on this crate. This crate must not depend on
 //! the CLI crate.
 
+pub mod workspace;
+
 /// Canonical product/runtime name.
 pub const NAME: &str = "monad";
 

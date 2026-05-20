@@ -13,6 +13,7 @@ repository = "https://github.com/thomascarter613/monad"
 [workspace.dependencies]
 clap = { version = "4", features = ["derive"] }
 monad-core = { path = "crates/monad-core" }
+tempfile = "3"
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 
 [workspace.lints.rust]
