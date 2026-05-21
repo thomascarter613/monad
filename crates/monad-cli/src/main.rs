@@ -24,6 +24,17 @@ use crate::cli::{Cli, Commands};
 // `DiagnosticReport` collects multiple diagnostics from one command run.
 use monad_core::diagnostics::{Diagnostic, DiagnosticReport};
 
+// Import the parsed manifest type.
+//
+// We use this in helper functions so `info`, `doctor`, and `check` can share
+// manifest-loading behavior without repeating all logic.
+use monad_core::manifest::MonadManifest;
+
+// Import the detected workspace context type.
+//
+// This lets helper functions return structured workspace information.
+use monad_core::workspace::WorkspaceContext;
+
 /// Initial Monad CLI entrypoint.
 ///
 /// `#[tokio::main]` starts the Tokio async runtime before running `main`.
@@ -47,6 +58,9 @@ async fn main() -> ExitCode {
         // If the user ran `monad doctor`, diagnose basic repo health.
         Some(Commands::Doctor) => print_doctor(),
 
+        // If the user ran `monad check`, run the initial check skeleton.
+        Some(Commands::Check) => print_check(),
+
         // If the user ran only `monad`, show help instead of doing nothing.
         None => print_help(),
     }
@@ -63,36 +77,11 @@ fn print_info() -> ExitCode {
     // and errors while the command executes.
     let mut diagnostics = DiagnosticReport::new();
 
-    // Ask `monad-core` to detect the workspace context.
-    //
-    // This keeps repository discovery logic out of the CLI crate.
-    let workspace_context = match monad_core::workspace::detect_workspace_context_from_current_dir()
-    {
-        Ok(context) => {
-            // Record a successful workspace-root detection diagnostic.
-            diagnostics.info(
-                "workspace.root_detected",
-                format!(
-                    "workspace root detected using marker '{}'",
-                    context.root_marker
-                ),
-            );
-
-            context
-        }
-        Err(error) => {
-            // If Monad cannot even read the current directory, this command
-            // cannot continue usefully.
-            diagnostics.push(
-                Diagnostic::error(
-                    "workspace.current_directory_unavailable",
-                    format!("failed to detect workspace context: {error}"),
-                )
-                .with_help("check that the current directory exists and is accessible"),
-            );
-
+    // Detect the workspace. If this fails, print diagnostics and exit.
+    let workspace_context = match detect_workspace_or_fail(&mut diagnostics) {
+        Some(context) => context,
+        None => {
             print_diagnostics(&diagnostics);
-
             return ExitCode::FAILURE;
         }
     };
@@ -139,29 +128,10 @@ fn print_info() -> ExitCode {
         //
         // If parsing fails, the command fails because an invalid manifest is a
         // real repository health problem.
-        let parsed_manifest = match monad_core::manifest::load_monad_manifest(manifest_path) {
-            Ok(manifest) => {
-                diagnostics.info(
-                    "manifest.parsed",
-                    format!(
-                        "Monad manifest parsed with schema version '{}'",
-                        manifest.schema_version
-                    ),
-                );
-
-                manifest
-            }
-            Err(error) => {
-                diagnostics.push(
-                    Diagnostic::error(
-                        "manifest.load_failed",
-                        format!("failed to load Monad manifest: {error}"),
-                    )
-                    .with_help("fix monad.toml and run the command again"),
-                );
-
+        let parsed_manifest = match load_manifest_or_fail(&workspace_context, &mut diagnostics) {
+            Some(manifest) => manifest,
+            None => {
                 print_diagnostics(&diagnostics);
-
                 return ExitCode::FAILURE;
             }
         };
@@ -225,32 +195,11 @@ fn print_doctor() -> ExitCode {
     // We are keeping output plain for now so it is easy to read and test.
     println!("doctor: monad workspace health");
 
-    // Detect the workspace context from the current process directory.
-    let workspace_context = match monad_core::workspace::detect_workspace_context_from_current_dir()
-    {
-        Ok(context) => {
-            diagnostics.info(
-                "workspace.root_detected",
-                format!(
-                    "workspace root detected at {} using marker '{}'",
-                    context.root_dir.display(),
-                    context.root_marker
-                ),
-            );
-
-            context
-        }
-        Err(error) => {
-            diagnostics.push(
-                Diagnostic::error(
-                    "workspace.current_directory_unavailable",
-                    format!("failed to detect workspace context: {error}"),
-                )
-                .with_help("check that the current directory exists and is accessible"),
-            );
-
+    // Detect the workspace. If detection fails, doctor fails.
+    let workspace_context = match detect_workspace_or_fail(&mut diagnostics) {
+        Some(context) => context,
+        None => {
             print_diagnostics(&diagnostics);
-
             return ExitCode::FAILURE;
         }
     };
@@ -270,28 +219,14 @@ fn print_doctor() -> ExitCode {
         println!("monad_manifest_path: {}", manifest_path.display());
 
         // Diagnose whether the manifest can be parsed and validated.
-        match monad_core::manifest::load_monad_manifest(manifest_path) {
-            Ok(manifest) => {
-                diagnostics.info(
-                    "manifest.parsed",
-                    format!(
-                        "Monad manifest parsed with supported schema version '{}'",
-                        manifest.schema_version
-                    ),
-                );
-
+        match load_manifest_or_fail(&workspace_context, &mut diagnostics) {
+            Some(manifest) => {
                 println!("monad_manifest_schema_version: {}", manifest.schema_version);
                 println!("workspace_name: {}", manifest.workspace.name);
                 println!("workspace_kind: {}", manifest.workspace.kind);
             }
-            Err(error) => {
-                diagnostics.push(
-                    Diagnostic::error(
-                        "manifest.load_failed",
-                        format!("failed to load Monad manifest: {error}"),
-                    )
-                    .with_help("fix monad.toml before running Monad workspace operations"),
-                );
+            None => {
+                // `load_manifest_or_fail` already pushed a diagnostic.
             }
         }
     } else {
@@ -325,6 +260,182 @@ fn print_doctor() -> ExitCode {
         //
         // Warnings are allowed for now. Later we may add stricter modes.
         ExitCode::SUCCESS
+    }
+}
+
+/// Runs the initial Monad repository check skeleton.
+///
+/// This is intentionally not a full task runner yet. It validates that the
+/// repository is ready for future check execution by confirming that:
+///
+/// 1. workspace detection works;
+/// 2. `monad.toml` exists;
+/// 3. `monad.toml` parses successfully;
+/// 4. the check command list is present.
+fn print_check() -> ExitCode {
+    // Create a diagnostic report for the check command.
+    let mut diagnostics = DiagnosticReport::new();
+
+    // Print a simple heading.
+    println!("check: monad repository checks");
+
+    // Detect the workspace. If detection fails, check fails.
+    let workspace_context = match detect_workspace_or_fail(&mut diagnostics) {
+        Some(context) => context,
+        None => {
+            print_diagnostics(&diagnostics);
+            println!("check_status: error");
+            return ExitCode::FAILURE;
+        }
+    };
+
+    // Print the detected root so the user knows what repository Monad checked.
+    println!("workspace_root: {}", workspace_context.root_dir.display());
+    println!("workspace_root_marker: {}", workspace_context.root_marker);
+
+    // For `check`, a missing manifest is currently a blocking error.
+    //
+    // `info` may continue without a manifest, but `check` is intended to
+    // validate Monad-governed repository behavior, so it needs explicit intent.
+    if workspace_context.manifest.found_path().is_none() {
+        let expected_path = workspace_context.manifest.expected_path.display();
+
+        diagnostics.push(
+            Diagnostic::error(
+                "manifest.required_for_check",
+                format!("Monad manifest is required for check but was not found at {expected_path}"),
+            )
+            .with_help("create monad.toml or run `monad init` later once initialization is implemented"),
+        );
+
+        print_diagnostics(&diagnostics);
+        println!("check_status: error");
+
+        return ExitCode::FAILURE;
+    }
+
+    // Load and parse the manifest.
+    let manifest = match load_manifest_or_fail(&workspace_context, &mut diagnostics) {
+        Some(manifest) => manifest,
+        None => {
+            print_diagnostics(&diagnostics);
+            println!("check_status: error");
+            return ExitCode::FAILURE;
+        }
+    };
+
+    // Print the currently configured check command identifiers.
+    //
+    // At this stage these are not executed yet. Future adapter and task-runner
+    // slices will resolve identifiers like `rust:fmt` into actual commands.
+    println!("configured_check_count: {}", manifest.commands.check.len());
+    println!("configured_check_commands: {}", manifest.commands.check.join(","));
+
+    // An empty check list would mean `monad check` has no work to do.
+    //
+    // Treat that as a warning for now, not a hard error.
+    if manifest.commands.check.is_empty() {
+        diagnostics.push(
+            Diagnostic::warning("check.no_commands_configured", "no check commands are configured")
+                .with_help("add command identifiers under [commands].check in monad.toml"),
+        );
+    } else {
+        diagnostics.info(
+            "check.commands_configured",
+            format!(
+                "{} check command identifier(s) configured",
+                manifest.commands.check.len()
+            ),
+        );
+    }
+
+    // Print diagnostics after the check skeleton has inspected the repo.
+    print_diagnostics(&diagnostics);
+
+    // If any blocking diagnostic errors were found, check fails.
+    if diagnostics.has_errors() {
+        println!("check_status: error");
+        ExitCode::FAILURE
+    } else {
+        println!("check_status: ok");
+        ExitCode::SUCCESS
+    }
+}
+
+/// Detects the current workspace or records a diagnostic error.
+///
+/// Returning `Option<WorkspaceContext>` means:
+/// - `Some(context)` when detection succeeds;
+/// - `None` when detection fails and the caller should stop.
+fn detect_workspace_or_fail(diagnostics: &mut DiagnosticReport) -> Option<WorkspaceContext> {
+    // Ask `monad-core` to detect the workspace context from the current
+    // process directory.
+    match monad_core::workspace::detect_workspace_context_from_current_dir() {
+        Ok(context) => {
+            diagnostics.info(
+                "workspace.root_detected",
+                format!(
+                    "workspace root detected using marker '{}'",
+                    context.root_marker
+                ),
+            );
+
+            Some(context)
+        }
+        Err(error) => {
+            diagnostics.push(
+                Diagnostic::error(
+                    "workspace.current_directory_unavailable",
+                    format!("failed to detect workspace context: {error}"),
+                )
+                .with_help("check that the current directory exists and is accessible"),
+            );
+
+            None
+        }
+    }
+}
+
+/// Loads the Monad manifest from a detected workspace or records a diagnostic.
+///
+/// Returning `Option<MonadManifest>` means:
+/// - `Some(manifest)` when loading succeeds;
+/// - `None` when loading fails and the caller should decide whether to fail.
+fn load_manifest_or_fail(
+    workspace_context: &WorkspaceContext,
+    diagnostics: &mut DiagnosticReport,
+) -> Option<MonadManifest> {
+    // Get the manifest path from the workspace context.
+    //
+    // `?` on `Option` means:
+    // - if this is `Some(path)`, continue with `path`;
+    // - if this is `None`, return `None` from this function immediately.
+    let manifest_path = workspace_context.manifest.found_path()?;
+
+    // Try to load and parse `monad.toml`.
+    match monad_core::manifest::load_monad_manifest(manifest_path) {
+        Ok(manifest) => {
+            diagnostics.info(
+                "manifest.parsed",
+                format!(
+                    "Monad manifest parsed with supported schema version '{}'",
+                    manifest.schema_version
+                ),
+            );
+
+            Some(manifest)
+        }
+        Err(error) => {
+            diagnostics.push(
+                Diagnostic::error(
+                    "manifest.load_failed",
+                    format!("failed to load Monad manifest: {error}"),
+                )
+                .with_help("fix monad.toml and run the command again"),
+            );
+
+            None
+        }
     }
 }
 

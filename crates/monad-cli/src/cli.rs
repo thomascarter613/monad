@@ -42,7 +42,8 @@ pub struct Cli {
 ///
 /// For example:
 /// - `Info` becomes `monad info`;
-/// - `Doctor` becomes `monad doctor`.
+/// - `Doctor` becomes `monad doctor`;
+/// - `Check` becomes `monad check`.
 #[derive(Debug, Subcommand)]
 pub enum Commands {
     /// Display repository/runtime information detected by Monad.
@@ -50,4 +51,7 @@ pub enum Commands {
 
     /// Diagnose basic Monad workspace and manifest health.
     Doctor,
+
+    /// Run the initial Monad repository check skeleton.
+    Check,
 }
