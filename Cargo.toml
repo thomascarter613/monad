@@ -11,8 +11,10 @@ edition = "2024"
 repository = "https://github.com/thomascarter613/monad"
 
 [workspace.dependencies]
+assert_cmd = "2"
 clap = { version = "4", features = ["derive"] }
 monad-core = { path = "crates/monad-core" }
+predicates = "3"
 serde = { version = "1", features = ["derive"] }
 tempfile = "3"
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
