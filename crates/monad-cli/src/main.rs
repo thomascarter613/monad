@@ -33,20 +33,30 @@ fn print_info() -> ExitCode {
         }
     };
 
-    println!("name: {}", monad_core::NAME);
-    println!("version: {}", monad_core::VERSION);
-    println!("description: {}", monad_core::runtime_description());
-    println!("primary_language: Rust");
-    println!("manifest: {}", monad_core::MANIFEST_FILE_NAME);
-    println!(
-        "workspace_root: {}",
-        workspace_context.root_dir.display()
-    );
-    println!("workspace_root_marker: {}", workspace_context.root_marker);
-    println!("monad_manifest_found: {}", workspace_context.has_manifest());
+    let name = monad_core::NAME;
+    let version = monad_core::VERSION;
+    let description = monad_core::runtime_description();
+    let manifest = monad_core::MANIFEST_FILE_NAME;
+    let workspace_root = workspace_context.root_dir.display();
+    let workspace_root_marker = workspace_context.root_marker;
+    let monad_manifest_found = workspace_context.has_manifest();
+    let monad_manifest_status = workspace_context.manifest.status();
+    let monad_manifest_expected_path = workspace_context.manifest.expected_path.display();
 
-    if let Some(manifest_path) = workspace_context.manifest_path {
-        println!("monad_manifest_path: {}", manifest_path.display());
+    println!("name: {name}");
+    println!("version: {version}");
+    println!("description: {description}");
+    println!("primary_language: Rust");
+    println!("manifest: {manifest}");
+    println!("workspace_root: {workspace_root}");
+    println!("workspace_root_marker: {workspace_root_marker}");
+    println!("monad_manifest_found: {monad_manifest_found}");
+    println!("monad_manifest_status: {monad_manifest_status}");
+    println!("monad_manifest_expected_path: {monad_manifest_expected_path}");
+
+    if let Some(manifest_path) = workspace_context.manifest.found_path() {
+        let monad_manifest_path = manifest_path.display();
+        println!("monad_manifest_path: {monad_manifest_path}");
     }
 
     ExitCode::SUCCESS

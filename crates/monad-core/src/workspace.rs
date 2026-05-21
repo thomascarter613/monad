@@ -5,6 +5,7 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 use crate::MANIFEST_FILE_NAME;
+use crate::manifest::{MonadManifestDetection, detect_monad_manifest_at};
 
 /// Describes how Monad identified the workspace root.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -53,15 +54,15 @@ pub struct WorkspaceContext {
     /// Marker used to identify the root directory.
     pub root_marker: WorkspaceRootMarker,
 
-    /// Path to `monad.toml`, if present at the detected root.
-    pub manifest_path: Option<PathBuf>,
+    /// Detection result for the canonical Monad manifest.
+    pub manifest: MonadManifestDetection,
 }
 
 impl WorkspaceContext {
     /// Returns whether a Monad manifest was found at the detected workspace root.
     #[must_use]
-    pub const fn has_manifest(&self) -> bool {
-        self.manifest_path.is_some()
+    pub fn has_manifest(&self) -> bool {
+        self.manifest.is_found()
     }
 }
 
@@ -138,15 +139,13 @@ fn build_context(
     root_dir: PathBuf,
     root_marker: WorkspaceRootMarker,
 ) -> WorkspaceContext {
-    let manifest_path = root_dir.join(MANIFEST_FILE_NAME);
-
-    let manifest_path = manifest_path.is_file().then_some(manifest_path);
+    let manifest = detect_monad_manifest_at(&root_dir);
 
     WorkspaceContext {
         start_dir,
         root_dir,
         root_marker,
-        manifest_path,
+        manifest,
     }
 }
 
@@ -183,15 +182,18 @@ fn cargo_manifest_declares_workspace(path: &Path) -> bool {
 mod tests {
     use std::fs::{self, File};
 
+    use crate::manifest::MonadManifestStatus;
+
     use super::*;
 
     #[test]
     fn detects_monad_manifest_before_git_marker() -> Result<(), Box<dyn Error>> {
         let temp_dir = tempfile::tempdir()?;
         let root = temp_dir.path();
+        let manifest_path = root.join(MANIFEST_FILE_NAME);
 
         fs::create_dir(root.join(".git"))?;
-        File::create(root.join(MANIFEST_FILE_NAME))?;
+        File::create(&manifest_path)?;
 
         let nested = root.join("crates").join("monad-cli").join("src");
         fs::create_dir_all(&nested)?;
@@ -201,7 +203,8 @@ mod tests {
         assert_eq!(context.start_dir, nested);
         assert_eq!(context.root_dir, root);
         assert_eq!(context.root_marker, WorkspaceRootMarker::MonadManifest);
-        assert_eq!(context.manifest_path, Some(root.join(MANIFEST_FILE_NAME)));
+        assert_eq!(context.manifest.found_path(), Some(manifest_path.as_path()));
+        assert_eq!(context.manifest.status(), MonadManifestStatus::Found);
         assert!(context.has_manifest());
 
         Ok(())
@@ -222,7 +225,8 @@ mod tests {
         assert_eq!(context.start_dir, nested);
         assert_eq!(context.root_dir, root);
         assert_eq!(context.root_marker, WorkspaceRootMarker::GitDirectory);
-        assert_eq!(context.manifest_path, None);
+        assert_eq!(context.manifest.found_path(), None);
+        assert_eq!(context.manifest.status(), MonadManifestStatus::Missing);
         assert!(!context.has_manifest());
 
         Ok(())
@@ -252,7 +256,7 @@ members = ["crates/example"]
             context.root_marker,
             WorkspaceRootMarker::CargoWorkspaceManifest
         );
-        assert_eq!(context.manifest_path, None);
+        assert_eq!(context.manifest.found_path(), None);
 
         Ok(())
     }
@@ -268,7 +272,7 @@ members = ["crates/example"]
         assert_eq!(context.start_dir, start);
         assert_eq!(context.root_dir, context.start_dir);
         assert_eq!(context.root_marker, WorkspaceRootMarker::CurrentDirectory);
-        assert_eq!(context.manifest_path, None);
+        assert_eq!(context.manifest.found_path(), None);
 
         Ok(())
     }
