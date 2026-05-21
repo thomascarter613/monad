@@ -17,6 +17,12 @@ use clap::{CommandFactory, Parser};
 // Import our CLI argument structs and command enum from the local `cli` module.
 use crate::cli::{Cli, Commands};
 
+// Import diagnostic types from `monad-core`.
+//
+// The CLI will create a small diagnostic report while running `monad info`.
+// Later, `monad doctor` and `monad check` will use the same foundation.
+use monad_core::diagnostics::{Diagnostic, DiagnosticReport};
+
 /// Initial Monad CLI entrypoint.
 ///
 /// `#[tokio::main]` starts the Tokio async runtime before running `main`.
@@ -39,14 +45,39 @@ async fn main() -> ExitCode {
 
 /// Prints initial Monad runtime and workspace information.
 fn print_info() -> ExitCode {
+    // Create a diagnostic report for this command run.
+    //
+    // This gives us one place to collect useful observations, warnings,
+    // and errors while the command executes.
+    let mut diagnostics = DiagnosticReport::new();
+
     // Ask monad-core to detect the workspace context.
     //
     // This keeps repository discovery logic out of the CLI crate.
     let workspace_context = match monad_core::workspace::detect_workspace_context_from_current_dir()
     {
-        Ok(context) => context,
+        Ok(context) => {
+            diagnostics.info(
+                "workspace.root_detected",
+                format!(
+                    "workspace root detected using marker '{}'",
+                    context.root_marker
+                ),
+            );
+
+            context
+        }
         Err(error) => {
-            eprintln!("failed to detect workspace context: {error}");
+            diagnostics.push(
+                Diagnostic::error(
+                    "workspace.current_directory_unavailable",
+                    format!("failed to detect workspace context: {error}"),
+                )
+                .with_help("check that the current directory exists and is accessible"),
+            );
+
+            print_diagnostics(&diagnostics);
+
             return ExitCode::FAILURE;
         }
     };
@@ -83,14 +114,39 @@ fn print_info() -> ExitCode {
 
         println!("monad_manifest_path: {monad_manifest_path}");
 
+        // Record that the manifest was found before parsing it.
+        diagnostics.info(
+            "manifest.found",
+            format!("Monad manifest found at {monad_manifest_path}"),
+        );
+
         // Load and parse `monad.toml`.
         //
         // If parsing fails, the command fails because an invalid manifest is a
         // real repository health problem.
         let parsed_manifest = match monad_core::manifest::load_monad_manifest(manifest_path) {
-            Ok(manifest) => manifest,
+            Ok(manifest) => {
+                diagnostics.info(
+                    "manifest.parsed",
+                    format!(
+                        "Monad manifest parsed with schema version '{}'",
+                        manifest.schema_version
+                    ),
+                );
+
+                manifest
+            }
             Err(error) => {
-                eprintln!("failed to load Monad manifest: {error}");
+                diagnostics.push(
+                    Diagnostic::error(
+                        "manifest.load_failed",
+                        format!("failed to load Monad manifest: {error}"),
+                    )
+                    .with_help("fix monad.toml and run the command again"),
+                );
+
+                print_diagnostics(&diagnostics);
+
                 return ExitCode::FAILURE;
             }
         };
@@ -117,15 +173,25 @@ fn print_info() -> ExitCode {
         );
         println!(
             "policy_require_dry_run_for_existing_repos: {}",
-            parsed_manifest
-                .policy
-                .require_dry_run_for_existing_repos
+            parsed_manifest.policy.require_dry_run_for_existing_repos
         );
-        println!(
-            "command_check: {}",
-            parsed_manifest.commands.check.join(",")
+        println!("command_check: {}", parsed_manifest.commands.check.join(","));
+    } else {
+        // If no manifest was found, this is not necessarily fatal for `info`.
+        //
+        // Monad can still inspect the repository. Later commands like `check`
+        // may choose to require a manifest.
+        diagnostics.push(
+            Diagnostic::warning(
+                "manifest.missing",
+                format!("Monad manifest was not found at {monad_manifest_expected_path}"),
+            )
+            .with_help("run `monad init` later once initialization is implemented"),
         );
     }
+
+    // Print the diagnostics report after the main info output.
+    print_diagnostics(&diagnostics);
 
     // Tell the operating system the command succeeded.
     ExitCode::SUCCESS
@@ -149,6 +215,30 @@ fn print_help() -> ExitCode {
             eprintln!("failed to render help output: {error}");
 
             ExitCode::FAILURE
+        }
+    }
+}
+
+/// Prints a diagnostic report in the current simple key/value CLI style.
+///
+/// This is deliberately plain for now. Later we can add richer human output
+/// and structured JSON output.
+fn print_diagnostics(report: &DiagnosticReport) {
+    let summary = report.summary();
+
+    println!("diagnostics_total: {}", summary.total);
+    println!("diagnostics_infos: {}", summary.infos);
+    println!("diagnostics_warnings: {}", summary.warnings);
+    println!("diagnostics_errors: {}", summary.errors);
+
+    for diagnostic in report.diagnostics() {
+        println!(
+            "diagnostic: {} {} {}",
+            diagnostic.severity, diagnostic.code, diagnostic.message
+        );
+
+        if let Some(help) = &diagnostic.help {
+            println!("diagnostic_help: {} {}", diagnostic.code, help);
         }
     }
 }

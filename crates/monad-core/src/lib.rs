@@ -12,6 +12,13 @@
 //! The CLI crate should depend on this crate. This crate must not depend on
 //! the CLI crate.
 
+/// Exposes the diagnostics module to other crates.
+///
+/// This module contains Monad's early internal diagnostic types. These are
+/// plain Rust data structures that can later be rendered as human-readable
+/// text, JSON, reports, or richer diagnostic output.
+pub mod diagnostics;
+
 /// Exposes the manifest module to other crates.
 ///
 /// `pub mod manifest;` means:
