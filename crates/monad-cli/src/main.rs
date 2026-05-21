@@ -5,7 +5,8 @@
 // Rust will look for this module in `crates/monad-cli/src/cli.rs`.
 mod cli;
 
-// Import `ExitCode`, the standard way for a Rust CLI to report success/failure.
+// Import `ExitCode`, the standard-library type used by CLI programs to tell
+// the operating system whether a command succeeded or failed.
 use std::process::ExitCode;
 
 // Import Clap traits.
@@ -19,18 +20,23 @@ use crate::cli::{Cli, Commands};
 
 // Import diagnostic types from `monad-core`.
 //
-// The CLI will create a small diagnostic report while running `monad info`.
-// Later, `monad doctor` and `monad check` will use the same foundation.
+// `Diagnostic` represents one structured diagnostic message.
+// `DiagnosticReport` collects multiple diagnostics from one command run.
 use monad_core::diagnostics::{Diagnostic, DiagnosticReport};
 
 /// Initial Monad CLI entrypoint.
 ///
 /// `#[tokio::main]` starts the Tokio async runtime before running `main`.
-/// Even though this command is still mostly synchronous, Tokio is introduced
-/// immediately because the accepted ADRs require it.
+///
+/// Even though these first commands are mostly synchronous, Tokio is already
+/// present because Monad will eventually coordinate external tools, async
+/// process execution, timeouts, and concurrent diagnostics.
 #[tokio::main]
 async fn main() -> ExitCode {
     // Parse command-line arguments into our typed `Cli` struct.
+    //
+    // Clap reads `std::env::args()` internally and converts the user input
+    // into the Rust data structure we defined in `cli.rs`.
     let cli = Cli::parse();
 
     // Dispatch based on which subcommand was provided.
@@ -38,12 +44,18 @@ async fn main() -> ExitCode {
         // If the user ran `monad info`, print repository/runtime information.
         Some(Commands::Info) => print_info(),
 
+        // If the user ran `monad doctor`, diagnose basic repo health.
+        Some(Commands::Doctor) => print_doctor(),
+
         // If the user ran only `monad`, show help instead of doing nothing.
         None => print_help(),
     }
 }
 
 /// Prints initial Monad runtime and workspace information.
+///
+/// `info` is descriptive. It should tell the user what Monad sees.
+/// It may include diagnostics, but it should remain mostly informational.
 fn print_info() -> ExitCode {
     // Create a diagnostic report for this command run.
     //
@@ -51,12 +63,13 @@ fn print_info() -> ExitCode {
     // and errors while the command executes.
     let mut diagnostics = DiagnosticReport::new();
 
-    // Ask monad-core to detect the workspace context.
+    // Ask `monad-core` to detect the workspace context.
     //
     // This keeps repository discovery logic out of the CLI crate.
     let workspace_context = match monad_core::workspace::detect_workspace_context_from_current_dir()
     {
         Ok(context) => {
+            // Record a successful workspace-root detection diagnostic.
             diagnostics.info(
                 "workspace.root_detected",
                 format!(
@@ -68,6 +81,8 @@ fn print_info() -> ExitCode {
             context
         }
         Err(error) => {
+            // If Monad cannot even read the current directory, this command
+            // cannot continue usefully.
             diagnostics.push(
                 Diagnostic::error(
                     "workspace.current_directory_unavailable",
@@ -82,7 +97,7 @@ fn print_info() -> ExitCode {
         }
     };
 
-    // Copy core values into local variables so the later println! calls are
+    // Copy core values into local variables so the later `println!` calls are
     // easy to read.
     let name = monad_core::NAME;
     let version = monad_core::VERSION;
@@ -197,6 +212,122 @@ fn print_info() -> ExitCode {
     ExitCode::SUCCESS
 }
 
+/// Diagnoses basic Monad workspace and manifest health.
+///
+/// `doctor` is evaluative. Unlike `info`, it should tell the user whether
+/// the current repository is healthy enough for Monad operations.
+fn print_doctor() -> ExitCode {
+    // Create a fresh diagnostics report for the doctor command.
+    let mut diagnostics = DiagnosticReport::new();
+
+    // Print a simple heading.
+    //
+    // We are keeping output plain for now so it is easy to read and test.
+    println!("doctor: monad workspace health");
+
+    // Detect the workspace context from the current process directory.
+    let workspace_context = match monad_core::workspace::detect_workspace_context_from_current_dir()
+    {
+        Ok(context) => {
+            diagnostics.info(
+                "workspace.root_detected",
+                format!(
+                    "workspace root detected at {} using marker '{}'",
+                    context.root_dir.display(),
+                    context.root_marker
+                ),
+            );
+
+            context
+        }
+        Err(error) => {
+            diagnostics.push(
+                Diagnostic::error(
+                    "workspace.current_directory_unavailable",
+                    format!("failed to detect workspace context: {error}"),
+                )
+                .with_help("check that the current directory exists and is accessible"),
+            );
+
+            print_diagnostics(&diagnostics);
+
+            return ExitCode::FAILURE;
+        }
+    };
+
+    // Report core workspace facts in key/value form.
+    println!("workspace_root: {}", workspace_context.root_dir.display());
+    println!("workspace_root_marker: {}", workspace_context.root_marker);
+
+    // Diagnose manifest presence.
+    if let Some(manifest_path) = workspace_context.manifest.found_path() {
+        diagnostics.info(
+            "manifest.found",
+            format!("Monad manifest found at {}", manifest_path.display()),
+        );
+
+        println!("monad_manifest_status: found");
+        println!("monad_manifest_path: {}", manifest_path.display());
+
+        // Diagnose whether the manifest can be parsed and validated.
+        match monad_core::manifest::load_monad_manifest(manifest_path) {
+            Ok(manifest) => {
+                diagnostics.info(
+                    "manifest.parsed",
+                    format!(
+                        "Monad manifest parsed with supported schema version '{}'",
+                        manifest.schema_version
+                    ),
+                );
+
+                println!("monad_manifest_schema_version: {}", manifest.schema_version);
+                println!("workspace_name: {}", manifest.workspace.name);
+                println!("workspace_kind: {}", manifest.workspace.kind);
+            }
+            Err(error) => {
+                diagnostics.push(
+                    Diagnostic::error(
+                        "manifest.load_failed",
+                        format!("failed to load Monad manifest: {error}"),
+                    )
+                    .with_help("fix monad.toml before running Monad workspace operations"),
+                );
+            }
+        }
+    } else {
+        let expected_path = workspace_context.manifest.expected_path.display();
+
+        diagnostics.push(
+            Diagnostic::warning(
+                "manifest.missing",
+                format!("Monad manifest was not found at {expected_path}"),
+            )
+            .with_help("run `monad init` later once initialization is implemented"),
+        );
+
+        println!("monad_manifest_status: missing");
+        println!("monad_manifest_expected_path: {expected_path}");
+    }
+
+    // Print diagnostics after all doctor checks have run.
+    print_diagnostics(&diagnostics);
+
+    // Summarize the doctor result.
+    if diagnostics.has_errors() {
+        println!("doctor_status: error");
+
+        // Return failure when doctor finds blocking errors.
+        ExitCode::FAILURE
+    } else {
+        println!("doctor_status: ok");
+
+        // Return success when doctor found no blocking errors.
+        //
+        // Warnings are allowed for now. Later we may add stricter modes.
+        ExitCode::SUCCESS
+    }
+}
+
 /// Prints CLI help when the user runs `monad` without a subcommand.
 fn print_help() -> ExitCode {
     // Ask Clap to construct the command metadata from our derive structs.
@@ -224,19 +355,23 @@ fn print_help() -> ExitCode {
 /// This is deliberately plain for now. Later we can add richer human output
 /// and structured JSON output.
 fn print_diagnostics(report: &DiagnosticReport) {
+    // Build a summary of diagnostic counts.
     let summary = report.summary();
 
+    // Print summary counts first.
     println!("diagnostics_total: {}", summary.total);
     println!("diagnostics_infos: {}", summary.infos);
     println!("diagnostics_warnings: {}", summary.warnings);
     println!("diagnostics_errors: {}", summary.errors);
 
+    // Print each diagnostic.
     for diagnostic in report.diagnostics() {
         println!(
             "diagnostic: {} {} {}",
             diagnostic.severity, diagnostic.code, diagnostic.message
         );
 
+        // Print optional help text when present.
         if let Some(help) = &diagnostic.help {
             println!("diagnostic_help: {} {}", diagnostic.code, help);
         }
