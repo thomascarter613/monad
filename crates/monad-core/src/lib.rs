@@ -31,6 +31,84 @@ pub mod manifest;
 /// This lets the CLI call workspace discovery logic without owning that logic.
 pub mod workspace;
 
+
+/// Exposes the module to other crates.
+///
+/// This ...
+pub mod adapters;
+
+/// Exposes the module to other crates.
+///
+/// This ...
+pub mod ai_context;
+
+/// Exposes the module to other crates.
+///
+/// This ...
+pub mod checks;
+
+/// Exposes the module to other crates.
+///
+/// This ...
+pub mod commands;
+
+/// Exposes the module to other crates.
+///
+/// This ...
+pub mod exec;
+
+/// Exposes the module to other crates.
+///
+/// This ...
+pub mod file_ops;
+
+/// Exposes the module to other crates.
+///
+/// This ...
+pub mod graph;
+
+/// Exposes the module to other crates.
+///
+/// This ...
+pub mod output;
+
+/// Exposes the module to other crates.
+///
+/// This ...
+pub mod policy;
+
+/// Exposes the module to other crates.
+///
+/// This ...
+pub mod provenance;
+
+/// Exposes the module to other crates.
+///
+/// This ...
+pub mod release;
+
+/// Exposes the module to other crates.
+///
+/// This ...
+pub mod state;
+
+/// Exposes the module to other crates.
+///
+/// This ...
+pub mod templates;
+
+/// Exposes the module to other crates.
+///
+/// This ...
+pub mod toolchains;
+
+/// Exposes the module to other crates.
+///
+/// This ...
+pub mod util;
+
+
+
 /// Canonical product/runtime name.
 ///
 /// `pub const` creates a public compile-time constant.
