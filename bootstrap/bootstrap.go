@@ -9,12 +9,7 @@ import (
 func Run(root string) error {
 	directories := []string{
 		".monad",
-		"docs",
-		"schemas",
-		"templates",
-		"examples",
-		"tests",
-		"scripts",
+		".monad/cache",
 	}
 
 	for _, directory := range directories {
@@ -26,15 +21,65 @@ func Run(root string) error {
 	}
 
 	files := map[string]string{
-		"monad.yaml": `name: monad
-version: 0.1.0
-`,
-		"workspace.yaml": `name: workspace
-version: 0.1.0
-`,
-		".monad/repository.yaml": `type: monad-repository
-version: 0.1.0
-`,
+		"monad.yaml": `# Monad Project Manifest
+
+    manifest:
+      version: "1"
+
+    project:
+      name: example-project
+      type: application
+      version: "0.1.0"
+
+    description: >
+      Example Monad-managed software project.
+
+    technology:
+      languages:
+        - go
+
+    architecture:
+      style: modular
+
+    lifecycle:
+      stage: development
+    `,
+		"workspace.yaml": `# Monad Workspace Manifest
+
+    workspace:
+      name: example-workspace
+      version: "1"
+
+    members:
+      - .
+
+    defaults:
+      language: go
+    `,
+		".monad/identity.yaml": `# Monad Artifact Identity
+
+    identity:
+      id: "replace-with-generated-uuid"
+
+    artifact:
+      type: repository
+      version: "1"
+
+    created:
+      by: monad
+      version: "0.1.0"
+    `,
+		".monad/state.yaml": `# Monad Runtime State
+
+    state:
+      lifecycle: active
+
+    repository:
+      initialized: true
+
+    cache:
+      enabled: true
+    `,
 	}
 
 	for filename, content := range files {
