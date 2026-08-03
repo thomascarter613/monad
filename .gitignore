@@ -1,0 +1,17 @@
+# Binary output
+monad
+
+# Go build artifacts
+bin/
+dist/
+*.exe
+
+# Coverage
+coverage.out
+
+# IDEs
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
