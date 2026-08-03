@@ -1,0 +1,158 @@
+schema_version: "0.1.0"
+
+registry:
+  id: MONAD-SPEC-REGISTRY
+  name: Monad Specification Registry
+  status: bootstrap
+  source_of_truth: filesystem
+  generated: false
+
+defaults:
+  artifact_type: knowledge.specification
+  namespace: monad
+  lifecycle: draft
+  compilation_status: pre-normative
+
+series:
+  - id: MKE-CORE
+    title: Monad Knowledge Engine Core
+    path: specifications/MKE/core
+    status: active
+
+  - id: MKE-ARTIFACT
+    title: Monad Knowledge Engine Artifact System
+    path: specifications/MKE/artifact
+    status: paused
+
+  - id: MSL-CORE
+    title: Monad Specification Language Core
+    path: specifications/MSL/core
+    status: active
+
+  - id: KIR-CORE
+    title: Knowledge Intermediate Representation Core
+    path: specifications/KIR/core
+    status: planned
+
+  - id: MSC-CORE
+    title: Monad Specification Compiler Core
+    path: specifications/MSC/core
+    status: planned
+
+  - id: PUB-CORE
+    title: Monad Publishing System Core
+    path: specifications/PUB/core
+    status: planned
+
+artifacts:
+  - id: MKE-CORE-0001
+    title: Monad Knowledge Engine Vision Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0001.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0002
+    title: Universal Artifact Model Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0002.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0003
+    title: Relationship Taxonomy Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0003.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0004
+    title: Knowledge Graph Model Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0004.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0005
+    title: Identity and Provenance Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0005.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0006
+    title: Query and Traversal API Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0006.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0007
+    title: Semantic Search Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0007.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0008
+    title: Knowledge Validation Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0008.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0009
+    title: AI Context Retrieval Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0009.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0010
+    title: Knowledge Evolution Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0010.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-ARTIFACT-0001
+    title: Artifact Schema Specification
+    series: MKE-ARTIFACT
+    path: specifications/MKE/artifact/MKE-ARTIFACT-0001.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-ARTIFACT-0002
+    title: Artifact Type Registry Specification
+    series: MKE-ARTIFACT
+    path: specifications/MKE/artifact/MKE-ARTIFACT-0002.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-ARTIFACT-0003
+    title: Artifact Lifecycle Specification
+    series: MKE-ARTIFACT
+    path: specifications/MKE/artifact/MKE-ARTIFACT-0003.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MSL-CORE-0001
+    title: Monad Specification Language Vision
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0001.md
+    version: 0.1.0
+    lifecycle: planned
+    compilation_status: bootstrap

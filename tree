@@ -1,0 +1,26 @@
+.
+├── adrs
+│   └── ADR-0001-knowledge-engine-core.md
+├── architecture
+│   └── overview.md
+├── build-log
+├── cli
+├── engine
+├── engineering
+├── journal
+│   └── MJ-0001-building-monad
+│       └── article.md
+├── knowledge
+├── README.md
+├── research
+├── scripts
+├── specifications
+│   ├── MKE
+│   │   └── core
+│   │       └── MKE-CORE-0001.md
+│   └── PUB
+│       └── core
+├── tools
+└── tree
+
+18 directories, 6 files
