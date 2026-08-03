@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/thomascarter613/monad/bootstrap"
+	"github.com/thomascarter613/monad/manifest"
 )
 
 const (
@@ -28,6 +29,9 @@ func main() {
 	case "bootstrap":
 		runBootstrap()
 
+	case "inspect":
+		runInspect()
+
 	default:
 		fmt.Println("Unknown command:", command)
 		usage()
@@ -48,6 +52,20 @@ func runBootstrap() {
 	fmt.Println("Monad repository initialized.")
 }
 
+func runInspect() {
+	result, err := manifest.Load("monad.yaml")
+
+	if err != nil {
+		fmt.Println("Manifest error:", err)
+		os.Exit(1)
+	}
+
+	fmt.Println("Monad Repository")
+	fmt.Println("Name:", result.Name)
+	fmt.Println("Version:", result.Version)
+	fmt.Println("Type:", result.Type)
+}
+
 func usage() {
 	fmt.Println(Name)
 	fmt.Println()
@@ -55,4 +73,5 @@ func usage() {
 	fmt.Println()
 	fmt.Println("  monad version")
 	fmt.Println("  monad bootstrap")
+	fmt.Println("  monad inspect")
 }
