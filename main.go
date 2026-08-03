@@ -1,35 +1,52 @@
 package main
 
 import (
-	"fmt"
-	"os"
+    "fmt"
+    "os"
 )
 
-const Version = "0.1.0-dev"
+const (
+    Name    = "Monad"
+    Version = "0.1.0-dev"
+)
 
 func main() {
-	if len(os.Args) < 2 {
-		usage()
-		return
-	}
+    if len(os.Args) < 2 {
+        usage()
+        os.Exit(1)
+    }
 
-	switch os.Args[1] {
+    command := os.Args[1]
 
-	case "version":
-		fmt.Println("Monad", Version)
+    switch command {
 
-	case "bootstrap":
-		fmt.Println("Bootstrap not implemented yet.")
+        case "version":
+            version()
 
-	default:
-		usage()
-	}
+    case "bootstrap":
+    	bootstrap()
+
+    default:
+        fmt.Println("Unknown command:", command)
+        usage()
+        os.Exit(1)
+    }
+}
+
+func version() {
+    fmt.Printf("%s %s\n", Name, Version)
+}
+
+func bootstrap() {
+    fmt.Println("Bootstrap command registered.")
+    fmt.Println("Repository generation will be implemented in a future commit.")
 }
 
 func usage() {
-	fmt.Println("Monad")
-	fmt.Println()
-	fmt.Println("Usage:")
-	fmt.Println("    monad version")
-	fmt.Println("    monad bootstrap")
+    fmt.Println(Name)
+    fmt.Println()
+    fmt.Println("Usage:")
+    fmt.Println()
+    fmt.Println("  monad version")
+    fmt.Println("  monad bootstrap")
 }
