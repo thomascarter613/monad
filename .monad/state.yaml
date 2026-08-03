@@ -1,0 +1,16 @@
+# Monad Runtime State
+#
+# Mutable metadata managed by Monad.
+
+state:
+  lifecycle: active
+
+repository:
+  initialized: true
+
+last_operations:
+  bootstrap:
+    status: complete
+
+cache:
+  enabled: true
