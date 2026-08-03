@@ -156,3 +156,11 @@ artifacts:
     version: 0.1.0
     lifecycle: planned
     compilation_status: bootstrap
+
+  - id: MSL-CORE-0002
+    title: Specification Document Model
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0002.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
