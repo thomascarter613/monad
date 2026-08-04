@@ -164,3 +164,11 @@ artifacts:
     version: 0.1.0
     lifecycle: draft
     compilation_status: bootstrap
+
+  - id: MSL-CORE-0003
+    title: Normative Requirement Language
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0003.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
