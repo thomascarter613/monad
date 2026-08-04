@@ -213,10 +213,18 @@ artifacts:
     lifecycle: draft
     compilation_status: bootstrap
 
-planned_artifacts:
-
   - id: MSL-CORE-0009
     title: Document and Embedded Language Architecture
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0009.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
 
   - id: MSL-CORE-0010
     title: Core Semantic Integration, Types, References, and Evolution
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0010.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
