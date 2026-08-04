@@ -189,9 +189,15 @@ artifacts:
     lifecycle: draft
     compilation_status: bootstrap
 
-planned_artifacts:
   - id: MSL-CORE-0006
     title: Abstract Syntax Tree Model
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0006.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+planned_artifacts:
 
   - id: MSL-CORE-0007
     title: msl-markdown Concrete Syntax
