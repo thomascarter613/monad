@@ -914,11 +914,11 @@ Expected diagnostic: `MSL0012`.
 
 ### 28.4 Heading Inside a Fence
 
-```markdown
+````markdown
 ```text
 # NOT-A-STRUCTURAL-HEADING
 ```
-```
+````
 
 The fenced heading does not count as a structural H1.
 
