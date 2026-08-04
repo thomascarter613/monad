@@ -216,7 +216,7 @@ artifacts:
 planned_artifacts:
 
   - id: MSL-CORE-0009
-    title: Type System and Semantic Validation
+    title: Document and Embedded Language Architecture
 
   - id: MSL-CORE-0010
-    title: References, Relationships, and Language Evolution
+    title: Core Semantic Integration, Types, References, and Evolution
