@@ -180,3 +180,22 @@ artifacts:
     version: 0.1.0
     lifecycle: draft
     compilation_status: bootstrap
+
+planned_artifacts:
+  - id: MSL-CORE-0005
+    title: Language and Frontend Architecture
+
+  - id: MSL-CORE-0006
+    title: Abstract Syntax Tree Model
+
+  - id: MSL-CORE-0007
+    title: msl-markdown Concrete Syntax
+
+  - id: MSL-CORE-0008
+    title: Machine Semantics and Constraint Blocks
+
+  - id: MSL-CORE-0009
+    title: Type System and Semantic Validation
+
+  - id: MSL-CORE-0010
+    title: References, Relationships, and Language Evolution
