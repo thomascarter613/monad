@@ -1,61 +1,4 @@
-Continuing.
-
-This is the final document in the initial **MKE-CORE foundation series**.
-
-The previous documents answered:
-
-| Question                               | Specification |
-| -------------------------------------- | ------------- |
-| Why does MKE exist?                    | MKE-CORE-0001 |
-| What are things?                       | MKE-CORE-0002 |
-| How are things connected?              | MKE-CORE-0003 |
-| How is knowledge represented?          | MKE-CORE-0004 |
-| How do we know where things came from? | MKE-CORE-0005 |
-| How do we access knowledge?            | MKE-CORE-0006 |
-| How do we find meaning?                | MKE-CORE-0007 |
-| How do we trust knowledge?             | MKE-CORE-0008 |
-| How do AI systems consume knowledge?   | MKE-CORE-0009 |
-
-Now we answer:
-
-> How does knowledge itself evolve without destroying its history?
-
-This is critical because Monad is intended to manage systems that live for years or decades.
-
-A normal repository evolves through:
-
-```
-change → commit → forget
-```
-
-Monad evolves through:
-
-```
-change
-  ↓
-preserve history
-  ↓
-understand impact
-  ↓
-validate transition
-  ↓
-continue knowledge lineage
-```
-
-Save as:
-
-```text
-specifications/MKE/core/MKE-CORE-0010.md
-```
-
 ---
-
-````markdown
-# MKE-CORE-0010 — Knowledge Evolution Specification
-
-## Metadata
-
-```yaml
 id: MKE-CORE-0010
 
 title: Knowledge Evolution Specification
@@ -86,9 +29,9 @@ depends_on:
   - MKE-CORE-0007
   - MKE-CORE-0008
   - MKE-CORE-0009
-````
 
 ---
+# MKE-CORE-0010 — Knowledge Evolution Specification
 
 # 1. Purpose
 
@@ -631,41 +574,3 @@ The Monad Knowledge Engine now has a complete conceptual foundation:
 * validation
 * AI context
 * evolution
-
-````
-
----
-
-## MKE-CORE Series Complete
-
-Current tree:
-
-```text
-monad/
-└── specifications/
-    └── MKE/
-        └── core/
-            ├── MKE-CORE-0001.md
-            ├── MKE-CORE-0002.md
-            ├── MKE-CORE-0003.md
-            ├── MKE-CORE-0004.md
-            ├── MKE-CORE-0005.md
-            ├── MKE-CORE-0006.md
-            ├── MKE-CORE-0007.md
-            ├── MKE-CORE-0008.md
-            ├── MKE-CORE-0009.md
-            └── MKE-CORE-0010.md
-````
-
-The next logical series is:
-
-# MKE-ARTIFACT — Artifact System Specification
-
-Starting with:
-
-```
-MKE-ARTIFACT-0001
-Artifact Schema Specification
-```
-
-This begins turning the conceptual model into something that Monad can actually store, validate, and manipulate.

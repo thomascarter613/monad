@@ -1,32 +1,4 @@
-Excellent. This is the third foundational document.
-
-The first two established:
-
-* **MKE-CORE-0001** — why the Knowledge Engine exists
-* **MKE-CORE-0002** — what an artifact is
-
-Now we define the thing that makes the graph valuable:
-
-**relationships.**
-
-A database of artifacts is just storage.
-
-A network of meaningful relationships becomes knowledge.
-
-Save as:
-
-```text
-specifications/MKE/core/MKE-CORE-0003.md
-```
-
 ---
-
-````markdown
-# MKE-CORE-0003 — Relationship Taxonomy Specification
-
-## Metadata
-
-```yaml
 id: MKE-CORE-0003
 
 title: Relationship Taxonomy Specification
@@ -51,9 +23,10 @@ depends_on:
   - ADR-0001
   - MKE-CORE-0001
   - MKE-CORE-0002
-````
-
 ---
+
+# MKE-CORE-0003 — Relationship Taxonomy Specification
+
 
 # 1. Purpose
 

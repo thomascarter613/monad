@@ -1,69 +1,4 @@
-Continuing.
-
-We now define the **life cycle of knowledge objects**.
-
-The previous specification answered:
-
-> "What kinds of artifacts exist?"
-
-Now we answer:
-
-> "How do artifacts live, change, mature, and eventually retire?"
-
-This is essential because Monad is not a document repository. A document repository stores files. Monad manages **knowledge assets with history, ownership, trust, and evolution**.
-
-An artifact should never simply "appear" or "disappear."
-
-It moves through intentional states.
-
-Example:
-
-```text
-Idea
-
- ↓
-
-Concept
-
- ↓
-
-Draft
-
- ↓
-
-Review
-
- ↓
-
-Approved
-
- ↓
-
-Active
-
- ↓
-
-Deprecated
-
- ↓
-
-Archived
-```
-
-Save as:
-
-```text
-specifications/MKE/artifact/MKE-ARTIFACT-0003.md
-```
-
 ---
-
-````markdown
-# MKE-ARTIFACT-0003 — Artifact Lifecycle Specification
-
-## Metadata
-
-```yaml
 id: MKE-ARTIFACT-0003
 
 title: Artifact Lifecycle Specification
@@ -90,9 +25,9 @@ depends_on:
   - MKE-CORE-0010
   - MKE-ARTIFACT-0001
   - MKE-ARTIFACT-0002
-````
 
 ---
+# MKE-ARTIFACT-0003 — Artifact Lifecycle Specification
 
 # 1. Purpose
 
@@ -570,37 +505,3 @@ Future documents:
 Draft specification.
 
 This document defines how Monad artifacts mature, operate, and retire.
-
-````
-
----
-
-Progress:
-
-```text
-MKE-CORE
-├── 0001-0010 complete
-
-
-MKE-ARTIFACT
-├── 0001 Artifact Schema
-├── 0002 Artifact Type Registry
-└── 0003 Artifact Lifecycle
-````
-
-Next:
-
-# MKE-ARTIFACT-0004 — Artifact Metadata Standard
-
-This defines the universal metadata attached to every Monad artifact:
-
-* ownership
-* tags
-* classification
-* timestamps
-* authorship
-* dependencies
-* AI context hints
-* search metadata
-
-This becomes the "front matter" that every Monad artifact carries.

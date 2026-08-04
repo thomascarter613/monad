@@ -1,3 +1,25 @@
+---
+id: ADR-0001
+title: The Knowledge Engine Is the Core of Monad
+status: Accepted
+version: 1.0.0
+created: 2026-08-03
+decision_scope: foundational-architecture
+
+depends_on:
+  - NA
+
+affects:
+  - MSL
+  - MSC
+  - KIR
+  - MKE
+  - generators
+  - validators
+  - publishing
+  - artificial-intelligence
+---
+
 # ADR-0001 — The Knowledge Engine Is the Core of Monad
 
 Status: Accepted

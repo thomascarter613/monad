@@ -41,7 +41,7 @@ compilation:
 language: msl-markdown
 language_version: bootstrap
 status: bootstrap
------------------
+---
 
 # MSL-CORE-0002 — Specification Document Model
 

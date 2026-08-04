@@ -1,75 +1,4 @@
-Continuing.
-
-We are now entering the most important bridge between the Knowledge Engine and the AI-native vision of Monad.
-
-The previous specifications built the foundation:
-
-| Capability             | Specification |
-| ---------------------- | ------------- |
-| Knowledge purpose      | MKE-CORE-0001 |
-| Knowledge objects      | MKE-CORE-0002 |
-| Meaningful connections | MKE-CORE-0003 |
-| Graph representation   | MKE-CORE-0004 |
-| Trust/history          | MKE-CORE-0005 |
-| Access                 | MKE-CORE-0006 |
-| Semantic understanding | MKE-CORE-0007 |
-| Integrity              | MKE-CORE-0008 |
-
-Now we define:
-
-> How does an AI system safely consume Monad knowledge?
-
-This is not just "RAG."
-
-Traditional RAG says:
-
-```
-Question
-   |
-   v
-Search documents
-   |
-   v
-Send chunks to LLM
-```
-
-Monad's model is:
-
-```
-Intent
-   |
-   v
-Knowledge Graph
-   |
-   v
-Relevant Artifact Universe
-   |
-   v
-Trusted Context Assembly
-   |
-   v
-AI Reasoning
-   |
-   v
-Traceable Output
-```
-
-The difference is that Monad provides **structured understanding**, not just retrieved text.
-
-Save as:
-
-```text
-specifications/MKE/core/MKE-CORE-0009.md
-```
-
 ---
-
-````markdown
-# MKE-CORE-0009 — AI Context Retrieval Specification
-
-## Metadata
-
-```yaml
 id: MKE-CORE-0009
 
 title: AI Context Retrieval Specification
@@ -99,9 +28,9 @@ depends_on:
   - MKE-CORE-0006
   - MKE-CORE-0007
   - MKE-CORE-0008
-````
-
 ---
+
+# MKE-CORE-0009 — AI Context Retrieval Specification
 
 # 1. Purpose
 
@@ -619,45 +548,3 @@ Future specifications:
 Draft specification.
 
 This document defines the AI knowledge interface of the Monad Knowledge Engine.
-
-```
-
----
-
-Next is the final MKE-CORE foundation document:
-
-# MKE-CORE-0010 — Knowledge Evolution Specification
-
-This completes the first core series.
-
-It answers:
-
-> "How does Monad itself evolve without losing knowledge?"
-
-It will define:
-
-- migrations
-- artifact evolution
-- schema changes
-- knowledge refactoring
-- backward compatibility
-- historical preservation
-- ecosystem growth
-
-After MKE-CORE-0010, we move into the specialized families:
-
-```
-
-MKE-ARTIFACT
-MKE-GRAPH
-MKE-SEARCH
-MKE-AI
-MKE-SYNC
-MKE-SECURITY
-MKE-IMPLEMENTATION
-MKE-OPERATIONS
-
-```
-
-This is the document that turns Monad from a static knowledge model into a living system.
-```

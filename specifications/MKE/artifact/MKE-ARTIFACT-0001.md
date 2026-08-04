@@ -1,37 +1,4 @@
-Continuing.
-
-We have completed the **MKE-CORE foundation series**.
-
-Now we move into the next specification family:
-
-# MKE-ARTIFACT — Artifact System
-
-The CORE series answered:
-
-> "What is knowledge?"
-
-The ARTIFACT series answers:
-
-> "How do we concretely represent, store, manage, and operate on knowledge objects?"
-
-This is where we begin moving from philosophy into an implementable model.
-
-The first specification defines the actual schema contract for artifacts.
-
-Save as:
-
-```text
-specifications/MKE/artifact/MKE-ARTIFACT-0001.md
-```
-
 ---
-
-````markdown
-# MKE-ARTIFACT-0001 — Artifact Schema Specification
-
-## Metadata
-
-```yaml
 id: MKE-ARTIFACT-0001
 
 title: Artifact Schema Specification
@@ -56,9 +23,9 @@ depends_on:
   - MKE-CORE-0002
   - MKE-CORE-0005
   - MKE-CORE-0008
-````
 
 ---
+# MKE-ARTIFACT-0001 — Artifact Schema Specification
 
 # 1. Purpose
 
@@ -599,36 +566,3 @@ Future documents:
 Draft specification.
 
 This document defines the canonical artifact schema used throughout Monad.
-
-```
-
----
-
-Next:
-
-# MKE-ARTIFACT-0002 — Artifact Type Registry Specification
-
-This will define the controlled vocabulary of artifact types.
-
-Examples:
-
-```
-
-requirement
-specification
-architecture_decision
-source_code
-test
-deployment
-documentation
-research
-publication
-workflow
-agent
-model
-dataset
-
-```
-
-This is where Monad begins defining its **universal taxonomy of software knowledge objects**.
-```

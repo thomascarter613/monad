@@ -1,67 +1,4 @@
-Continuing.
-
-We now define the **classification system** for artifacts.
-
-The previous document established:
-
-> Every artifact has a schema.
-
-Now we answer:
-
-> What kinds of things can exist inside Monad?
-
-This is one of the most important design decisions because the artifact taxonomy becomes the vocabulary used by:
-
-* CLI commands
-* generators
-* AI agents
-* search
-* validation
-* reporting
-* integrations
-
-A mistake here would force the entire ecosystem to evolve around the wrong concepts.
-
-The key Monad principle:
-
-> Artifact types describe the role an artifact plays in the knowledge system, not the implementation technology used to create it.
-
-For example:
-
-Wrong:
-
-```
-go_file
-python_file
-typescript_file
-```
-
-Right:
-
-```
-source_code
-```
-
-The language is metadata.
-
-The artifact type is meaning.
-
 ---
-
-Save as:
-
-```text
-specifications/MKE/artifact/MKE-ARTIFACT-0002.md
-```
-
----
-
-````markdown
-# MKE-ARTIFACT-0002 — Artifact Type Registry Specification
-
-## Metadata
-
-```yaml
 id: MKE-ARTIFACT-0002
 
 title: Artifact Type Registry Specification
@@ -86,9 +23,9 @@ depends_on:
   - MKE-CORE-0002
   - MKE-CORE-0003
   - MKE-ARTIFACT-0001
-````
-
 ---
+
+# MKE-ARTIFACT-0002 — Artifact Type Registry Specification
 
 # 1. Purpose
 
@@ -754,52 +691,3 @@ Future documents:
 Draft specification.
 
 This document defines the semantic vocabulary of Monad artifacts.
-
-````
-
----
-
-Current progress:
-
-```text
-MKE-CORE
-├── 0001 Vision
-├── 0002 Artifact Model
-├── 0003 Relationships
-├── 0004 Graph
-├── 0005 Identity
-├── 0006 Query
-├── 0007 Semantic Search
-├── 0008 Validation
-├── 0009 AI Context
-└── 0010 Evolution
-
-
-MKE-ARTIFACT
-├── 0001 Artifact Schema        ✅
-└── 0002 Type Registry          ✅
-````
-
-Next:
-
-**MKE-ARTIFACT-0003 — Artifact Lifecycle Specification**
-
-This defines the complete lifecycle state machine:
-
-```
-Concept
-  ↓
-Draft
-  ↓
-Review
-  ↓
-Approved
-  ↓
-Active
-  ↓
-Deprecated
-  ↓
-Archived
-```
-
-This is what allows Monad to manage knowledge over years instead of just storing documents.

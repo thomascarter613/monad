@@ -1,45 +1,4 @@
-Continuing.
-
-We are now at the next foundational specification.
-
-So far:
-
-| ID            | Document                 | Role                                    |
-| ------------- | ------------------------ | --------------------------------------- |
-| MKE-CORE-0001 | Knowledge Engine Vision  | Why MKE exists                          |
-| MKE-CORE-0002 | Universal Artifact Model | What things are                         |
-| MKE-CORE-0003 | Relationship Taxonomy    | How things connect                      |
-| MKE-CORE-0004 | Knowledge Graph Model    | How the connected system is represented |
-
-Now we answer:
-
-> **How does Monad know that something is the same thing over time?**
-
-This is the foundation for:
-
-* version history
-* auditability
-* AI trust
-* provenance
-* reproducibility
-* migration
-* artifact lineage
-* generated artifact tracking
-
-Save as:
-
-```text
-specifications/MKE/core/MKE-CORE-0005.md
-```
-
 ---
-
-````markdown
-# MKE-CORE-0005 — Identity and Provenance Specification
-
-## Metadata
-
-```yaml
 id: MKE-CORE-0005
 
 title: Identity and Provenance Specification
@@ -66,9 +25,9 @@ depends_on:
   - MKE-CORE-0002
   - MKE-CORE-0003
   - MKE-CORE-0004
-````
-
 ---
+
+# MKE-CORE-0005 — Identity and Provenance Specification
 
 # 1. Purpose
 
@@ -583,31 +542,3 @@ Future specifications:
 Draft specification.
 
 This document defines the identity and historical trust model of the Monad Knowledge Engine.
-
-````
-
----
-
-After this, we move to:
-
-# MKE-CORE-0006 — Query and Traversal API Specification
-
-This is where we define how humans, CLI tools, and AI agents ask questions of the Knowledge Graph.
-
-Examples:
-
-```bash
-monad explain MKE-CORE-0005
-````
-
-or:
-
-```
-What depends on this specification?
-
-Show me everything that implements authentication.
-
-Why was this architecture decision made?
-```
-
-This is the point where Monad starts becoming interactive rather than merely descriptive.

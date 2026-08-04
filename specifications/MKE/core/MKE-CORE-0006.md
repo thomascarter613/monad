@@ -1,43 +1,4 @@
-Continuing.
-
-We now have:
-
-| ID            | Purpose                 |
-| ------------- | ----------------------- |
-| MKE-CORE-0001 | Vision                  |
-| MKE-CORE-0002 | Artifact Model          |
-| MKE-CORE-0003 | Relationship Taxonomy   |
-| MKE-CORE-0004 | Knowledge Graph Model   |
-| MKE-CORE-0005 | Identity and Provenance |
-
-Now we define **how knowledge is accessed**.
-
-The graph is only valuable if humans and systems can ask meaningful questions of it.
-
-This specification defines the interface between:
-
-* humans
-* CLI
-* AI agents
-* IDE integrations
-* automation systems
-
-and the Monad Knowledge Graph.
-
-Save as:
-
-```text
-specifications/MKE/core/MKE-CORE-0006.md
-```
-
 ---
-
-````markdown
-# MKE-CORE-0006 — Query and Traversal API Specification
-
-## Metadata
-
-```yaml
 id: MKE-CORE-0006
 
 title: Query and Traversal API Specification
@@ -64,9 +25,9 @@ depends_on:
   - MKE-CORE-0003
   - MKE-CORE-0004
   - MKE-CORE-0005
-````
-
 ---
+
+# MKE-CORE-0006 — Query and Traversal API Specification
 
 # 1. Purpose
 
@@ -613,24 +574,3 @@ Future specifications:
 Draft specification.
 
 This document defines how Monad users and systems interact with the Knowledge Graph.
-
-```
-
----
-
-Next is:
-
-# MKE-CORE-0007 — Semantic Search Specification
-
-This is where we introduce the **semantic layer**:
-
-not just:
-
-> "find files containing the word authentication"
-
-but:
-
-> "find everything related to identity verification, even if the word authentication never appears."
-
-This is the bridge from a knowledge graph into an AI-native system.
-```

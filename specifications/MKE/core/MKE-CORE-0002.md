@@ -1,25 +1,4 @@
-Good. This is the next foundational document.
-
-If **MKE-CORE-0001** defined *why* the Knowledge Engine exists, then **MKE-CORE-0002** defines the basic unit of reality inside Monad.
-
-Everything in Monad becomes an artifact.
-
-This specification is where Monad stops thinking in terms of "files" and starts thinking in terms of "knowledge objects."
-
-Save as:
-
-```text
-specifications/MKE/core/MKE-CORE-0002.md
-```
-
 ---
-
-````markdown
-# MKE-CORE-0002 — Universal Artifact Model Specification
-
-## Metadata
-
-```yaml
 id: MKE-CORE-0002
 
 title: Universal Artifact Model Specification
@@ -43,9 +22,10 @@ authors:
 depends_on:
   - ADR-0001
   - MKE-CORE-0001
-````
-
 ---
+
+# MKE-CORE-0002 — Universal Artifact Model Specification
+
 
 # 1. Purpose
 

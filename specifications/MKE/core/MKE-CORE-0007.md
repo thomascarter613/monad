@@ -1,41 +1,4 @@
-Continuing.
-
-We are now moving from **structured knowledge access** into **semantic understanding**.
-
-The previous specifications gave Monad:
-
-* artifacts
-* relationships
-* graph structure
-* identity
-* traversal
-
-But traditional search is still insufficient.
-
-A normal search engine asks:
-
-> "Where does this exact word appear?"
-
-Monad needs to answer:
-
-> "What concepts are related to this question?"
-
-This specification defines the semantic layer.
-
-Save as:
-
-```text
-specifications/MKE/core/MKE-CORE-0007.md
-```
-
 ---
-
-````markdown
-# MKE-CORE-0007 — Semantic Search Specification
-
-## Metadata
-
-```yaml
 id: MKE-CORE-0007
 
 title: Semantic Search Specification
@@ -64,9 +27,9 @@ depends_on:
   - MKE-CORE-0004
   - MKE-CORE-0005
   - MKE-CORE-0006
-````
-
 ---
+
+# MKE-CORE-0007 — Semantic Search Specification
 
 # 1. Purpose
 
@@ -592,24 +555,3 @@ Future specifications:
 Draft specification.
 
 This document defines the semantic discovery layer of the Monad Knowledge Engine.
-
-```
-
----
-
-Next:
-
-# MKE-CORE-0008 — Knowledge Validation Specification
-
-This is where Monad gains **self-consistency**.
-
-It answers:
-
-- Are artifacts complete?
-- Are relationships valid?
-- Are specifications implemented?
-- Are generated artifacts traceable?
-- Is the knowledge graph trustworthy?
-
-This is the beginning of Monad becoming capable of checking itself.
-```

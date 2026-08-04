@@ -1,46 +1,4 @@
-Continuing.
-
-At this point Monad has:
-
-| Layer                   | Specification |
-| ----------------------- | ------------- |
-| Purpose                 | MKE-CORE-0001 |
-| Knowledge units         | MKE-CORE-0002 |
-| Semantic connections    | MKE-CORE-0003 |
-| Graph structure         | MKE-CORE-0004 |
-| Identity/history        | MKE-CORE-0005 |
-| Access/discovery        | MKE-CORE-0006 |
-| Meaning-based discovery | MKE-CORE-0007 |
-
-Now we introduce **trust**.
-
-A knowledge system that cannot determine whether its knowledge is internally consistent becomes unreliable.
-
-The Knowledge Engine must be able to ask:
-
-* Is this artifact valid?
-* Are required relationships present?
-* Are references broken?
-* Does implementation match specification?
-* Are generated artifacts traceable?
-* Is the graph coherent?
-
-This is the foundation of Monad's ability to become **self-validating**.
-
-Save as:
-
-```text
-specifications/MKE/core/MKE-CORE-0008.md
-```
-
 ---
-
-````markdown
-# MKE-CORE-0008 — Knowledge Validation Specification
-
-## Metadata
-
-```yaml
 id: MKE-CORE-0008
 
 title: Knowledge Validation Specification
@@ -69,9 +27,9 @@ depends_on:
   - MKE-CORE-0005
   - MKE-CORE-0006
   - MKE-CORE-0007
-````
-
 ---
+
+# MKE-CORE-0008 — Knowledge Validation Specification
 
 # 1. Purpose
 
@@ -576,24 +534,3 @@ Future specifications:
 Draft specification.
 
 This document defines the integrity and trust mechanisms of the Monad Knowledge Engine.
-
-```
-
----
-
-Next:
-
-# MKE-CORE-0009 — AI Context Retrieval Specification
-
-This is where the Knowledge Engine becomes the foundation for AI-native development.
-
-It defines:
-
-- how AI agents receive context
-- how context is assembled
-- how relevance is determined
-- how provenance follows AI responses
-- how hallucination risk is reduced
-
-This is where Monad begins becoming an **AI operating system for engineering knowledge** rather than simply a project management system.
-```

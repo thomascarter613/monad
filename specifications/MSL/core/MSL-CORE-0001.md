@@ -46,7 +46,7 @@ compilation:
 language: msl-markdown
 language_version: bootstrap
 status: bootstrap
------------------
+---
 
 # MSL-CORE-0001 — Monad Specification Language Vision
 
