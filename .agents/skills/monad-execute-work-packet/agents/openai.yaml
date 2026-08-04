@@ -1,0 +1,7 @@
+interface:
+  display_name: "Monad Execute Work Packet"
+  short_description: "Execute an approved Monad work packet through verification."
+  default_prompt: "Use $monad-execute-work-packet for this Monad repository task."
+
+policy:
+  allow_implicit_invocation: false

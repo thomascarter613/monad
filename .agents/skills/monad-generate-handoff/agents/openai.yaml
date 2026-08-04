@@ -1,0 +1,7 @@
+interface:
+  display_name: "Monad Generate Handoff"
+  short_description: "Generate a restartable, secret-safe Monad context handoff."
+  default_prompt: "Use $monad-generate-handoff for this Monad repository task."
+
+policy:
+  allow_implicit_invocation: true

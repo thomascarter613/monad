@@ -1,0 +1,7 @@
+interface:
+  display_name: "Monad Create ADR"
+  short_description: "Create a repository-consistent Monad architecture decision record."
+  default_prompt: "Use $monad-create-adr for this Monad repository task."
+
+policy:
+  allow_implicit_invocation: true

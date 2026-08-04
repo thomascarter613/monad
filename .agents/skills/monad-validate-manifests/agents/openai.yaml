@@ -1,0 +1,7 @@
+interface:
+  display_name: "Monad Validate Manifests"
+  short_description: "Validate Monad manifests, resolution, workspace membership, and lock state."
+  default_prompt: "Use $monad-validate-manifests for this Monad repository task."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Monad Review Work Packet"
+  short_description: "Review a Monad work packet against its contract and evidence."
+  default_prompt: "Use $monad-review-work-packet for this Monad repository task."
+
+policy:
+  allow_implicit_invocation: true

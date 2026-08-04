@@ -1,0 +1,7 @@
+interface:
+  display_name: "Monad Audit Doc Consistency"
+  short_description: "Audit Monad documentation for contradictions, drift, and broken links."
+  default_prompt: "Use $monad-audit-doc-consistency for this Monad repository task."
+
+policy:
+  allow_implicit_invocation: true

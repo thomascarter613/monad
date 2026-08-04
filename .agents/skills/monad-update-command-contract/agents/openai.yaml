@@ -1,0 +1,7 @@
+interface:
+  display_name: "Monad Update Command Contract"
+  short_description: "Update a Monad CLI command as a versioned behavioral contract."
+  default_prompt: "Use $monad-update-command-contract for this Monad repository task."
+
+policy:
+  allow_implicit_invocation: false

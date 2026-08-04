@@ -1,0 +1,7 @@
+interface:
+  display_name: "Monad Close Work Packet"
+  short_description: "Close a verified Monad work packet with evidence and handoff."
+  default_prompt: "Use $monad-close-work-packet for this Monad repository task."
+
+policy:
+  allow_implicit_invocation: false
