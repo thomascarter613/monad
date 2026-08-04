@@ -154,13 +154,29 @@ artifacts:
     series: MSL-CORE
     path: specifications/MSL/core/MSL-CORE-0001.md
     version: 0.1.0
-    lifecycle: planned
+    lifecycle: draft
     compilation_status: bootstrap
 
   - id: MSL-CORE-0002
     title: Specification Document Model
     series: MSL-CORE
     path: specifications/MSL/core/MSL-CORE-0002.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSL-CORE-0004
+    title: Metadata and Artifact Identity
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0004.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSL-CORE-0005
+    title: MSL Markdown Structural Grammar
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0005.md
     version: 0.1.0
     lifecycle: draft
     compilation_status: bootstrap
