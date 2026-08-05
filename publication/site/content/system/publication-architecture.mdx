@@ -1,0 +1,32 @@
+---
+title: Publication Architecture
+description: The boundary between canonical Monad documents and their rendered publication forms.
+---
+
+# Publication architecture
+
+The documentation application is a renderer and presentation system. It is **not** the canonical home of Monad's engineering records.
+
+## Source boundary
+
+```text
+Canonical repository documents
+  journal/  architecture/  adrs/  specifications/
+  engineering/  research/  knowledge/  build-log/
+                         │
+                         ▼
+             content discovery adapter
+                         │
+                         ▼
+        normalized metadata + relationship graph
+                         │
+             ┌───────────┼───────────┐
+             ▼           ▼           ▼
+          website      search      derived editions
+```
+
+## Current bootstrap stage
+
+SITE-0001 established the application shell. SITE-0002 adds typed configuration, route contracts, resilient application boundaries, and repeatable quality gates while preserving the same canonical-content boundary.
+
+The canonical-corpus adapter is intentionally deferred until SITE-0003 so that ingestion rules are designed explicitly rather than hidden inside framework conventions.

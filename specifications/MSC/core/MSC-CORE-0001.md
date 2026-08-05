@@ -1,76 +1,75 @@
 ---
-
 artifact:
-id: MSC-CORE-0001
-type: knowledge.specification
-namespace: monad
+  id: MSC-CORE-0001
+  type: knowledge.specification
+  namespace: monad
 
 metadata:
-title: Monad Specification Compiler Vision and Architecture
-version: 0.1.0
-status: draft
-created: 2026-08-04
-authors:
-- Monad Architecture Team
-tags:
-- msc
-- compiler
-- architecture
-- knowledge-compiler
-- semantic-graph
-- kir
-- foundational
+  title: Monad Specification Compiler Vision and Architecture
+  version: 0.1.0
+  status: draft
+  created: 2026-08-04
+  authors:
+    - Monad Architecture Team
+  tags:
+    - msc
+    - compiler
+    - architecture
+    - knowledge-compiler
+    - semantic-graph
+    - kir
+    - foundational
 
 relationships:
-depends_on:
-- ADR-0002
-- ADR-0003
-- ADR-0004
-- ADR-0005
-- ADR-0006
-- MSL-CORE-0001
-- MSL-CORE-0002
-- MSL-CORE-0003
-- MSL-CORE-0004
-- MSL-CORE-0005
-- MSL-CORE-0006
-- MSL-CORE-0007
-- MSL-CORE-0008
-- MSL-CORE-0009
-- MSL-CORE-0010
-references:
-- MKE-CORE-0001
-- MKE-CORE-0002
-- MKE-CORE-0003
-- MKE-CORE-0004
-- MKE-CORE-0005
-- MKE-CORE-0006
-- MKE-CORE-0008
-- MKE-CORE-0009
-- MKE-CORE-0010
-enables:
-- MSC-CORE-0002
-- MSC-CORE-0003
-- MSC-CORE-0004
-- MSC-CORE-0005
-- MSC-CORE-0006
-- MSC-CORE-0007
-- MSC-CORE-0008
-- MSC-CORE-0009
-- MSC-CORE-0010
-- MSG-CORE
-- KIR-CORE
-- MSL-DOCUMENT
-- MSL-TYPE
-- MSL-EXPR
-- MSL-CONSTRAINT
+  depends_on:
+    - ADR-0002
+    - ADR-0003
+    - ADR-0004
+    - ADR-0005
+    - ADR-0006
+    - MSL-CORE-0001
+    - MSL-CORE-0002
+    - MSL-CORE-0003
+    - MSL-CORE-0004
+    - MSL-CORE-0005
+    - MSL-CORE-000
+    - MSL-CORE-000
+    - MSL-CORE-000
+    - MSL-CORE-000
+    - MSL-CORE-0010
+  references:
+    - MKE-CORE-000
+    - MKE-CORE-000
+    - MKE-CORE-000
+    - MKE-CORE-000
+    - MKE-CORE-000
+    - MKE-CORE-000
+    - MKE-CORE-000
+    - MKE-CORE-000
+    - MKE-CORE-0010
+  enables:
+    - MSC-CORE-0002
+    - MSC-CORE-0003
+    - MSC-CORE-0004
+    - MSC-CORE-0005
+    - MSC-CORE-0006
+    - MSC-CORE-0007
+    - MSC-CORE-0008
+    - MSC-CORE-0009
+    - MSC-CORE-0010
+    - MSG-CORE
+    - KIR-CORE
+    - MSL-DOCUMENT
+    - MSL-TYPE
+    - MSL-EXPR
+    - MSL-CONSTRAINT
 
 compilation:
-language: msl-markdown
-language_version: bootstrap
-profile: machine
-source_role: primary
-status: bootstrap
+  language: msl-markdown
+  language_version: bootstrap
+  profile: machine
+  source_role: primary
+  status: bootstrap
 ---
 
 # MSC-CORE-0001 — Monad Specification Compiler Vision and Architecture
