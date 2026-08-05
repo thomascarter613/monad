@@ -58,10 +58,62 @@ export const publicationContentSources = Object.freeze([
     idRequired: true,
     order: 40,
   }),
+  Object.freeze({
+    key: 'engineering',
+    title: 'Engineering Records',
+    description:
+      'Implementation plans, verification records, experiments, and engineering notes.',
+    kind: 'engineering',
+    canonicalRoots: ['engineering'],
+    generatedCollection: 'artifacts',
+    generatedPrefix: 'engineering',
+    routeBase: '/artifacts/engineering',
+    idRequired: false,
+    order: 50,
+  }),
+  Object.freeze({
+    key: 'research',
+    title: 'Research',
+    description:
+      'Research notes, comparisons, evidence, and explorations that inform Monad.',
+    kind: 'research',
+    canonicalRoots: ['research'],
+    generatedCollection: 'artifacts',
+    generatedPrefix: 'research',
+    routeBase: '/artifacts/research',
+    idRequired: false,
+    order: 60,
+  }),
+  Object.freeze({
+    key: 'knowledge',
+    title: 'Knowledge Records',
+    description:
+      'Curated knowledge records and durable explanatory material used by Monad.',
+    kind: 'knowledge',
+    canonicalRoots: ['knowledge'],
+    generatedCollection: 'artifacts',
+    generatedPrefix: 'knowledge',
+    routeBase: '/artifacts/knowledge',
+    idRequired: false,
+    order: 70,
+  }),
+  Object.freeze({
+    key: 'build-log',
+    title: 'Build Log',
+    description:
+      'Operational implementation notes and repository milestones recorded while Monad is built.',
+    kind: 'build-log',
+    canonicalRoots: ['build-log'],
+    generatedCollection: 'project',
+    generatedPrefix: 'build-log',
+    routeBase: '/project/build-log',
+    idRequired: false,
+    order: 80,
+  }),
 ]);
 
 export const contentIngestionConfig = Object.freeze({
-  schemaVersion: 1,
+  schemaVersion: 2,
   acceptedExtensions: ['.md', '.mdx'],
   ignoredDirectoryNames: [
     '.git',

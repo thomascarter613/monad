@@ -1,22 +1,14 @@
 @import 'tailwindcss';
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
+@import '../styles/tokens.css';
+@import '../styles/base.css';
+@import '../styles/components.css';
+@import '../styles/building-monad.css';
+@import '../styles/engineering.css';
+@import '../styles/exploration.css';
+@import '../styles/discovery-seo.css';
+@import '../styles/editions.css';
+@import '../styles/print.css';
 
-:root {
-  --monad-content-max: 76rem;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at top, color-mix(in oklab, var(--color-fd-primary) 7%, transparent), transparent 34rem),
-    var(--color-fd-background);
-}
-
-::selection {
-  background: color-mix(in oklab, var(--color-fd-primary) 28%, transparent);
-}
+@import '../styles/operations.css';

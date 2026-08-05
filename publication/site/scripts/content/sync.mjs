@@ -1,11 +1,24 @@
 import { dirname, normalize, resolve } from 'node:path';
+import { buildingMonadSeries } from '../../building-monad.config.mjs';
 import { fileURLToPath } from 'node:url';
+import {
+  contentContractVersion,
+  serializableIdentifierFamilies,
+} from '../../content.families.mjs';
 import {
   contentIngestionConfig,
   publicationContentSources,
 } from '../../content.sources.mjs';
 import { discoverSourceFiles, readDiscoveredFile, resolveRepositoryRoot } from './lib/discovery.mjs';
 import { splitFrontmatter } from './lib/frontmatter.mjs';
+import {
+  buildRelationshipGraph,
+  collectRouteAliases,
+  loadPreviousRegistry,
+  validateAliases,
+  validateIdentifierAndLifecycle,
+  validateSeries,
+} from './lib/governance.mjs';
 import { rewriteDocumentLinks } from './lib/links.mjs';
 import {
   deriveSlug,
@@ -14,10 +27,13 @@ import {
   inferDescription,
   inferSeries,
   inferSeriesPosition,
+  inferSeriesTotal,
   inferTitle,
   joinRoute,
   normalizePath,
+  normalizePublicationMetadata,
   normalizeRelated,
+  normalizeRepositoryState,
   normalizeStatus,
   normalizeStringArray,
   sha256,
@@ -42,19 +58,25 @@ function registryEntry(document) {
     title: document.title,
     description: document.description,
     kind: document.kind,
+    family: document.family,
     status: document.status,
+    lifecycle: document.lifecycle,
     route: document.route,
+    aliases: document.aliases ?? [],
     slug: document.slug,
     canonicalPath: document.canonicalPath,
     sourceRoot: document.sourceRoot,
     sourceHash: document.sourceHash,
     generatedPath: document.generatedPath,
     synthetic: document.synthetic,
-    series: document.series,
-    seriesPosition: document.seriesPosition,
+    series: document.seriesInfo,
     tags: document.tags,
     references: document.references,
+    referencedBy: document.referencedBy ?? [],
     related: document.related,
+    relationships: document.relationships ?? { outgoing: [], incoming: [] },
+    publication: document.publication,
+    repository: document.repository,
   };
 }
 
@@ -86,7 +108,7 @@ function assertUnique(documents, issues) {
   }
 }
 
-async function normalizeDocument(repositoryRoot, discovered, issues) {
+async function normalizeDocument(repositoryRoot, discovered, previousById, issues) {
   if (discovered.size > contentIngestionConfig.maximumDocumentBytes) {
     issues.push(
       issue(
@@ -159,13 +181,17 @@ async function normalizeDocument(repositoryRoot, discovered, issues) {
     );
   }
 
+  const previousEntry = previousById.get(identifier);
   const document = {
     id: identifier,
     title,
     description,
     kind: discovered.source.kind,
     status: normalizeStatus(parsed.attributes.status, discovered.source.kind, parsed.body),
+    family: 'untracked',
+    lifecycle: { allowedNextStatuses: [] },
     route,
+    aliases: [],
     slug,
     canonicalPath: discovered.canonicalPath,
     sourceRoot: discovered.sourceRoot,
@@ -174,17 +200,50 @@ async function normalizeDocument(repositoryRoot, discovered, issues) {
     synthetic: false,
     series: inferSeries(parsed.attributes, identifier, discovered.source.key),
     seriesPosition: inferSeriesPosition(parsed.attributes, identifier),
+    seriesTotal: inferSeriesTotal(parsed.attributes),
+    seriesInfo: undefined,
     tags: normalizeStringArray(parsed.attributes.tags),
-    references: [],
-    related: normalizeRelated(parsed.attributes.related),
+    references: normalizeStringArray(parsed.attributes.references).map((entry) => entry.toUpperCase()),
+    referencedBy: [],
+    related: normalizeRelated(parsed.attributes.related, parsed.attributes),
+    relationships: { outgoing: [], incoming: [] },
+    publication:
+      discovered.source.kind === 'journal-entry'
+        ? normalizePublicationMetadata(
+            parsed.attributes,
+            parsed.body,
+            buildingMonadSeries.wordsPerMinute,
+          )
+        : undefined,
+    repository:
+      discovered.source.kind === 'journal-entry'
+        ? normalizeRepositoryState(parsed.attributes)
+        : undefined,
     body,
     source: discovered.source,
     relativePath: discovered.relativePath,
     absolutePath: discovered.absolutePath,
     repositoryRoot,
+    attributes: parsed.attributes,
   };
+  document.aliases = collectRouteAliases(
+    parsed.attributes,
+    previousEntry,
+    route,
+    issues,
+    discovered.canonicalPath,
+  );
+  validateIdentifierAndLifecycle(document, previousEntry, issues);
   document.generatedPath = generatedRelativePath(document);
   return document;
+}
+
+function sortIssues(issues) {
+  issues.sort((left, right) => {
+    const severityOrder = left.severity === right.severity ? 0 : left.severity === 'error' ? -1 : 1;
+    const pathOrder = (left.canonicalPath ?? '').localeCompare(right.canonicalPath ?? '');
+    return severityOrder || pathOrder || left.code.localeCompare(right.code);
+  });
 }
 
 export async function syncContent(options = {}) {
@@ -194,6 +253,12 @@ export async function syncContent(options = {}) {
   const strict = options.strict ?? false;
   const issues = [];
   const documents = [];
+  const previousRegistry = await loadPreviousRegistry(siteRoot);
+  const previousById = new Map(
+    (previousRegistry?.documents ?? [])
+      .filter((document) => !document.synthetic)
+      .map((document) => [document.id, document]),
+  );
 
   for (const source of publicationContentSources) {
     const discovery = await discoverSourceFiles(repositoryRoot, source);
@@ -208,7 +273,7 @@ export async function syncContent(options = {}) {
     }
 
     for (const discovered of discovery.files) {
-      const document = await normalizeDocument(repositoryRoot, discovered, issues);
+      const document = await normalizeDocument(repositoryRoot, discovered, previousById, issues);
       if (document) documents.push(document);
     }
   }
@@ -220,28 +285,51 @@ export async function syncContent(options = {}) {
 
   for (const document of documents) {
     document.body = rewriteDocumentLinks(document, document.body, routeByAbsolutePath, issues);
-    document.references = extractIdentifiers(document.body).filter(
+    const bodyReferences = extractIdentifiers(document.body).filter(
       (identifier) => identifier !== document.id && knownIdentifiers.has(identifier),
     );
+    document.references = [...new Set([...document.references, ...bodyReferences])].sort();
   }
 
-  const syntheticDocuments = createSyntheticIndexes(documents, publicationContentSources);
-  const allDocuments = [...documents, ...syntheticDocuments];
-  assertUnique(allDocuments, issues);
+  const series = validateSeries(documents, issues);
+  buildRelationshipGraph(documents, issues);
 
-  issues.sort((left, right) => {
-    const pathOrder = (left.canonicalPath ?? '').localeCompare(right.canonicalPath ?? '');
-    return pathOrder || left.code.localeCompare(right.code);
+  // Build a provisional synthetic set so aliases are validated against every
+  // public route, including generated registry and collection pages.
+  const provisionalSynthetic = createSyntheticIndexes(documents, publicationContentSources, {
+    series,
+    issues,
   });
+  const provisionalDocuments = [...documents, ...provisionalSynthetic];
+  assertUnique(provisionalDocuments, issues);
+  const redirects = validateAliases(provisionalDocuments, issues);
+  sortIssues(issues);
+
+  // Rebuild governance indexes after validation so their human-readable
+  // counts and issue lists reflect the final diagnostics.
+  const syntheticDocuments = createSyntheticIndexes(documents, publicationContentSources, {
+    series,
+    issues,
+  });
+  for (const synthetic of syntheticDocuments) {
+    validateIdentifierAndLifecycle(synthetic, undefined, issues);
+  }
+  const allDocuments = [...documents, ...syntheticDocuments];
 
   const errorCount = issues.filter((entry) => entry.severity === 'error').length;
   const warningCount = issues.filter((entry) => entry.severity === 'warning').length;
   const registry = {
-    schemaVersion: 1,
+    schemaVersion: 2,
+    contractVersion: contentContractVersion,
     generatedAt: new Date().toISOString(),
     documentCount: allDocuments.length,
+    canonicalDocumentCount: documents.length,
+    syntheticDocumentCount: syntheticDocuments.length,
     warningCount,
     errorCount,
+    families: serializableIdentifierFamilies(),
+    series,
+    redirects,
     documents: allDocuments.map(registryEntry).sort((left, right) => left.route.localeCompare(right.route)),
     issues,
   };
@@ -266,7 +354,8 @@ function printRegistry(registry, mode) {
   }
 
   console.log(
-    `${mode}: ${registry.documentCount} projected document(s), ` +
+    `${mode}: ${registry.canonicalDocumentCount ?? registry.documentCount} canonical document(s), ` +
+      `${registry.series?.length ?? 0} series, ${registry.redirects?.length ?? 0} redirect(s), ` +
       `${registry.warningCount} warning(s), ${registry.errorCount} error(s).`,
   );
 }

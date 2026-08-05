@@ -24,3 +24,12 @@ test-results/
 # local tooling
 *.log
 .DS_Store
+
+# derived publication artifacts
+dist/
+
+# Operational reports and deployment provider state
+.artifacts/
+.vercel/
+playwright-report/
+test-results/

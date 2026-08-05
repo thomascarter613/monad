@@ -28,13 +28,29 @@ describe('canonical content synchronization', () => {
     const decision = result.registry.documents.find((document) => document.id === 'ADR-0001');
 
     expect(journal?.references).toContain('ADR-0001');
+    expect(decision?.referencedBy).toContain('MJ-0001');
+    expect(result.registry.schemaVersion).toBe(2);
     expect(decision?.status).toBe('accepted');
     expect(journal?.route).toBe('/building-monad/mj-0001-foundation');
 
     const generated = await readFile(
-      join(siteRoot, '.generated', 'content', 'building-monad', 'mj-0001-foundation.md'),
+      join(siteRoot, '.generated', 'content', 'building-monad', 'mj-0001-foundation.mdx'),
       'utf8',
     );
     expect(generated).toContain('](/artifacts/decisions/adr-0001-foundation)');
+
+    const navigation = JSON.parse(
+      await readFile(join(siteRoot, '.generated', 'registry', 'navigation.json'), 'utf8'),
+    );
+    expect(navigation.schemaVersion).toBe(1);
+    expect(navigation.routes.some((route: { route: string }) => route.route === '/project')).toBe(true);
+
+    const artifactsMeta = JSON.parse(
+      await readFile(join(siteRoot, '.generated', 'content', 'artifacts', 'meta.json'), 'utf8'),
+    );
+    expect(artifactsMeta.pages).toContain('---Normative---');
   });
 });
+
+// SITE-0006 presentation contract: canonical title headings are removed from generated bodies
+// because the application renders one governed article header for every document.

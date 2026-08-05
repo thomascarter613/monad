@@ -1,12 +1,11 @@
 import type { ReactNode } from 'react';
-import { DocsLayout } from 'fumadocs-ui/layouts/docs';
-import { baseOptions } from '@/lib/layout.shared';
+import { SectionLayout } from '@/components/layout/section-layout';
 import { systemSource } from '@/lib/source';
 
 export default function SystemLayout({ children }: { children: ReactNode }) {
   return (
-    <DocsLayout tree={systemSource.pageTree} {...baseOptions()}>
+    <SectionLayout section="system" tree={systemSource.pageTree}>
       {children}
-    </DocsLayout>
+    </SectionLayout>
   );
 }

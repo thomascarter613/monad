@@ -1,0 +1,181 @@
+.monad-skip-link {
+  position: fixed;
+  z-index: 100;
+  inset-block-start: 0.75rem;
+  inset-inline-start: 0.75rem;
+  transform: translateY(-180%);
+  border: 1px solid var(--color-fd-border);
+  border-radius: 999px;
+  background: var(--color-fd-popover);
+  color: var(--color-fd-popover-foreground);
+  padding: 0.7rem 1rem;
+  font-weight: 700;
+  box-shadow: var(--monad-shadow-raised);
+  transition: transform 150ms ease;
+}
+
+.monad-skip-link:focus {
+  transform: translateY(0);
+}
+
+.monad-display {
+  font-family: var(--font-monad-editorial);
+  font-variation-settings: 'opsz' 48;
+}
+
+.monad-kicker {
+  font-family: var(--font-monad-mono);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.monad-surface {
+  border: 1px solid var(--color-fd-border);
+  background: color-mix(in oklab, var(--color-fd-card) 91%, transparent);
+  box-shadow: var(--monad-shadow);
+  backdrop-filter: blur(16px);
+}
+
+.monad-section-rule {
+  height: 3px;
+  width: 4.5rem;
+  border-radius: 999px;
+  background: var(--monad-section-accent);
+}
+
+.monad-section-badge {
+  display: grid;
+  gap: 0.35rem;
+  border: 1px solid color-mix(in oklab, var(--monad-section-accent) 34%, var(--color-fd-border));
+  border-radius: 0.85rem;
+  background: color-mix(in oklab, var(--monad-section-accent-soft) 30%, var(--color-fd-card));
+  padding: 0.85rem 0.9rem;
+}
+
+.monad-section-badge__mark {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--monad-section-accent);
+}
+
+.monad-docs-layout {
+  --color-fd-primary: var(--monad-section-accent);
+  --color-fd-ring: var(--monad-section-accent);
+}
+
+.monad-docs-layout #nd-page {
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--monad-section-accent-soft) 16%, transparent), transparent 20rem),
+    transparent;
+}
+
+.monad-docs-layout [data-toc-popover] {
+  backdrop-filter: blur(18px);
+}
+
+.monad-article-header {
+  position: relative;
+  isolation: isolate;
+  margin-block-end: 2.25rem;
+  border-block-end: 1px solid var(--color-fd-border);
+  padding-block-end: 1.75rem;
+}
+
+.monad-article-header::before {
+  position: absolute;
+  z-index: -1;
+  inset: -2rem -2rem auto;
+  height: 13rem;
+  content: '';
+  background: radial-gradient(circle at 18% 0%, color-mix(in oklab, var(--monad-section-accent) 14%, transparent), transparent 60%);
+  pointer-events: none;
+}
+
+.monad-article-header__eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.8rem;
+  margin-block-end: 1rem;
+  color: var(--monad-section-accent);
+}
+
+.monad-article-title {
+  max-width: 18ch;
+  font-family: var(--font-monad-editorial);
+  font-size: clamp(2.5rem, 7vw, 4.9rem);
+  font-weight: 650;
+  letter-spacing: -0.048em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.monad-article-description {
+  max-width: 46rem;
+  margin-block-start: 1.25rem;
+  color: var(--color-fd-muted-foreground);
+  font-family: var(--font-monad-editorial);
+  font-size: clamp(1.12rem, 2vw, 1.42rem);
+  line-height: 1.58;
+  text-wrap: pretty;
+}
+
+.monad-metadata-strip {
+  margin-block: 1.6rem 2rem;
+  border-block: 1px solid var(--color-fd-border);
+  padding-block: 0.75rem;
+}
+
+.monad-metadata-chip {
+  display: inline-flex;
+  min-height: 1.9rem;
+  align-items: center;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--color-fd-card) 70%, transparent);
+  padding-inline: 0.7rem;
+}
+
+.monad-metadata-chip--identity {
+  border-color: color-mix(in oklab, var(--monad-section-accent) 42%, var(--color-fd-border));
+  background: color-mix(in oklab, var(--monad-section-accent-soft) 38%, transparent);
+  color: var(--color-fd-foreground);
+}
+
+.monad-home-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.monad-home-card::after {
+  position: absolute;
+  inset: auto -2.5rem -3.5rem auto;
+  width: 9rem;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in oklab, var(--monad-section-accent) 25%, transparent);
+  border-radius: 999px;
+  content: '';
+  transition: transform 240ms ease;
+}
+
+.monad-home-card:hover::after {
+  transform: scale(1.18);
+}
+
+.monad-reading-path {
+  scroll-margin-top: 6rem;
+}
+
+.monad-status-code {
+  color: var(--monad-section-accent);
+}
+
+@media (min-width: 64rem) {
+  .monad-docs-layout #nd-page article {
+    max-width: var(--monad-reading-measure);
+  }
+}

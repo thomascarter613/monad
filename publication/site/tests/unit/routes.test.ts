@@ -1,9 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import {
-  primaryNavigation,
-  publicationRoutes,
-  reservedLandingRoutes,
-} from '@/lib/routes';
+import { primaryNavigation, publicationRoutes, reservedLandingRoutes } from '@/lib/routes';
 
 describe('publication route contract', () => {
   it('assigns a unique public path to every route', () => {
@@ -11,19 +7,18 @@ describe('publication route contract', () => {
     expect(new Set(paths).size).toBe(paths.length);
   });
 
-  it('never exposes reserved routes in primary navigation', () => {
+  it('exposes only active routes in primary navigation', () => {
     expect(primaryNavigation.every((route) => route.status === 'active')).toBe(true);
+    expect(reservedLandingRoutes).toEqual([]);
   });
 
-  it('activates the three canonical-content surfaces', () => {
+  it('activates the complete public information architecture', () => {
     expect(primaryNavigation.map((route) => route.href)).toEqual([
+      '/start',
       '/building-monad',
       '/system',
       '/artifacts',
+      '/project',
     ]);
-  });
-
-  it('keeps the project operations surface reserved', () => {
-    expect(reservedLandingRoutes.map((route) => route.href)).toEqual(['/project']);
   });
 });

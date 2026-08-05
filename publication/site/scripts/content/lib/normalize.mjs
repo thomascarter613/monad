@@ -186,6 +186,91 @@ export function normalizeStatus(value, kind, body = '') {
   return 'draft';
 }
 
+export function normalizeOptionalString(value) {
+  if (typeof value !== 'string') return undefined;
+  const normalized = value.trim();
+  return normalized || undefined;
+}
+
+export function normalizePublicationMetadata(attributes, body, wordsPerMinute = 225) {
+  const publication =
+    attributes.publication && typeof attributes.publication === 'object' && !Array.isArray(attributes.publication)
+      ? attributes.publication
+      : {};
+  const projectPhase = normalizeOptionalString(
+    attributes.projectPhase ??
+      attributes.project_phase ??
+      attributes.phase ??
+      publication.phase,
+  );
+  const publishedAt = normalizeOptionalString(
+    attributes.publishedAt ??
+      attributes.published_at ??
+      attributes.published ??
+      attributes.date ??
+      publication.publishedAt ??
+      publication.published,
+  );
+  const updatedAt = normalizeOptionalString(
+    attributes.updatedAt ??
+      attributes.updated_at ??
+      attributes.updated ??
+      publication.updatedAt ??
+      publication.updated,
+  );
+  const explicitReadingTime =
+    attributes.readingMinutes ??
+    attributes.reading_minutes ??
+    attributes.readingTime ??
+    attributes.reading_time ??
+    publication.readingMinutes ??
+    publication.readingTime;
+  const numericReadingTime = Number(explicitReadingTime);
+  const wordCount = body
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/[#>*_`~|\[\](){}]/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean).length;
+  const estimatedReadingMinutes =
+    Number.isFinite(numericReadingTime) && numericReadingTime > 0
+      ? Math.max(1, Math.round(numericReadingTime))
+      : Math.max(1, Math.ceil(wordCount / Math.max(1, wordsPerMinute)));
+
+  return {
+    projectPhase,
+    publishedAt,
+    updatedAt,
+    estimatedReadingMinutes,
+    wordCount,
+  };
+}
+
+export function normalizeRepositoryState(attributes) {
+  const nested =
+    attributes.repository && typeof attributes.repository === 'object' && !Array.isArray(attributes.repository)
+      ? attributes.repository
+      : {};
+  const commit = normalizeOptionalString(
+    nested.commit ?? attributes.repositoryCommit ?? attributes.repository_commit ?? attributes.commit,
+  );
+  const branch = normalizeOptionalString(
+    nested.branch ?? attributes.repositoryBranch ?? attributes.repository_branch ?? attributes.branch,
+  );
+  const release = normalizeOptionalString(
+    nested.release ?? nested.tag ?? attributes.repositoryRelease ?? attributes.repository_release ?? attributes.release,
+  );
+  const tree = normalizeOptionalString(
+    nested.tree ?? nested.path ?? attributes.repositoryTree ?? attributes.repository_tree,
+  );
+  const command = normalizeOptionalString(
+    nested.command ?? attributes.repositoryCommand ?? attributes.repository_command,
+  );
+
+  if (!commit && !branch && !release && !tree && !command) return undefined;
+  return { commit, branch, release, tree, command };
+}
+
 export function normalizeStringArray(value) {
   if (Array.isArray(value)) {
     return [...new Set(value.map(String).map((entry) => entry.trim()).filter(Boolean))];
@@ -196,14 +281,35 @@ export function normalizeStringArray(value) {
   return [];
 }
 
-export function normalizeRelated(value) {
-  if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
+export function normalizeRelated(value, attributes = {}) {
   const result = {};
-  for (const [key, entries] of Object.entries(value)) {
-    const normalizedKey = key === 'superseded_by' ? 'supersededBy' : key;
-    const normalized = normalizeStringArray(entries);
-    if (normalized.length > 0) result[normalizedKey] = normalized;
+  const relationshipAliases = {
+    superseded_by: 'supersededBy',
+    supersededBy: 'supersededBy',
+    supersedes: 'supersedes',
+    articles: 'articles',
+    decisions: 'decisions',
+    specifications: 'specifications',
+    architecture: 'architecture',
+    research: 'research',
+    engineering: 'engineering',
+    knowledge: 'knowledge',
+  };
+
+  if (value && typeof value === 'object' && !Array.isArray(value)) {
+    for (const [key, entries] of Object.entries(value)) {
+      const normalizedKey = relationshipAliases[key] ?? key;
+      const normalized = normalizeStringArray(entries).map((entry) => entry.toUpperCase());
+      if (normalized.length > 0) result[normalizedKey] = normalized;
+    }
   }
+
+  for (const [attributeKey, normalizedKey] of Object.entries(relationshipAliases)) {
+    const normalized = normalizeStringArray(attributes[attributeKey]).map((entry) => entry.toUpperCase());
+    if (normalized.length === 0) continue;
+    result[normalizedKey] = [...new Set([...(result[normalizedKey] ?? []), ...normalized])];
+  }
+
   return result;
 }
 
@@ -222,6 +328,15 @@ export function inferSeriesPosition(attributes, identifier) {
   if (typeof explicit === 'string' && /^\d+$/.test(explicit)) return Number(explicit);
   const match = identifier?.match(/-(\d{4})$/);
   return match ? Number(match[1]) : undefined;
+}
+
+export function inferSeriesTotal(attributes) {
+  const explicit = attributes.seriesTotal ?? attributes.series_total;
+  if (Number.isInteger(explicit) && explicit > 0) return explicit;
+  if (typeof explicit === 'string' && /^\d+$/.test(explicit) && Number(explicit) > 0) {
+    return Number(explicit);
+  }
+  return undefined;
 }
 
 export function joinRoute(base, slug) {

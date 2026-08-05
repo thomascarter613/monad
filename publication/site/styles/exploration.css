@@ -1,0 +1,688 @@
+.monad-explorer,
+.monad-relationship-explorer,
+.monad-series-dashboard,
+.monad-project-timeline {
+  margin-block-start: 2rem;
+}
+
+.monad-explorer__metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-block-end: 1.5rem;
+}
+
+.monad-explorer__metrics > div {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 1rem;
+  background: color-mix(in oklab, var(--color-fd-card) 82%, transparent);
+  padding: 1rem;
+}
+
+.monad-explorer__metrics strong {
+  color: var(--monad-section-accent);
+  font-family: var(--font-monad-editorial);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1;
+}
+
+.monad-explorer__metrics span {
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.monad-explorer__filters,
+.monad-project-timeline__filters,
+.monad-relationship-explorer__controls {
+  display: grid;
+  gap: 0.85rem;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 1rem;
+  background: color-mix(in oklab, var(--color-fd-card) 82%, transparent);
+  padding: 1rem;
+}
+
+.monad-explorer__filters label,
+.monad-project-timeline__filters label,
+.monad-relationship-explorer__controls label {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.monad-explorer__filters input[type='search'],
+.monad-explorer__filters select,
+.monad-project-timeline__filters select,
+.monad-relationship-explorer__controls select {
+  min-height: 2.75rem;
+  min-width: 0;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 0.7rem;
+  background: var(--color-fd-background);
+  color: var(--color-fd-foreground);
+  padding-inline: 0.8rem;
+  font: inherit;
+}
+
+.monad-explorer__filters input[type='search']:focus-visible,
+.monad-explorer__filters select:focus-visible,
+.monad-project-timeline__filters select:focus-visible,
+.monad-relationship-explorer__controls select:focus-visible {
+  border-color: var(--monad-section-accent);
+  outline: 2px solid color-mix(in oklab, var(--monad-section-accent) 58%, transparent);
+  outline-offset: 2px;
+}
+
+.monad-explorer__search {
+  grid-column: 1 / -1;
+}
+
+.monad-explorer__checkbox {
+  display: flex !important;
+  align-items: center;
+  gap: 0.55rem !important;
+}
+
+.monad-explorer__checkbox input {
+  inline-size: 1rem;
+  block-size: 1rem;
+  accent-color: var(--monad-section-accent);
+}
+
+.monad-explorer__clear {
+  min-height: 2.75rem;
+  align-self: end;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 999px;
+  padding-inline: 1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.monad-explorer__clear:hover {
+  border-color: var(--monad-section-accent);
+}
+
+.monad-explorer__result-count {
+  margin-block: 1rem;
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.85rem;
+}
+
+.monad-explorer__workspace {
+  display: grid;
+  gap: 1rem;
+}
+
+.monad-explorer__results {
+  display: grid;
+  gap: 0.65rem;
+  max-block-size: 58rem;
+  overflow: auto;
+  padding: 0.15rem;
+}
+
+.monad-explorer-card {
+  display: grid;
+  inline-size: 100%;
+  gap: 0.5rem;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 0.9rem;
+  background: color-mix(in oklab, var(--color-fd-card) 76%, transparent);
+  padding: 1rem;
+  text-align: start;
+  transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
+}
+
+.monad-explorer-card:hover,
+.monad-explorer-card[data-selected] {
+  border-color: var(--monad-section-accent);
+  background: color-mix(in oklab, var(--monad-section-accent-soft) 30%, var(--color-fd-card));
+}
+
+.monad-explorer-card:hover {
+  transform: translateY(-1px);
+}
+
+.monad-explorer-card__identity,
+.monad-explorer-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+}
+
+.monad-explorer-card__description {
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.monad-explorer__empty {
+  border: 1px dashed var(--color-fd-border);
+  border-radius: 0.9rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.monad-explorer__inspector {
+  align-self: start;
+  border: 1px solid color-mix(in oklab, var(--monad-section-accent) 32%, var(--color-fd-border));
+  border-radius: 1rem;
+  background: color-mix(in oklab, var(--monad-section-accent-soft) 18%, var(--color-fd-card));
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.monad-explorer__inspector h2 {
+  margin-block-start: 0.35rem;
+  font-family: var(--font-monad-editorial);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.08;
+}
+
+.monad-explorer__inspector > p:not(.monad-kicker) {
+  margin-block-start: 0.75rem;
+  color: var(--color-fd-muted-foreground);
+}
+
+.monad-explorer__inspector dl {
+  display: grid;
+  gap: 0.55rem;
+  margin-block: 1rem;
+}
+
+.monad-explorer__inspector dl > div {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  gap: 0.75rem;
+  border-block-start: 1px solid var(--color-fd-border);
+  padding-block-start: 0.55rem;
+}
+
+.monad-explorer__inspector dt {
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.monad-explorer__inspector dd {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.monad-explorer__open {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  border-radius: 999px;
+  background: var(--monad-section-accent);
+  color: var(--color-fd-primary-foreground);
+  padding-inline: 1rem;
+  font-size: 0.84rem;
+  font-weight: 750;
+}
+
+.monad-explorer__neighbors {
+  margin-block-start: 1.5rem;
+  border-block-start: 1px solid var(--color-fd-border);
+  padding-block-start: 1rem;
+}
+
+.monad-explorer__neighbors h3,
+.monad-explorer__neighbors h4 {
+  font-weight: 700;
+}
+
+.monad-explorer__neighbors h4 {
+  margin-block-start: 0.8rem;
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.monad-explorer__neighbors li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-block: 0.3rem;
+  font-size: 0.82rem;
+}
+
+.monad-explorer-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-block-end: 1rem;
+}
+
+.monad-explorer-heading h2 {
+  margin-block-start: 0.25rem;
+  font-family: var(--font-monad-editorial);
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  line-height: 1.05;
+}
+
+.monad-relationship-explorer {
+  margin-block-start: 3rem;
+  border-block-start: 1px solid var(--color-fd-border);
+  padding-block-start: 2rem;
+}
+
+.monad-relationship-explorer__controls {
+  grid-template-columns: minmax(12rem, 1fr);
+  inline-size: min(100%, 34rem);
+}
+
+.monad-relationship-map {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.monad-relationship-map > section {
+  border: 1px solid var(--color-fd-border);
+  border-radius: 1rem;
+  background: color-mix(in oklab, var(--color-fd-card) 78%, transparent);
+  padding: 1rem;
+}
+
+.monad-relationship-map > section > h3 {
+  margin-block-end: 0.7rem;
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.monad-relationship-map li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.7rem;
+  border-block-start: 1px solid var(--color-fd-border);
+  padding-block: 0.55rem;
+  font-size: 0.82rem;
+}
+
+.monad-relationship-map__center {
+  display: grid;
+  place-content: center;
+  min-block-size: 13rem;
+  text-align: center;
+  border-color: var(--monad-section-accent) !important;
+  background: color-mix(in oklab, var(--monad-section-accent-soft) 34%, var(--color-fd-card)) !important;
+}
+
+.monad-relationship-map__center > span,
+.monad-relationship-map__center > p {
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+}
+
+.monad-relationship-map__center strong {
+  margin-block-start: 0.5rem;
+  color: var(--monad-section-accent);
+}
+
+.monad-relationship-map__center h3 {
+  margin-block: 0.35rem;
+  font-family: var(--font-monad-editorial);
+  font-size: 1.45rem;
+}
+
+.monad-supersession {
+  margin-block-start: 2.5rem;
+}
+
+.monad-supersession > ol {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.monad-supersession > ol > li {
+  border: 1px solid var(--color-fd-border);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.monad-supersession__kind {
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.monad-supersession ol ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-block-start: 0.7rem;
+}
+
+.monad-supersession ol ol li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.monad-supersession ol ol a {
+  display: grid;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 0.75rem;
+  padding: 0.65rem 0.8rem;
+}
+
+.monad-supersession ol ol a span:last-child {
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.monad-series-dashboard {
+  margin-block-start: 3rem;
+  border-block-start: 1px solid var(--color-fd-border);
+  padding-block-start: 2rem;
+}
+
+.monad-series-dashboard__grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.monad-series-dashboard__grid > article {
+  border: 1px solid var(--color-fd-border);
+  border-radius: 1rem;
+  background: color-mix(in oklab, var(--color-fd-card) 78%, transparent);
+  padding: 1rem;
+}
+
+.monad-series-dashboard__grid header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.monad-series-dashboard__grid header > strong {
+  color: var(--monad-section-accent);
+  font-family: var(--font-monad-editorial);
+  font-size: 2rem;
+}
+
+.monad-series-dashboard__progress {
+  block-size: 0.48rem;
+  margin-block: 1rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--color-fd-muted);
+}
+
+.monad-series-dashboard__progress span {
+  display: block;
+  block-size: 100%;
+  border-radius: inherit;
+  background: var(--monad-section-accent);
+}
+
+.monad-series-dashboard__statuses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.monad-series-dashboard__statuses li {
+  display: inline-flex;
+  gap: 0.4rem;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 999px;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.72rem;
+}
+
+.monad-series-dashboard__documents {
+  margin-block-start: 1rem;
+  border-block-start: 1px solid var(--color-fd-border);
+}
+
+.monad-series-dashboard__documents li {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  border-block-end: 1px solid var(--color-fd-border);
+  padding-block: 0.5rem;
+  font-size: 0.78rem;
+}
+
+.monad-series-dashboard__documents li span:last-child {
+  color: var(--color-fd-muted-foreground);
+}
+
+.monad-series-dashboard__remaining,
+.monad-series-dashboard__complete {
+  margin-block-start: 0.8rem;
+  font-size: 0.78rem;
+}
+
+.monad-series-dashboard__complete {
+  color: var(--monad-note-result);
+}
+
+.monad-project-timeline__filters {
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  margin-block-end: 1rem;
+}
+
+.monad-project-timeline__year {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 1rem;
+  margin-block-start: 2.5rem;
+}
+
+.monad-project-timeline__year > h2 {
+  position: sticky;
+  inset-block-start: 6rem;
+  align-self: start;
+  color: var(--monad-section-accent);
+  font-family: var(--font-monad-editorial);
+  font-size: 2rem;
+}
+
+.monad-project-timeline__year > ol {
+  display: grid;
+  gap: 1rem;
+}
+
+.monad-project-timeline__year > ol > li {
+  position: relative;
+  display: grid;
+  gap: 0.6rem;
+  border-inline-start: 2px solid color-mix(in oklab, var(--monad-section-accent) 45%, var(--color-fd-border));
+  padding-inline-start: 1rem;
+}
+
+.monad-project-timeline__year > ol > li::before {
+  position: absolute;
+  inset-block-start: 0.35rem;
+  inset-inline-start: -0.43rem;
+  inline-size: 0.72rem;
+  block-size: 0.72rem;
+  border: 2px solid var(--color-fd-background);
+  border-radius: 999px;
+  background: var(--monad-section-accent);
+  content: '';
+}
+
+.monad-project-timeline time {
+  color: var(--color-fd-muted-foreground);
+  font-family: var(--font-monad-mono);
+  font-size: 0.75rem;
+}
+
+.monad-project-timeline article {
+  border: 1px solid var(--color-fd-border);
+  border-radius: 1rem;
+  background: color-mix(in oklab, var(--color-fd-card) 78%, transparent);
+  padding: 1rem;
+}
+
+.monad-project-timeline article > div:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.monad-project-timeline article > div:first-child span {
+  border: 1px solid var(--color-fd-border);
+  border-radius: 999px;
+  padding: 0.25rem 0.5rem;
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+
+.monad-project-timeline article h3 {
+  margin-block: 0.65rem 0.35rem;
+  font-family: var(--font-monad-editorial);
+  font-size: 1.35rem;
+}
+
+.monad-project-timeline article p {
+  color: var(--color-fd-muted-foreground);
+}
+
+.monad-project-timeline article dl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-block-start: 0.8rem;
+  font-size: 0.72rem;
+}
+
+.monad-project-timeline article dl > div {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.monad-project-timeline article dt {
+  color: var(--color-fd-muted-foreground);
+  text-transform: uppercase;
+}
+
+.monad-project-timeline__undated {
+  margin-block-start: 3rem;
+  border-block-start: 1px solid var(--color-fd-border);
+  padding-block-start: 1.5rem;
+}
+
+.monad-project-timeline__undated h2 {
+  font-family: var(--font-monad-editorial);
+  font-size: 1.8rem;
+}
+
+.monad-project-timeline__undated > p {
+  max-width: 45rem;
+  color: var(--color-fd-muted-foreground);
+}
+
+.monad-project-timeline__undated ul {
+  display: grid;
+  gap: 0.45rem;
+  margin-block-start: 1rem;
+}
+
+.monad-project-timeline__undated li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.8rem;
+  border-block-start: 1px solid var(--color-fd-border);
+  padding-block-start: 0.45rem;
+  font-size: 0.82rem;
+}
+
+@media (min-width: 48rem) {
+  .monad-explorer__metrics {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .monad-explorer__filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .monad-relationship-explorer__controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .monad-series-dashboard__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 72rem) {
+  .monad-explorer__filters {
+    grid-template-columns: minmax(16rem, 2fr) repeat(4, minmax(8rem, 1fr));
+  }
+
+  .monad-explorer__search {
+    grid-column: auto;
+  }
+
+  .monad-explorer__workspace {
+    grid-template-columns: minmax(0, 1.55fr) minmax(18rem, 0.85fr);
+  }
+
+  .monad-explorer__inspector {
+    position: sticky;
+    inset-block-start: 6rem;
+  }
+
+  .monad-relationship-map {
+    grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.78fr) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 39.99rem) {
+  .monad-project-timeline__year {
+    grid-template-columns: 1fr;
+  }
+
+  .monad-project-timeline__year > h2 {
+    position: static;
+  }
+}
+
+@media print {
+  .monad-explorer__filters,
+  .monad-explorer__clear,
+  .monad-project-timeline__filters,
+  .monad-relationship-explorer__controls {
+    display: none !important;
+  }
+
+  .monad-explorer__workspace,
+  .monad-relationship-map,
+  .monad-project-timeline__year {
+    display: block;
+  }
+
+  .monad-explorer__results {
+    max-block-size: none;
+    overflow: visible;
+  }
+
+  .monad-explorer__inspector {
+    margin-block-start: 1rem;
+  }
+}

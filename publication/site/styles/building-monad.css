@@ -1,0 +1,469 @@
+.monad-reading-progress {
+  position: fixed;
+  z-index: 80;
+  inset: 0 0 auto;
+  height: 0.25rem;
+  pointer-events: none;
+}
+
+.monad-reading-progress__track {
+  height: 100%;
+  background: color-mix(in oklab, var(--color-fd-border) 65%, transparent);
+}
+
+.monad-reading-progress__track > span {
+  display: block;
+  height: 100%;
+  background: var(--monad-section-accent);
+  transition: width 80ms linear;
+}
+
+.monad-installment-context {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.75rem;
+  margin-block-end: 1.35rem;
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.8rem;
+}
+
+.monad-installment-context .monad-kicker {
+  color: var(--monad-section-accent);
+}
+
+.monad-series-index {
+  width: min(100%, 84rem);
+  margin-inline: auto;
+  padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 4vw, 3.5rem) 6rem;
+}
+
+.monad-series-hero {
+  display: grid;
+  gap: 2rem;
+  border-block-end: 1px solid var(--color-fd-border);
+  padding-block: clamp(1rem, 4vw, 3rem) clamp(2.5rem, 6vw, 5rem);
+}
+
+.monad-series-hero__copy h1 {
+  max-width: 12ch;
+  margin-block: 0.7rem 1.25rem;
+  font-family: var(--font-monad-editorial);
+  font-size: clamp(3.5rem, 11vw, 7.6rem);
+  font-weight: 650;
+  letter-spacing: -0.065em;
+  line-height: 0.88;
+}
+
+.monad-series-hero__copy > p:last-of-type {
+  max-width: 46rem;
+  color: var(--color-fd-muted-foreground);
+  font-family: var(--font-monad-editorial);
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+  line-height: 1.55;
+}
+
+.monad-series-hero__metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-block-start: 1.6rem;
+}
+
+.monad-series-hero__metrics span {
+  border: 1px solid var(--color-fd-border);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--color-fd-card) 72%, transparent);
+  padding: 0.55rem 0.8rem;
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.82rem;
+}
+
+.monad-series-hero__metrics strong {
+  color: var(--color-fd-foreground);
+}
+
+.monad-series-hero__actions {
+  display: grid;
+  align-content: end;
+  gap: 0.85rem;
+}
+
+.monad-continue-reading {
+  display: grid;
+  gap: 0.45rem;
+  border: 1px solid color-mix(in oklab, var(--monad-section-accent) 42%, var(--color-fd-border));
+  border-radius: 1rem;
+  background: color-mix(in oklab, var(--monad-section-accent-soft) 36%, var(--color-fd-card));
+  padding: 1.15rem 1.2rem;
+  box-shadow: var(--monad-shadow);
+  text-decoration: none;
+}
+
+.monad-continue-reading:hover {
+  border-color: var(--monad-section-accent);
+}
+
+.monad-continue-reading strong {
+  font-family: var(--font-monad-editorial);
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+
+.monad-continue-reading > span:last-child,
+.monad-series-reading-summary {
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.8rem;
+}
+
+.monad-series-reading-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  padding-inline: 0.3rem;
+}
+
+.monad-series-reading-summary__value {
+  color: var(--monad-section-accent);
+  font-family: var(--font-monad-editorial);
+  font-size: 1.65rem;
+  font-weight: 700;
+}
+
+.monad-current-installment {
+  display: grid;
+  gap: 1rem;
+  align-items: center;
+  margin-block: 2rem;
+  border: 1px solid var(--color-fd-border);
+  border-inline-start: 0.3rem solid var(--monad-section-accent);
+  border-radius: 0.9rem;
+  background: color-mix(in oklab, var(--color-fd-card) 76%, transparent);
+  padding: 1.25rem;
+}
+
+.monad-current-installment h2 {
+  margin-block: 0.35rem 0.55rem;
+  font-family: var(--font-monad-editorial);
+  font-size: clamp(1.45rem, 3vw, 2.2rem);
+  letter-spacing: -0.025em;
+}
+
+.monad-current-installment p:last-child {
+  color: var(--color-fd-muted-foreground);
+}
+
+.monad-current-installment > a {
+  justify-self: start;
+  border-radius: 999px;
+  background: var(--monad-section-accent);
+  color: var(--color-fd-primary-foreground);
+  padding: 0.7rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.monad-series-principles {
+  display: grid;
+  gap: 1.5rem;
+  margin-block: clamp(3rem, 8vw, 6rem);
+  border-block: 1px solid var(--color-fd-border);
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+}
+
+.monad-series-principles h2,
+.monad-series-phase h2,
+.monad-repository-state h2,
+.monad-artifact-introductions h2 {
+  margin-block-start: 0.45rem;
+  font-family: var(--font-monad-editorial);
+  font-size: clamp(1.75rem, 4vw, 2.8rem);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.monad-series-principles > div:last-child {
+  display: grid;
+  gap: 1rem;
+  color: var(--color-fd-muted-foreground);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.monad-series-phases {
+  display: grid;
+  gap: clamp(3rem, 8vw, 6rem);
+}
+
+.monad-series-phase {
+  scroll-margin-top: 6rem;
+}
+
+.monad-series-phase > header {
+  display: grid;
+  gap: 1rem;
+  margin-block-end: 1.5rem;
+}
+
+.monad-series-phase > header > p {
+  max-width: 38rem;
+  color: var(--color-fd-muted-foreground);
+  line-height: 1.7;
+}
+
+.monad-series-phase__installments {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.monad-installment-card {
+  display: grid;
+  gap: 0.9rem;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 0.9rem;
+  background: color-mix(in oklab, var(--color-fd-card) 76%, transparent);
+  padding: 1.15rem;
+}
+
+.monad-installment-card[data-current='true'] {
+  border-color: color-mix(in oklab, var(--monad-section-accent) 55%, var(--color-fd-border));
+  box-shadow: inset 0.25rem 0 0 var(--monad-section-accent);
+}
+
+.monad-installment-card__meta,
+.monad-installment-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.45rem 0.9rem;
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.75rem;
+}
+
+.monad-installment-card__meta > span:first-child {
+  color: var(--monad-section-accent);
+  font-weight: 700;
+}
+
+.monad-installment-card__read-state {
+  margin-inline-start: auto;
+}
+
+.monad-installment-card h3 {
+  font-family: var(--font-monad-editorial);
+  font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+  letter-spacing: -0.022em;
+  line-height: 1.15;
+}
+
+.monad-installment-card h3 a {
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+.monad-installment-card > p {
+  color: var(--color-fd-muted-foreground);
+  line-height: 1.65;
+}
+
+.monad-installment-card__footer {
+  border-block-start: 1px solid var(--color-fd-border);
+  padding-block-start: 0.8rem;
+}
+
+.monad-series-empty {
+  margin-block-start: 3rem;
+  border: 1px dashed var(--color-fd-border);
+  border-radius: 0.9rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.monad-repository-state,
+.monad-artifact-introductions,
+.monad-series-navigation {
+  margin-block: 3rem;
+  border-block-start: 1px solid var(--color-fd-border);
+  padding-block-start: 2rem;
+}
+
+.monad-repository-state {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.monad-repository-state h2,
+.monad-artifact-introductions h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+.monad-repository-state p,
+.monad-repository-state__empty {
+  margin-block-start: 0.7rem;
+  color: var(--color-fd-muted-foreground);
+  line-height: 1.65;
+}
+
+.monad-repository-state dl {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.monad-repository-state dl > div {
+  display: grid;
+  grid-template-columns: minmax(5rem, 0.35fr) minmax(0, 1fr);
+  gap: 1rem;
+  border-block-end: 1px solid var(--color-fd-border);
+  padding-block: 0.55rem;
+}
+
+.monad-repository-state dt {
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.monad-repository-state dd {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.monad-artifact-introductions__grid {
+  display: grid;
+  gap: 0.75rem;
+  margin-block-start: 1.25rem;
+}
+
+.monad-artifact-introductions__grid a {
+  display: grid;
+  gap: 0.35rem;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 0.75rem;
+  background: color-mix(in oklab, var(--color-fd-card) 72%, transparent);
+  padding: 0.9rem;
+  text-decoration: none;
+}
+
+.monad-artifact-introductions__grid a:hover {
+  border-color: var(--monad-section-accent);
+}
+
+.monad-artifact-introductions__grid span {
+  color: var(--monad-section-accent);
+  font-size: 0.78rem;
+}
+
+.monad-artifact-introductions__grid small {
+  color: var(--color-fd-muted-foreground);
+  text-transform: capitalize;
+}
+
+.monad-series-navigation__position {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem 1rem;
+  margin-block-end: 1rem;
+}
+
+.monad-series-navigation__position strong {
+  font-family: var(--font-monad-editorial);
+  font-size: 1.25rem;
+}
+
+.monad-series-navigation__links {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.monad-series-navigation__links > a,
+.monad-series-navigation__boundary {
+  display: grid;
+  gap: 0.35rem;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 0.75rem;
+  padding: 0.95rem;
+  text-decoration: none;
+}
+
+.monad-series-navigation__links > a:hover {
+  border-color: var(--monad-section-accent);
+  background: color-mix(in oklab, var(--monad-section-accent-soft) 24%, transparent);
+}
+
+.monad-series-navigation__links span {
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.monad-series-navigation__boundary {
+  color: var(--color-fd-muted-foreground);
+}
+
+@media (min-width: 48rem) {
+  .monad-current-installment,
+  .monad-series-principles,
+  .monad-series-phase > header,
+  .monad-repository-state {
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.85fr);
+  }
+
+  .monad-current-installment > a {
+    justify-self: end;
+  }
+
+  .monad-installment-card {
+    padding: 1.35rem 1.5rem;
+  }
+
+  .monad-artifact-introductions__grid,
+  .monad-series-navigation__links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 72rem) {
+  .monad-series-hero {
+    grid-template-columns: minmax(0, 1.45fr) minmax(20rem, 0.55fr);
+    align-items: end;
+  }
+
+  .monad-series-phase__installments {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .monad-reading-progress__track > span {
+    transition: none;
+  }
+}
+
+@media print {
+  .monad-reading-progress,
+  .monad-series-hero__actions,
+  .monad-series-reading-summary,
+  .monad-installment-card__read-state,
+  .monad-series-navigation,
+  .monad-current-installment > a {
+    display: none !important;
+  }
+
+  .monad-series-index {
+    width: auto;
+    padding: 0;
+  }
+
+  .monad-installment-card,
+  .monad-current-installment,
+  .monad-repository-state,
+  .monad-artifact-introductions__grid a {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+}

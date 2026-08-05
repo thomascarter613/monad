@@ -1,3 +1,4 @@
+import { informationArchitectureVersion, routePolicy } from '@/information-architecture.mjs';
 import { publicationRoutes } from '@/lib/routes';
 
 export const siteConfig = {
@@ -11,6 +12,8 @@ export const siteConfig = {
     name: 'Thomas Carter',
   },
   publisher: 'Monad',
+  informationArchitectureVersion,
+  routePolicy,
   routes: publicationRoutes,
 } as const;
 

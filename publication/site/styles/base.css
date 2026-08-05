@@ -1,0 +1,89 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-monad-sans);
+  background-color: var(--color-fd-background);
+  background-image:
+    linear-gradient(to right, var(--monad-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--monad-grid) 1px, transparent 1px),
+    radial-gradient(circle at 22% -10%, color-mix(in oklab, var(--monad-copper) 11%, transparent), transparent 31rem);
+  background-size: 32px 32px, 32px 32px, auto;
+  color: var(--color-fd-foreground);
+}
+
+::selection {
+  background: color-mix(in oklab, var(--monad-section-accent) 30%, transparent);
+  color: var(--color-fd-foreground);
+}
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--monad-section-accent);
+  outline-offset: 3px;
+}
+
+:where(button, [role='button'], input, select, textarea) {
+  font: inherit;
+}
+
+:where(code, kbd, samp, pre) {
+  font-family: var(--font-monad-mono);
+}
+
+:where(.prose) {
+  --tw-prose-body: var(--color-fd-foreground);
+  --tw-prose-headings: var(--color-fd-foreground);
+  --tw-prose-links: var(--monad-section-accent);
+  font-size: 1.035rem;
+  line-height: 1.79;
+}
+
+:where(.prose) :where(h1, h2, h3, h4):not(:where([class~='not-prose'] *)) {
+  font-family: var(--font-monad-editorial);
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+:where(.prose) :where(p, li):not(:where([class~='not-prose'] *)) {
+  text-wrap: pretty;
+}
+
+:where(.prose) :where(blockquote):not(:where([class~='not-prose'] *)) {
+  border-inline-start-color: var(--monad-section-accent);
+  background: color-mix(in oklab, var(--monad-section-accent-soft) 42%, transparent);
+  border-radius: 0 0.75rem 0.75rem 0;
+  padding-block: 0.25rem;
+  padding-inline-end: 1rem;
+}
+
+:where(.prose) :where(a):not(:where([class~='not-prose'] *)) {
+  text-decoration-color: color-mix(in oklab, var(--monad-section-accent) 58%, transparent);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 0.075em;
+}
+
+:where(.prose) :where(hr):not(:where([class~='not-prose'] *)) {
+  border-color: var(--color-fd-border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (forced-colors: active) {
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 3px solid CanvasText;
+  }
+}

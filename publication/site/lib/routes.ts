@@ -1,3 +1,5 @@
+import { publicationSections } from '@/information-architecture.mjs';
+
 export type PublicationRouteStatus = 'active' | 'reserved';
 
 export type PublicationRoute = {
@@ -9,6 +11,21 @@ export type PublicationRoute = {
   navigation: boolean;
 };
 
+const sectionByKey = new Map(publicationSections.map((section) => [section.key, section]));
+
+function routeFromSection(key: string): PublicationRoute {
+  const section = sectionByKey.get(key);
+  if (!section) throw new Error(`Unknown publication section: ${key}`);
+  return {
+    key: section.key,
+    label: section.shortTitle,
+    href: section.route,
+    description: section.description,
+    status: 'active',
+    navigation: section.primaryNavigation,
+  };
+}
+
 export const publicationRoutes = {
   home: {
     key: 'home',
@@ -18,36 +35,25 @@ export const publicationRoutes = {
     status: 'active',
     navigation: false,
   },
-  buildingMonad: {
-    key: 'building-monad',
-    label: 'Building Monad',
-    href: '/building-monad',
-    description: 'The chronological engineering narrative and serial publication.',
+  start: routeFromSection('start'),
+  buildingMonad: routeFromSection('building-monad'),
+  system: routeFromSection('system'),
+  artifacts: routeFromSection('artifacts'),
+  project: routeFromSection('project'),
+  editions: {
+    key: 'editions',
+    label: 'Editions',
+    href: '/editions',
+    description: 'Print, PDF, EPUB, offline, and source editions.',
     status: 'active',
-    navigation: true,
+    navigation: false,
   },
-  system: {
-    key: 'system',
-    label: 'System',
-    href: '/system',
-    description: 'Stable reference documentation for understanding Monad.',
+  search: {
+    key: 'search',
+    label: 'Search',
+    href: '/search',
+    description: 'Search and filter the governed publication corpus.',
     status: 'active',
-    navigation: true,
-  },
-  artifacts: {
-    key: 'artifacts',
-    label: 'Artifacts',
-    href: '/artifacts',
-    description: 'Specifications, decisions, research, and engineering records.',
-    status: 'active',
-    navigation: true,
-  },
-  project: {
-    key: 'project',
-    label: 'Project',
-    href: '/project',
-    description: 'Project status, roadmap, releases, and build history.',
-    status: 'reserved',
     navigation: false,
   },
 } as const satisfies Record<string, PublicationRoute>;
@@ -60,6 +66,7 @@ export const activeLandingRoutes = [
   publicationRoutes.buildingMonad,
   publicationRoutes.system,
   publicationRoutes.artifacts,
+  publicationRoutes.project,
 ] as const;
 
-export const reservedLandingRoutes = [publicationRoutes.project] as const;
+export const reservedLandingRoutes: readonly PublicationRoute[] = [];

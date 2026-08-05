@@ -1,6 +1,6 @@
 {
   "name": "@monad/publication-site",
-  "version": "0.3.0",
+  "version": "0.12.0",
   "private": true,
   "description": "The documentation and engineering-log publication site for Monad.",
   "packageManager": "bun@1.3.14",
@@ -14,6 +14,12 @@
     "content:validate:strict": "bun run scripts/content/sync.mjs --check --strict",
     "content:clean": "bun run scripts/content/clean.mjs",
     "content:report": "bun run scripts/content/report.mjs",
+    "content:report:issues": "bun run scripts/content/report.mjs --issues",
+    "content:report:series": "bun run scripts/content/report.mjs --series",
+    "content:report:relationships": "bun run scripts/content/report.mjs --relationships",
+    "content:report:navigation": "bun run scripts/content/report.mjs --navigation",
+    "content:migrate": "bun run scripts/content/migrate.mjs",
+    "content:migrate:check": "bun run scripts/content/migrate.mjs --check",
     "typegen": "fumadocs-mdx",
     "format": "biome format --write .",
     "format:check": "biome format .",
@@ -29,7 +35,30 @@
     "test:e2e:install": "playwright install --with-deps chromium",
     "verify": "bun run content:validate && bun run check && bun run typecheck && bun run test:unit && bun run build",
     "verify:strict": "bun run content:validate:strict && bun run check && bun run typecheck && bun run test:unit && bun run build",
-    "verify:full": "bun run verify && bun run test:e2e"
+    "verify:full": "bun run verify && bun run test:e2e",
+    "test:visual": "MONAD_VISUAL_TESTS=1 playwright test tests/e2e/visual.spec.ts",
+    "test:visual:update": "MONAD_VISUAL_TESTS=1 playwright test tests/e2e/visual.spec.ts --update-snapshots",
+    "test:a11y": "playwright test tests/e2e/accessibility.spec.ts",
+    "verify:visual": "bun run verify && bun run test:visual",
+    "content:report:building-monad": "bun run scripts/content/report.mjs --building-monad",
+    "content:report:exploration": "bun run scripts/content/report.mjs --exploration",
+    "content:report:discovery": "bun run scripts/content/report.mjs --discovery",
+    "content:report:editions": "bun run scripts/content/report.mjs --editions",
+    "publication:plan": "bun run content:sync && bun run content:report:editions",
+    "publication:build": "bun run build && bun run scripts/publications/build.mjs",
+    "publication:pdf": "bun run build && bun run scripts/publications/build.mjs --formats pdf",
+    "publication:epub": "bun run build && bun run scripts/publications/build.mjs --formats epub",
+    "publication:offline": "bun run build && bun run scripts/publications/build.mjs --formats offline,source",
+    "publication:source": "bun run content:sync && bun run scripts/publications/build.mjs --formats source",
+    "verify:ci": "bun run content:validate && bun run check && bun run typecheck && bun run test:coverage && bun run build",
+    "verify:operations": "bun run build && bun run operations:links && bun run operations:security",
+    "verify:release": "bun run verify:ci && bun run verify:operations",
+    "operations:doctor": "bun run scripts/operations/doctor.mjs",
+    "operations:links": "bun run scripts/operations/check-links.mjs",
+    "operations:security": "bun run scripts/operations/check-security.mjs",
+    "operations:report": "bun run scripts/operations/report.mjs",
+    "release:plan": "bun run content:sync && bun run scripts/operations/release-plan.mjs",
+    "publication:verify": "bun run scripts/operations/verify-publication.mjs"
   },
   "engines": {
     "node": ">=22.0.0"
@@ -41,7 +70,9 @@
     "next": "16.3.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "zod": "4.4.3"
+    "zod": "4.4.3",
+    "fumadocs-epub": "1.2.0",
+    "sharp": "0.35.3"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.6",

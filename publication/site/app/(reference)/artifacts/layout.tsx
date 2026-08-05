@@ -1,12 +1,11 @@
 import type { ReactNode } from 'react';
-import { DocsLayout } from 'fumadocs-ui/layouts/docs';
-import { baseOptions } from '@/lib/layout.shared';
+import { SectionLayout } from '@/components/layout/section-layout';
 import { artifactSource } from '@/lib/source';
 
 export default function ArtifactsLayout({ children }: { children: ReactNode }) {
   return (
-    <DocsLayout tree={artifactSource.pageTree} {...baseOptions()}>
+    <SectionLayout section="artifacts" tree={artifactSource.pageTree}>
       {children}
-    </DocsLayout>
+    </SectionLayout>
   );
 }

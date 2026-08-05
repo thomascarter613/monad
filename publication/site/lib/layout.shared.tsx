@@ -4,11 +4,14 @@ import { publicEnvironment } from '@/lib/environment';
 import { primaryNavigation } from '@/lib/routes';
 
 export function baseOptions(): BaseLayoutProps {
-  const links: NonNullable<BaseLayoutProps['links']> = primaryNavigation.map((route) => ({
-    text: route.label,
-    url: route.href,
-    active: 'nested-url',
-  }));
+  const links: NonNullable<BaseLayoutProps['links']> = [
+    ...primaryNavigation.map((route) => ({
+      text: route.label,
+      url: route.href,
+      active: 'nested-url' as const,
+    })),
+    { text: 'Search', url: '/search', active: 'url' as const },
+  ];
 
   return {
     nav: {

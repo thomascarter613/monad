@@ -1,0 +1,139 @@
+@theme {
+  --font-sans: var(--font-monad-sans);
+  --font-serif: var(--font-monad-editorial);
+  --font-mono: var(--font-monad-mono);
+}
+
+:root {
+  color-scheme: light;
+
+  --font-monad-editorial: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, serif;
+  --font-monad-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-monad-mono: 'SFMono-Regular', 'Cascadia Code', 'Roboto Mono', Consolas, 'Liberation Mono', monospace;
+
+  --monad-paper: oklch(0.985 0.008 86);
+  --monad-paper-raised: oklch(0.998 0.003 86);
+  --monad-ink: oklch(0.205 0.018 62);
+  --monad-ink-muted: oklch(0.51 0.024 62);
+  --monad-copper: oklch(0.53 0.116 48);
+  --monad-copper-strong: oklch(0.43 0.128 45);
+  --monad-rule: oklch(0.79 0.022 72 / 0.72);
+  --monad-grid: oklch(0.46 0.026 65 / 0.055);
+  --monad-shadow: 0 18px 50px oklch(0.24 0.025 62 / 0.08);
+  --monad-shadow-raised: 0 24px 70px oklch(0.24 0.025 62 / 0.12);
+
+  --monad-section-accent: var(--monad-copper);
+  --monad-section-accent-soft: oklch(0.88 0.055 55 / 0.52);
+  --monad-section-label: 'Publication';
+
+  --monad-content-max: 88rem;
+  --monad-reading-measure: 47rem;
+  --fd-layout-width: 96rem;
+
+  --color-fd-background: var(--monad-paper);
+  --color-fd-foreground: var(--monad-ink);
+  --color-fd-muted: oklch(0.955 0.012 79);
+  --color-fd-muted-foreground: var(--monad-ink-muted);
+  --color-fd-popover: var(--monad-paper-raised);
+  --color-fd-popover-foreground: var(--monad-ink);
+  --color-fd-card: oklch(0.975 0.01 82);
+  --color-fd-card-foreground: var(--monad-ink);
+  --color-fd-border: var(--monad-rule);
+  --color-fd-primary: var(--monad-copper-strong);
+  --color-fd-primary-foreground: oklch(0.985 0.007 85);
+  --color-fd-secondary: oklch(0.943 0.016 74);
+  --color-fd-secondary-foreground: var(--monad-ink);
+  --color-fd-accent: oklch(0.913 0.031 66 / 0.72);
+  --color-fd-accent-foreground: var(--monad-ink);
+  --color-fd-ring: var(--monad-copper);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --monad-paper: oklch(0.16 0.014 64);
+  --monad-paper-raised: oklch(0.205 0.017 62);
+  --monad-ink: oklch(0.925 0.014 78);
+  --monad-ink-muted: oklch(0.69 0.025 70);
+  --monad-copper: oklch(0.72 0.118 57);
+  --monad-copper-strong: oklch(0.77 0.12 59);
+  --monad-rule: oklch(0.54 0.026 68 / 0.32);
+  --monad-grid: oklch(0.83 0.018 78 / 0.035);
+  --monad-shadow: 0 18px 55px oklch(0.05 0.015 55 / 0.3);
+  --monad-shadow-raised: 0 26px 80px oklch(0.05 0.015 55 / 0.42);
+
+  --color-fd-background: var(--monad-paper);
+  --color-fd-foreground: var(--monad-ink);
+  --color-fd-muted: oklch(0.225 0.018 62);
+  --color-fd-muted-foreground: var(--monad-ink-muted);
+  --color-fd-popover: var(--monad-paper-raised);
+  --color-fd-popover-foreground: var(--monad-ink);
+  --color-fd-card: oklch(0.19 0.016 63);
+  --color-fd-card-foreground: var(--monad-ink);
+  --color-fd-border: var(--monad-rule);
+  --color-fd-primary: var(--monad-copper-strong);
+  --color-fd-primary-foreground: oklch(0.15 0.014 60);
+  --color-fd-secondary: oklch(0.235 0.02 62);
+  --color-fd-secondary-foreground: var(--monad-ink);
+  --color-fd-accent: oklch(0.31 0.035 58 / 0.58);
+  --color-fd-accent-foreground: var(--monad-ink);
+  --color-fd-ring: var(--monad-copper);
+}
+
+[data-monad-section='start'] {
+  --monad-section-accent: oklch(0.55 0.09 188);
+  --monad-section-accent-soft: oklch(0.88 0.048 188 / 0.48);
+  --monad-section-label: 'Reading guide';
+}
+
+[data-monad-section='building-monad'] {
+  --monad-section-accent: oklch(0.6 0.145 63);
+  --monad-section-accent-soft: oklch(0.9 0.075 76 / 0.48);
+  --monad-section-label: 'Engineering narrative';
+}
+
+[data-monad-section='system'] {
+  --monad-section-accent: oklch(0.55 0.115 244);
+  --monad-section-accent-soft: oklch(0.88 0.055 244 / 0.5);
+  --monad-section-label: 'System reference';
+}
+
+[data-monad-section='artifacts'] {
+  --monad-section-accent: oklch(0.55 0.12 315);
+  --monad-section-accent-soft: oklch(0.89 0.06 315 / 0.5);
+  --monad-section-label: 'Governed artifacts';
+}
+
+[data-monad-section='project'] {
+  --monad-section-accent: oklch(0.53 0.105 150);
+  --monad-section-accent-soft: oklch(0.88 0.055 150 / 0.5);
+  --monad-section-label: 'Project state';
+}
+
+:root {
+  --monad-note-decision: oklch(0.56 0.11 245);
+  --monad-note-constraint: oklch(0.56 0.11 305);
+  --monad-note-experiment: oklch(0.58 0.12 190);
+  --monad-note-failure: oklch(0.55 0.16 28);
+  --monad-note-implementation: oklch(0.56 0.11 258);
+  --monad-note-action: oklch(0.57 0.13 65);
+  --monad-note-checkpoint: oklch(0.53 0.11 150);
+  --monad-note-result: oklch(0.53 0.12 145);
+  --monad-note-evidence: oklch(0.52 0.08 220);
+  --monad-terminal-background: oklch(0.16 0.018 255);
+  --monad-terminal-foreground: oklch(0.91 0.018 220);
+}
+
+.dark {
+  --monad-note-decision: oklch(0.73 0.1 245);
+  --monad-note-constraint: oklch(0.74 0.1 305);
+  --monad-note-experiment: oklch(0.75 0.1 190);
+  --monad-note-failure: oklch(0.72 0.15 30);
+  --monad-note-implementation: oklch(0.74 0.1 258);
+  --monad-note-action: oklch(0.77 0.12 70);
+  --monad-note-checkpoint: oklch(0.72 0.1 150);
+  --monad-note-result: oklch(0.72 0.11 145);
+  --monad-note-evidence: oklch(0.72 0.08 220);
+  --monad-terminal-background: oklch(0.105 0.015 255);
+  --monad-terminal-foreground: oklch(0.9 0.018 220);
+}

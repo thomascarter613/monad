@@ -1,0 +1,79 @@
+@media print {
+  :root {
+    color-scheme: light;
+    --color-fd-background: white;
+    --color-fd-foreground: black;
+    --color-fd-muted-foreground: #444;
+    --color-fd-border: #bbb;
+  }
+
+  body {
+    background: white !important;
+    color: black;
+    font-size: 10.5pt;
+  }
+
+  nav,
+  aside,
+  button,
+  [data-search],
+  .monad-skip-link,
+  .monad-section-badge,
+  .monad-section-discovery {
+    display: none !important;
+  }
+
+  a {
+    color: black !important;
+    text-decoration: underline;
+  }
+
+  .monad-article-header::before {
+    display: none;
+  }
+
+  .monad-article-title {
+    max-width: none;
+    font-size: 30pt;
+  }
+
+  :where(.prose) {
+    max-width: none !important;
+    font-size: 10.5pt;
+    line-height: 1.5;
+  }
+
+  :where(.prose) :where(h2, h3) {
+    break-after: avoid;
+  }
+
+  :where(.prose) :where(pre, blockquote, table, figure) {
+    break-inside: avoid;
+  }
+}
+
+@media print {
+  .monad-engineering-note,
+  .monad-terminal,
+  .monad-timeline,
+  .monad-architecture-figure,
+  .monad-specification-summary,
+  .monad-artifact-references {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+
+  .monad-terminal {
+    border-color: #777;
+    background: #fff;
+    color: #000;
+  }
+
+  .monad-terminal__header {
+    border-color: #aaa;
+    background: #eee;
+  }
+
+  .monad-terminal__lights { display: none; }
+  .monad-artifact-reference { border-color: #777; background: transparent; }
+}

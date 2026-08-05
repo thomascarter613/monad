@@ -31,10 +31,16 @@ Treat warnings as failures:
 bun run content:validate:strict
 ```
 
-Inspect the current route and identifier registry:
+Inspect registries and navigation:
 
 ```bash
 bun run content:report
+bun run content:report:issues
+bun run content:report:series
+bun run content:report:relationships
+bun run content:report:navigation
+bun run content:report:building-monad
+bun run content:report:discovery
 ```
 
 Rebuild the projection:
@@ -63,3 +69,51 @@ bun run verify:full
 ```
 
 This also runs Playwright browser tests.
+
+## Frontmatter migration
+
+`bun run content:migrate` creates an advisory frontmatter plan under `.generated/migrations/`; it never edits canonical files. Use `bun run content:migrate:check` when explicit frontmatter has become a publication gate.
+
+## Visual-system verification
+
+SITE-0006 adds accessibility smoke tests to the ordinary Playwright suite and opt-in screenshot comparisons.
+
+```bash
+bun run test:a11y
+bun run test:visual:update
+bun run test:visual
+bun run verify:visual
+```
+
+Visual baselines should be generated and reviewed on the same browser and operating-system environment used by CI. See `VISUAL-SYSTEM.md` for the governing contract.
+## Building Monad series diagnostics
+
+```bash
+bun run content:report:building-monad
+bun run content:report:discovery
+curl http://localhost:3000/api/building-monad
+```
+
+Reading state is browser-local and can be reset by removing `monad:building-monad:reading:v1` from local storage. See `BUILDING-MONAD-EXPERIENCE.md`.
+
+
+## Inspect artifact exploration
+
+```bash
+bun run content:sync
+bun run content:report:exploration
+```
+
+The generated browser and API contract is available at `/api/exploration`.
+
+
+## Discovery and SEO diagnostics
+
+```bash
+bun run content:report:discovery
+curl "http://localhost:3000/api/discovery?q=manifest&kind=specification"
+curl http://localhost:3000/llms.txt
+curl http://localhost:3000/feeds/building-monad.rss.xml
+```
+
+Document Markdown is available by appending `.md` to a rendered document route.

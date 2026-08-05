@@ -1,0 +1,119 @@
+---
+title: Presentation Components
+description: Reusable technical components for presenting Monad decisions, evidence, commands, artifacts, timelines, figures, and specifications.
+---
+
+The Monad publication uses a small semantic vocabulary rather than a collection of unrelated decorative boxes. Each component communicates a specific type of engineering information.
+
+<Decision title="Keep canonical documents renderer-independent">
+  Canonical repository documents remain readable as ordinary Markdown. The publication projection may enrich recognized conventions into MDX components, but the source does not depend on Fumadocs.
+</Decision>
+
+<Constraint title="Do not encode meaning with color alone">
+  Every component includes an explicit textual label. Color only reinforces the component's semantic role.
+</Constraint>
+
+<Tabs items={['Experiment', 'Failure', 'Result']}>
+  <Tab value="Experiment">
+    <Experiment title="Test generated collection boundaries">
+      Synchronize a representative corpus before accepting changes to route or metadata behavior.
+    </Experiment>
+  </Tab>
+  <Tab value="Failure">
+    <FailureLog title="The route was claimed twice">
+      The projection failed instead of silently allowing one document to replace another.
+    </FailureLog>
+  </Tab>
+  <Tab value="Result">
+    <Result title="The registry remained deterministic">
+      Identical canonical inputs produced identical routes, relationships, and generated collection metadata.
+    </Result>
+  </Tab>
+</Tabs>
+
+## Terminal sessions
+
+<TerminalSession title="Inspect the repository" language="console" prompt="$">
+
+```console
+$ monad inspect
+Repository: monad
+State: governed
+```
+
+</TerminalSession>
+
+## File trees and diffs
+
+The Fumadocs file-tree syntax is enabled globally.
+
+```files
+publication/site
+├── components
+│   └── engineering
+│       ├── engineering-note.tsx
+│       ├── terminal-session.tsx
+│       └── timeline.tsx
+├── scripts
+│   └── content
+└── styles
+    └── engineering.css
+```
+
+```diff title="Projection boundary"
+- return canonicalMarkdown;
++ return transformDocumentPresentation(canonicalMarkdown);
+```
+
+## Artifact references
+
+<ArtifactReferences ids={['MJ-0001', 'ADR-0001', 'MKE-CORE-0001']} />
+
+Use the compact form inside a sentence: <ArtifactReference id="ADR-0001" compact />.
+
+## Timeline
+
+<Timeline title="Publication evolution">
+  <TimelineEvent date="SITE-0003" label="Canonical ingestion" status="complete">
+    Repository documents became the authoritative source for generated Fumadocs collections.
+  </TimelineEvent>
+  <TimelineEvent date="SITE-0006" label="Visual system" status="complete">
+    The publication received responsive editorial layouts and accessible section identities.
+  </TimelineEvent>
+  <TimelineEvent date="SITE-0007" label="Technical components" status="current">
+    Semantic engineering records now have stable presentation contracts.
+  </TimelineEvent>
+  <TimelineEvent date="SITE-0008" label="Series experience" status="planned">
+    The Building Monad narrative will receive installment navigation and series-specific presentation.
+  </TimelineEvent>
+</Timeline>
+
+## Architecture figures
+
+<ArchitectureFigure
+  title="Canonical content projection"
+  caption="Presentation enrichment occurs after governance and before Fumadocs compilation."
+  source="SITE-0007"
+>
+  <div className="monad-figure-diagram" role="img" aria-label="Canonical Markdown flows through the projection adapter into Fumadocs MDX">
+    <span>Canonical Markdown</span>
+    <i aria-hidden="true" />
+    <span>Projection adapter</span>
+    <i aria-hidden="true" />
+    <span>Fumadocs MDX</span>
+  </div>
+</ArchitectureFigure>
+
+## Specification summaries
+
+<SpecificationSummary
+  id="PUB-COMP-0001"
+  status="active"
+  scope="Semantic components used by the Monad publication site"
+>
+  This presentation contract is informative until a corresponding canonical publication specification is accepted.
+</SpecificationSummary>
+
+<ReaderCheckpoint title="What the reader should now understand">
+  A decision, a failed experiment, a shell transcript, and a normative specification are different kinds of evidence. The site presents them differently without making the underlying Markdown proprietary.
+</ReaderCheckpoint>

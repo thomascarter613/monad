@@ -3,6 +3,10 @@ export const documentKinds = [
   'architecture',
   'decision',
   'specification',
+  'engineering',
+  'research',
+  'knowledge',
+  'build-log',
   'collection-index',
 ] as const;
 
@@ -22,6 +26,7 @@ export const documentStatuses = [
 export type DocumentStatus = (typeof documentStatuses)[number];
 
 export const relationshipKinds = [
+  'references',
   'articles',
   'decisions',
   'specifications',
