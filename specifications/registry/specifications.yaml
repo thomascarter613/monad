@@ -239,10 +239,15 @@ artifacts:
     lifecycle: draft
     compilation_status: bootstrap
 
-planned_artifacts:
   - id: MSC-CORE-0001
     title: Monad Specification Compiler Vision and Architecture
+    series: MSC-CORE
+    path: specifications/MSC/core/MSC-CORE-0001.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
 
+planned_artifacts:
   - id: MSG-CORE-0001
     title: Monad Semantic Graph Vision and Design Principles
 
