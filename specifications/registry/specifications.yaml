@@ -44,6 +44,16 @@ series:
     path: specifications/PUB/core
     status: planned
 
+  - id: MSG-CORE
+    title: Monad Semantic Graph Core
+    path: specifications/MSG/core
+    status: planned
+
+  - id: KIR-CORE
+    title: Knowledge Intermediate Representation Core
+    path: specifications/KIR/core
+    status: planned
+
 artifacts:
   - id: MKE-CORE-0001
     title: Monad Knowledge Engine Vision Specification
@@ -228,3 +238,13 @@ artifacts:
     version: 0.1.0
     lifecycle: draft
     compilation_status: bootstrap
+
+planned_artifacts:
+  - id: MSC-CORE-0001
+    title: Monad Specification Compiler Vision and Architecture
+
+  - id: MSG-CORE-0001
+    title: Monad Semantic Graph Vision and Design Principles
+
+  - id: KIR-CORE-0001
+    title: Knowledge Intermediate Representation Vision and Design Principles
