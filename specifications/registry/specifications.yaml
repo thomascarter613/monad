@@ -248,6 +248,14 @@ artifacts:
     lifecycle: draft
     compilation_status: bootstrap
 
+  - id: MSC-CORE-0004
+    title: Frontend and Normalizer Orchestration
+    series: MSC-CORE
+    path: specifications/MSC/core/MSC-CORE-0004.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
 planned_artifacts:
   - id: MSC-CORE-0003
     title: Artifact Discovery and Compilation Units
