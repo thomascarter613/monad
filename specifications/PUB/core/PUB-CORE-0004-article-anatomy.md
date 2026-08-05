@@ -1,0 +1,1 @@
+PUB-CORE-0004-article-anatomy.md

@@ -1,0 +1,1 @@
+PUB-CORE-0003-information-architecture.md

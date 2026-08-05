@@ -1,0 +1,1 @@
+PUB-CORE-0001-publication-charter.md
