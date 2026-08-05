@@ -264,6 +264,14 @@ artifacts:
     lifecycle: draft
     compilation_status: bootstrap
 
+  - id: MSC-CORE-0006
+    title: Namespace, Import, and Reference Resolution
+    series: MSC-CORE
+    path: specifications/MSC/core/MSC-CORE-0006.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
 
 
 
