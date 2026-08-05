@@ -14,34 +14,19 @@ defaults:
   compilation_status: pre-normative
 
 series:
-  - id: MKE-CORE
-    title: Monad Knowledge Engine Core
-    path: specifications/MKE/core
-    status: active
-
-  - id: MKE-ARTIFACT
-    title: Monad Knowledge Engine Artifact System
-    path: specifications/MKE/artifact
-    status: paused
-
   - id: MSL-CORE
     title: Monad Specification Language Core
     path: specifications/MSL/core
-    status: active
-
-  - id: KIR-CORE
-    title: Knowledge Intermediate Representation Core
-    path: specifications/KIR/core
-    status: planned
+    status: complete
 
   - id: MSC-CORE
     title: Monad Specification Compiler Core
     path: specifications/MSC/core
-    status: planned
+    status: active
 
-  - id: PUB-CORE
-    title: Monad Publishing System Core
-    path: specifications/PUB/core
+  - id: MART-CORE
+    title: Monad Artifact Model Core
+    path: specifications/MART/core
     status: planned
 
   - id: MSG-CORE
@@ -254,8 +239,14 @@ artifacts:
     version: 0.1.0
     lifecycle: draft
     compilation_status: bootstrap
-    
+
 planned_artifacts:
+  - id: MSC-CORE-0003
+    title: Artifact Discovery and Compilation Units
+
+  - id: MART-CORE-0001
+    title: Artifact Model Vision and Design Principles
+
   - id: MSG-CORE-0001
     title: Monad Semantic Graph Vision and Design Principles
 
