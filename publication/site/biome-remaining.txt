@@ -1,0 +1,412 @@
+components/mdx.tsx:14:5 lint/performance/noImgElement ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ! Don't use <img> element.
+  
+    12 │     <ImageZoom {...props} src={src} />
+    13 │   ) : (
+  > 14 │     <img {...props} src={src} />
+       │     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    15 │   );
+    16 │ }
+  
+  i Using the <img> can lead to slower LCP and higher bandwidth. Consider using <Image /> from next/image to automatically optimize images.
+  
+
+components/mdx.tsx:64:62 lint/performance/noImgElement ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ! Don't use <img> element.
+  
+    62 │     Tab: PrintTab,
+    63 │     Tabs: PrintContainer,
+  > 64 │     img: ({ ref: _ref, ...props }: ComponentProps<'img'>) => <img {...props} />,
+       │                                                              ^^^^^^^^^^^^^^^^^^
+    65 │     ...components,
+    66 │   });
+  
+  i Using the <img> can lead to slower LCP and higher bandwidth. Consider using <Image /> from next/image to automatically optimize images.
+  
+
+styles/building-monad.css:265:1 lint/style/noDescendingSpecificity ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ! Descending specificity selector found. This selector specificity is (0, 1, 1)
+  
+    263 │ }
+    264 │ 
+  > 265 │ .monad-installment-card > p {
+        │ ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    266 │   color: var(--color-fd-muted-foreground);
+    267 │   line-height: 1.65;
+  
+  i This selector specificity is (0, 1, 2)
+  
+    207 │ }
+    208 │ 
+  > 209 │ .monad-series-phase > header > p {
+        │ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    210 │   max-width: 38rem;
+    211 │   color: var(--color-fd-muted-foreground);
+  
+  i Descending specificity selector may not be applied. Consider rearranging the order of the selectors. See MDN web docs for more details.
+  
+
+styles/building-monad.css:301:1 lint/style/noDescendingSpecificity ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ! Descending specificity selector found. This selector specificity is (0, 1, 1)
+  
+    299 │ }
+    300 │ 
+  > 301 │ .monad-repository-state p,
+        │ ^^^^^^^^^^^^^^^^^^^^^^^^^
+    302 │ .monad-repository-state__empty {
+    303 │   margin-block-start: 0.7rem;
+  
+  i This selector specificity is (0, 1, 2)
+  
+    207 │ }
+    208 │ 
+  > 209 │ .monad-series-phase > header > p {
+        │ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    210 │   max-width: 38rem;
+    211 │   color: var(--color-fd-muted-foreground);
+  
+  i Descending specificity selector may not be applied. Consider rearranging the order of the selectors. See MDN web docs for more details.
+  
+
+styles/editions.css:204:1 lint/style/noDescendingSpecificity ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ! Descending specificity selector found. This selector specificity is (0, 1, 1)
+  
+    202 │ }
+    203 │ 
+  > 204 │ .monad-edition-print__toc span {
+        │ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    205 │   font: 8.5pt var(--font-monad-technical);
+    206 │ }
+  
+  i This selector specificity is (0, 1, 2)
+  
+    110 │ }
+    111 │ 
+  > 112 │ .monad-edition-summary__contents > li > span {
+        │ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    113 │   color: var(--color-fd-muted-foreground);
+    114 │   font-family: var(--font-monad-technical);
+  
+  i Descending specificity selector may not be applied. Consider rearranging the order of the selectors. See MDN web docs for more details.
+  
+
+styles/exploration.css:470:1 lint/style/noDescendingSpecificity ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ! Descending specificity selector found. This selector specificity is (0, 2, 2)
+  
+    468 │ }
+    469 │ 
+  > 470 │ .monad-series-dashboard__documents li span:last-child {
+        │ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    471 │   color: var(--color-fd-muted-foreground);
+    472 │ }
+  
+  i This selector specificity is (0, 2, 4)
+  
+    388 │ }
+    389 │ 
+  > 390 │ .monad-supersession ol ol a span:last-child {
+        │ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    391 │   color: var(--color-fd-muted-foreground);
+    392 │   font-size: 0.72rem;
+  
+  i Descending specificity selector may not be applied. Consider rearranging the order of the selectors. See MDN web docs for more details.
+  
+
+tests/unit/content-governance.test.ts:10:56 lint/suspicious/noExplicitAny ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ! Unexpected any. Specify a different type.
+  
+     8 │ } from '../../scripts/content/lib/governance.mjs';
+     9 │ 
+  > 10 │ function document(overrides: Record<string, unknown>): any {
+       │                                                        ^^^
+    11 │   return {
+    12 │     id: 'ADR-0001',
+  
+  i any disables many type checking rules. Its use should be avoided.
+  
+
+tests/unit/discovery-contract.test.ts:27:41 lint/suspicious/noTemplateCurlyInString ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ! Unexpected template string placeholder.
+  
+    25 │   it('rewrites page .md URLs into the internal Markdown renderer', () => {
+    26 │     const config = text('next.config.mjs');
+  > 27 │     expect(config).toContain('source: `/${section}/:path*.md`');
+       │                                         ^^^^^^^^^^
+    28 │     expect(config).toContain('destination: `/llms.mdx/${section}/:path*`');
+    29 │   });
+  
+  i Turn the string into a template string.
+  
+
+tests/unit/discovery-contract.test.ts:28:55 lint/suspicious/noTemplateCurlyInString ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ! Unexpected template string placeholder.
+  
+    26 │     const config = text('next.config.mjs');
+    27 │     expect(config).toContain('source: `/${section}/:path*.md`');
+  > 28 │     expect(config).toContain('destination: `/llms.mdx/${section}/:path*`');
+       │                                                       ^^^^^^^^^^
+    29 │   });
+    30 │ });
+  
+  i Turn the string into a template string.
+  
+
+tests/unit/navigation-manifest.test.ts:9:8 lint/suspicious/noExplicitAny ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ! Unexpected any. Specify a different type.
+  
+     7 │     route,
+     8 │     synthetic,
+   > 9 │   } as any;
+       │        ^^^
+    10 │ }
+    11 │ 
+  
+  i any disables many type checking rules. Its use should be avoided.
+  
+
+components/brand/monad-mark.tsx:9:5 lint/a11y/noSvgWithoutTitle ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Alternative text title element cannot be empty
+  
+     7 │ export function MonadMark({ title, ...props }: MonadMarkProps) {
+     8 │   return (
+   > 9 │     <svg
+       │     ^^^^
+  > 10 │       viewBox="0 0 48 48"
+  > 11 │       role={title ? 'img' : undefined}
+  > 12 │       aria-hidden={title ? undefined : true}
+  > 13 │       {...props}
+  > 14 │     >
+       │     ^
+    15 │       {title ? <title>{title}</title> : null}
+    16 │       <circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" strokeWidth="2" />
+  
+  i For accessibility purposes, SVGs should have an alternative text, provided via title element. If the svg element has role="img", you should add the aria-label or aria-labelledby attribute.
+  
+
+components/building-monad/building-monad-index.tsx:68:11 lint/a11y/useAriaPropsSupportedByRole ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × The ARIA attribute 'aria-label' is not supported by this element.
+  
+    66 │           <h1>Building Monad</h1>
+    67 │           <p>{manifest.series.description}</p>
+  > 68 │           <div className="monad-series-hero__metrics" aria-label="Series status">
+       │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    69 │             <span>
+    70 │               <strong>{manifest.installmentCount}</strong> installments
+  
+  i Ensure that ARIA attributes are valid for the role of the element.
+  
+
+components/building-monad/building-monad-index.tsx:89:11 lint/a11y/useAriaPropsSupportedByRole ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × The ARIA attribute 'aria-label' is not supported by this element.
+  
+    87 │             installments={manifest.installments}
+    88 │           />
+  > 89 │           <div className="monad-series-feeds" aria-label="Subscribe to Building Monad">
+       │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    90 │             <a href="/feeds/building-monad.rss.xml">RSS</a>
+    91 │             <a href="/feeds/building-monad.atom.xml">Atom</a>
+  
+  i Ensure that ARIA attributes are valid for the role of the element.
+  
+
+components/content/document-relationships.tsx:13:17 lint/suspicious/noRedeclare ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × 'DocumentRelationships' is redeclared in the same scope.
+  
+    11 │ }
+    12 │ 
+  > 13 │ export function DocumentRelationships({ relationships, series }: DocumentRelationshipsProps) {
+       │                 ^^^^^^^^^^^^^^^^^^^^^
+    14 │   const outgoing = relationships?.outgoing ?? [];
+    15 │   const incoming = relationships?.incoming ?? [];
+  
+  i 'DocumentRelationships' is defined here:
+  
+    1 │ import Link from 'next/link';
+  > 2 │ import type { DocumentRelationships, DocumentSeries } from '@/lib/content/types';
+      │               ^^^^^^^^^^^^^^^^^^^^^
+    3 │ 
+    4 │ type DocumentRelationshipsProps = {
+  
+  i Redeclarations make it unclear which variable a reference points to and can hide earlier declarations.
+  
+  i Remove the duplicate declaration or rename one of the variables.
+  
+
+components/discovery/search-workspace.tsx:103:9 lint/a11y/useAriaPropsSupportedByRole ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × The ARIA attribute 'aria-label' is not supported by this element.
+  
+    102 │       {response ? (
+  > 103 │         <div className="monad-search-facets" aria-label="Search filters">
+        │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    104 │           <FacetSelect
+    105 │             label="Surface"
+  
+  i Ensure that ARIA attributes are valid for the role of the element.
+  
+
+components/discovery/structured-data.tsx:37:40 lint/security/noDangerouslySetInnerHtml ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Avoid passing content using the dangerouslySetInnerHTML prop.
+  
+    36 │   return (
+  > 37 │     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(graph) }} />
+       │                                        ^^^^^^^^^^^^^^^^^^^^^^^
+    38 │   );
+    39 │ }
+  
+  ! Setting content using code can expose users to cross-site scripting (XSS) attacks
+  
+
+components/discovery/structured-data.tsx:80:40 lint/security/noDangerouslySetInnerHtml ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Avoid passing content using the dangerouslySetInnerHTML prop.
+  
+    79 │   return (
+  > 80 │     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(value) }} />
+       │                                        ^^^^^^^^^^^^^^^^^^^^^^^
+    81 │   );
+    82 │ }
+  
+  ! Setting content using code can expose users to cross-site scripting (XSS) attacks
+  
+
+components/mdx.tsx:14:5 lint/a11y/useAltText ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Provide a text alternative through the alt, aria-label or aria-labelledby attribute
+  
+    12 │     <ImageZoom {...props} src={src} />
+    13 │   ) : (
+  > 14 │     <img {...props} src={src} />
+       │     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    15 │   );
+    16 │ }
+  
+  i Meaningful alternative text on elements helps users relying on screen readers to understand content's purpose within a page.
+  
+  i If the content is decorative, redundant, or obscured, consider hiding it from assistive technologies with the aria-hidden attribute.
+  
+
+components/mdx.tsx:64:62 lint/a11y/useAltText ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Provide a text alternative through the alt, aria-label or aria-labelledby attribute
+  
+    62 │     Tab: PrintTab,
+    63 │     Tabs: PrintContainer,
+  > 64 │     img: ({ ref: _ref, ...props }: ComponentProps<'img'>) => <img {...props} />,
+       │                                                              ^^^^^^^^^^^^^^^^^^
+    65 │     ...components,
+    66 │   });
+  
+  i Meaningful alternative text on elements helps users relying on screen readers to understand content's purpose within a page.
+  
+  i If the content is decorative, redundant, or obscured, consider hiding it from assistive technologies with the aria-hidden attribute.
+  
+
+scripts/operations/check-security.mjs:42:14 lint/suspicious/useIterableCallbackReturn ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × This callback passed to forEach() iterable method should not return a value.
+  
+    40 │   console.log(`Security contract checked. Report: ${path}`);
+    41 │   if (failures.length > 0) {
+  > 42 │     failures.forEach((failure) => console.error(`SECURITY ${failure}`));
+       │              ^^^^^^^
+    43 │     process.exitCode = 1;
+    44 │   }
+  
+  i Either remove this return or remove the returned value.
+  
+    40 │   console.log(`Security contract checked. Report: ${path}`);
+    41 │   if (failures.length > 0) {
+  > 42 │     failures.forEach((failure) => console.error(`SECURITY ${failure}`));
+       │                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    43 │     process.exitCode = 1;
+    44 │   }
+  
+
+scripts/operations/verify-publication.mjs:39:12 lint/suspicious/useIterableCallbackReturn ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × This callback passed to forEach() iterable method should not return a value.
+  
+    37 │ }
+    38 │ if (failures.length > 0) {
+  > 39 │   failures.forEach((failure) => console.error(failure));
+       │            ^^^^^^^
+    40 │   process.exitCode = 1;
+    41 │ }
+  
+  i Either remove this return or remove the returned value.
+  
+    37 │ }
+    38 │ if (failures.length > 0) {
+  > 39 │   failures.forEach((failure) => console.error(failure));
+       │                                 ^^^^^^^^^^^^^^^^^^^^^^
+    40 │   process.exitCode = 1;
+    41 │ }
+  
+
+scripts/publications/build.mjs:167:8 lint/suspicious/useIterableCallbackReturn ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × This callback passed to forEach() iterable method should not return a value.
+  
+    165 │         'script, link[rel="stylesheet"], link[rel="preload"], link[rel="modulepreload"]',
+    166 │       )
+  > 167 │       .forEach((node) => node.remove());
+        │        ^^^^^^^
+    168 │     const style = document.createElement('style');
+    169 │     style.textContent = styles.join('\n');
+  
+  i Either remove this return or remove the returned value.
+  
+    165 │         'script, link[rel="stylesheet"], link[rel="preload"], link[rel="modulepreload"]',
+    166 │       )
+  > 167 │       .forEach((node) => node.remove());
+        │                          ^^^^^^^^^^^^^
+    168 │     const style = document.createElement('style');
+    169 │     style.textContent = styles.join('\n');
+  
+
+styles/tokens.css:1:2 parse ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Tailwind-specific syntax is disabled.
+  
+  > 1 │ @theme {
+      │  ^^^^^^^
+  > 2 │   --font-sans: var(--font-monad-sans);
+  > 3 │   --font-serif: var(--font-monad-editorial);
+  > 4 │   --font-mono: var(--font-monad-mono);
+  > 5 │ }
+      │ ^
+    6 │ 
+    7 │ :root {
+  
+  i Enable `tailwindDirectives` in the css parser options, or remove this if you are not using Tailwind CSS.
+  
+
+styles/tokens.css format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Code formatting aborted due to parsing errors. To format code with errors, enable the 'formatter.formatWithErrors' option.
+  
+
+Checked 209 files in 187ms. No fixes applied.
+Found 14 errors.
+Found 10 warnings.
+check ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Some errors were emitted while running checks.
+  
+

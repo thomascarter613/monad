@@ -464,6 +464,7 @@
   font-size: 0.78rem;
 }
 
+/* biome-ignore lint/style/noDescendingSpecificity: Dashboard and supersession selectors are isolated BEM component scopes. */
 .monad-series-dashboard__documents li span:last-child {
   color: var(--color-fd-muted-foreground);
 }

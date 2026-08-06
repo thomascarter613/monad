@@ -332,9 +332,18 @@ export function inferSeries(attributes, identifier, sourceKey) {
 export function inferSeriesPosition(attributes, identifier) {
   const explicit = attributes.seriesPosition ?? attributes.series_position ?? attributes.position;
   if (Number.isInteger(explicit) && explicit > 0) return explicit;
-  if (typeof explicit === 'string' && /^\d+$/.test(explicit)) return Number(explicit);
+  if (typeof explicit === 'string' && /^\d+$/.test(explicit)) {
+    const numeric = Number(explicit);
+    if (numeric > 0) return numeric;
+  }
+
   const match = identifier?.match(/-(\d{4})$/);
-  return match ? Number(match[1]) : undefined;
+  if (!match) return undefined;
+  const inferred = Number(match[1]);
+
+  // Position 0000 is reserved for templates, examples, and placeholders. It
+  // identifies the artifact family without claiming a real ordinal position.
+  return inferred > 0 ? inferred : undefined;
 }
 
 export function inferSeriesTotal(attributes) {

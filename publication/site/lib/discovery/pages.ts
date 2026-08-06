@@ -26,7 +26,7 @@ export type PublicationPage = {
 
 export function getAllPublicationPages() {
   return publicationPageSources.flatMap(({ key, label, source }) =>
-    source.getPages().map((page) => ({ key, label, page: page as PublicationPage })),
+    source.getPages().map((page) => ({ key, label, page: page as unknown as PublicationPage })),
   );
 }
 
@@ -34,5 +34,5 @@ export function getPublicationPage(section: string, slug?: string[]) {
   const selected = publicationPageSources.find((entry) => entry.key === section);
   if (!selected) return undefined;
   const page = selected.source.getPage(slug);
-  return page ? { ...selected, page: page as PublicationPage } : undefined;
+  return page ? { ...selected, page: page as unknown as PublicationPage } : undefined;
 }

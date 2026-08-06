@@ -3,6 +3,7 @@ import { authorizeEditionExport, editionExportPolicy } from '@/lib/editions/acce
 import { createEditionSource } from '@/lib/editions/catalog';
 import { getEdition } from '@/lib/editions/manifest';
 import { siteConfig } from '@/lib/config/site';
+import type { PublicationPage } from '@/lib/discovery/pages';
 
 export const revalidate = false;
 
@@ -18,8 +19,8 @@ export async function GET(request: Request, { params }: RouteProps) {
 
   const buffer = await exportEpub({
     source: createEditionSource(edition) as never,
-    getMarkdown: async (page: { data: { getText: (mode: 'processed') => Promise<string> } }) =>
-      page.data.getText('processed'),
+    getMarkdown: async (page) =>
+      (page as unknown as PublicationPage).data.getText('processed'),
     title: edition.title,
     author: siteConfig.author.name,
     description: edition.description,

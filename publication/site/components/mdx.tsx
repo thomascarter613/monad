@@ -1,11 +1,28 @@
-import type { ComponentProps, ReactNode } from 'react';
 import * as AccordionComponents from 'fumadocs-ui/components/accordion';
 import * as FileComponents from 'fumadocs-ui/components/files';
 import { ImageZoom } from 'fumadocs-ui/components/image-zoom';
 import * as TabsComponents from 'fumadocs-ui/components/tabs';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import type { MDXComponents } from 'mdx/types';
+import type { ComponentProps, ReactNode } from 'react';
 import * as EngineeringComponents from '@/components/engineering';
+
+function NativeImage({ ref: _ref, alt = '', ...props }: ComponentProps<'img'>) {
+  return (
+    <>
+      {/* biome-ignore lint/performance/noImgElement: MDX can supply Blob sources, and print output requires a native image element. */}
+      <img {...props} alt={alt} />
+    </>
+  );
+}
+
+function ZoomableImage({ ref: _ref, src, alt = '', ...props }: ComponentProps<'img'>) {
+  return typeof src === 'string' ? (
+    <ImageZoom {...props} alt={alt} src={src} />
+  ) : (
+    <NativeImage {...props} alt={alt} src={src} />
+  );
+}
 
 export function getMDXComponents(components?: MDXComponents) {
   return {
@@ -14,7 +31,7 @@ export function getMDXComponents(components?: MDXComponents) {
     ...FileComponents,
     ...TabsComponents,
     ...EngineeringComponents,
-    img: ({ ref: _ref, ...props }: ComponentProps<'img'>) => <ImageZoom {...props} />,
+    img: ZoomableImage,
     ...components,
   } satisfies MDXComponents;
 }
@@ -53,7 +70,7 @@ export function getPrintMDXComponents(components?: MDXComponents) {
     Accordions: PrintContainer,
     Tab: PrintTab,
     Tabs: PrintContainer,
-    img: ({ ref: _ref, ...props }: ComponentProps<'img'>) => <img {...props} />,
+    img: NativeImage,
     ...components,
   });
 }

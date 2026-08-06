@@ -158,7 +158,9 @@ async function selfContainedHtml(page, edition) {
       .querySelectorAll(
         'script, link[rel="stylesheet"], link[rel="preload"], link[rel="modulepreload"]',
       )
-      .forEach((node) => node.remove());
+      .forEach((node) => {
+        node.remove();
+      });
     const style = document.createElement('style');
     style.textContent = styles.join('\n');
     document.head.append(style);

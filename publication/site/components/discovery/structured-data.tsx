@@ -5,6 +5,15 @@ function safeJson(value: unknown) {
   return JSON.stringify(value).replaceAll('<', '\\u003c');
 }
 
+function JsonLd({ value }: { value: unknown }) {
+  return (
+    <>
+      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: The value is JSON-serialized and '<' is escaped before insertion into a non-executable JSON-LD script. */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(value) }} />
+    </>
+  );
+}
+
 export function SiteStructuredData() {
   const origin = publicEnvironment.siteUrl.replace(/\/$/, '');
   const graph = {
@@ -33,7 +42,7 @@ export function SiteStructuredData() {
     ],
   };
 
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(graph) }} />;
+  return <JsonLd value={graph} />;
 }
 
 export function DocumentStructuredData({
@@ -74,5 +83,5 @@ export function DocumentStructuredData({
     inLanguage: siteConfig.language,
   };
 
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(value) }} />;
+  return <JsonLd value={value} />;
 }

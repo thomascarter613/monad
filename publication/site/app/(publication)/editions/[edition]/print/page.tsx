@@ -15,16 +15,17 @@ export default async function EditionPrintPage({ params, searchParams }: PagePro
   const edition = await getEdition(key);
   if (!edition) notFound();
   const allPages = getEditionPages(edition);
-  const records = query.document
-    ? edition.documents.filter((document) => document.id === query.document.toUpperCase())
+  const requestedDocument = query.document?.toUpperCase();
+  const records = requestedDocument
+    ? edition.documents.filter((document) => document.id === requestedDocument)
     : edition.documents;
-  if (query.document && records.length === 0) notFound();
+  if (requestedDocument && records.length === 0) notFound();
   const pageByRoute = new Map(allPages.map((entry) => [entry.page.url, entry.page]));
   const selected = records.flatMap((record) => {
     const page = pageByRoute.get(record.route);
     return page ? [{ record, page }] : [];
   });
-  const title = query.document ? selected[0]?.record.title ?? edition.title : edition.title;
+  const title = requestedDocument ? selected[0]?.record.title ?? edition.title : edition.title;
 
   return (
     <main className="monad-edition-print" data-edition={edition.key}>
@@ -32,7 +33,7 @@ export default async function EditionPrintPage({ params, searchParams }: PagePro
       <section className="monad-edition-print__cover">
         <p>{siteConfig.name}</p>
         <h1>{title}</h1>
-        <p>{query.document ? selected[0]?.record.id : edition.subtitle}</p>
+        <p>{requestedDocument ? selected[0]?.record.id : edition.subtitle}</p>
         <dl>
           <div>
             <dt>Edition</dt>
@@ -50,7 +51,7 @@ export default async function EditionPrintPage({ params, searchParams }: PagePro
           </div>
         </dl>
       </section>
-      {!query.document ? (
+      {!requestedDocument ? (
         <nav className="monad-edition-print__toc" aria-label="Edition contents">
           <h2>Contents</h2>
           <ol>

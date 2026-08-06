@@ -100,7 +100,8 @@ export function SearchWorkspace({ initialQuery = '' }: { initialQuery?: string }
       </div>
 
       {response ? (
-        <div className="monad-search-facets" aria-label="Search filters">
+        <fieldset className="monad-search-facets">
+          <legend className="sr-only">Search filters</legend>
           <FacetSelect
             label="Surface"
             value={filters.surface}
@@ -135,7 +136,7 @@ export function SearchWorkspace({ initialQuery = '' }: { initialQuery?: string }
           >
             Reset
           </button>
-        </div>
+        </fieldset>
       ) : null}
 
       <div className="monad-search-summary" aria-live="polite">

@@ -4,7 +4,7 @@ import { siteConfig } from '@/lib/config/site';
 
 export type PublicationMetadataInput = {
   title: string;
-  description: string;
+  description?: string;
   route: string;
   type?: 'website' | 'article';
   identifier?: string;
@@ -26,7 +26,8 @@ function socialCard(input: PublicationMetadataInput) {
 }
 
 export function publicationMetadata(input: PublicationMetadataInput): Metadata {
-  const { title, description, route, type = 'article', publishedAt, updatedAt, tags } = input;
+  const { title, route, type = 'article', publishedAt, updatedAt, tags } = input;
+  const description = input.description ?? siteConfig.description;
   const image = socialCard(input);
   const openGraph =
     type === 'article'

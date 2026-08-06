@@ -262,6 +262,7 @@
   text-underline-offset: 0.18em;
 }
 
+/* biome-ignore lint/style/noDescendingSpecificity: BEM-scoped component selectors do not overlap with the preceding series-header selector. */
 .monad-installment-card > p {
   color: var(--color-fd-muted-foreground);
   line-height: 1.65;
@@ -298,6 +299,7 @@
   font-size: clamp(1.5rem, 3vw, 2.2rem);
 }
 
+/* biome-ignore lint/style/noDescendingSpecificity: BEM-scoped repository-state selectors are independent from the series-header selector. */
 .monad-repository-state p,
 .monad-repository-state__empty {
   margin-block-start: 0.7rem;

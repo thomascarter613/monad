@@ -24,7 +24,8 @@ describe('SITE-0010 discovery contract', () => {
 
   it('rewrites page .md URLs into the internal Markdown renderer', () => {
     const config = text('next.config.mjs');
-    expect(config).toContain("source: `/${section}/:path*.md`");
-    expect(config).toContain('destination: `/llms.mdx/${section}/:path*`');
+    const sectionPlaceholder = '$' + '{section}';
+    expect(config).toContain(`source: \`/${sectionPlaceholder}/:path*.md\``);
+    expect(config).toContain(`destination: \`/llms.mdx/${sectionPlaceholder}/:path*\``);
   });
 });

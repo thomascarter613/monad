@@ -1,8 +1,11 @@
 import Link from 'next/link';
-import type { DocumentRelationships, DocumentSeries } from '@/lib/content/types';
+import type {
+  DocumentRelationships as DocumentRelationshipSet,
+  DocumentSeries,
+} from '@/lib/content/types';
 
 type DocumentRelationshipsProps = {
-  relationships?: DocumentRelationships;
+  relationships?: DocumentRelationshipSet;
   series?: DocumentSeries;
 };
 
@@ -20,7 +23,10 @@ export function DocumentRelationships({
   if (outgoing.length === 0 && incoming.length === 0 && !hasSeriesNavigation) return null;
 
   return (
-    <aside className="monad-surface mt-14 rounded-2xl p-5 sm:p-7" aria-labelledby="document-connections">
+    <aside
+      className="monad-surface mt-14 rounded-2xl p-5 sm:p-7"
+      aria-labelledby="document-connections"
+    >
       <h2 id="document-connections" className="text-xl font-semibold tracking-tight">
         Document connections
       </h2>
@@ -33,16 +39,24 @@ export function DocumentRelationships({
               href={series.previousRoute ?? '#'}
             >
               <span className="block text-xs text-fd-muted-foreground">Previous in series</span>
-              <span className="mt-1 block text-sm"><span className="font-mono">{series.previousId}</span>{series.previousTitle ? ` — ${series.previousTitle}` : ''}</span>
+              <span className="mt-1 block text-sm">
+                <span className="font-mono">{series.previousId}</span>
+                {series.previousTitle ? ` — ${series.previousTitle}` : ''}
+              </span>
             </Link>
-          ) : <span />}
+          ) : (
+            <span />
+          )}
           {series?.nextId ? (
             <Link
               className="rounded-xl border p-4 text-right transition hover:border-[var(--monad-section-accent)]"
               href={series.nextRoute ?? '#'}
             >
               <span className="block text-xs text-fd-muted-foreground">Next in series</span>
-              <span className="mt-1 block text-sm"><span className="font-mono">{series.nextId}</span>{series.nextTitle ? ` — ${series.nextTitle}` : ''}</span>
+              <span className="mt-1 block text-sm">
+                <span className="font-mono">{series.nextId}</span>
+                {series.nextTitle ? ` — ${series.nextTitle}` : ''}
+              </span>
             </Link>
           ) : null}
         </div>
@@ -55,7 +69,10 @@ export function DocumentRelationships({
             <ul className="mt-3 space-y-2">
               {outgoing.map((edge) => (
                 <li key={`${edge.kind}:${edge.id}`}>
-                  <Link className="block rounded-lg border px-3 py-2 hover:border-[var(--monad-section-accent)]" href={edge.route}>
+                  <Link
+                    className="block rounded-lg border px-3 py-2 hover:border-[var(--monad-section-accent)]"
+                    href={edge.route}
+                  >
                     <span className="text-xs capitalize text-fd-muted-foreground">
                       {relationLabel(edge.kind)}
                     </span>
@@ -74,7 +91,10 @@ export function DocumentRelationships({
             <ul className="mt-3 space-y-2">
               {incoming.map((edge) => (
                 <li key={`${edge.kind}:${edge.id}`}>
-                  <Link className="block rounded-lg border px-3 py-2 hover:border-[var(--monad-section-accent)]" href={edge.route}>
+                  <Link
+                    className="block rounded-lg border px-3 py-2 hover:border-[var(--monad-section-accent)]"
+                    href={edge.route}
+                  >
                     <span className="text-xs capitalize text-fd-muted-foreground">
                       {relationLabel(edge.kind)}
                     </span>

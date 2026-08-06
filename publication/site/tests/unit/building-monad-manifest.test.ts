@@ -56,7 +56,7 @@ describe('Building Monad manifest', () => {
     });
     const manifest = buildBuildingMonadManifest([second, journalDocument({})], '2026-08-04T00:00:00.000Z');
 
-    expect(manifest.installments.map((entry) => entry.id)).toEqual(['MJ-0001', 'MJ-0002']);
+    expect(manifest.installments.map((entry: { id: string }) => entry.id)).toEqual(['MJ-0001', 'MJ-0002']);
     expect(manifest.installments[0].next?.id).toBe('MJ-0002');
     expect(manifest.installments[1].previous?.id).toBe('MJ-0001');
     expect(manifest.installments[1].artifacts[0].id).toBe('ADR-0002');

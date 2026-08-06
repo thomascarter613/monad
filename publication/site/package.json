@@ -1,12 +1,12 @@
 {
   "name": "@monad/publication-site",
-  "version": "0.12.3",
+  "version": "0.12.8",
   "private": true,
   "description": "The documentation and engineering-log publication site for Monad.",
   "packageManager": "bun@1.3.14",
   "scripts": {
     "dev": "bun run scripts/dev.mjs",
-    "build": "bun run content:sync && bun --bun next build",
+    "build": "bun run scripts/build.mjs",
     "start": "bun --bun next start",
     "clean": "bun run scripts/clean.mjs",
     "content:sync": "bun run scripts/content/sync.mjs",
@@ -20,7 +20,7 @@
     "content:report:navigation": "bun run scripts/content/report.mjs --navigation",
     "content:migrate": "bun run scripts/content/migrate.mjs",
     "content:migrate:check": "bun run scripts/content/migrate.mjs --check",
-    "typegen": "fumadocs-mdx",
+    "typegen": "bun run scripts/typegen.mjs",
     "format": "biome format --write .",
     "format:check": "biome format .",
     "lint": "biome lint .",

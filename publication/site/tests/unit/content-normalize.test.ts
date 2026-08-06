@@ -3,6 +3,7 @@ import {
   deriveSlug,
   extractIdentifier,
   normalizeStatus,
+  inferSeriesPosition,
 } from '../../scripts/content/lib/normalize.mjs';
 
 describe('canonical document normalization', () => {
@@ -61,3 +62,16 @@ it('still accepts an explicit leading body identity declaration', () => {
   ).toBe('ARCH-CORE-0007');
 });
 
+
+
+describe('series position inference', () => {
+  it('does not publish a 0000 template placeholder as series position zero', () => {
+    expect(inferSeriesPosition({}, 'SERIES-CATEGORY-0000')).toBeUndefined();
+  });
+
+  it('rejects an explicit zero position while retaining positive positions', () => {
+    expect(inferSeriesPosition({ position: 0 }, 'SERIES-CATEGORY-0000')).toBeUndefined();
+    expect(inferSeriesPosition({ position: '0' }, 'SERIES-CATEGORY-0000')).toBeUndefined();
+    expect(inferSeriesPosition({ position: 4 }, 'WP-AF-0004')).toBe(4);
+  });
+});

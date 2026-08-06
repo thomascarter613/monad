@@ -65,11 +65,17 @@ export async function BuildingMonadIndex() {
           <p className="monad-kicker">The Monad Engineering Log</p>
           <h1>Building Monad</h1>
           <p>{manifest.series.description}</p>
-          <div className="monad-series-hero__metrics" aria-label="Series status">
-            <span><strong>{manifest.installmentCount}</strong> installments</span>
-            <span><strong>{manifest.phases.length}</strong> project phases</span>
-            <span><strong>{manifest.publishedCount}</strong> published or active</span>
-          </div>
+          <section className="monad-series-hero__metrics" aria-label="Series status">
+            <span>
+              <strong>{manifest.installmentCount}</strong> installments
+            </span>
+            <span>
+              <strong>{manifest.phases.length}</strong> project phases
+            </span>
+            <span>
+              <strong>{manifest.publishedCount}</strong> published or active
+            </span>
+          </section>
         </div>
         <div className="monad-series-hero__actions">
           <ContinueReading
@@ -80,10 +86,10 @@ export async function BuildingMonadIndex() {
             storageKey={manifest.series.storageKey}
             installments={manifest.installments}
           />
-          <div className="monad-series-feeds" aria-label="Subscribe to Building Monad">
+          <nav className="monad-series-feeds" aria-label="Subscribe to Building Monad">
             <a href="/feeds/building-monad.rss.xml">RSS</a>
             <a href="/feeds/building-monad.atom.xml">Atom</a>
-          </div>
+          </nav>
         </div>
       </header>
 

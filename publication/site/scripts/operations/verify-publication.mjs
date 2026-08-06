@@ -19,15 +19,25 @@ for (const checksumPath of checksumFiles) {
   const body = await readFile(checksumPath, 'utf8');
   for (const line of body.split(/\r?\n/).filter(Boolean)) {
     const match = line.match(/^([a-f0-9]{64})  (.+)$/);
-    if (!match) { failures.push(`${checksumPath}: malformed line ${line}`); continue; }
+    if (!match) {
+      failures.push(`${checksumPath}: malformed line ${line}`);
+      continue;
+    }
     const file = resolve(dirname(checksumPath), match[2]);
     try {
       const bytes = await readFile(file);
       const actual = createHash('sha256').update(bytes).digest('hex');
       if (actual !== match[1]) failures.push(`${file}: expected ${match[1]}, received ${actual}`);
       if ((await stat(file)).size === 0) failures.push(`${file}: empty artifact`);
-    } catch (error) { failures.push(`${file}: ${error instanceof Error ? error.message : String(error)}`); }
+    } catch (error) {
+      failures.push(`${file}: ${error instanceof Error ? error.message : String(error)}`);
+    }
   }
   console.log(`Verified ${basename(dirname(checksumPath))}/${basename(checksumPath)}`);
 }
-if (failures.length > 0) { failures.forEach((failure) => console.error(failure)); process.exitCode = 1; }
+if (failures.length > 0) {
+  failures.forEach((failure) => {
+    console.error(failure);
+  });
+  process.exitCode = 1;
+}

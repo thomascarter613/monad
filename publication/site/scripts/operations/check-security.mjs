@@ -5,7 +5,8 @@ const required = {
   'referrer-policy': (value) => value === 'strict-origin-when-cross-origin',
   'x-content-type-options': (value) => value === 'nosniff',
   'x-frame-options': (value) => value === 'DENY',
-  'permissions-policy': (value) => value.includes('camera=()') && value.includes('microphone=()'),
+  'permissions-policy': (value) =>
+    value.includes('camera=()') && value.includes('microphone=()'),
 };
 
 await withProductionServer(async (baseUrl) => {
@@ -14,7 +15,9 @@ await withProductionServer(async (baseUrl) => {
   for (const route of ['/', '/system', '/api/health']) {
     const response = await fetch(new URL(route, baseUrl), { redirect: 'manual' });
     const record = { route, status: response.status, headers: {} };
-    if (response.status >= 400 && route !== '/api/health') failures.push(`${route} returned ${response.status}`);
+    if (response.status >= 400 && route !== '/api/health') {
+      failures.push(`${route} returned ${response.status}`);
+    }
     for (const [name, validate] of Object.entries(required)) {
       const value = response.headers.get(name) ?? '';
       record.headers[name] = value;
@@ -27,8 +30,19 @@ await withProductionServer(async (baseUrl) => {
   if ((api.headers.get('x-robots-tag') ?? '').toLowerCase() !== 'noindex, follow') {
     failures.push('/api/operations must publish X-Robots-Tag: noindex, follow');
   }
-  const report = { schemaVersion: 1, checkedAt: new Date().toISOString(), baseUrl, failures, checks };
+  const report = {
+    schemaVersion: 1,
+    checkedAt: new Date().toISOString(),
+    baseUrl,
+    failures,
+    checks,
+  };
   const path = await writeReport('security.json', report);
   console.log(`Security contract checked. Report: ${path}`);
-  if (failures.length > 0) { failures.forEach((failure) => console.error(`SECURITY ${failure}`)); process.exitCode = 1; }
+  if (failures.length > 0) {
+    failures.forEach((failure) => {
+      console.error(`SECURITY ${failure}`);
+    });
+    process.exitCode = 1;
+  }
 });

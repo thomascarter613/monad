@@ -201,6 +201,7 @@
   text-decoration: none;
 }
 
+/* biome-ignore lint/style/noDescendingSpecificity: Print TOC and interactive edition-summary selectors belong to separate render surfaces. */
 .monad-edition-print__toc span {
   font: 8.5pt var(--font-monad-technical);
 }

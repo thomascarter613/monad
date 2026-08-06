@@ -32,3 +32,44 @@ References appearing elsewhere in body content are relationship evidence, not do
 This prevents status dashboards such as `engineering/PROJECT-STATUS.md` from adopting the ID of
 the current work packet they mention.
 
+## STAB-0004: MDX-safe projection and deterministic source regeneration
+
+Generated publication pages now use JSX comments (`{/* ... */}`) rather than
+HTML comments (`<!-- ... -->`). MDX parses angle-bracket syntax as JSX, so raw
+HTML comment markers are not valid in projected `.mdx` documents.
+
+The production build now synchronizes canonical content, removes `.source` and
+`.next`, and then invokes Next.js. The type-generation command also removes
+`.source` before running `fumadocs-mdx`. This prevents deleted or renamed
+projection files from surviving as stale imports in `.source/server.ts`.
+
+
+## STAB-0005 — Template placeholder positions
+
+Identifiers ending in `-0000` represent templates or placeholders. They remain valid artifact identities but do not claim series position zero. Generated Fumadocs frontmatter therefore omits `series.position` for these documents, preserving the positive-position schema used by real installments.
+
+
+## STAB-0006 — Type Contract Stabilization
+
+The first dependency-backed production build reached TypeScript validation after successful content and MDX compilation. STAB-0006 aligns optional page descriptions, EPUB processed-Markdown adapters, print query narrowing, React 19 image source types, publication-page casts, and JavaScript-backed unit-test inference with the pinned Next.js and Fumadocs toolchain.
+
+
+## STAB-0007 — Release Gate and Biome Stabilization
+
+The dependency-backed release verification reached the Biome quality gate after successful
+content validation. STAB-0007 migrates Biome 2.5 configuration to the `preset` contract,
+enables Tailwind CSS directive parsing, corrects accessibility semantics, scopes intentional
+JSON-LD and native-MDX-image suppressions, removes ambiguous type names and explicit `any`
+values, and makes iterable callbacks return `void`.
+
+The patch also records the intentional independence of BEM-scoped CSS selectors so
+`noDescendingSpecificity` does not report false overlap across unrelated components.
+
+## STAB-0008 — Semantic Grouping Release-Gate Fix
+
+Biome 2.5 correctly rejected generic `div` elements carrying `role="group"` where semantic
+elements were available. The Building Monad status metrics now use a labelled `section`, and
+search facets use a `fieldset` with a visually hidden `legend`. Fieldset browser defaults are
+reset without changing the existing search-filter layout. The remaining `!important` findings
+are non-blocking warnings tied to print and third-party-style overrides.
+

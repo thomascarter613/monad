@@ -7,7 +7,35 @@ import {
   validateSeries,
 } from '../../scripts/content/lib/governance.mjs';
 
-function document(overrides: Record<string, unknown>): any {
+type TestRelationshipEdge = {
+  kind: string;
+  id: string;
+  title: string;
+  route: string;
+  explicit: boolean;
+};
+
+type TestDocument = {
+  id: string;
+  title: string;
+  description: string;
+  kind: string;
+  status: string;
+  route: string;
+  aliases: string[];
+  canonicalPath: string;
+  synthetic: boolean;
+  related: Record<string, string[]>;
+  references: string[];
+  series: string;
+  seriesPosition: number;
+  relationships: {
+    outgoing: TestRelationshipEdge[];
+    incoming: TestRelationshipEdge[];
+  };
+};
+
+function document(overrides: Partial<TestDocument>): TestDocument {
   return {
     id: 'ADR-0001',
     title: 'Example',
@@ -22,6 +50,10 @@ function document(overrides: Record<string, unknown>): any {
     references: [],
     series: 'ADR',
     seriesPosition: 1,
+    relationships: {
+      outgoing: [],
+      incoming: [],
+    },
     ...overrides,
   };
 }
@@ -36,7 +68,9 @@ describe('content governance', () => {
     const issues: Array<Record<string, unknown>> = [];
     const current = document({ status: 'proposed' });
     validateIdentifierAndLifecycle(current, { status: 'accepted' }, issues);
-    expect(issues.some((issue) => issue.code === 'CONTENT_LIFECYCLE_TRANSITION_INVALID')).toBe(true);
+    expect(
+      issues.some((issue) => issue.code === 'CONTENT_LIFECYCLE_TRANSITION_INVALID'),
+    ).toBe(true);
   });
 
   it('builds reverse references and supersession inverses', () => {

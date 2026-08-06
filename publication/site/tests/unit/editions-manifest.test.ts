@@ -35,7 +35,7 @@ describe('edition manifest compiler', () => {
     expect(
       manifest.editions
         .find((edition) => edition.key === 'reference')
-        ?.documents.map((entry) => entry.id),
+        ?.documents.map((entry: { id: string }) => entry.id),
     ).toEqual(['MKE-CORE-0001', 'MKE-CORE-0002']);
   });
 });
