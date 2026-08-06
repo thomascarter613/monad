@@ -1,0 +1,8 @@
+Backup: /data/MONAD/monad/.monad/backups/publication-site/STAB-0007-20260806T082659Z.tar.gz
+Applied STAB-0007 to publication/site.
+Skipped 8 suggested fixes.
+If you wish to apply the suggested (unsafe) fixes, use the command biome check --write --unsafe
+
+Checked 210 files in 315ms. Fixed 11 files.
+Found 2 errors.
+Found 8 warnings.
