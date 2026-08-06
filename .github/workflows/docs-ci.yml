@@ -55,7 +55,7 @@ jobs:
       - run: bun run verify:ci
       - name: Upload coverage and content reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: docs-quality-${{ github.run_id }}
           path: |
@@ -83,7 +83,7 @@ jobs:
       - run: bun run operations:security
       - name: Upload browser and operational reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: docs-browser-${{ github.run_id }}
           path: |
