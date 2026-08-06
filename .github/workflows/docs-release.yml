@@ -79,7 +79,7 @@ jobs:
           if [[ "${{ steps.release.outputs.article_pdfs }}" == "true" ]]; then args+=(--article-pdfs); fi
           bun run publication:build -- "${args[@]}"
       - run: bun run publication:verify -- "dist/publications/${{ steps.release.outputs.edition }}/${{ steps.release.outputs.version }}"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: monad-docs-${{ steps.release.outputs.edition }}-${{ steps.release.outputs.version }}
           path: publication/site/dist/publications/${{ steps.release.outputs.edition }}/${{ steps.release.outputs.version }}
