@@ -57,6 +57,6 @@ Update this register when WC-0002 formally begins, an implementation packet is a
 
 ## WP-MSC-0007 Status
 
-WP-MSC-0007 applied static reconciliation, but a required validation gate did not pass. The implementation threshold remains undeclared, M-002 remains active, and WP-MSC-0001 through WP-MSC-0006 remain planned.
+WP-MSC-0007 passed static and publication-content validation. The compiler implementation threshold is declared. M-002 is eligible for closure, and WP-MSC-0001 is eligible for activation; WP-MSC-0002 through WP-MSC-0006 remain dependency-gated.
 
 <!-- WP-MSC-0007-STATUS:END -->

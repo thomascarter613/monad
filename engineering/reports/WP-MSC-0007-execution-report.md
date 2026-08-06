@@ -4,7 +4,7 @@ artifact:
   type: engineering.report
 metadata:
   title: WP-MSC-0007 Execution Report
-  status: completed
+  status: blocked
   executed: 2026-08-06
 ---
 
@@ -13,7 +13,7 @@ metadata:
 ## Outcome
 
 ```text
-PASS — IMPLEMENTATION THRESHOLD DECLARED
+CONDITIONAL FAIL — IMPLEMENTATION THRESHOLD NOT DECLARED
 ```
 
 ## Applied Scope
@@ -29,49 +29,27 @@ Strategy B: preserve legacy source while defining deterministic, lossless compat
 
 ## Relationship Repairs
 
-- MSL-CORE-000 -> MSL-CORE-0006
-- MSL-CORE-000 -> MSL-CORE-0007
-- MSL-CORE-000 -> MSL-CORE-0008
-- MSL-CORE-000 -> MSL-CORE-0009
-- MKE-CORE-000 -> MKE-CORE-0001
-- MKE-CORE-000 -> MKE-CORE-0002
-- MKE-CORE-000 -> MKE-CORE-0003
-- MKE-CORE-000 -> MKE-CORE-0004
-- MKE-CORE-000 -> MKE-CORE-0005
-- MKE-CORE-000 -> MKE-CORE-0006
-- MKE-CORE-000 -> MKE-CORE-0007
-- MKE-CORE-000 -> MKE-CORE-0008
+- No truncated IDs required replacement.
 
 ## Validation
 
 | Gate | Exit | Result |
 | --- | ---: | --- |
 | Static reconciliation | 0 | PASS |
-| Publication content validation | 0 | PASS |
+| Publication content validation | 1 | FAIL or SKIPPED |
 
-Logs: `.monad/backups/wp-msc-0007/20260806T215031Z`
+Logs: `.monad/backups/wp-msc-0007/20260806T215649Z`
 
 ## Second Review
 
-Outcome: **PASS**.
+Outcome: **CONDITIONAL FAIL**.
 
 ## Threshold
 
-Created `engineering/increments/PI-002-COMPILER-IMPLEMENTATION-THRESHOLD.md`.
+Not created; M-002 remains blocked.
 
 ## Static Changes
 
-- `engineering/work-packets/WP-MSC-0007.md`
-- `specifications/MSC/core/MSC-CORE-0008.md`
-- `specifications/MSC/core/MSC-CORE-0009.md`
-- `specifications/MSC/core/MSC-CORE-0010.md`
-- `specifications/MSC/core/MSC-CORE-0001.md`
-- `specifications/MSC/core/MSC-CORE-0002.md`
-- `specifications/MSC/core/MSC-CORE-0004.md`
-- `specifications/MSC/core/MSC-CORE-0006.md`
-- `specifications/MSC/core/MSC-CORE-0007.md`
-- `specifications/MSC/core/MSC-CORE-0001.md`
-- `specifications/registry/specifications.yaml`
 - `specifications/MSC/core/README.md`
 
 ## Version-Control Boundary

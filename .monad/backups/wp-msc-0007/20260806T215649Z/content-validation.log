@@ -1,0 +1,215 @@
+$ bun run scripts/content/sync.mjs --check
+ERROR CONTENT_DUPLICATE_ID engineering/work-cycles/WC-0002.md: Duplicate identifier WC-0002; first used by engineering/work-cycles/WC-0002-DIAGNOSTICS-INCREMENTALITY-AND-REPRODUCIBILITY-REVIEW.md.
+ERROR CONTENT_LIFECYCLE_TRANSITION_INVALID engineering/work-cycles/WC-0002.md: WC-0002 cannot transition from accepted to draft. Allowed transitions: accepted, active, deprecated, superseded, archived.
+ERROR CONTENT_SERIES_POSITION_DUPLICATE engineering/work-cycles/WC-0002.md: Series WC position 2 is used by both WC-0002 and WC-0002.
+WARN  CONTENT_SERIES_POSITION_GAP: Series ADR is missing positions 4, 6.
+WARN  CONTENT_SERIES_POSITION_GAP: Series BL is missing positions 3, 4.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/increments/PI-002-COMPILER-SPECIFICATION-CONSISTENCY-REVIEW.md: PI-002-COMPILER-SPECIFICATION-CONSISTENCY-REVIEW declares references -> M-003, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/increments/PI-002-COMPILER-SPECIFICATION-CONSISTENCY-REVIEW.md: PI-002-COMPILER-SPECIFICATION-CONSISTENCY-REVIEW declares references -> MONAD-VISION-ARCHITECTURE-MAP, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/increments/PI-002-COMPILER-SPECIFICATION-CONSISTENCY-REVIEW.md: PI-002-COMPILER-SPECIFICATION-CONSISTENCY-REVIEW declares references -> MONAD-VISION-COMPILER-PIPELINE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/increments/PI-002-COMPILER-SPECIFICATION-CONSISTENCY-REVIEW.md: PI-002-COMPILER-SPECIFICATION-CONSISTENCY-REVIEW declares references -> MONAD-VISION-GLOSSARY, but the target is not in the publication registry.
+WARN  CONTENT_ID_INFERRED engineering/increments/PI-002.md: No document identifier was found; using stable generated identifier UNTRACKED-13B0236A9D.
+WARN  CONTENT_EMPTY_BODY engineering/increments/README.md: Document has no body content.
+WARN  CONTENT_ID_INFERRED engineering/increments/README.md: No document identifier was found; using stable generated identifier UNTRACKED-5026BEB3E1.
+WARN  CONTENT_EMPTY_BODY engineering/increments/roadmap.md: Document has no body content.
+WARN  CONTENT_ID_INFERRED engineering/increments/roadmap.md: No document identifier was found; using stable generated identifier UNTRACKED-95465FD5D3.
+WARN  CONTENT_ID_INFERRED engineering/PROJECT-STATUS.md: No document identifier was found; using stable generated identifier UNTRACKED-FB0E29BDDE.
+WARN  CONTENT_BROKEN_DOCUMENT_LINK engineering/work-cycles/WC-0001-SEMANTIC-GRAPH-CONSTRUCTION-REVIEW.md: Document link ../../vision/architecture-map.md does not resolve to an ingested Markdown file.
+WARN  CONTENT_BROKEN_DOCUMENT_LINK engineering/work-cycles/WC-0001-SEMANTIC-GRAPH-CONSTRUCTION-REVIEW.md: Document link ../../vision/compiler-pipeline.md does not resolve to an ingested Markdown file.
+WARN  CONTENT_BROKEN_DOCUMENT_LINK engineering/work-cycles/WC-0001-SEMANTIC-GRAPH-CONSTRUCTION-REVIEW.md: Document link ../../vision/knowledge-lifecycle.md does not resolve to an ingested Markdown file.
+WARN  CONTENT_BROKEN_DOCUMENT_LINK engineering/work-cycles/WC-0001-SEMANTIC-GRAPH-CONSTRUCTION-REVIEW.md: Document link ../../vision/constitution.md does not resolve to an ingested Markdown file.
+WARN  CONTENT_ID_INFERRED engineering/work-packets/active.md: No document identifier was found; using stable generated identifier UNTRACKED-9C8594C2AC.
+WARN  CONTENT_ID_INFERRED engineering/work-packets/backlog.md: No document identifier was found; using stable generated identifier UNTRACKED-F336851316.
+WARN  CONTENT_ID_INFERRED engineering/work-packets/completed.md: No document identifier was found; using stable generated identifier UNTRACKED-E4D0EB66FA.
+WARN  CONTENT_ID_INFERRED engineering/work-packets/README.md: No document identifier was found; using stable generated identifier UNTRACKED-92C52FFA8F.
+WARN  CONTENT_ID_INFERRED engineering/work-packets/templates/work-packet-template.md: No document identifier was found; using stable generated identifier UNTRACKED-3176357044.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-AF-0008.md: WP-AF-0008 declares references -> KIR-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-AF-0008.md: WP-AF-0008 declares references -> MAE-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-AF-0008.md: WP-AF-0008 declares references -> MGO-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-AF-0008.md: WP-AF-0008 declares references -> MKE-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-AF-0008.md: WP-AF-0008 declares references -> MPE-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-AF-0008.md: WP-AF-0008 declares references -> MSG-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-AF-0009.md: WP-AF-0009 declares references -> M-001, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-AF-0009.md: WP-AF-0009 declares references -> MONAD-VISION-ARCHITECTURE-MAP, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-AF-0009.md: WP-AF-0009 declares references -> MONAD-VISION-COMPILER-PIPELINE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-AF-0009.md: WP-AF-0009 declares references -> MONAD-VISION-ECOSYSTEM, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-AF-0009.md: WP-AF-0009 declares references -> MONAD-VISION-GLOSSARY, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-AF-0009.md: WP-AF-0009 declares references -> MONAD-VISION-KNOWLEDGE-LIFECYCLE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-AF-0009.md: WP-AF-0009 declares references -> MONAD-VISION-LAWS, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-AF-0009.md: WP-AF-0009 declares references -> MONAD-VISION-MANIFESTO, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-AF-0009.md: WP-AF-0009 declares references -> MONAD-VISION-PRINCIPLES, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-MSC-0005.md: WP-MSC-0005 declares references -> MGO-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-MSC-0005.md: WP-MSC-0005 declares references -> MSG-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-MSC-0006.md: WP-MSC-0006 declares references -> KIR-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-MSC-0006.md: WP-MSC-0006 declares references -> MKE-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-MSC-0006.md: WP-MSC-0006 declares references -> MSG-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-MSC-0007.md: WP-MSC-0007 declares references -> M-003-COMPILER-BOOTSTRAP, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-MSC-0007.md: WP-MSC-0007 declares references -> MONAD-VISION-ARCHITECTURE-MAP, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-MSC-0007.md: WP-MSC-0007 declares references -> MONAD-VISION-COMPILER-PIPELINE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-MSC-0007.md: WP-MSC-0007 declares references -> MONAD-VISION-CONSTITUTION, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-MSC-0007.md: WP-MSC-0007 declares references -> MONAD-VISION-GLOSSARY, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-PUB-0001-content-governance-cleanup.md: WP-PUB-0001 declares references -> M-002, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-PUB-0001-content-governance-cleanup.md: WP-PUB-0001 declares references -> M-005, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-PUB-0001-content-governance-cleanup.md: WP-PUB-0001 declares references -> PI-002, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-PUB-0001-content-governance-cleanup.md: WP-PUB-0001 declares references -> SITE-0012, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-PUB-0001-content-governance-cleanup.md: WP-PUB-0001 declares references -> STAB-0001, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-PUB-0001-content-governance-cleanup.md: WP-PUB-0001 declares references -> STAB-0002, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-PUB-0001-content-governance-cleanup.md: WP-PUB-0001 declares references -> STAB-0003, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-PUB-0001-content-governance-cleanup.md: WP-PUB-0001 declares references -> STAB-0004, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-PUB-0001-content-governance-cleanup.md: WP-PUB-0001 declares references -> STAB-0005, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-PUB-0001-content-governance-cleanup.md: WP-PUB-0001 declares references -> STAB-0006, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-PUB-0001-content-governance-cleanup.md: WP-PUB-0001 declares references -> STAB-0007, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING engineering/work-packets/WP-PUB-0001-content-governance-cleanup.md: WP-PUB-0001 declares references -> STAB-0008, but the target is not in the publication registry.
+WARN  CONTENT_BROKEN_DOCUMENT_LINK journal/011-designing-the-semantic-graph.md: Document link ../vision/compiler-pipeline.md does not resolve to an ingested Markdown file.
+WARN  CONTENT_BROKEN_DOCUMENT_LINK journal/011-designing-the-semantic-graph.md: Document link ../vision/knowledge-lifecycle.md does not resolve to an ingested Markdown file.
+WARN  CONTENT_BROKEN_DOCUMENT_LINK journal/011-designing-the-semantic-graph.md: Document link ../vision/constitution.md does not resolve to an ingested Markdown file.
+WARN  CONTENT_ID_INFERRED journal/011-designing-the-semantic-graph.md: No document identifier was found; using stable generated identifier UNTRACKED-4D2AD46AB5.
+WARN  CONTENT_RELATION_TARGET_MISSING journal/011-designing-the-semantic-graph.md: UNTRACKED-4D2AD46AB5 declares references -> SPECIFICATIONS/MSC/CORE/MSC-CORE-0008.MD, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING journal/011-designing-the-semantic-graph.md: UNTRACKED-4D2AD46AB5 declares references -> VISION/COMPILER-PIPELINE.MD, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING journal/011-designing-the-semantic-graph.md: UNTRACKED-4D2AD46AB5 declares references -> VISION/CONSTITUTION.MD, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING journal/011-designing-the-semantic-graph.md: UNTRACKED-4D2AD46AB5 declares references -> VISION/KNOWLEDGE-LIFECYCLE.MD, but the target is not in the publication registry.
+WARN  CONTENT_ID_INFERRED journal/012-designing-diagnostics-incrementality-and-reproducibility.md: No document identifier was found; using stable generated identifier UNTRACKED-D0BBFE0A5D.
+WARN  CONTENT_RELATION_TARGET_MISSING journal/012-designing-diagnostics-incrementality-and-reproducibility.md: UNTRACKED-D0BBFE0A5D declares references -> ENGINEERING/INCREMENTS/PI-002.MD, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING journal/012-designing-diagnostics-incrementality-and-reproducibility.md: UNTRACKED-D0BBFE0A5D declares references -> JOURNAL/011-DESIGNING-THE-SEMANTIC-GRAPH.MD, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING journal/012-designing-diagnostics-incrementality-and-reproducibility.md: UNTRACKED-D0BBFE0A5D declares references -> SPECIFICATIONS/MSC/CORE/MSC-CORE-0008.MD, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING journal/012-designing-diagnostics-incrementality-and-reproducibility.md: UNTRACKED-D0BBFE0A5D declares references -> SPECIFICATIONS/MSC/CORE/MSC-CORE-0009.MD, but the target is not in the publication registry.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/AGENTS.md: No document identifier was found; using stable generated identifier UNTRACKED-6DFB46B402.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MART/core/README.md: No document identifier was found; using stable generated identifier UNTRACKED-0A60C3D70E.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/ai/MKE-AI-0002.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/ai/MKE-AI-0003.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/ai/MKE-AI-0004.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/ai/MKE-AI-0005.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/ai/MKE-AI-0006.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/artifact/MKE-ARTIFACT-0004.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/artifact/MKE-ARTIFACT-0005.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/artifact/MKE-ARTIFACT-0006.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/core/MKE-CORE-0004.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/graph/MKE-GRAPH-0001.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/graph/MKE-GRAPH-0002.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/graph/MKE-GRAPH-0003.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/graph/MKE-GRAPH-0004.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/graph/MKE-GRAPH-0005.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/graph/MKE-GRAPH-0006.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/implementation/MKE-IMPL-0001.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/implementation/MKE-IMPL-0002.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/implementation/MKE-IMPL-0003.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/implementation/MKE-IMPL-0004.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/implementation/MKE-IMPL-0005.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/implementation/MKE-IMPL-0006.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/operations/MKE-OPS-0001.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/operations/MKE-OPS-0002.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/operations/MKE-OPS-0003.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/operations/MKE-OPS-0004.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/search/MKE-SEARCH-0001.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/search/MKE-SEARCH-0002.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/search/MKE-SEARCH-0003.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/search/MKE-SEARCH-0004.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/search/MKE-SEARCH-0005.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/search/MKE-SEARCH-0006.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/security/MKE-SECURITY-0001.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/security/MKE-SECURITY-0002.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/security/MKE-SECURITY-0003.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/security/MKE-SECURITY-0004.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/sync/MKE-SYNC-0001.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/sync/MKE-SYNC-0002.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/sync/MKE-SYNC-0003.md: Document has no body content.
+WARN  CONTENT_EMPTY_BODY specifications/MKE/sync/MKE-SYNC-0004.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/monad-architecture-map.md: No document identifier was found; using stable generated identifier UNTRACKED-F7D72E748C.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0001.md: MSC-CORE-0001 declares references -> ADR-0004, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0001.md: MSC-CORE-0001 declares references -> ADR-0006, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0001.md: MSC-CORE-0001 declares references -> KIR-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0001.md: MSC-CORE-0001 declares references -> MSG-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0001.md: MSC-CORE-0001 declares references -> MSL-CONSTRAINT, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0001.md: MSC-CORE-0001 declares references -> MSL-DOCUMENT, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0001.md: MSC-CORE-0001 declares references -> MSL-EXPR, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0001.md: MSC-CORE-0001 declares references -> MSL-TYPE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0003.md: MSC-CORE-0003 declares references -> MART-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0004.md: MSC-CORE-0004 declares references -> MART-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0005.md: MSC-CORE-0005 declares references -> MART-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0005.md: MSC-CORE-0005 declares references -> MSG-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0006.md: MSC-CORE-0006 declares references -> KIR-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0006.md: MSC-CORE-0006 declares references -> MART-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0006.md: MSC-CORE-0006 declares references -> MSG-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0007.md: MSC-CORE-0007 declares references -> KIR-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0007.md: MSC-CORE-0007 declares references -> MART-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0007.md: MSC-CORE-0007 declares references -> MSG-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0008.md: MSC-CORE-0008 declares references -> ADR-0004, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0008.md: MSC-CORE-0008 declares references -> ADR-0006, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0008.md: MSC-CORE-0008 declares references -> KIR-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0008.md: MSC-CORE-0008 declares references -> MAE-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0008.md: MSC-CORE-0008 declares references -> MART-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0008.md: MSC-CORE-0008 declares references -> MGO-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0008.md: MSC-CORE-0008 declares references -> MKE-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0008.md: MSC-CORE-0008 declares references -> MPE-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0008.md: MSC-CORE-0008 declares references -> MSG-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0009.md: MSC-CORE-0009 declares references -> ADR-0004, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0009.md: MSC-CORE-0009 declares references -> ADR-0006, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0009.md: MSC-CORE-0009 declares references -> KIR-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0009.md: MSC-CORE-0009 declares references -> MAE-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0009.md: MSC-CORE-0009 declares references -> MART-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0009.md: MSC-CORE-0009 declares references -> MGO-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0009.md: MSC-CORE-0009 declares references -> MKE-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0009.md: MSC-CORE-0009 declares references -> MPE-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0009.md: MSC-CORE-0009 declares references -> MSC-CACHE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0009.md: MSC-CORE-0009 declares references -> MSC-DIAGNOSTIC, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0009.md: MSC-CORE-0009 declares references -> MSC-INCREMENTAL, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0009.md: MSC-CORE-0009 declares references -> MSC-OBSERVABILITY, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0009.md: MSC-CORE-0009 declares references -> MSC-REPRODUCIBILITY, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0009.md: MSC-CORE-0009 declares references -> MSG-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0010.md: MSC-CORE-0010 declares references -> ADR-0004, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0010.md: MSC-CORE-0010 declares references -> ADR-0006, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0010.md: MSC-CORE-0010 declares references -> KIR-BACKEND, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0010.md: MSC-CORE-0010 declares references -> KIR-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0010.md: MSC-CORE-0010 declares references -> KIR-GENERATION, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0010.md: MSC-CORE-0010 declares references -> MAE-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0010.md: MSC-CORE-0010 declares references -> MART-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0010.md: MSC-CORE-0010 declares references -> MGO-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0010.md: MSC-CORE-0010 declares references -> MKE-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0010.md: MSC-CORE-0010 declares references -> MONAD-SELF-HOSTING, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0010.md: MSC-CORE-0010 declares references -> MPE-CORE, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0010.md: MSC-CORE-0010 declares references -> MSC-BOOTSTRAP, but the target is not in the publication registry.
+WARN  CONTENT_RELATION_TARGET_MISSING specifications/MSC/core/MSC-CORE-0010.md: MSC-CORE-0010 declares references -> MSG-CORE, but the target is not in the publication registry.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/constraints/ast.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/constraints/ast.md: No document identifier was found; using stable generated identifier UNTRACKED-52F19250EA.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/constraints/grammar.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/constraints/grammar.md: No document identifier was found; using stable generated identifier UNTRACKED-1D755822E7.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/core/compiler.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/core/compiler.md: No document identifier was found; using stable generated identifier UNTRACKED-57D24104B5.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/core/language.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/core/language.md: No document identifier was found; using stable generated identifier UNTRACKED-33F9B69564.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/document/ast.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/document/ast.md: No document identifier was found; using stable generated identifier UNTRACKED-873290C639.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/document/grammar.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/document/grammar.md: No document identifier was found; using stable generated identifier UNTRACKED-4E22507925.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/expressions/ast.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/expressions/ast.md: No document identifier was found; using stable generated identifier UNTRACKED-091EE4B0A8.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/expressions/grammar.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/expressions/grammar.md: No document identifier was found; using stable generated identifier UNTRACKED-BEA39324AD.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/policy/ast.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/policy/ast.md: No document identifier was found; using stable generated identifier UNTRACKED-44C21BC096.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/policy/grammar.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/policy/grammar.md: No document identifier was found; using stable generated identifier UNTRACKED-9C39A37655.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/query/ast.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/query/ast.md: No document identifier was found; using stable generated identifier UNTRACKED-4ED6BF857F.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/query/grammar.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/query/grammar.md: No document identifier was found; using stable generated identifier UNTRACKED-41EBFB6764.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/state-machine/ast.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/state-machine/ast.md: No document identifier was found; using stable generated identifier UNTRACKED-A22BB3C862.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/state-machine/grammar.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/state-machine/grammar.md: No document identifier was found; using stable generated identifier UNTRACKED-F63FDDDE60.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/transform/ast.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/transform/ast.md: No document identifier was found; using stable generated identifier UNTRACKED-9EE606CC67.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/transform/grammar.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/transform/grammar.md: No document identifier was found; using stable generated identifier UNTRACKED-CA14332209.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/types/ast.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/types/ast.md: No document identifier was found; using stable generated identifier UNTRACKED-A609ED67A4.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/types/grammar.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/types/grammar.md: No document identifier was found; using stable generated identifier UNTRACKED-556CF754EB.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/workflow/ast.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/workflow/ast.md: No document identifier was found; using stable generated identifier UNTRACKED-6C5C155E54.
+WARN  CONTENT_EMPTY_BODY specifications/MSL/workflow/grammar.md: Document has no body content.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/MSL/workflow/grammar.md: No document identifier was found; using stable generated identifier UNTRACKED-48E9DC5998.
+WARN  CONTENT_REQUIRED_ID_INFERRED specifications/registry/README.md: No document identifier was found; using stable generated identifier UNTRACKED-B1F1F5FA35.
+Content rejected: 167 canonical document(s), 30 series, 1 redirect(s), 208 warning(s), 3 error(s).
+Content ingestion failed with 3 error(s) and 208 warning(s).
+error: script "content:validate" exited with code 1
