@@ -1,57 +1,51 @@
 ---
-
-artifact:
-id: MSL-CORE-0006
-type: knowledge.specification
-namespace: monad
-
-metadata:
-title: Abstract Syntax Tree Model
-version: 0.1.0
-status: draft
-created: 2026-08-04
+id: "MSL-CORE-0006"
+title: "Abstract Syntax Tree Model"
+type: "knowledge.specification"
+namespace: "monad"
+series: "MSL-CORE"
+series_position: 6
+version: "0.1.0"
+status: "draft"
+created: "2026-08-04"
 authors:
-- Monad Architecture Team
+  - "Monad Architecture Team"
 tags:
-- msl
-- ast
-- compiler
-- syntax-tree
-- semantic-model
-- source-mapping
-- incremental-compilation
-
-relationships:
+  - "msl"
+  - "ast"
+  - "compiler"
+  - "syntax-tree"
+  - "semantic-model"
+  - "source-mapping"
+  - "incremental-compilation"
 depends_on:
-- ADR-0002
-- ADR-0003
-- MSL-CORE-0001
-- MSL-CORE-0002
-- MSL-CORE-0003
-- MSL-CORE-0004
-- MSL-CORE-0005
+  - "ADR-0002"
+  - "ADR-0003"
+  - "MSL-CORE-0001"
+  - "MSL-CORE-0002"
+  - "MSL-CORE-0003"
+  - "MSL-CORE-0004"
+  - "MSL-CORE-0005"
 references:
-- MKE-CORE-0002
-- MKE-CORE-0003
-- MKE-CORE-0004
-- MKE-CORE-0005
-- MKE-CORE-0010
+  - "MKE-CORE-0002"
+  - "MKE-CORE-0003"
+  - "MKE-CORE-0004"
+  - "MKE-CORE-0005"
+  - "MKE-CORE-0010"
 enables:
-- MSL-CORE-0007
-- MSL-CORE-0008
-- MSL-CORE-0009
-- MSL-CORE-0010
-- MSC-CORE
-- KIR-CORE
-- MSL-FRONTEND
-- MSL-EDITOR
-
-compilation:
-language: msl-markdown
-language_version: bootstrap
-profile: machine
-source_role: primary
-status: bootstrap
+  - "MSL-CORE-0007"
+  - "MSL-CORE-0008"
+  - "MSL-CORE-0009"
+  - "MSL-CORE-0010"
+  - "MSC-CORE"
+  - "KIR-CORE"
+  - "MSL-FRONTEND"
+  - "MSL-EDITOR"
+compilation_language: "msl-markdown"
+compilation_language_version: "bootstrap"
+compilation_profile: "machine"
+compilation_source_role: "primary"
+compilation_status: "bootstrap"
 ---
 
 # MSL-CORE-0006 — Abstract Syntax Tree Model

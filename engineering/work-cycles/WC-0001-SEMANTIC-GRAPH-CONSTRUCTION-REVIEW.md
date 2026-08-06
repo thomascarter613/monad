@@ -1,4 +1,7 @@
 ---
+id: WC-REVIEW-0001
+series: WC-REVIEW
+series_position: 1
 title: "WC-0001 — Semantic Graph Construction Review"
 description: "Acceptance and consistency review for MSC-CORE-0008 and its six implementation work packets."
 date: 2026-08-06

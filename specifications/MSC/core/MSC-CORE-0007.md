@@ -1,81 +1,75 @@
 ---
-
-artifact:
-id: MSC-CORE-0007
-type: knowledge.specification
-namespace: monad
-
-metadata:
-title: Type, Constraint, and Semantic Analysis
-version: 0.1.0
-status: draft
-created: 2026-08-05
+id: "MSC-CORE-0007"
+title: "Type, Constraint, and Semantic Analysis"
+type: "knowledge.specification"
+namespace: "monad"
+series: "MSC-CORE"
+series_position: 7
+version: "0.1.0"
+status: "draft"
+created: "2026-08-05"
 authors:
-- Monad Architecture Team
+  - "Monad Architecture Team"
 tags:
-- msc
-- semantic-analysis
-- types
-- constraints
-- invariants
-- authority
-- lifecycle
-- compatibility
-- semantic-graphs
-
-relationships:
+  - "msc"
+  - "semantic-analysis"
+  - "types"
+  - "constraints"
+  - "invariants"
+  - "authority"
+  - "lifecycle"
+  - "compatibility"
+  - "semantic-graphs"
 depends_on:
-- ADR-0002
-- ADR-0003
-- ADR-0004
-- ADR-0005
-- ADR-0006
-- ADR-0007
-- MSL-CORE-0003
-- MSL-CORE-0004
-- MSL-CORE-0006
-- MSL-CORE-0007
-- MSL-CORE-0008
-- MSL-CORE-0009
-- MSL-CORE-0010
-- MSC-CORE-0001
-- MSC-CORE-0002
-- MSC-CORE-0003
-- MSC-CORE-0004
-- MSC-CORE-0005
-- MSC-CORE-0006
+  - "ADR-0002"
+  - "ADR-0003"
+  - "ADR-0004"
+  - "ADR-0005"
+  - "ADR-0006"
+  - "ADR-0007"
+  - "MSL-CORE-0003"
+  - "MSL-CORE-0004"
+  - "MSL-CORE-0006"
+  - "MSL-CORE-0007"
+  - "MSL-CORE-0008"
+  - "MSL-CORE-0009"
+  - "MSL-CORE-0010"
+  - "MSC-CORE-0001"
+  - "MSC-CORE-0002"
+  - "MSC-CORE-0003"
+  - "MSC-CORE-0004"
+  - "MSC-CORE-0005"
+  - "MSC-CORE-0006"
 references:
-- MART-CORE
-- MSG-CORE
-- KIR-CORE
-- MKE-CORE-0002
-- MKE-CORE-0003
-- MKE-CORE-0004
-- MKE-CORE-0005
-- MKE-CORE-0008
-- MKE-CORE-0009
-- MKE-CORE-0010
+  - "MART-CORE"
+  - "MSG-CORE"
+  - "KIR-CORE"
+  - "MKE-CORE-0002"
+  - "MKE-CORE-0003"
+  - "MKE-CORE-0004"
+  - "MKE-CORE-0005"
+  - "MKE-CORE-0008"
+  - "MKE-CORE-0009"
+  - "MKE-CORE-0010"
 enables:
-- MSC-CORE-0008
-- MSC-CORE-0009
-- MSC-CORE-0010
-- MSC-TYPE
-- MSC-CONSTRAINT
-- MSC-SEMANTIC
-- MSL-TYPE
-- MSL-EXPR
-- MSL-CONSTRAINT
-- MSL-POLICY
-- MSG-CORE
-- KIR-CORE
-
-compilation:
-language: msl-markdown
-language_version: bootstrap
-profile: machine
-source_role: primary
-status: bootstrap
------------------
+  - "MSC-CORE-0008"
+  - "MSC-CORE-0009"
+  - "MSC-CORE-0010"
+  - "MSC-TYPE"
+  - "MSC-CONSTRAINT"
+  - "MSC-SEMANTIC"
+  - "MSL-TYPE"
+  - "MSL-EXPR"
+  - "MSL-CONSTRAINT"
+  - "MSL-POLICY"
+  - "MSG-CORE"
+  - "KIR-CORE"
+compilation_language: "msl-markdown"
+compilation_language_version: "bootstrap"
+compilation_profile: "machine"
+compilation_source_role: "primary"
+compilation_status: "bootstrap"
+---
 
 # MSC-CORE-0007 — Type, Constraint, and Semantic Analysis
 

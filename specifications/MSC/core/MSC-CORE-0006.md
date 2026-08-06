@@ -1,81 +1,75 @@
 ---
-
-artifact:
-id: MSC-CORE-0006
-type: knowledge.specification
-namespace: monad
-
-metadata:
-title: Namespace, Import, and Reference Resolution
-version: 0.1.0
-status: draft
-created: 2026-08-05
+id: "MSC-CORE-0006"
+title: "Namespace, Import, and Reference Resolution"
+type: "knowledge.specification"
+namespace: "monad"
+series: "MSC-CORE"
+series_position: 6
+version: "0.1.0"
+status: "draft"
+created: "2026-08-05"
 authors:
-- Monad Architecture Team
+  - "Monad Architecture Team"
 tags:
-- msc
-- namespaces
-- imports
-- exports
-- references
-- resolution
-- scope-graph
-- dependency-graph
-- semantic-analysis
-
-relationships:
+  - "msc"
+  - "namespaces"
+  - "imports"
+  - "exports"
+  - "references"
+  - "resolution"
+  - "scope-graph"
+  - "dependency-graph"
+  - "semantic-analysis"
 depends_on:
-- ADR-0002
-- ADR-0003
-- ADR-0004
-- ADR-0005
-- ADR-0006
-- ADR-0007
-- MSL-CORE-0004
-- MSL-CORE-0005
-- MSL-CORE-0006
-- MSL-CORE-0007
-- MSL-CORE-0008
-- MSL-CORE-0009
-- MSL-CORE-0010
-- MSC-CORE-0001
-- MSC-CORE-0002
-- MSC-CORE-0003
-- MSC-CORE-0004
-- MSC-CORE-0005
+  - "ADR-0002"
+  - "ADR-0003"
+  - "ADR-0004"
+  - "ADR-0005"
+  - "ADR-0006"
+  - "ADR-0007"
+  - "MSL-CORE-0004"
+  - "MSL-CORE-0005"
+  - "MSL-CORE-0006"
+  - "MSL-CORE-0007"
+  - "MSL-CORE-0008"
+  - "MSL-CORE-0009"
+  - "MSL-CORE-0010"
+  - "MSC-CORE-0001"
+  - "MSC-CORE-0002"
+  - "MSC-CORE-0003"
+  - "MSC-CORE-0004"
+  - "MSC-CORE-0005"
 references:
-- MART-CORE
-- MSG-CORE
-- KIR-CORE
-- MKE-CORE-0002
-- MKE-CORE-0003
-- MKE-CORE-0004
-- MKE-CORE-0005
-- MKE-CORE-0008
-- MKE-CORE-0009
-- MKE-CORE-0010
+  - "MART-CORE"
+  - "MSG-CORE"
+  - "KIR-CORE"
+  - "MKE-CORE-0002"
+  - "MKE-CORE-0003"
+  - "MKE-CORE-0004"
+  - "MKE-CORE-0005"
+  - "MKE-CORE-0008"
+  - "MKE-CORE-0009"
+  - "MKE-CORE-0010"
 enables:
-- MSC-CORE-0007
-- MSC-CORE-0008
-- MSC-CORE-0009
-- MSC-CORE-0010
-- MSC-NAMESPACE
-- MSC-REFERENCE
-- MSC-PACKAGE
-- MSG-CORE
-- KIR-CORE
-- MSL-PACKAGE
-- MSL-TYPE
-- MSL-EXPR
-- MSL-CONSTRAINT
-
-compilation:
-language: msl-markdown
-language_version: bootstrap
-profile: machine
-source_role: primary
-status: bootstrap
------------------
+  - "MSC-CORE-0007"
+  - "MSC-CORE-0008"
+  - "MSC-CORE-0009"
+  - "MSC-CORE-0010"
+  - "MSC-NAMESPACE"
+  - "MSC-REFERENCE"
+  - "MSC-PACKAGE"
+  - "MSG-CORE"
+  - "KIR-CORE"
+  - "MSL-PACKAGE"
+  - "MSL-TYPE"
+  - "MSL-EXPR"
+  - "MSL-CONSTRAINT"
+compilation_language: "msl-markdown"
+compilation_language_version: "bootstrap"
+compilation_profile: "machine"
+compilation_source_role: "primary"
+compilation_status: "bootstrap"
+---
 
 # MSC-CORE-0006 — Namespace, Import, and Reference Resolution
 

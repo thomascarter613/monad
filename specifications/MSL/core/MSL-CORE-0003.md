@@ -1,48 +1,42 @@
 ---
-
-artifact:
-id: MSL-CORE-0003
-type: knowledge.specification
-namespace: monad
-
-metadata:
-title: Normative Requirement Language
-version: 0.1.0
-status: draft
-created: 2026-08-03
+id: "MSL-CORE-0003"
+title: "Normative Requirement Language"
+type: "knowledge.specification"
+namespace: "monad"
+series: "MSL-CORE"
+series_position: 3
+version: "0.1.0"
+status: "draft"
+created: "2026-08-03"
 authors:
-- Monad Architecture Team
+  - "Monad Architecture Team"
 tags:
-- msl
-- requirements
-- normative-language
-- conformance
-- diagnostics
-
-relationships:
+  - "msl"
+  - "requirements"
+  - "normative-language"
+  - "conformance"
+  - "diagnostics"
 depends_on:
-- ADR-0002
-- MSL-CORE-0001
-- MSL-CORE-0002
+  - "ADR-0002"
+  - "MSL-CORE-0001"
+  - "MSL-CORE-0002"
 references:
-- MKE-CORE-0003
-- MKE-CORE-0005
-- MKE-CORE-0008
+  - "MKE-CORE-0003"
+  - "MKE-CORE-0005"
+  - "MKE-CORE-0008"
 enables:
-- MSL-CORE-0005
-- MSL-CORE-0006
-- MSL-CORE-0007
-- MSL-CORE-0009
-- MSC-CORE
-- KIR-CORE
-
-compilation:
-language: msl-markdown
-language_version: bootstrap
-profile: machine
-source_role: primary
-status: bootstrap
------------------
+  - "MSL-CORE-0005"
+  - "MSL-CORE-0006"
+  - "MSL-CORE-0007"
+  - "MSL-CORE-0009"
+  - "MSC-CORE"
+  - "KIR-CORE"
+compilation_language: "msl-markdown"
+compilation_language_version: "bootstrap"
+compilation_profile: "machine"
+compilation_source_role: "primary"
+compilation_status: "bootstrap"
+---
 
 # MSL-CORE-0003 — Normative Requirement Language
 

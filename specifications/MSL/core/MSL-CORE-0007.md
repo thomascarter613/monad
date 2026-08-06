@@ -1,62 +1,56 @@
 ---
-
-artifact:
-id: MSL-CORE-0007
-type: knowledge.specification
-namespace: monad
-
-metadata:
-title: Surface ASTs and Normalization Pipeline
-version: 0.1.0
-status: draft
-created: 2026-08-04
+id: "MSL-CORE-0007"
+title: "Surface ASTs and Normalization Pipeline"
+type: "knowledge.specification"
+namespace: "monad"
+series: "MSL-CORE"
+series_position: 7
+version: "0.1.0"
+status: "draft"
+created: "2026-08-04"
 authors:
-- Monad Architecture Team
+  - "Monad Architecture Team"
 tags:
-- msl
-- surface-ast
-- normalization
-- importers
-- compiler-pipeline
-- provenance
-- semantic-mapping
-
-relationships:
+  - "msl"
+  - "surface-ast"
+  - "normalization"
+  - "importers"
+  - "compiler-pipeline"
+  - "provenance"
+  - "semantic-mapping"
 depends_on:
-- ADR-0002
-- ADR-0003
-- ADR-0004
-- MSL-CORE-0001
-- MSL-CORE-0002
-- MSL-CORE-0003
-- MSL-CORE-0004
-- MSL-CORE-0005
-- MSL-CORE-0006
+  - "ADR-0002"
+  - "ADR-0003"
+  - "ADR-0004"
+  - "MSL-CORE-0001"
+  - "MSL-CORE-0002"
+  - "MSL-CORE-0003"
+  - "MSL-CORE-0004"
+  - "MSL-CORE-0005"
+  - "MSL-CORE-0006"
 references:
-- MKE-CORE-0002
-- MKE-CORE-0003
-- MKE-CORE-0004
-- MKE-CORE-0005
-- MKE-CORE-0008
-- MKE-CORE-0009
-- MKE-CORE-0010
+  - "MKE-CORE-0002"
+  - "MKE-CORE-0003"
+  - "MKE-CORE-0004"
+  - "MKE-CORE-0005"
+  - "MKE-CORE-0008"
+  - "MKE-CORE-0009"
+  - "MKE-CORE-0010"
 enables:
-- MSL-CORE-0008
-- MSL-CORE-0009
-- MSL-CORE-0010
-- MSC-CORE
-- KIR-CORE
-- MSL-FRONTEND
-- MSL-IMPORT
-- MSL-NORMALIZATION
-
-compilation:
-language: msl-markdown
-language_version: bootstrap
-profile: machine
-source_role: primary
-status: bootstrap
------------------
+  - "MSL-CORE-0008"
+  - "MSL-CORE-0009"
+  - "MSL-CORE-0010"
+  - "MSC-CORE"
+  - "KIR-CORE"
+  - "MSL-FRONTEND"
+  - "MSL-IMPORT"
+  - "MSL-NORMALIZATION"
+compilation_language: "msl-markdown"
+compilation_language_version: "bootstrap"
+compilation_profile: "machine"
+compilation_source_role: "primary"
+compilation_status: "bootstrap"
+---
 
 # MSL-CORE-0007 — Surface ASTs and Normalization Pipeline
 

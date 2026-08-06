@@ -1,51 +1,45 @@
 ---
-
-artifact:
-id: MSL-CORE-0001
-type: knowledge.specification
-namespace: monad
-
-metadata:
-title: Monad Specification Language Vision
-version: 0.1.0
-status: draft
-created: 2026-08-03
+id: "MSL-CORE-0001"
+title: "Monad Specification Language Vision"
+type: "knowledge.specification"
+namespace: "monad"
+series: "MSL-CORE"
+series_position: 1
+version: "0.1.0"
+status: "draft"
+created: "2026-08-03"
 authors:
-- Monad Architecture Team
+  - "Monad Architecture Team"
 tags:
-- msl
-- specification-language
-- knowledge-compiler
-- foundational
-- architecture
-
-relationships:
+  - "msl"
+  - "specification-language"
+  - "knowledge-compiler"
+  - "foundational"
+  - "architecture"
 depends_on:
-- ADR-0001
-- ADR-0002
-- MKE-CORE-0001
-- MKE-CORE-0002
+  - "ADR-0001"
+  - "ADR-0002"
+  - "MKE-CORE-0001"
+  - "MKE-CORE-0002"
 references:
-- MKE-CORE-0003
-- MKE-CORE-0004
-- MKE-CORE-0005
+  - "MKE-CORE-0003"
+  - "MKE-CORE-0004"
+  - "MKE-CORE-0005"
 enables:
-- MSL-CORE-0002
-- MSL-CORE-0003
-- MSL-CORE-0004
-- MSL-CORE-0005
-- MSL-CORE-0006
-- MSL-CORE-0007
-- MSL-CORE-0008
-- MSL-CORE-0009
-- MSL-CORE-0010
-- KIR-CORE
-- MSC-CORE
-
-compilation:
-language: msl-markdown
-language_version: bootstrap
-status: bootstrap
+  - "MSL-CORE-0002"
+  - "MSL-CORE-0003"
+  - "MSL-CORE-0004"
+  - "MSL-CORE-0005"
+  - "MSL-CORE-0006"
+  - "MSL-CORE-0007"
+  - "MSL-CORE-0008"
+  - "MSL-CORE-0009"
+  - "MSL-CORE-0010"
+  - "KIR-CORE"
+  - "MSC-CORE"
+compilation_language: "msl-markdown"
+compilation_language_version: "bootstrap"
+compilation_status: "bootstrap"
 ---
 
 # MSL-CORE-0001 — Monad Specification Language Vision

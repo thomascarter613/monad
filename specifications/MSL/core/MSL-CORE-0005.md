@@ -1,55 +1,50 @@
 ---
-artifact:
-id: MSL-CORE-0005
-type: knowledge.specification
-namespace: monad
-
-metadata:
-title: Language and Frontend Architecture
-version: 0.1.0
-status: draft
-created: 2026-08-04
+id: "MSL-CORE-0005"
+title: "Language and Frontend Architecture"
+type: "knowledge.specification"
+namespace: "monad"
+series: "MSL-CORE"
+series_position: 5
+version: "0.1.0"
+status: "draft"
+created: "2026-08-04"
 authors:
-- Monad Architecture Team
+  - "Monad Architecture Team"
 tags:
-- msl
-- frontend
-- language-architecture
-- compiler
-- parser
-- semantic-editor
-- multi-surface
-
-relationships:
+  - "msl"
+  - "frontend"
+  - "language-architecture"
+  - "compiler"
+  - "parser"
+  - "semantic-editor"
+  - "multi-surface"
 depends_on:
-- ADR-0002
-- ADR-0003
-- MSL-CORE-0001
-- MSL-CORE-0002
-- MSL-CORE-0003
-- MSL-CORE-0004
+  - "ADR-0002"
+  - "ADR-0003"
+  - "MSL-CORE-0001"
+  - "MSL-CORE-0002"
+  - "MSL-CORE-0003"
+  - "MSL-CORE-0004"
 references:
-- MKE-CORE-0002
-- MKE-CORE-0005
-- MKE-CORE-0008
-- MKE-CORE-0009
+  - "MKE-CORE-0002"
+  - "MKE-CORE-0005"
+  - "MKE-CORE-0008"
+  - "MKE-CORE-0009"
 enables:
-- MSL-CORE-0006
-- MSL-CORE-0007
-- MSL-CORE-0008
-- MSL-CORE-0009
-- MSL-CORE-0010
-- MSC-CORE
-- KIR-CORE
-- MSL-FRONTEND
-- MSL-RENDERER
-
-compilation:
-language: msl-markdown
-language_version: bootstrap
-profile: machine
-source_role: primary
-status: bootstrap
+  - "MSL-CORE-0006"
+  - "MSL-CORE-0007"
+  - "MSL-CORE-0008"
+  - "MSL-CORE-0009"
+  - "MSL-CORE-0010"
+  - "MSC-CORE"
+  - "KIR-CORE"
+  - "MSL-FRONTEND"
+  - "MSL-RENDERER"
+compilation_language: "msl-markdown"
+compilation_language_version: "bootstrap"
+compilation_profile: "machine"
+compilation_source_role: "primary"
+compilation_status: "bootstrap"
 ---
 
 # MSL-CORE-0005 — Language and Frontend Architecture

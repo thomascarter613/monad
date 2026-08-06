@@ -1,69 +1,63 @@
 ---
-
-artifact:
-id: MSC-CORE-0002
-type: knowledge.specification
-namespace: monad
-
-metadata:
-title: Compilation Pipeline and Phase Model
-version: 0.1.0
-status: draft
-created: 2026-08-04
+id: "MSC-CORE-0002"
+title: "Compilation Pipeline and Phase Model"
+type: "knowledge.specification"
+namespace: "monad"
+series: "MSC-CORE"
+series_position: 2
+version: "0.1.0"
+status: "draft"
+created: "2026-08-04"
 authors:
-- Monad Architecture Team
+  - "Monad Architecture Team"
 tags:
-- msc
-- compiler-pipeline
-- phases
-- passes
-- scheduling
-- semantic-graph
-- kir
-- incrementality
-
-relationships:
+  - "msc"
+  - "compiler-pipeline"
+  - "phases"
+  - "passes"
+  - "scheduling"
+  - "semantic-graph"
+  - "kir"
+  - "incrementality"
 depends_on:
-- ADR-0002
-- ADR-0003
-- ADR-0004
-- ADR-0005
-- ADR-0006
-- MSL-CORE-0001
-- MSL-CORE-0005
-- MSL-CORE-0006
-- MSL-CORE-0007
-- MSL-CORE-0008
-- MSL-CORE-0009
-- MSL-CORE-0010
-- MSC-CORE-0001
+  - "ADR-0002"
+  - "ADR-0003"
+  - "ADR-0004"
+  - "ADR-0005"
+  - "ADR-0006"
+  - "MSL-CORE-0001"
+  - "MSL-CORE-0005"
+  - "MSL-CORE-0006"
+  - "MSL-CORE-0007"
+  - "MSL-CORE-0008"
+  - "MSL-CORE-0009"
+  - "MSL-CORE-0010"
+  - "MSC-CORE-0001"
 references:
-- MKE-CORE-0002
-- MKE-CORE-0003
-- MKE-CORE-0004
-- MKE-CORE-0005
-- MKE-CORE-0008
-- MKE-CORE-0009
-- MKE-CORE-0010
+  - "MKE-CORE-0002"
+  - "MKE-CORE-0003"
+  - "MKE-CORE-0004"
+  - "MKE-CORE-0005"
+  - "MKE-CORE-0008"
+  - "MKE-CORE-0009"
+  - "MKE-CORE-0010"
 enables:
-- MSC-CORE-0003
-- MSC-CORE-0004
-- MSC-CORE-0005
-- MSC-CORE-0006
-- MSC-CORE-0007
-- MSC-CORE-0008
-- MSC-CORE-0009
-- MSC-CORE-0010
-- MSG-CORE
-- KIR-CORE
-
-compilation:
-language: msl-markdown
-language_version: bootstrap
-profile: machine
-source_role: primary
-status: bootstrap
------------------
+  - "MSC-CORE-0003"
+  - "MSC-CORE-0004"
+  - "MSC-CORE-0005"
+  - "MSC-CORE-0006"
+  - "MSC-CORE-0007"
+  - "MSC-CORE-0008"
+  - "MSC-CORE-0009"
+  - "MSC-CORE-0010"
+  - "MSG-CORE"
+  - "KIR-CORE"
+compilation_language: "msl-markdown"
+compilation_language_version: "bootstrap"
+compilation_profile: "machine"
+compilation_source_role: "primary"
+compilation_status: "bootstrap"
+---
 
 # MSC-CORE-0002 — Compilation Pipeline and Phase Model
 

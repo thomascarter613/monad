@@ -1,73 +1,67 @@
 ---
-
-artifact:
-id: MSL-CORE-0009
-type: knowledge.specification
-namespace: monad
-
-metadata:
-title: Document and Embedded Language Architecture
-version: 0.1.0
-status: draft
-created: 2026-08-04
+id: "MSL-CORE-0009"
+title: "Document and Embedded Language Architecture"
+type: "knowledge.specification"
+namespace: "monad"
+series: "MSL-CORE"
+series_position: 9
+version: "0.1.0"
+status: "draft"
+created: "2026-08-04"
 authors:
-- Monad Architecture Team
+  - "Monad Architecture Team"
 tags:
-- msl
-- document-language
-- embedded-languages
-- language-composition
-- parser-dispatch
-- semantic-regions
-- language-platform
-
-relationships:
+  - "msl"
+  - "document-language"
+  - "embedded-languages"
+  - "language-composition"
+  - "parser-dispatch"
+  - "semantic-regions"
+  - "language-platform"
 depends_on:
-- ADR-0002
-- ADR-0003
-- ADR-0004
-- ADR-0005
-- MSL-CORE-0001
-- MSL-CORE-0002
-- MSL-CORE-0003
-- MSL-CORE-0004
-- MSL-CORE-0005
-- MSL-CORE-0006
-- MSL-CORE-0007
-- MSL-CORE-0008
+  - "ADR-0002"
+  - "ADR-0003"
+  - "ADR-0004"
+  - "ADR-0005"
+  - "MSL-CORE-0001"
+  - "MSL-CORE-0002"
+  - "MSL-CORE-0003"
+  - "MSL-CORE-0004"
+  - "MSL-CORE-0005"
+  - "MSL-CORE-0006"
+  - "MSL-CORE-0007"
+  - "MSL-CORE-0008"
 references:
-- MKE-CORE-0002
-- MKE-CORE-0003
-- MKE-CORE-0004
-- MKE-CORE-0005
-- MKE-CORE-0008
-- MKE-CORE-0009
-- MKE-CORE-0010
+  - "MKE-CORE-0002"
+  - "MKE-CORE-0003"
+  - "MKE-CORE-0004"
+  - "MKE-CORE-0005"
+  - "MKE-CORE-0008"
+  - "MKE-CORE-0009"
+  - "MKE-CORE-0010"
 enables:
-- MSL-CORE-0010
-- MSL-DOCUMENT
-- MSL-TYPE
-- MSL-EXPR
-- MSL-CONSTRAINT
-- MSL-POLICY
-- MSL-WORKFLOW
-- MSL-STATE
-- MSL-QUERY
-- MSL-PATTERN
-- MSL-TRANSFORM
-- MSL-PACKAGE
-- MSL-FRONTEND
-- MSL-CONFORMANCE
-- MSC-CORE
-- KIR-CORE
-
-compilation:
-language: msl-markdown
-language_version: bootstrap
-profile: machine
-source_role: primary
-status: bootstrap
------------------
+  - "MSL-CORE-0010"
+  - "MSL-DOCUMENT"
+  - "MSL-TYPE"
+  - "MSL-EXPR"
+  - "MSL-CONSTRAINT"
+  - "MSL-POLICY"
+  - "MSL-WORKFLOW"
+  - "MSL-STATE"
+  - "MSL-QUERY"
+  - "MSL-PATTERN"
+  - "MSL-TRANSFORM"
+  - "MSL-PACKAGE"
+  - "MSL-FRONTEND"
+  - "MSL-CONFORMANCE"
+  - "MSC-CORE"
+  - "KIR-CORE"
+compilation_language: "msl-markdown"
+compilation_language_version: "bootstrap"
+compilation_profile: "machine"
+compilation_source_role: "primary"
+compilation_status: "bootstrap"
+---
 
 # MSL-CORE-0009 — Document and Embedded Language Architecture
 

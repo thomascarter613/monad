@@ -1,52 +1,46 @@
 ---
-
-artifact:
-id: MSL-CORE-0004
-type: knowledge.specification
-namespace: monad
-
-metadata:
-title: Metadata and Identity Model
-version: 0.1.0
-status: draft
-created: 2026-08-03
+id: "MSL-CORE-0004"
+title: "Metadata and Identity Model"
+type: "knowledge.specification"
+namespace: "monad"
+series: "MSL-CORE"
+series_position: 4
+version: "0.1.0"
+status: "draft"
+created: "2026-08-03"
 authors:
-- Monad Architecture Team
+  - "Monad Architecture Team"
 tags:
-- msl
-- metadata
-- identity
-- provenance
-- namespaces
-- artifact-model
-
-relationships:
+  - "msl"
+  - "metadata"
+  - "identity"
+  - "provenance"
+  - "namespaces"
+  - "artifact-model"
 depends_on:
-- ADR-0002
-- MSL-CORE-0001
-- MSL-CORE-0002
-- MSL-CORE-0003
-- MKE-CORE-0002
-- MKE-CORE-0005
+  - "ADR-0002"
+  - "MSL-CORE-0001"
+  - "MSL-CORE-0002"
+  - "MSL-CORE-0003"
+  - "MKE-CORE-0002"
+  - "MKE-CORE-0005"
 references:
-- MKE-ARTIFACT-0001
-- MKE-ARTIFACT-0002
-- MKE-ARTIFACT-0003
+  - "MKE-ARTIFACT-0001"
+  - "MKE-ARTIFACT-0002"
+  - "MKE-ARTIFACT-0003"
 enables:
-- MSL-CORE-0005
-- MSL-CORE-0006
-- MSL-CORE-0008
-- MSL-CORE-0010
-- KIR-CORE
-- MSC-CORE
-
-compilation:
-language: msl-markdown
-language_version: bootstrap
-profile: machine
-source_role: primary
-status: bootstrap
------------------
+  - "MSL-CORE-0005"
+  - "MSL-CORE-0006"
+  - "MSL-CORE-0008"
+  - "MSL-CORE-0010"
+  - "KIR-CORE"
+  - "MSC-CORE"
+compilation_language: "msl-markdown"
+compilation_language_version: "bootstrap"
+compilation_profile: "machine"
+compilation_source_role: "primary"
+compilation_status: "bootstrap"
+---
 
 # MSL-CORE-0004 — Metadata and Identity Model
 

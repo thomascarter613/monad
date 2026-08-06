@@ -1,3 +1,13 @@
+---
+id: "MSC-CORE-0000"
+title: "MSC-CORE Series Index"
+description: "Index and planned document map for the Monad Specification Compiler core series."
+kind: "series-index"
+series: "MSC-CORE"
+series_position: 0
+status: "active"
+---
+
 # MSC-CORE — Monad Specification Compiler Core
 
 The MSC-CORE series defines the architecture and behavior of the Monad

@@ -1,62 +1,56 @@
 ---
-
-artifact:
-id: MSL-CORE-0008
-type: knowledge.specification
-namespace: monad
-
-metadata:
-title: Canonical MSL Abstract Syntax Tree
-version: 0.1.0
-status: draft
-created: 2026-08-04
+id: "MSL-CORE-0008"
+title: "Canonical MSL Abstract Syntax Tree"
+type: "knowledge.specification"
+namespace: "monad"
+series: "MSL-CORE"
+series_position: 8
+version: "0.1.0"
+status: "draft"
+created: "2026-08-04"
 authors:
-- Monad Architecture Team
+  - "Monad Architecture Team"
 tags:
-- msl
-- canonical-ast
-- semantic-model
-- compiler
-- normalization
-- authority
-- traceability
-
-relationships:
+  - "msl"
+  - "canonical-ast"
+  - "semantic-model"
+  - "compiler"
+  - "normalization"
+  - "authority"
+  - "traceability"
 depends_on:
-- ADR-0002
-- ADR-0003
-- ADR-0004
-- MSL-CORE-0001
-- MSL-CORE-0002
-- MSL-CORE-0003
-- MSL-CORE-0004
-- MSL-CORE-0005
-- MSL-CORE-0006
-- MSL-CORE-0007
+  - "ADR-0002"
+  - "ADR-0003"
+  - "ADR-0004"
+  - "MSL-CORE-0001"
+  - "MSL-CORE-0002"
+  - "MSL-CORE-0003"
+  - "MSL-CORE-0004"
+  - "MSL-CORE-0005"
+  - "MSL-CORE-0006"
+  - "MSL-CORE-0007"
 references:
-- MKE-CORE-0002
-- MKE-CORE-0003
-- MKE-CORE-0004
-- MKE-CORE-0005
-- MKE-CORE-0008
-- MKE-CORE-0009
-- MKE-CORE-0010
+  - "MKE-CORE-0002"
+  - "MKE-CORE-0003"
+  - "MKE-CORE-0004"
+  - "MKE-CORE-0005"
+  - "MKE-CORE-0008"
+  - "MKE-CORE-0009"
+  - "MKE-CORE-0010"
 enables:
-- MSL-CORE-0009
-- MSL-CORE-0010
-- MSC-CORE
-- KIR-CORE
-- MSL-NORMALIZATION
-- MSL-EDITOR
-- MSL-CONFORMANCE
-
-compilation:
-language: msl-markdown
-language_version: bootstrap
-profile: machine
-source_role: primary
-status: bootstrap
------------------
+  - "MSL-CORE-0009"
+  - "MSL-CORE-0010"
+  - "MSC-CORE"
+  - "KIR-CORE"
+  - "MSL-NORMALIZATION"
+  - "MSL-EDITOR"
+  - "MSL-CONFORMANCE"
+compilation_language: "msl-markdown"
+compilation_language_version: "bootstrap"
+compilation_profile: "machine"
+compilation_source_role: "primary"
+compilation_status: "bootstrap"
+---
 
 # MSL-CORE-0008 — Canonical MSL Abstract Syntax Tree
 

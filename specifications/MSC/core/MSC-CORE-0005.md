@@ -1,76 +1,70 @@
 ---
-
-artifact:
-id: MSC-CORE-0005
-type: knowledge.specification
-namespace: monad
-
-metadata:
-title: Declaration Collection and Symbol Binding
-version: 0.1.0
-status: draft
-created: 2026-08-05
+id: "MSC-CORE-0005"
+title: "Declaration Collection and Symbol Binding"
+type: "knowledge.specification"
+namespace: "monad"
+series: "MSC-CORE"
+series_position: 5
+version: "0.1.0"
+status: "draft"
+created: "2026-08-05"
 authors:
-- Monad Architecture Team
+  - "Monad Architecture Team"
 tags:
-- msc
-- declarations
-- symbols
-- binding
-- symbol-table
-- semantic-analysis
-- canonical-ast
-- compiler
-
-relationships:
+  - "msc"
+  - "declarations"
+  - "symbols"
+  - "binding"
+  - "symbol-table"
+  - "semantic-analysis"
+  - "canonical-ast"
+  - "compiler"
 depends_on:
-- ADR-0002
-- ADR-0003
-- ADR-0004
-- ADR-0005
-- ADR-0006
-- ADR-0007
-- MSL-CORE-0002
-- MSL-CORE-0003
-- MSL-CORE-0004
-- MSL-CORE-0006
-- MSL-CORE-0007
-- MSL-CORE-0008
-- MSL-CORE-0009
-- MSL-CORE-0010
-- MSC-CORE-0001
-- MSC-CORE-0002
-- MSC-CORE-0003
-- MSC-CORE-0004
+  - "ADR-0002"
+  - "ADR-0003"
+  - "ADR-0004"
+  - "ADR-0005"
+  - "ADR-0006"
+  - "ADR-0007"
+  - "MSL-CORE-0002"
+  - "MSL-CORE-0003"
+  - "MSL-CORE-0004"
+  - "MSL-CORE-0006"
+  - "MSL-CORE-0007"
+  - "MSL-CORE-0008"
+  - "MSL-CORE-0009"
+  - "MSL-CORE-0010"
+  - "MSC-CORE-0001"
+  - "MSC-CORE-0002"
+  - "MSC-CORE-0003"
+  - "MSC-CORE-0004"
 references:
-- MART-CORE
-- MSG-CORE
-- MKE-CORE-0002
-- MKE-CORE-0003
-- MKE-CORE-0004
-- MKE-CORE-0005
-- MKE-CORE-0008
-- MKE-CORE-0009
-- MKE-CORE-0010
+  - "MART-CORE"
+  - "MSG-CORE"
+  - "MKE-CORE-0002"
+  - "MKE-CORE-0003"
+  - "MKE-CORE-0004"
+  - "MKE-CORE-0005"
+  - "MKE-CORE-0008"
+  - "MKE-CORE-0009"
+  - "MKE-CORE-0010"
 enables:
-- MSC-CORE-0006
-- MSC-CORE-0007
-- MSC-CORE-0008
-- MSC-CORE-0009
-- MSC-CORE-0010
-- MSC-SYMBOL
-- MSC-NAMESPACE
-- MSC-REFERENCE
-- MSG-CORE
-- KIR-CORE
-
-compilation:
-language: msl-markdown
-language_version: bootstrap
-profile: machine
-source_role: primary
-status: bootstrap
------------------
+  - "MSC-CORE-0006"
+  - "MSC-CORE-0007"
+  - "MSC-CORE-0008"
+  - "MSC-CORE-0009"
+  - "MSC-CORE-0010"
+  - "MSC-SYMBOL"
+  - "MSC-NAMESPACE"
+  - "MSC-REFERENCE"
+  - "MSG-CORE"
+  - "KIR-CORE"
+compilation_language: "msl-markdown"
+compilation_language_version: "bootstrap"
+compilation_profile: "machine"
+compilation_source_role: "primary"
+compilation_status: "bootstrap"
+---
 
 # MSC-CORE-0005 — Declaration Collection and Symbol Binding
 

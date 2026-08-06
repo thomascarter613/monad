@@ -1,77 +1,71 @@
 ---
-
-artifact:
-id: MSC-CORE-0004
-type: knowledge.specification
-namespace: monad
-
-metadata:
-title: Frontend and Normalizer Orchestration
-version: 0.1.0
-status: draft
-created: 2026-08-04
+id: "MSC-CORE-0004"
+title: "Frontend and Normalizer Orchestration"
+type: "knowledge.specification"
+namespace: "monad"
+series: "MSC-CORE"
+series_position: 4
+version: "0.1.0"
+status: "draft"
+created: "2026-08-04"
 authors:
-- Monad Architecture Team
+  - "Monad Architecture Team"
 tags:
-- msc
-- frontend
-- normalization
-- orchestration
-- surface-ast
-- canonical-ast
-- language-dispatch
-- mappings
-
-relationships:
+  - "msc"
+  - "frontend"
+  - "normalization"
+  - "orchestration"
+  - "surface-ast"
+  - "canonical-ast"
+  - "language-dispatch"
+  - "mappings"
 depends_on:
-- ADR-0002
-- ADR-0003
-- ADR-0004
-- ADR-0005
-- ADR-0006
-- ADR-0007
-- MSL-CORE-0001
-- MSL-CORE-0004
-- MSL-CORE-0005
-- MSL-CORE-0006
-- MSL-CORE-0007
-- MSL-CORE-0008
-- MSL-CORE-0009
-- MSL-CORE-0010
-- MSC-CORE-0001
-- MSC-CORE-0002
-- MSC-CORE-0003
+  - "ADR-0002"
+  - "ADR-0003"
+  - "ADR-0004"
+  - "ADR-0005"
+  - "ADR-0006"
+  - "ADR-0007"
+  - "MSL-CORE-0001"
+  - "MSL-CORE-0004"
+  - "MSL-CORE-0005"
+  - "MSL-CORE-0006"
+  - "MSL-CORE-0007"
+  - "MSL-CORE-0008"
+  - "MSL-CORE-0009"
+  - "MSL-CORE-0010"
+  - "MSC-CORE-0001"
+  - "MSC-CORE-0002"
+  - "MSC-CORE-0003"
 references:
-- MART-CORE
-- MKE-CORE-0002
-- MKE-CORE-0003
-- MKE-CORE-0004
-- MKE-CORE-0005
-- MKE-CORE-0008
-- MKE-CORE-0009
-- MKE-CORE-0010
+  - "MART-CORE"
+  - "MKE-CORE-0002"
+  - "MKE-CORE-0003"
+  - "MKE-CORE-0004"
+  - "MKE-CORE-0005"
+  - "MKE-CORE-0008"
+  - "MKE-CORE-0009"
+  - "MKE-CORE-0010"
 enables:
-- MSC-CORE-0005
-- MSC-CORE-0006
-- MSC-CORE-0007
-- MSC-CORE-0008
-- MSC-CORE-0009
-- MSC-CORE-0010
-- MART-CORE
-- MSG-CORE
-- KIR-CORE
-- MSL-DOCUMENT
-- MSL-FRONTEND
-- MSL-NORMALIZATION
-- MSL-CONFORMANCE
-
-compilation:
-language: msl-markdown
-language_version: bootstrap
-profile: machine
-source_role: primary
-status: bootstrap
------------------
+  - "MSC-CORE-0005"
+  - "MSC-CORE-0006"
+  - "MSC-CORE-0007"
+  - "MSC-CORE-0008"
+  - "MSC-CORE-0009"
+  - "MSC-CORE-0010"
+  - "MART-CORE"
+  - "MSG-CORE"
+  - "KIR-CORE"
+  - "MSL-DOCUMENT"
+  - "MSL-FRONTEND"
+  - "MSL-NORMALIZATION"
+  - "MSL-CONFORMANCE"
+compilation_language: "msl-markdown"
+compilation_language_version: "bootstrap"
+compilation_profile: "machine"
+compilation_source_role: "primary"
+compilation_status: "bootstrap"
+---
 
 # MSC-CORE-0004 — Frontend and Normalizer Orchestration
 
