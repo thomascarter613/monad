@@ -1,39 +1,99 @@
-M-001
+---
+artifact:
+  id: MONAD-ENGINEERING-MILESTONES
+  type: engineering.milestones
+  namespace: monad
+metadata:
+  title: Monad Engineering Milestones
+  version: 0.2.0
+  status: active
+  updated: 2026-08-06
+---
 
-Architecture Freeze
+# Monad Engineering Milestones
 
-------------
+## Milestone Summary
 
-M-002
+| ID | Title | Status |
+|---|---|---|
+| M-001 | Architecture Freeze | Completed |
+| M-002 | Compiler Specification Complete | Active |
+| M-003 | Bootstrap Compiler Operational | Planned |
+| M-004 | Persistent Knowledge Operational | Planned |
+| M-005 | Projection Bootstrap Operational | Planned |
+| M-006 | Initial Self-Hosting | Planned |
 
-Compiler Specification Complete
+## M-001 — Architecture Freeze
 
-------------
+Status: **Completed**
 
-M-003
+Completion date: **2026-08-06**
 
-First Working Compiler
+Completion evidence:
 
-------------
+- WP-AF-0001 through WP-AF-0009 completed.
+- Nine Vision artifacts created.
+- Architecture Freeze consistency review passed.
+- No unresolved P0 architectural blocker remains.
+- PI-001 closed.
 
-M-004
+## M-002 — Compiler Specification Complete
 
-Knowledge Engine Bootstrap
+Status: **Active**
 
-------------
+Completion criteria:
 
-M-005
+- MSC-CORE-0008 accepted.
+- MSC-CORE-0009 accepted.
+- MSC-CORE-0010 accepted.
+- Compiler-specification cross-document review completed.
+- MSG, diagnostics, incrementality, reproducibility, KIR, backend, and self-hosting boundaries are coherent.
+- Compiler implementation threshold declared.
 
-Monad Compiles Monad
+## M-003 — Bootstrap Compiler Operational
 
-------------
+Status: **Planned**
 
-M-006
+Completion criteria:
 
-Public Alpha
+- local CLI compile command exists;
+- bootstrap MSL artifacts parse;
+- declarations bind;
+- local references resolve;
+- deterministic MSG export is produced;
+- structured diagnostics exist;
+- clean end-to-end tests pass.
 
-------------
+## M-004 — Persistent Knowledge Operational
 
-M-007
+Status: **Planned**
 
-Version 1.0
+Completion criteria:
+
+- MKE ingests MSG;
+- immutable graph history is persisted;
+- parent/child snapshots are queryable;
+- semantic diff exists;
+- local provider-independent persistence is demonstrated.
+
+## M-005 — Projection Bootstrap Operational
+
+Status: **Planned**
+
+Completion criteria:
+
+- documentation is generated from semantic knowledge;
+- projection identity and provenance are preserved;
+- project status and work-packet reports are generated;
+- manual source and generated projection boundaries are explicit.
+
+## M-006 — Initial Self-Hosting
+
+Status: **Planned**
+
+Completion criteria:
+
+- Monad compiles selected Monad specifications;
+- MKE stores the resulting knowledge;
+- documentation is projected from that knowledge;
+- changes remain governed by Work Packets, ADRs, specifications, and the Constitution.
