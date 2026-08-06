@@ -1,10 +1,11 @@
 import { DocsPage } from 'fumadocs-ui/page';
-import { ciPolicy, deploymentProfiles, releasePolicy } from '@/operations.config.mjs';
 import { publicationMetadata } from '@/lib/metadata';
+import { ciPolicy, deploymentProfiles, releasePolicy } from '@/operations.config.mjs';
 
 export const metadata = publicationMetadata({
   title: 'Publication Operations',
-  description: 'CI gates, deployment profiles, release channels, health checks, and operating procedures for the Monad Engineering Log.',
+  description:
+    'CI gates, deployment profiles, release channels, health checks, and operating procedures for the Monad Engineering Log.',
   route: '/project/operations',
 });
 
@@ -13,11 +14,14 @@ export default function PublicationOperationsPage() {
     <DocsPage toc={[]} full>
       <header className="monad-article-header">
         <div className="monad-article-header__eyebrow monad-kicker">
-          <span>Publication platform</span><span aria-hidden="true">/</span><span>operations</span>
+          <span>Publication platform</span>
+          <span aria-hidden="true">/</span>
+          <span>operations</span>
         </div>
         <h1 className="monad-article-title">Publication Operations</h1>
         <p className="monad-article-description">
-          The controls that keep the Monad documentation site verifiable, deployable, recoverable, and capable of producing immutable publication editions.
+          The controls that keep the Monad documentation site verifiable, deployable, recoverable,
+          and capable of producing immutable publication editions.
         </p>
       </header>
 
@@ -25,12 +29,19 @@ export default function PublicationOperationsPage() {
         <article className="monad-operations-card">
           <p className="monad-kicker">Continuous integration</p>
           <h2 id="ci-heading">Required quality gates</h2>
-          <ul>{ciPolicy.pullRequestChecks.map((check) => <li key={check}>{check}</li>)}</ul>
+          <ul>
+            {ciPolicy.pullRequestChecks.map((check) => (
+              <li key={check}>{check}</li>
+            ))}
+          </ul>
         </article>
         <article className="monad-operations-card">
           <p className="monad-kicker">Release policy</p>
           <h2>Immutable documentation editions</h2>
-          <p>Tags beginning with <code>{releasePolicy.tagPrefix}</code> build the complete edition and attach checksummed artifacts to a GitHub release.</p>
+          <p>
+            Tags beginning with <code>{releasePolicy.tagPrefix}</code> build the complete edition
+            and attach checksummed artifacts to a GitHub release.
+          </p>
         </article>
       </section>
 
@@ -42,9 +53,28 @@ export default function PublicationOperationsPage() {
             <h3>{profile.title}</h3>
             <p>{profile.notes}</p>
             <dl>
-              <div><dt>Health</dt><dd><code>{profile.healthRoute}</code></dd></div>
-              {'buildCommand' in profile && profile.buildCommand ? <div><dt>Build</dt><dd><code>{profile.buildCommand}</code></dd></div> : null}
-              {'dockerfile' in profile && profile.dockerfile ? <div><dt>Dockerfile</dt><dd><code>{profile.dockerfile}</code></dd></div> : null}
+              <div>
+                <dt>Health</dt>
+                <dd>
+                  <code>{profile.healthRoute}</code>
+                </dd>
+              </div>
+              {'buildCommand' in profile && profile.buildCommand ? (
+                <div>
+                  <dt>Build</dt>
+                  <dd>
+                    <code>{profile.buildCommand}</code>
+                  </dd>
+                </div>
+              ) : null}
+              {'dockerfile' in profile && profile.dockerfile ? (
+                <div>
+                  <dt>Dockerfile</dt>
+                  <dd>
+                    <code>{profile.dockerfile}</code>
+                  </dd>
+                </div>
+              ) : null}
             </dl>
           </article>
         ))}
@@ -52,9 +82,15 @@ export default function PublicationOperationsPage() {
 
       <h2>Operational endpoints</h2>
       <ul>
-        <li><code>/api/health</code> — liveness, build identity, and registry readiness.</li>
-        <li><code>/api/operations</code> — public CI, deployment, and release contracts.</li>
-        <li><code>/api/editions</code> — generated edition inventory.</li>
+        <li>
+          <code>/api/health</code> — liveness, build identity, and registry readiness.
+        </li>
+        <li>
+          <code>/api/operations</code> — public CI, deployment, and release contracts.
+        </li>
+        <li>
+          <code>/api/editions</code> — generated edition inventory.
+        </li>
       </ul>
     </DocsPage>
   );

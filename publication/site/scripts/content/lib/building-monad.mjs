@@ -6,11 +6,12 @@ import {
 } from '../../../building-monad.config.mjs';
 
 function installmentSort(left, right) {
-  const leftPosition =
-    left.seriesInfo?.position ?? left.seriesPosition ?? Number.MAX_SAFE_INTEGER;
+  const leftPosition = left.seriesInfo?.position ?? left.seriesPosition ?? Number.MAX_SAFE_INTEGER;
   const rightPosition =
     right.seriesInfo?.position ?? right.seriesPosition ?? Number.MAX_SAFE_INTEGER;
-  return leftPosition - rightPosition || left.id.localeCompare(right.id, undefined, { numeric: true });
+  return (
+    leftPosition - rightPosition || left.id.localeCompare(right.id, undefined, { numeric: true })
+  );
 }
 
 function introducedArtifacts(document) {

@@ -1,6 +1,6 @@
-import { mkdtemp, mkdir, readFile, writeFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { syncContent } from '../../scripts/content/sync.mjs';
 
@@ -43,7 +43,9 @@ describe('canonical content synchronization', () => {
       await readFile(join(siteRoot, '.generated', 'registry', 'navigation.json'), 'utf8'),
     );
     expect(navigation.schemaVersion).toBe(1);
-    expect(navigation.routes.some((route: { route: string }) => route.route === '/project')).toBe(true);
+    expect(navigation.routes.some((route: { route: string }) => route.route === '/project')).toBe(
+      true,
+    );
 
     const artifactsMeta = JSON.parse(
       await readFile(join(siteRoot, '.generated', 'content', 'artifacts', 'meta.json'), 'utf8'),
@@ -82,7 +84,9 @@ Engineering body.
     expect(decision?.kind).toBe('decision');
     expect(decision?.route).toBe('/artifacts/decisions/adr-0001-foundation');
     expect(engineering?.kind).toBe('engineering');
-    expect(result.registry.documents.filter((document) => document.id === 'ADR-0001')).toHaveLength(1);
+    expect(result.registry.documents.filter((document) => document.id === 'ADR-0001')).toHaveLength(
+      1,
+    );
   });
 
   it('accepts legacy grouped frontmatter and avoids README identifier collisions', async () => {
@@ -130,14 +134,17 @@ Body.
 
     const result = await syncContent({ siteRoot, repositoryRoot });
     expect(result.registry.errorCount).toBe(0);
-    expect(result.registry.documents.filter((document) => document.id === 'MSC-CORE-0001')).toHaveLength(1);
+    expect(
+      result.registry.documents.filter((document) => document.id === 'MSC-CORE-0001'),
+    ).toHaveLength(1);
     expect(
       result.registry.documents.some(
-        (document) => document.canonicalPath === 'specifications/MSC/core/README.md' && document.id.startsWith('UNTRACKED-'),
+        (document) =>
+          document.canonicalPath === 'specifications/MSC/core/README.md' &&
+          document.id.startsWith('UNTRACKED-'),
       ),
     ).toBe(true);
   });
-
 });
 
 // SITE-0006 presentation contract: canonical title headings are removed from generated bodies

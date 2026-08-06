@@ -13,9 +13,28 @@
 }
 
 .monad-operations-card h2,
-.monad-operations-card h3 { margin-block: 0.35rem 0.75rem; }
-.monad-operations-card ul { padding-inline-start: 1.25rem; }
-.monad-operations-card dl { display: grid; gap: 0.65rem; margin-block-start: 1rem; }
-.monad-operations-card dl div { display: grid; gap: 0.15rem; }
-.monad-operations-card dt { color: var(--monad-ink-muted); font: 600 0.72rem/1.2 var(--font-monad-sans); letter-spacing: 0.08em; text-transform: uppercase; }
-.monad-operations-card dd { margin: 0; overflow-wrap: anywhere; }
+.monad-operations-card h3 {
+  margin-block: 0.35rem 0.75rem;
+}
+.monad-operations-card ul {
+  padding-inline-start: 1.25rem;
+}
+.monad-operations-card dl {
+  display: grid;
+  gap: 0.65rem;
+  margin-block-start: 1rem;
+}
+.monad-operations-card dl div {
+  display: grid;
+  gap: 0.15rem;
+}
+.monad-operations-card dt {
+  color: var(--monad-ink-muted);
+  font: 600 0.72rem / 1.2 var(--font-monad-sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.monad-operations-card dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}

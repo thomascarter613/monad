@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { EditionPrintDocument } from '@/components/editions/edition-print-document';
+import { siteConfig } from '@/lib/config/site';
 import { getEditionPages } from '@/lib/editions/catalog';
 import { getEdition, getEditionManifest } from '@/lib/editions/manifest';
-import { siteConfig } from '@/lib/config/site';
 
 type PageProps = {
   params: Promise<{ edition: string }>;
@@ -25,7 +25,7 @@ export default async function EditionPrintPage({ params, searchParams }: PagePro
     const page = pageByRoute.get(record.route);
     return page ? [{ record, page }] : [];
   });
-  const title = requestedDocument ? selected[0]?.record.title ?? edition.title : edition.title;
+  const title = requestedDocument ? (selected[0]?.record.title ?? edition.title) : edition.title;
 
   return (
     <main className="monad-edition-print" data-edition={edition.key}>

@@ -192,7 +192,7 @@
   .monad-document-actions,
   .monad-masthead-search,
   .monad-search-facets {
-    display: none !important;
+    display: none;
   }
 }
 

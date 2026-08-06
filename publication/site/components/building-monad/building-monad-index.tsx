@@ -109,18 +109,15 @@ export async function BuildingMonadIndex() {
         </section>
       ) : null}
 
-      <section
-        className="monad-series-principles"
-        aria-labelledby="series-principles-heading"
-      >
+      <section className="monad-series-principles" aria-labelledby="series-principles-heading">
         <div>
           <p className="monad-kicker">How to read this series</p>
           <h2 id="series-principles-heading">Chronology first; durable artifacts beside it</h2>
         </div>
         <div>
           <p>
-            Each installment records the problem visible at that moment, the alternatives considered,
-            the decision made, and the repository state that followed.
+            Each installment records the problem visible at that moment, the alternatives
+            considered, the decision made, and the repository state that followed.
           </p>
           <p>
             Specifications, ADRs, architecture records, and implementation evidence remain linked as
@@ -133,9 +130,7 @@ export async function BuildingMonadIndex() {
         {manifest.phases.map((phase) => {
           const installments = phase.installments
             .map((id) => manifest.installments.find((installment) => installment.id === id))
-            .filter(
-              (installment): installment is BuildingMonadInstallment => Boolean(installment),
-            );
+            .filter((installment): installment is BuildingMonadInstallment => Boolean(installment));
           return (
             <section className="monad-series-phase" id={`phase-${phase.key}`} key={phase.key}>
               <header>

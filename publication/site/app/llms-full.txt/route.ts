@@ -1,6 +1,6 @@
+import { siteConfig } from '@/lib/config/site';
 import { getPageMarkdown } from '@/lib/discovery/markdown';
 import { getAllPublicationPages } from '@/lib/discovery/pages';
-import { siteConfig } from '@/lib/config/site';
 
 export const revalidate = false;
 

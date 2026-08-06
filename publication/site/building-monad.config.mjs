@@ -23,14 +23,16 @@ export const buildingMonadPhases = Object.freeze([
     key: 'orientation',
     title: 'Orientation',
     shortTitle: 'Orientation',
-    description: 'The problem, product thesis, vocabulary, and boundaries that make Monad necessary.',
+    description:
+      'The problem, product thesis, vocabulary, and boundaries that make Monad necessary.',
     order: 10,
   }),
   Object.freeze({
     key: 'foundation',
     title: 'Foundation',
     shortTitle: 'Foundation',
-    description: 'Repository identity, governing principles, manifests, and the first durable system boundaries.',
+    description:
+      'Repository identity, governing principles, manifests, and the first durable system boundaries.',
     order: 20,
   }),
   Object.freeze({
@@ -44,28 +46,32 @@ export const buildingMonadPhases = Object.freeze([
     key: 'language',
     title: 'Specification Language',
     shortTitle: 'Language',
-    description: 'The models, schemas, and languages used to describe repositories and desired systems.',
+    description:
+      'The models, schemas, and languages used to describe repositories and desired systems.',
     order: 40,
   }),
   Object.freeze({
     key: 'engine',
     title: 'Engine and Generation',
     shortTitle: 'Engine',
-    description: 'Planning, compilation, generation, reconciliation, and deterministic repository evolution.',
+    description:
+      'Planning, compilation, generation, reconciliation, and deterministic repository evolution.',
     order: 50,
   }),
   Object.freeze({
     key: 'experience',
     title: 'CLI and Human Experience',
     shortTitle: 'Experience',
-    description: 'Interactive configuration, terminal interfaces, workflows, and contributor experience.',
+    description:
+      'Interactive configuration, terminal interfaces, workflows, and contributor experience.',
     order: 60,
   }),
   Object.freeze({
     key: 'intelligence',
     title: 'AI Context and Intelligence',
     shortTitle: 'Intelligence',
-    description: 'Context persistence, retrieval, agents, reasoning boundaries, and AI-optional operation.',
+    description:
+      'Context persistence, retrieval, agents, reasoning boundaries, and AI-optional operation.',
     order: 70,
   }),
   Object.freeze({
@@ -86,11 +92,13 @@ export const buildingMonadPhases = Object.freeze([
 
 export function normalizeBuildingMonadPhase(value) {
   if (typeof value !== 'string' || !value.trim()) return 'foundation';
-  return value
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '') || 'foundation';
+  return (
+    value
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '') || 'foundation'
+  );
 }
 
 export function resolveBuildingMonadPhase(value) {

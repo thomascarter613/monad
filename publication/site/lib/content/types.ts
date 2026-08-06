@@ -1,8 +1,4 @@
-import type {
-  DocumentKind,
-  DocumentStatus,
-  RelationshipKind,
-} from '@/lib/content/constants';
+import type { DocumentKind, DocumentStatus, RelationshipKind } from '@/lib/content/constants';
 
 export type RelatedDocuments = Partial<Record<RelationshipKind, string[]>>;
 

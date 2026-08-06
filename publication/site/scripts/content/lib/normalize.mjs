@@ -12,13 +12,15 @@ export function normalizePath(value) {
 }
 
 export function slugifySegment(value) {
-  return value
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '') || 'document';
+  return (
+    value
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '') || 'document'
+  );
 }
 
 export function normalizeSlugOverride(value) {
@@ -141,9 +143,11 @@ export function extractIdentifier(attributes, title, relativePath, body) {
   // or status targets; treating the first such reference as this document's
   // own ID creates false duplicates. Preserve support for an explicit leading
   // `ID: ...`, `Document ID: ...`, or `Artifact ID: ...` declaration only.
-  const explicitBodyId = body.slice(0, 2500).match(
-    /^(?:\*\*)?(?:(?:document|artifact)\s+)?id(?:\*\*)?\s*:\s*([A-Z][A-Z0-9]*(?:-[A-Z0-9]+)*-\d{4})\s*$/im,
-  );
+  const explicitBodyId = body
+    .slice(0, 2500)
+    .match(
+      /^(?:\*\*)?(?:(?:document|artifact)\s+)?id(?:\*\*)?\s*:\s*([A-Z][A-Z0-9]*(?:-[A-Z0-9]+)*-\d{4})\s*$/im,
+    );
   if (explicitBodyId?.[1]) candidates.push(explicitBodyId[1]);
 
   for (const candidate of candidates) {
@@ -161,14 +165,11 @@ export function extractIdentifiers(value) {
 export function normalizeStatus(value, kind, body = '') {
   let statusValue = value;
   if (typeof statusValue !== 'string' || !statusValue.trim()) {
-    const bodyMatch = body.match(
-      /^(?:\*\*)?status(?:\*\*)?\s*:\s*([A-Za-z][A-Za-z -]*)$/im,
-    );
+    const bodyMatch = body.match(/^(?:\*\*)?status(?:\*\*)?\s*:\s*([A-Za-z][A-Za-z -]*)$/im);
     statusValue = bodyMatch?.[1] ?? '';
   }
-  const normalized = typeof statusValue === 'string'
-    ? statusValue.trim().toLowerCase().replaceAll(' ', '-')
-    : '';
+  const normalized =
+    typeof statusValue === 'string' ? statusValue.trim().toLowerCase().replaceAll(' ', '-') : '';
   const aliases = {
     approved: 'accepted',
     implemented: 'active',
@@ -201,14 +202,13 @@ export function normalizeOptionalString(value) {
 
 export function normalizePublicationMetadata(attributes, body, wordsPerMinute = 225) {
   const publication =
-    attributes.publication && typeof attributes.publication === 'object' && !Array.isArray(attributes.publication)
+    attributes.publication &&
+    typeof attributes.publication === 'object' &&
+    !Array.isArray(attributes.publication)
       ? attributes.publication
       : {};
   const projectPhase = normalizeOptionalString(
-    attributes.projectPhase ??
-      attributes.project_phase ??
-      attributes.phase ??
-      publication.phase,
+    attributes.projectPhase ?? attributes.project_phase ?? attributes.phase ?? publication.phase,
   );
   const publishedAt = normalizeOptionalString(
     attributes.publishedAt ??
@@ -236,7 +236,7 @@ export function normalizePublicationMetadata(attributes, body, wordsPerMinute = 
   const wordCount = body
     .replace(/```[\s\S]*?```/g, ' ')
     .replace(/<[^>]+>/g, ' ')
-    .replace(/[#>*_`~|\[\](){}]/g, ' ')
+    .replace(/[#>*_`~|[\](){}]/g, ' ')
     .split(/\s+/)
     .filter(Boolean).length;
   const estimatedReadingMinutes =
@@ -255,17 +255,29 @@ export function normalizePublicationMetadata(attributes, body, wordsPerMinute = 
 
 export function normalizeRepositoryState(attributes) {
   const nested =
-    attributes.repository && typeof attributes.repository === 'object' && !Array.isArray(attributes.repository)
+    attributes.repository &&
+    typeof attributes.repository === 'object' &&
+    !Array.isArray(attributes.repository)
       ? attributes.repository
       : {};
   const commit = normalizeOptionalString(
-    nested.commit ?? attributes.repositoryCommit ?? attributes.repository_commit ?? attributes.commit,
+    nested.commit ??
+      attributes.repositoryCommit ??
+      attributes.repository_commit ??
+      attributes.commit,
   );
   const branch = normalizeOptionalString(
-    nested.branch ?? attributes.repositoryBranch ?? attributes.repository_branch ?? attributes.branch,
+    nested.branch ??
+      attributes.repositoryBranch ??
+      attributes.repository_branch ??
+      attributes.branch,
   );
   const release = normalizeOptionalString(
-    nested.release ?? nested.tag ?? attributes.repositoryRelease ?? attributes.repository_release ?? attributes.release,
+    nested.release ??
+      nested.tag ??
+      attributes.repositoryRelease ??
+      attributes.repository_release ??
+      attributes.release,
   );
   const tree = normalizeOptionalString(
     nested.tree ?? nested.path ?? attributes.repositoryTree ?? attributes.repository_tree,
@@ -280,10 +292,24 @@ export function normalizeRepositoryState(attributes) {
 
 export function normalizeStringArray(value) {
   if (Array.isArray(value)) {
-    return [...new Set(value.map(String).map((entry) => entry.trim()).filter(Boolean))];
+    return [
+      ...new Set(
+        value
+          .map(String)
+          .map((entry) => entry.trim())
+          .filter(Boolean),
+      ),
+    ];
   }
   if (typeof value === 'string') {
-    return [...new Set(value.split(',').map((entry) => entry.trim()).filter(Boolean))];
+    return [
+      ...new Set(
+        value
+          .split(',')
+          .map((entry) => entry.trim())
+          .filter(Boolean),
+      ),
+    ];
   }
   return [];
 }
@@ -312,7 +338,9 @@ export function normalizeRelated(value, attributes = {}) {
   }
 
   for (const [attributeKey, normalizedKey] of Object.entries(relationshipAliases)) {
-    const normalized = normalizeStringArray(attributes[attributeKey]).map((entry) => entry.toUpperCase());
+    const normalized = normalizeStringArray(attributes[attributeKey]).map((entry) =>
+      entry.toUpperCase(),
+    );
     if (normalized.length === 0) continue;
     result[normalizedKey] = [...new Set([...(result[normalizedKey] ?? []), ...normalized])];
   }

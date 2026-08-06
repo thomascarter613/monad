@@ -1,7 +1,7 @@
-import type { ReactNode } from 'react';
 import type { DocsLayoutProps } from 'fumadocs-ui/layouts/docs';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
-import { SectionBadge, type PublicationSection } from '@/components/layout/section-badge';
+import type { ReactNode } from 'react';
+import { type PublicationSection, SectionBadge } from '@/components/layout/section-badge';
 import { baseOptions } from '@/lib/layout.shared';
 
 type SectionLayoutProps = {

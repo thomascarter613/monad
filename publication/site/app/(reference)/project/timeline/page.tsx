@@ -5,7 +5,8 @@ import { publicationMetadata } from '@/lib/metadata';
 
 export const metadata = publicationMetadata({
   title: 'Project Timeline',
-  description: 'A chronology derived from publication dates, updates, build logs, and repository checkpoints.',
+  description:
+    'A chronology derived from publication dates, updates, build logs, and repository checkpoints.',
   route: '/project/timeline',
 });
 

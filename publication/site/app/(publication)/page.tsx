@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { readingPaths } from '@/information-architecture.mjs';
 import { MonadMark } from '@/components/brand/monad-mark';
 import { PublicationMasthead } from '@/components/brand/publication-masthead';
+import { readingPaths } from '@/information-architecture.mjs';
 import { siteConfig } from '@/lib/config/site';
 import { activeLandingRoutes } from '@/lib/routes';
 
@@ -51,10 +51,12 @@ export default function HomePage() {
 
         <aside className="monad-surface rounded-2xl p-5" aria-label="Publication edition">
           <p className="monad-kicker text-[var(--monad-section-accent)]">Continuous edition</p>
-          <p className="mt-3 font-serif text-xl font-semibold">Engineering record, not marketing copy.</p>
+          <p className="mt-3 font-serif text-xl font-semibold">
+            Engineering record, not marketing copy.
+          </p>
           <p className="mt-3 text-sm leading-6 text-fd-muted-foreground">
-            The site preserves decisions, alternatives, failed approaches, repository evidence,
-            and the evolving relationship between design and implementation.
+            The site preserves decisions, alternatives, failed approaches, repository evidence, and
+            the evolving relationship between design and implementation.
           </p>
           <Link
             href="/editions"
@@ -69,7 +71,10 @@ export default function HomePage() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="monad-kicker text-fd-muted-foreground">Information architecture</p>
-            <h2 id="publication-sections" className="monad-display mt-2 text-3xl font-semibold tracking-tight">
+            <h2
+              id="publication-sections"
+              className="monad-display mt-2 text-3xl font-semibold tracking-tight"
+            >
               Four views of one engineering system
             </h2>
           </div>
@@ -90,7 +95,9 @@ export default function HomePage() {
               <h3 className="monad-display mt-3 text-3xl font-semibold tracking-tight group-hover:text-[var(--monad-section-accent)]">
                 {route.label}
               </h3>
-              <p className="mt-3 max-w-xl leading-7 text-fd-muted-foreground">{route.description}</p>
+              <p className="mt-3 max-w-xl leading-7 text-fd-muted-foreground">
+                {route.description}
+              </p>
               <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[var(--monad-section-accent)]">
                 Enter section <span aria-hidden="true">→</span>
               </span>

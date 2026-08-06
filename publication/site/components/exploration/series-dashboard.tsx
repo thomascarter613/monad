@@ -18,7 +18,9 @@ export function SeriesDashboard({ series }: { series: ExplorationSeries[] }) {
               <header>
                 <div>
                   <h3 className="font-mono">{entry.key}</h3>
-                  <p>{entry.documentCount} of {entry.total} documents</p>
+                  <p>
+                    {entry.documentCount} of {entry.total} documents
+                  </p>
                 </div>
                 <strong>{entry.completionPercent}%</strong>
               </header>
@@ -34,7 +36,10 @@ export function SeriesDashboard({ series }: { series: ExplorationSeries[] }) {
               </div>
               <ul className="monad-series-dashboard__statuses">
                 {entry.statusCounts.map((status) => (
-                  <li key={status.value}><span>{status.value}</span><strong>{status.count}</strong></li>
+                  <li key={status.value}>
+                    <span>{status.value}</span>
+                    <strong>{status.count}</strong>
+                  </li>
                 ))}
               </ul>
               <ol className="monad-series-dashboard__documents">
@@ -48,7 +53,8 @@ export function SeriesDashboard({ series }: { series: ExplorationSeries[] }) {
               </ol>
               {entry.remainingCount > 0 ? (
                 <p className="monad-series-dashboard__remaining">
-                  {entry.remainingCount} declared position{entry.remainingCount === 1 ? '' : 's'} remain.
+                  {entry.remainingCount} declared position{entry.remainingCount === 1 ? '' : 's'}{' '}
+                  remain.
                 </p>
               ) : (
                 <p className="monad-series-dashboard__complete">Declared series complete.</p>

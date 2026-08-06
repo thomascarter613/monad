@@ -44,8 +44,10 @@ function documentOrder(left, right) {
     numeric: true,
   });
   if (seriesDifference) return seriesDifference;
-  const leftPosition = left.seriesInfo?.position ?? left.series?.position ?? Number.MAX_SAFE_INTEGER;
-  const rightPosition = right.seriesInfo?.position ?? right.series?.position ?? Number.MAX_SAFE_INTEGER;
+  const leftPosition =
+    left.seriesInfo?.position ?? left.series?.position ?? Number.MAX_SAFE_INTEGER;
+  const rightPosition =
+    right.seriesInfo?.position ?? right.series?.position ?? Number.MAX_SAFE_INTEGER;
   return (
     leftPosition - rightPosition ||
     left.route.localeCompare(right.route, undefined, { numeric: true }) ||
@@ -61,7 +63,10 @@ function selectDocuments(documents, edition) {
     .filter((document) => selectedBy(document.kind, selectors.kinds))
     .filter((document) => selectedBy(document.status, selectors.statuses))
     .filter((document) =>
-      selectedBy(document.seriesInfo?.key ?? document.series?.key ?? document.series, selectors.series),
+      selectedBy(
+        document.seriesInfo?.key ?? document.series?.key ?? document.series,
+        selectors.series,
+      ),
     )
     .filter((document) => selectedByTags(document.tags, selectors.tags))
     .sort(documentOrder);

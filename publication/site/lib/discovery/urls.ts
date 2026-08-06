@@ -5,7 +5,11 @@ export function documentMarkdownUrl(route: string) {
 }
 
 export function repositoryDocumentUrl(canonicalPath?: string) {
-  if (!canonicalPath || canonicalPath.startsWith('@generated') || !publicEnvironment.repositoryUrl) {
+  if (
+    !canonicalPath ||
+    canonicalPath.startsWith('@generated') ||
+    !publicEnvironment.repositoryUrl
+  ) {
     return undefined;
   }
   const repository = publicEnvironment.repositoryUrl.replace(/\/$/, '');

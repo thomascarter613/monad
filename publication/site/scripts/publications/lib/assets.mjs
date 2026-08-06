@@ -15,7 +15,11 @@ export async function collectDocumentAssets(repositoryRoot, documents) {
   for (const document of documents) {
     const sourcePath = resolve(repositoryRoot, document.canonicalPath);
     let body;
-    try { body = await readFile(sourcePath, 'utf8'); } catch { continue; }
+    try {
+      body = await readFile(sourcePath, 'utf8');
+    } catch {
+      continue;
+    }
     const references = [];
     for (const match of body.matchAll(imagePattern)) references.push(match[1]);
     for (const match of body.matchAll(htmlImagePattern)) references.push(match[1].split(/\s+/)[0]);
@@ -31,7 +35,10 @@ export async function collectDocumentAssets(repositoryRoot, documents) {
       if (!safeInside(repositoryRoot, sourceAsset)) continue;
       try {
         if (!(await stat(sourceAsset)).isFile()) continue;
-        const relative = sourceAsset.slice(resolve(repositoryRoot).length + 1).split(sep).join('/');
+        const relative = sourceAsset
+          .slice(resolve(repositoryRoot).length + 1)
+          .split(sep)
+          .join('/');
         if (!assets.has(relative)) assets.set(relative, await readFile(sourceAsset));
       } catch {}
     }

@@ -1,0 +1,298 @@
+schema_version: "0.1.0"
+
+registry:
+  id: MONAD-SPEC-REGISTRY
+  name: Monad Specification Registry
+  status: bootstrap
+  source_of_truth: filesystem
+  generated: false
+
+defaults:
+  artifact_type: knowledge.specification
+  namespace: monad
+  lifecycle: draft
+  compilation_status: pre-normative
+
+series:
+  - id: MSL-CORE
+    title: Monad Specification Language Core
+    path: specifications/MSL/core
+    status: complete
+
+  - id: MSC-CORE
+    title: Monad Specification Compiler Core
+    path: specifications/MSC/core
+    status: active
+
+  - id: MART-CORE
+    title: Monad Artifact Model Core
+    path: specifications/MART/core
+    status: planned
+
+  - id: MSG-CORE
+    title: Monad Semantic Graph Core
+    path: specifications/MSG/core
+    status: planned
+
+  - id: KIR-CORE
+    title: Knowledge Intermediate Representation Core
+    path: specifications/KIR/core
+    status: planned
+
+artifacts:
+  - id: MKE-CORE-0001
+    title: Monad Knowledge Engine Vision Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0001.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0002
+    title: Universal Artifact Model Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0002.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0003
+    title: Relationship Taxonomy Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0003.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0004
+    title: Knowledge Graph Model Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0004.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0005
+    title: Identity and Provenance Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0005.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0006
+    title: Query and Traversal API Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0006.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0007
+    title: Semantic Search Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0007.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0008
+    title: Knowledge Validation Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0008.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0009
+    title: AI Context Retrieval Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0009.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-CORE-0010
+    title: Knowledge Evolution Specification
+    series: MKE-CORE
+    path: specifications/MKE/core/MKE-CORE-0010.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-ARTIFACT-0001
+    title: Artifact Schema Specification
+    series: MKE-ARTIFACT
+    path: specifications/MKE/artifact/MKE-ARTIFACT-0001.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-ARTIFACT-0002
+    title: Artifact Type Registry Specification
+    series: MKE-ARTIFACT
+    path: specifications/MKE/artifact/MKE-ARTIFACT-0002.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MKE-ARTIFACT-0003
+    title: Artifact Lifecycle Specification
+    series: MKE-ARTIFACT
+    path: specifications/MKE/artifact/MKE-ARTIFACT-0003.md
+    version: 1.0.0
+    lifecycle: draft
+    compilation_status: pre-normative
+
+  - id: MSL-CORE-0001
+    title: Monad Specification Language Vision
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0001.md
+    version: 0.1.0
+    lifecycle: planned
+    compilation_status: bootstrap
+
+  - id: MSL-CORE-0002
+    title: Specification Document Model
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0002.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSL-CORE-0003
+    title: Normative Requirement Language
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0003.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSL-CORE-0004
+    title: Metadata and Identity Model
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0004.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSL-CORE-0005
+    title: Language and Frontend Architecture
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0005.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSL-CORE-0006
+    title: Abstract Syntax Tree Model
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0006.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSL-CORE-0007
+    title: Surface ASTs and Normalization Pipeline
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0007.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSL-CORE-0008
+    title: Canonical MSL Abstract Syntax Tree
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0008.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSL-CORE-0009
+    title: Document and Embedded Language Architecture
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0009.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSL-CORE-0010
+    title: Core Semantic Integration, Types, References, and Evolution
+    series: MSL-CORE
+    path: specifications/MSL/core/MSL-CORE-0010.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSC-CORE-0001
+    title: Monad Specification Compiler Vision and Architecture
+    series: MSC-CORE
+    path: specifications/MSC/core/MSC-CORE-0001.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSC-CORE-0002
+    title: Compilation Pipeline and Phase Model
+    series: MSC-CORE
+    path: specifications/MSC/core/MSC-CORE-0002.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSC-CORE-0003
+    title: Artifact Discovery and Compilation Units
+    series: MSC-CORE
+    path: specifications/MSC/core/MSC-CORE-0003.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSC-CORE-0004
+    title: Frontend and Normalizer Orchestration
+    series: MSC-CORE
+    path: specifications/MSC/core/MSC-CORE-0004.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSC-CORE-0005
+    title: Declaration Collection and Symbol Binding
+    series: MSC-CORE
+    path: specifications/MSC/core/MSC-CORE-0005.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSC-CORE-0006
+    title: Namespace, Import, and Reference Resolution
+    series: MSC-CORE
+    path: specifications/MSC/core/MSC-CORE-0006.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+  - id: MSC-CORE-0007
+    title: Type, Constraint, and Semantic Analysis
+    series: MSC-CORE
+    path: specifications/MSC/core/MSC-CORE-0007.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+
+
+
+
+planned_artifacts:
+  - id: MSC-CORE-0003
+    title: Artifact Discovery and Compilation Units
+
+  - id: MART-CORE-0001
+    title: Artifact Model Vision and Design Principles
+
+  - id: MSG-CORE-0001
+    title: Monad Semantic Graph Vision and Design Principles
+
+  - id: KIR-CORE-0001
+    title: Knowledge Intermediate Representation Vision and Design Principles

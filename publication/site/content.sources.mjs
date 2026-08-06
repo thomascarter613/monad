@@ -22,8 +22,7 @@ export const publicationContentSources = Object.freeze([
   Object.freeze({
     key: 'architecture',
     title: 'Architecture',
-    description:
-      'Architecture descriptions, models, principles, boundaries, and system views.',
+    description: 'Architecture descriptions, models, principles, boundaries, and system views.',
     kind: 'architecture',
     canonicalRoots: ['architecture'],
     generatedCollection: 'system',
@@ -35,8 +34,7 @@ export const publicationContentSources = Object.freeze([
   Object.freeze({
     key: 'decisions',
     title: 'Architecture Decisions',
-    description:
-      'Durable architectural and engineering decisions recorded as ADRs.',
+    description: 'Durable architectural and engineering decisions recorded as ADRs.',
     kind: 'decision',
     canonicalRoots: ['adrs', 'engineering/adrs'],
     generatedCollection: 'artifacts',
@@ -61,8 +59,7 @@ export const publicationContentSources = Object.freeze([
   Object.freeze({
     key: 'engineering',
     title: 'Engineering Records',
-    description:
-      'Implementation plans, verification records, experiments, and engineering notes.',
+    description: 'Implementation plans, verification records, experiments, and engineering notes.',
     kind: 'engineering',
     canonicalRoots: ['engineering'],
     excludedCanonicalPrefixes: ['engineering/adrs'],
@@ -75,8 +72,7 @@ export const publicationContentSources = Object.freeze([
   Object.freeze({
     key: 'research',
     title: 'Research',
-    description:
-      'Research notes, comparisons, evidence, and explorations that inform Monad.',
+    description: 'Research notes, comparisons, evidence, and explorations that inform Monad.',
     kind: 'research',
     canonicalRoots: ['research'],
     generatedCollection: 'artifacts',
@@ -88,8 +84,7 @@ export const publicationContentSources = Object.freeze([
   Object.freeze({
     key: 'knowledge',
     title: 'Knowledge Records',
-    description:
-      'Curated knowledge records and durable explanatory material used by Monad.',
+    description: 'Curated knowledge records and durable explanatory material used by Monad.',
     kind: 'knowledge',
     canonicalRoots: ['knowledge'],
     generatedCollection: 'artifacts',

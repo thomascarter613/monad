@@ -26,8 +26,6 @@ describe('publication editions', () => {
       { id: 'MKE-CORE-0001', route: '/artifacts/specifications/mke-core-0001', sourceHash: 'b' },
     ];
     expect(editionSourceDigest(documents)).toBe(editionSourceDigest(documents));
-    expect(editionSourceDigest(documents)).not.toBe(
-      editionSourceDigest([...documents].reverse()),
-    );
+    expect(editionSourceDigest(documents)).not.toBe(editionSourceDigest([...documents].reverse()));
   });
 });

@@ -2,30 +2,25 @@ import { mkdir, rename, rm, writeFile } from 'node:fs/promises';
 import { dirname, extname, join, posix } from 'node:path';
 import {
   informationArchitectureVersion,
-  publicRouteCatalog,
   publicationSections,
+  publicRouteCatalog,
   readingPaths,
   routePolicy,
 } from '../../../information-architecture.mjs';
 import { buildBuildingMonadManifest } from './building-monad.mjs';
-import { buildExplorationManifest } from './exploration.mjs';
-import { buildDiscoveryManifest } from './search-discovery.mjs';
 import { buildEditionManifest } from './editions.mjs';
+import { buildExplorationManifest } from './exploration.mjs';
 import { serializeFrontmatter } from './frontmatter.mjs';
-import { transformDocumentPresentation } from './presentation.mjs';
 import { normalizePath, sha256, titleize } from './normalize.mjs';
+import { transformDocumentPresentation } from './presentation.mjs';
+import { buildDiscoveryManifest } from './search-discovery.mjs';
 
 export function generatedRelativePath(document) {
   const extension = '.mdx';
   const prefix = document.source.generatedPrefix;
   const slugPath = document.slug.length > 0 ? document.slug.join('/') : 'index';
   return normalizePath(
-    posix.join(
-      'content',
-      document.source.generatedCollection,
-      prefix,
-      `${slugPath}${extension}`,
-    ),
+    posix.join('content', document.source.generatedCollection, prefix, `${slugPath}${extension}`),
   );
 }
 
@@ -126,7 +121,8 @@ function syntheticDocument({
 
 function documentSort(left, right) {
   const leftPosition = left.seriesPosition ?? left.seriesInfo?.position ?? Number.MAX_SAFE_INTEGER;
-  const rightPosition = right.seriesPosition ?? right.seriesInfo?.position ?? Number.MAX_SAFE_INTEGER;
+  const rightPosition =
+    right.seriesPosition ?? right.seriesInfo?.position ?? Number.MAX_SAFE_INTEGER;
   if (leftPosition !== rightPosition) return leftPosition - rightPosition;
   const idOrder = left.id.localeCompare(right.id, undefined, { numeric: true });
   return idOrder || left.title.localeCompare(right.title);
@@ -239,7 +235,9 @@ function seriesBody(series) {
       '',
     );
     for (const document of entry.documents) {
-      const position = document.position ? `${document.position} of ${entry.total}` : 'unpositioned';
+      const position = document.position
+        ? `${document.position} of ${entry.total}`
+        : 'unpositioned';
       lines.push(
         `- **${position}:** [${document.id} — ${document.title}](${document.route}) · ${document.status}`,
       );
@@ -269,7 +267,8 @@ function projectStatusBody(documents, issues) {
     '',
   ];
   if (byStatus.size === 0) lines.push('No canonical documents are currently registered.');
-  for (const [status, count] of [...byStatus.entries()].sort()) lines.push(`- **${status}:** ${count}`);
+  for (const [status, count] of [...byStatus.entries()].sort())
+    lines.push(`- **${status}:** ${count}`);
 
   lines.push('', '## By document kind', '');
   for (const [kind, count] of [...byKind.entries()].sort()) lines.push(`- **${kind}:** ${count}`);
@@ -288,7 +287,9 @@ function projectStatusBody(documents, issues) {
 
 function roadmapBody(documents, series) {
   const canonical = documents.filter((document) => !document.synthetic);
-  const openDocuments = canonical.filter((document) => ['draft', 'proposed'].includes(document.status));
+  const openDocuments = canonical.filter((document) =>
+    ['draft', 'proposed'].includes(document.status),
+  );
   const incompleteSeries = series.filter((entry) => entry.documentCount < entry.total);
   const lines = [
     'This roadmap is derived from governed document status and declared series totals. It is a documentation signal, not a replacement for the implementation backlog.',
@@ -297,13 +298,15 @@ function roadmapBody(documents, series) {
     '',
   ];
 
-  if (openDocuments.length === 0) lines.push('No draft or proposed documents are currently registered.');
+  if (openDocuments.length === 0)
+    lines.push('No draft or proposed documents are currently registered.');
   for (const document of openDocuments.sort(documentSort)) {
     lines.push(`- [${document.id} — ${document.title}](${document.route}) · ${document.status}`);
   }
 
   lines.push('', '## Incomplete series', '');
-  if (incompleteSeries.length === 0) lines.push('No series declares positions beyond the documents currently present.');
+  if (incompleteSeries.length === 0)
+    lines.push('No series declares positions beyond the documents currently present.');
   for (const entry of incompleteSeries) {
     lines.push(
       `- [${entry.key}](/artifacts/series): ${entry.documentCount} of ${entry.total} registered`,
@@ -314,7 +317,8 @@ function roadmapBody(documents, series) {
 
 function releasesBody(documents) {
   const published = documents.filter(
-    (document) => !document.synthetic && ['published', 'active', 'accepted'].includes(document.status),
+    (document) =>
+      !document.synthetic && ['published', 'active', 'accepted'].includes(document.status),
   );
   return [
     'Release-specific documentation bundles will be generated when Monad begins publishing tagged releases.',
@@ -426,7 +430,8 @@ export function createSyntheticIndexes(documents, sources, governance = {}) {
     syntheticDocument({
       id: 'COLLECTION-REGISTRY',
       title: 'Document Registry',
-      description: 'Governed identity, lifecycle, routes, and source provenance for Monad documents.',
+      description:
+        'Governed identity, lifecycle, routes, and source provenance for Monad documents.',
       route: '/artifacts/registry',
       slug: ['registry'],
       generatedPath: 'content/artifacts/registry.mdx',
@@ -486,7 +491,8 @@ export function createSyntheticIndexes(documents, sources, governance = {}) {
     syntheticDocument({
       id: 'COLLECTION-PROJECT_TIMELINE',
       title: 'Project Timeline',
-      description: 'A chronology derived from publication dates, updates, build logs, and repository checkpoints.',
+      description:
+        'A chronology derived from publication dates, updates, build logs, and repository checkpoints.',
       route: '/project/timeline',
       slug: ['timeline'],
       generatedPath: 'content/project/timeline.mdx',
@@ -496,7 +502,8 @@ export function createSyntheticIndexes(documents, sources, governance = {}) {
     syntheticDocument({
       id: 'COLLECTION-PROJECT_OPERATIONS',
       title: 'Publication Operations',
-      description: 'CI gates, deployment profiles, release automation, health checks, and recovery procedures.',
+      description:
+        'CI gates, deployment profiles, release automation, health checks, and recovery procedures.',
       route: '/project/operations',
       slug: ['operations'],
       generatedPath: 'content/project/operations.mdx',
@@ -560,7 +567,16 @@ const rootPageOrders = {
     'relationships',
     'series',
   ],
-  project: ['index', 'status', 'roadmap', 'timeline', 'operations', 'releases', '---Execution history---', 'build-log'],
+  project: [
+    'index',
+    'status',
+    'roadmap',
+    'timeline',
+    'operations',
+    'releases',
+    '---Execution history---',
+    'build-log',
+  ],
   system: ['architecture'],
 };
 
@@ -631,7 +647,9 @@ function folderTitle(collection, directory) {
 }
 
 async function writeCollectionMetaTrees(stagingRoot, documents) {
-  const collections = [...new Set(documents.map((document) => document.generatedPath.split('/')[1]))];
+  const collections = [
+    ...new Set(documents.map((document) => document.generatedPath.split('/')[1])),
+  ];
   for (const collection of collections) {
     const prefix = `content/${collection}/`;
     const directories = new Set(['']);
@@ -677,8 +695,7 @@ export function createNavigationManifest(documents, generatedAt) {
   ]);
   const routes = publicRouteCatalog().map((route) => {
     const routeDocuments = documents.filter(
-      (document) =>
-        document.route === route.route || document.route.startsWith(`${route.route}/`),
+      (document) => document.route === route.route || document.route.startsWith(`${route.route}/`),
     );
     return {
       ...route,
@@ -726,7 +743,9 @@ function contentReport(registry) {
   } else {
     for (const entry of registry.issues) {
       const location = entry.canonicalPath ? ` — \`${entry.canonicalPath}\`` : '';
-      lines.push(`- **${entry.severity.toUpperCase()} ${entry.code}**${location}: ${entry.message}`);
+      lines.push(
+        `- **${entry.severity.toUpperCase()} ${entry.code}**${location}: ${entry.message}`,
+      );
     }
   }
 
@@ -816,7 +835,11 @@ export async function writeProjection(siteRoot, documents, registry) {
     'utf8',
   );
   await mkdir(join(stagingRoot, 'reports'), { recursive: true });
-  await writeFile(join(stagingRoot, 'reports', 'content-report.md'), contentReport(registry), 'utf8');
+  await writeFile(
+    join(stagingRoot, 'reports', 'content-report.md'),
+    contentReport(registry),
+    'utf8',
+  );
   await writeFile(
     join(stagingRoot, 'README.md'),
     '# Generated Monad publication content\n\nThis directory is disposable. Run `bun run content:sync` to rebuild it from canonical repository documents. The document registry and information architecture are versioned independently from the canonical Markdown.\n',

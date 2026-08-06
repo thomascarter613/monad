@@ -3,7 +3,7 @@ import { gzipSync } from 'node:zlib';
 function octal(value, length) {
   const encoded = value.toString(8);
   if (encoded.length > length - 1) throw new Error(`Tar numeric field overflow: ${value}`);
-  return encoded.padStart(length - 1, '0') + '\0';
+  return `${encoded.padStart(length - 1, '0')}\0`;
 }
 
 function byteLength(value) {

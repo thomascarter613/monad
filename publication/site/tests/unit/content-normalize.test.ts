@@ -2,15 +2,13 @@ import { describe, expect, it } from 'vitest';
 import {
   deriveSlug,
   extractIdentifier,
-  normalizeStatus,
   inferSeriesPosition,
+  normalizeStatus,
 } from '../../scripts/content/lib/normalize.mjs';
 
 describe('canonical document normalization', () => {
   it('uses a parent article directory as its stable route slug', () => {
-    expect(deriveSlug('MJ-0001-building-monad/article.md')).toEqual([
-      'mj-0001-building-monad',
-    ]);
+    expect(deriveSlug('MJ-0001-building-monad/article.md')).toEqual(['mj-0001-building-monad']);
   });
 
   it('finds an identifier in a parent directory before linked references', () => {
@@ -61,8 +59,6 @@ it('still accepts an explicit leading body identity declaration', () => {
     ),
   ).toBe('ARCH-CORE-0007');
 });
-
-
 
 describe('series position inference', () => {
   it('does not publish a 0000 template placeholder as series position zero', () => {

@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next';
 import { publicRouteCatalog } from '@/information-architecture.mjs';
 import { getContentRegistry } from '@/lib/content/registry';
 import { getAllPublicationPages } from '@/lib/discovery/pages';
-import { publicEnvironment } from '@/lib/environment';
 import { getEditionManifest } from '@/lib/editions/manifest';
+import { publicEnvironment } from '@/lib/environment';
 
 function absolute(route: string) {
   return new URL(route, publicEnvironment.siteUrl).toString();

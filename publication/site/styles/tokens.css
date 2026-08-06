@@ -7,9 +7,11 @@
 :root {
   color-scheme: light;
 
-  --font-monad-editorial: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, serif;
-  --font-monad-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-monad-mono: 'SFMono-Regular', 'Cascadia Code', 'Roboto Mono', Consolas, 'Liberation Mono', monospace;
+  --font-monad-editorial: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --font-monad-sans:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-monad-mono:
+    "SFMono-Regular", "Cascadia Code", "Roboto Mono", Consolas, "Liberation Mono", monospace;
 
   --monad-paper: oklch(0.985 0.008 86);
   --monad-paper-raised: oklch(0.998 0.003 86);
@@ -24,7 +26,7 @@
 
   --monad-section-accent: var(--monad-copper);
   --monad-section-accent-soft: oklch(0.88 0.055 55 / 0.52);
-  --monad-section-label: 'Publication';
+  --monad-section-label: "Publication";
 
   --monad-content-max: 88rem;
   --monad-reading-measure: 47rem;
@@ -80,34 +82,34 @@
   --color-fd-ring: var(--monad-copper);
 }
 
-[data-monad-section='start'] {
+[data-monad-section="start"] {
   --monad-section-accent: oklch(0.55 0.09 188);
   --monad-section-accent-soft: oklch(0.88 0.048 188 / 0.48);
-  --monad-section-label: 'Reading guide';
+  --monad-section-label: "Reading guide";
 }
 
-[data-monad-section='building-monad'] {
+[data-monad-section="building-monad"] {
   --monad-section-accent: oklch(0.6 0.145 63);
   --monad-section-accent-soft: oklch(0.9 0.075 76 / 0.48);
-  --monad-section-label: 'Engineering narrative';
+  --monad-section-label: "Engineering narrative";
 }
 
-[data-monad-section='system'] {
+[data-monad-section="system"] {
   --monad-section-accent: oklch(0.55 0.115 244);
   --monad-section-accent-soft: oklch(0.88 0.055 244 / 0.5);
-  --monad-section-label: 'System reference';
+  --monad-section-label: "System reference";
 }
 
-[data-monad-section='artifacts'] {
+[data-monad-section="artifacts"] {
   --monad-section-accent: oklch(0.55 0.12 315);
   --monad-section-accent-soft: oklch(0.89 0.06 315 / 0.5);
-  --monad-section-label: 'Governed artifacts';
+  --monad-section-label: "Governed artifacts";
 }
 
-[data-monad-section='project'] {
+[data-monad-section="project"] {
   --monad-section-accent: oklch(0.53 0.105 150);
   --monad-section-accent-soft: oklch(0.88 0.055 150 / 0.5);
-  --monad-section-label: 'Project state';
+  --monad-section-label: "Project state";
 }
 
 :root {

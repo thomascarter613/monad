@@ -13,10 +13,7 @@ function relationLabel(value: string) {
   return value.replace(/([a-z])([A-Z])/g, '$1 $2').replaceAll('-', ' ');
 }
 
-export function DocumentRelationships({
-  relationships,
-  series,
-}: DocumentRelationshipsProps) {
+export function DocumentRelationships({ relationships, series }: DocumentRelationshipsProps) {
   const outgoing = relationships?.outgoing ?? [];
   const incoming = relationships?.incoming ?? [];
   const hasSeriesNavigation = Boolean(series?.previousId || series?.nextId);

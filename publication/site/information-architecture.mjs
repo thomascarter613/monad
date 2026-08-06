@@ -64,13 +64,29 @@ export const publicationSections = Object.freeze([
     order: 40,
     children: [
       Object.freeze({ key: 'decisions', title: 'Decisions', route: '/artifacts/decisions' }),
-      Object.freeze({ key: 'specifications', title: 'Specifications', route: '/artifacts/specifications' }),
-      Object.freeze({ key: 'engineering', title: 'Engineering Records', route: '/artifacts/engineering' }),
+      Object.freeze({
+        key: 'specifications',
+        title: 'Specifications',
+        route: '/artifacts/specifications',
+      }),
+      Object.freeze({
+        key: 'engineering',
+        title: 'Engineering Records',
+        route: '/artifacts/engineering',
+      }),
       Object.freeze({ key: 'research', title: 'Research', route: '/artifacts/research' }),
-      Object.freeze({ key: 'knowledge', title: 'Knowledge Records', route: '/artifacts/knowledge' }),
+      Object.freeze({
+        key: 'knowledge',
+        title: 'Knowledge Records',
+        route: '/artifacts/knowledge',
+      }),
       Object.freeze({ key: 'explore', title: 'Artifact Explorer', route: '/artifacts/explore' }),
       Object.freeze({ key: 'registry', title: 'Document Registry', route: '/artifacts/registry' }),
-      Object.freeze({ key: 'relationships', title: 'Relationships', route: '/artifacts/relationships' }),
+      Object.freeze({
+        key: 'relationships',
+        title: 'Relationships',
+        route: '/artifacts/relationships',
+      }),
       Object.freeze({ key: 'series', title: 'Series', route: '/artifacts/series' }),
     ],
   }),
@@ -87,7 +103,11 @@ export const publicationSections = Object.freeze([
       Object.freeze({ key: 'status', title: 'Current Status', route: '/project/status' }),
       Object.freeze({ key: 'roadmap', title: 'Roadmap', route: '/project/roadmap' }),
       Object.freeze({ key: 'timeline', title: 'Project Timeline', route: '/project/timeline' }),
-      Object.freeze({ key: 'operations', title: 'Publication Operations', route: '/project/operations' }),
+      Object.freeze({
+        key: 'operations',
+        title: 'Publication Operations',
+        route: '/project/operations',
+      }),
       Object.freeze({ key: 'releases', title: 'Releases', route: '/project/releases' }),
       Object.freeze({ key: 'build-log', title: 'Build Log', route: '/project/build-log' }),
     ],
@@ -105,7 +125,8 @@ export const readingPaths = Object.freeze([
       Object.freeze({
         title: 'Begin with Building Monad',
         route: '/building-monad',
-        rationale: 'Establish the project context and follow the decisions in the order they occurred.',
+        rationale:
+          'Establish the project context and follow the decisions in the order they occurred.',
       }),
       Object.freeze({
         title: 'Inspect the system model',
@@ -131,11 +152,31 @@ export const readingPaths = Object.freeze([
     description:
       'Start with the stable system model, then move through decisions, specifications, and their relationship graph.',
     steps: Object.freeze([
-      Object.freeze({ title: 'System overview', route: '/system', rationale: 'Learn the vocabulary and major boundaries.' }),
-      Object.freeze({ title: 'Architecture', route: '/system/architecture', rationale: 'Study views, components, and system constraints.' }),
-      Object.freeze({ title: 'Decisions', route: '/artifacts/decisions', rationale: 'Review accepted tradeoffs and supersession history.' }),
-      Object.freeze({ title: 'Specifications', route: '/artifacts/specifications', rationale: 'Read the normative contracts.' }),
-      Object.freeze({ title: 'Relationship graph', route: '/artifacts/relationships', rationale: 'Trace dependencies and reverse references.' }),
+      Object.freeze({
+        title: 'System overview',
+        route: '/system',
+        rationale: 'Learn the vocabulary and major boundaries.',
+      }),
+      Object.freeze({
+        title: 'Architecture',
+        route: '/system/architecture',
+        rationale: 'Study views, components, and system constraints.',
+      }),
+      Object.freeze({
+        title: 'Decisions',
+        route: '/artifacts/decisions',
+        rationale: 'Review accepted tradeoffs and supersession history.',
+      }),
+      Object.freeze({
+        title: 'Specifications',
+        route: '/artifacts/specifications',
+        rationale: 'Read the normative contracts.',
+      }),
+      Object.freeze({
+        title: 'Relationship graph',
+        route: '/artifacts/relationships',
+        rationale: 'Trace dependencies and reverse references.',
+      }),
     ]),
   }),
   Object.freeze({
@@ -145,10 +186,26 @@ export const readingPaths = Object.freeze([
     description:
       'Move from normative behavior into implementation evidence and the current operational workstream.',
     steps: Object.freeze([
-      Object.freeze({ title: 'Specifications', route: '/artifacts/specifications', rationale: 'Start from required behavior and constraints.' }),
-      Object.freeze({ title: 'Engineering records', route: '/artifacts/engineering', rationale: 'Study implementation plans, experiments, and verification evidence.' }),
-      Object.freeze({ title: 'Build log', route: '/project/build-log', rationale: 'See the operational sequence and current work.' }),
-      Object.freeze({ title: 'Project status', route: '/project/status', rationale: 'Confirm active capabilities and open gaps.' }),
+      Object.freeze({
+        title: 'Specifications',
+        route: '/artifacts/specifications',
+        rationale: 'Start from required behavior and constraints.',
+      }),
+      Object.freeze({
+        title: 'Engineering records',
+        route: '/artifacts/engineering',
+        rationale: 'Study implementation plans, experiments, and verification evidence.',
+      }),
+      Object.freeze({
+        title: 'Build log',
+        route: '/project/build-log',
+        rationale: 'See the operational sequence and current work.',
+      }),
+      Object.freeze({
+        title: 'Project status',
+        route: '/project/status',
+        rationale: 'Confirm active capabilities and open gaps.',
+      }),
     ]),
   }),
   Object.freeze({
@@ -158,10 +215,26 @@ export const readingPaths = Object.freeze([
     description:
       'Combine the chronological publication with decisions, research, and build evidence to preserve causality.',
     steps: Object.freeze([
-      Object.freeze({ title: 'Building Monad', route: '/building-monad', rationale: 'Follow the chronological narrative.' }),
-      Object.freeze({ title: 'Decision records', route: '/artifacts/decisions', rationale: 'Identify the points where alternatives became commitments.' }),
-      Object.freeze({ title: 'Research', route: '/artifacts/research', rationale: 'Review evidence and explorations that informed choices.' }),
-      Object.freeze({ title: 'Build log', route: '/project/build-log', rationale: 'Correlate decisions with implementation events.' }),
+      Object.freeze({
+        title: 'Building Monad',
+        route: '/building-monad',
+        rationale: 'Follow the chronological narrative.',
+      }),
+      Object.freeze({
+        title: 'Decision records',
+        route: '/artifacts/decisions',
+        rationale: 'Identify the points where alternatives became commitments.',
+      }),
+      Object.freeze({
+        title: 'Research',
+        route: '/artifacts/research',
+        rationale: 'Review evidence and explorations that informed choices.',
+      }),
+      Object.freeze({
+        title: 'Build log',
+        route: '/project/build-log',
+        rationale: 'Correlate decisions with implementation events.',
+      }),
     ]),
   }),
 ]);

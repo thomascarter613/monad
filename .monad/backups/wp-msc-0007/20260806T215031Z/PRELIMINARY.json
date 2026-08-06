@@ -1,0 +1,30 @@
+{
+  "changes": [
+    "engineering/work-packets/WP-MSC-0007.md",
+    "specifications/MSC/core/MSC-CORE-0008.md",
+    "specifications/MSC/core/MSC-CORE-0009.md",
+    "specifications/MSC/core/MSC-CORE-0010.md",
+    "specifications/MSC/core/MSC-CORE-0001.md",
+    "specifications/MSC/core/MSC-CORE-0002.md",
+    "specifications/MSC/core/MSC-CORE-0004.md",
+    "specifications/MSC/core/MSC-CORE-0006.md",
+    "specifications/MSC/core/MSC-CORE-0007.md",
+    "specifications/MSC/core/MSC-CORE-0001.md",
+    "specifications/registry/specifications.yaml",
+    "specifications/MSC/core/README.md"
+  ],
+  "mappings": [
+    "MSL-CORE-000 -> MSL-CORE-0006",
+    "MSL-CORE-000 -> MSL-CORE-0007",
+    "MSL-CORE-000 -> MSL-CORE-0008",
+    "MSL-CORE-000 -> MSL-CORE-0009",
+    "MKE-CORE-000 -> MKE-CORE-0001",
+    "MKE-CORE-000 -> MKE-CORE-0002",
+    "MKE-CORE-000 -> MKE-CORE-0003",
+    "MKE-CORE-000 -> MKE-CORE-0004",
+    "MKE-CORE-000 -> MKE-CORE-0005",
+    "MKE-CORE-000 -> MKE-CORE-0006",
+    "MKE-CORE-000 -> MKE-CORE-0007",
+    "MKE-CORE-000 -> MKE-CORE-0008"
+  ]
+}

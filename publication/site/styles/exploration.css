@@ -58,7 +58,7 @@
   font-weight: 650;
 }
 
-.monad-explorer__filters input[type='search'],
+.monad-explorer__filters input[type="search"],
 .monad-explorer__filters select,
 .monad-project-timeline__filters select,
 .monad-relationship-explorer__controls select {
@@ -72,7 +72,7 @@
   font: inherit;
 }
 
-.monad-explorer__filters input[type='search']:focus-visible,
+.monad-explorer__filters input[type="search"]:focus-visible,
 .monad-explorer__filters select:focus-visible,
 .monad-project-timeline__filters select:focus-visible,
 .monad-relationship-explorer__controls select:focus-visible {
@@ -86,9 +86,9 @@
 }
 
 .monad-explorer__checkbox {
-  display: flex !important;
+  display: flex;
   align-items: center;
-  gap: 0.55rem !important;
+  gap: 0.55rem;
 }
 
 .monad-explorer__checkbox input {
@@ -139,7 +139,10 @@
   background: color-mix(in oklab, var(--color-fd-card) 76%, transparent);
   padding: 1rem;
   text-align: start;
-  transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    transform 150ms ease;
 }
 
 .monad-explorer-card:hover,
@@ -321,8 +324,8 @@
   place-content: center;
   min-block-size: 13rem;
   text-align: center;
-  border-color: var(--monad-section-accent) !important;
-  background: color-mix(in oklab, var(--monad-section-accent-soft) 34%, var(--color-fd-card)) !important;
+  border-color: var(--monad-section-accent);
+  background: color-mix(in oklab, var(--monad-section-accent-soft) 34%, var(--color-fd-card));
 }
 
 .monad-relationship-map__center > span,
@@ -509,7 +512,8 @@
   position: relative;
   display: grid;
   gap: 0.6rem;
-  border-inline-start: 2px solid color-mix(in oklab, var(--monad-section-accent) 45%, var(--color-fd-border));
+  border-inline-start: 2px solid
+    color-mix(in oklab, var(--monad-section-accent) 45%, var(--color-fd-border));
   padding-inline-start: 1rem;
 }
 
@@ -522,7 +526,7 @@
   border: 2px solid var(--color-fd-background);
   border-radius: 999px;
   background: var(--monad-section-accent);
-  content: '';
+  content: "";
 }
 
 .monad-project-timeline time {
@@ -669,7 +673,7 @@
   .monad-explorer__clear,
   .monad-project-timeline__filters,
   .monad-relationship-explorer__controls {
-    display: none !important;
+    display: none;
   }
 
   .monad-explorer__workspace,

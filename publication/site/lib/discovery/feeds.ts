@@ -24,7 +24,9 @@ export async function buildingMonadRSS() {
   const manifest = await getBuildingMonadManifest();
   const items = [...manifest.installments]
     .filter((item) => item.publishedAt)
-    .sort((left, right) => feedDate(right.publishedAt).getTime() - feedDate(left.publishedAt).getTime())
+    .sort(
+      (left, right) => feedDate(right.publishedAt).getTime() - feedDate(left.publishedAt).getTime(),
+    )
     .map(
       (item) => `    <item>
       <guid isPermaLink="true">${xml(absolute(item.route))}</guid>
@@ -51,14 +53,17 @@ ${items}
 
 export async function buildingMonadAtom() {
   const manifest = await getBuildingMonadManifest();
-  const updated = [...manifest.installments]
-    .map((item) => item.updatedAt ?? item.publishedAt)
-    .filter((value): value is string => Boolean(value))
-    .sort()
-    .at(-1) ?? manifest.generatedAt;
+  const updated =
+    [...manifest.installments]
+      .map((item) => item.updatedAt ?? item.publishedAt)
+      .filter((value): value is string => Boolean(value))
+      .sort()
+      .at(-1) ?? manifest.generatedAt;
   const entries = [...manifest.installments]
     .filter((item) => item.publishedAt)
-    .sort((left, right) => feedDate(right.publishedAt).getTime() - feedDate(left.publishedAt).getTime())
+    .sort(
+      (left, right) => feedDate(right.publishedAt).getTime() - feedDate(left.publishedAt).getTime(),
+    )
     .map(
       (item) => `  <entry>
     <id>${xml(absolute(item.route))}</id>

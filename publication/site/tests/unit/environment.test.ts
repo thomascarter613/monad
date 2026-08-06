@@ -34,8 +34,8 @@ describe('parsePublicEnvironment', () => {
   });
 
   it('rejects malformed URLs with an actionable message', () => {
-    expect(() =>
-      parsePublicEnvironment({ NEXT_PUBLIC_SITE_URL: 'not-a-url' }),
-    ).toThrow(/Invalid public environment configuration/);
+    expect(() => parsePublicEnvironment({ NEXT_PUBLIC_SITE_URL: 'not-a-url' })).toThrow(
+      /Invalid public environment configuration/,
+    );
   });
 });

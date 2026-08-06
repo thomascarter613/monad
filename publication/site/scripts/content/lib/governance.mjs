@@ -140,8 +140,11 @@ export function validateIdentifierAndLifecycle(document, previousEntry, issues) 
     }
   }
 
-  const transitions = lifecycleTransitions[document.kind]?.[previousEntry?.status ?? document.status];
-  const allowedNextStatuses = lifecycleTransitions[document.kind]?.[document.status] ?? [document.status];
+  const transitions =
+    lifecycleTransitions[document.kind]?.[previousEntry?.status ?? document.status];
+  const allowedNextStatuses = lifecycleTransitions[document.kind]?.[document.status] ?? [
+    document.status,
+  ];
   document.lifecycle = {
     previousStatus: previousEntry?.status,
     allowedNextStatuses,
@@ -216,10 +219,11 @@ function detectSupersessionCycles(documentsById, issues) {
     }
 
     visiting.add(document.id);
-    const targets = document.relationships?.outgoing
-      ?.filter((edge) => edge.kind === 'supersedes')
-      .map((edge) => documentsById.get(edge.id))
-      .filter(Boolean) ?? [];
+    const targets =
+      document.relationships?.outgoing
+        ?.filter((edge) => edge.kind === 'supersedes')
+        .map((edge) => documentsById.get(edge.id))
+        .filter(Boolean) ?? [];
     for (const target of targets) visit(target, [...stack, document.id]);
     visiting.delete(document.id);
     visited.add(document.id);
@@ -253,9 +257,8 @@ export function buildRelationshipGraph(documents, issues) {
 
       const target = documentsById.get(relation.targetId);
       if (!target) {
-        const severity = relation.kind === 'supersedes' || relation.kind === 'supersededBy'
-          ? 'error'
-          : 'warning';
+        const severity =
+          relation.kind === 'supersedes' || relation.kind === 'supersededBy' ? 'error' : 'warning';
         issues.push(
           issue(
             severity,
@@ -301,11 +304,12 @@ export function buildRelationshipGraph(documents, issues) {
         route: target.route,
         explicit: relation.explicit,
       };
-      const incomingKind = relation.kind === 'supersedes'
-        ? 'supersededBy'
-        : relation.kind === 'supersededBy'
-          ? 'supersedes'
-          : relation.kind;
+      const incomingKind =
+        relation.kind === 'supersedes'
+          ? 'supersededBy'
+          : relation.kind === 'supersededBy'
+            ? 'supersedes'
+            : relation.kind;
       const incoming = {
         kind: incomingKind,
         id: document.id,
@@ -319,10 +323,12 @@ export function buildRelationshipGraph(documents, issues) {
   }
 
   for (const document of canonicalDocuments) {
-    document.relationships.outgoing.sort((left, right) =>
-      left.kind.localeCompare(right.kind) || left.id.localeCompare(right.id));
-    document.relationships.incoming.sort((left, right) =>
-      left.kind.localeCompare(right.kind) || left.id.localeCompare(right.id));
+    document.relationships.outgoing.sort(
+      (left, right) => left.kind.localeCompare(right.kind) || left.id.localeCompare(right.id),
+    );
+    document.relationships.incoming.sort(
+      (left, right) => left.kind.localeCompare(right.kind) || left.id.localeCompare(right.id),
+    );
     document.referencedBy = document.relationships.incoming
       .filter((edge) => edge.kind === 'references')
       .map((edge) => edge.id);
@@ -364,7 +370,11 @@ export function validateAliases(documents, issues) {
   for (const document of documents.filter((entry) => !entry.synthetic)) {
     const accepted = [];
     for (const alias of document.aliases ?? []) {
-      if (RESERVED_APPLICATION_ROUTES.has(alias) || alias.startsWith('/api/') || alias.startsWith('/_next/')) {
+      if (
+        RESERVED_APPLICATION_ROUTES.has(alias) ||
+        alias.startsWith('/api/') ||
+        alias.startsWith('/_next/')
+      ) {
         issues.push(
           issue(
             'error',
@@ -401,7 +411,12 @@ export function validateAliases(documents, issues) {
       }
       aliases.set(alias, document);
       accepted.push(alias);
-      redirects.push({ source: alias, destination: document.route, permanent: true, id: document.id });
+      redirects.push({
+        source: alias,
+        destination: document.route,
+        permanent: true,
+        id: document.id,
+      });
     }
     document.aliases = accepted.sort();
   }
@@ -418,11 +433,15 @@ export function validateSeries(documents, issues) {
   }
 
   const seriesRegistry = [];
-  for (const [key, members] of [...groups.entries()].sort(([left], [right]) => left.localeCompare(right))) {
+  for (const [key, members] of [...groups.entries()].sort(([left], [right]) =>
+    left.localeCompare(right),
+  )) {
     const positioned = members.filter((member) => Number.isInteger(member.seriesPosition));
     const positionOwners = new Map();
     const explicitTotals = new Set(
-      members.filter((member) => Number.isInteger(member.seriesTotal)).map((member) => member.seriesTotal),
+      members
+        .filter((member) => Number.isInteger(member.seriesTotal))
+        .map((member) => member.seriesTotal),
     );
 
     for (const member of positioned) {

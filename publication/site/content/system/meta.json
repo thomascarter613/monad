@@ -1,9 +1,4 @@
 {
   "title": "System",
-  "pages": [
-    "index",
-    "publication-architecture",
-    "presentation-components",
-    "architecture"
-  ]
+  "pages": ["index", "publication-architecture", "presentation-components", "architecture"]
 }

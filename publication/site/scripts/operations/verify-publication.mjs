@@ -18,7 +18,7 @@ const failures = [];
 for (const checksumPath of checksumFiles) {
   const body = await readFile(checksumPath, 'utf8');
   for (const line of body.split(/\r?\n/).filter(Boolean)) {
-    const match = line.match(/^([a-f0-9]{64})  (.+)$/);
+    const match = line.match(/^([a-f0-9]{64}) {2}(.+)$/);
     if (!match) {
       failures.push(`${checksumPath}: malformed line ${line}`);
       continue;

@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import {
   findPublicationSection,
-  publicRouteCatalog,
   publicationSections,
+  publicRouteCatalog,
   readingPaths,
   routePolicy,
 } from '@/information-architecture.mjs';

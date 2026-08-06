@@ -63,17 +63,32 @@ describe('artifact exploration manifest', () => {
       },
     });
     const manifest = buildExplorationManifest(
-      registry([older, newer], [
-        {
-          key: 'ADR',
-          total: 3,
-          documentCount: 2,
-          documents: [
-            { id: 'ADR-0001', title: 'First', route: older.route, position: 1, status: 'superseded' },
-            { id: 'ADR-0002', title: 'Second', route: newer.route, position: 2, status: 'accepted' },
-          ],
-        },
-      ]),
+      registry(
+        [older, newer],
+        [
+          {
+            key: 'ADR',
+            total: 3,
+            documentCount: 2,
+            documents: [
+              {
+                id: 'ADR-0001',
+                title: 'First',
+                route: older.route,
+                position: 1,
+                status: 'superseded',
+              },
+              {
+                id: 'ADR-0002',
+                title: 'Second',
+                route: newer.route,
+                position: 2,
+                status: 'accepted',
+              },
+            ],
+          },
+        ],
+      ),
     );
 
     expect(manifest.documentCount).toBe(2);

@@ -1,6 +1,6 @@
+import { DocsBody, DocsPage } from 'fumadocs-ui/page';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { DocsBody, DocsPage } from 'fumadocs-ui/page';
 import { ArtifactIntroductions } from '@/components/building-monad/artifact-introductions';
 import { BuildingMonadIndex } from '@/components/building-monad/building-monad-index';
 import { ReadingProgress } from '@/components/building-monad/reading-progress';
@@ -8,9 +8,9 @@ import { RepositoryState } from '@/components/building-monad/repository-state';
 import { SeriesContext } from '@/components/building-monad/series-context';
 import { SeriesNavigation } from '@/components/building-monad/series-navigation';
 import { DocumentHeader } from '@/components/content/document-header';
-import { DocumentDiscovery } from '@/components/discovery/document-discovery';
 import { DocumentMetadata } from '@/components/content/document-metadata';
 import { DocumentRelationships } from '@/components/content/document-relationships';
+import { DocumentDiscovery } from '@/components/discovery/document-discovery';
 import { getMDXComponents } from '@/components/mdx';
 import { SectionDiscovery } from '@/components/navigation/section-discovery';
 import { getBuildingMonadManifest } from '@/lib/building-monad/manifest';

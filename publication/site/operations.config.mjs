@@ -32,7 +32,8 @@ export const deploymentProfiles = Object.freeze([
     healthRoute: '/api/health',
     preview: true,
     production: true,
-    notes: 'Recommended when the repository is connected to Vercel or the opt-in GitHub deployment workflows are configured.',
+    notes:
+      'Recommended when the repository is connected to Vercel or the opt-in GitHub deployment workflows are configured.',
   }),
   Object.freeze({
     key: 'container',
@@ -43,7 +44,8 @@ export const deploymentProfiles = Object.freeze([
     healthRoute: '/api/health',
     preview: true,
     production: true,
-    notes: 'Provider-independent Next.js standalone image suitable for a container platform or a single host.',
+    notes:
+      'Provider-independent Next.js standalone image suitable for a container platform or a single host.',
   }),
 ]);
 

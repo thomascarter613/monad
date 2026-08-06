@@ -20,7 +20,7 @@
 
 .monad-display {
   font-family: var(--font-monad-editorial);
-  font-variation-settings: 'opsz' 48;
+  font-variation-settings: "opsz" 48;
 }
 
 .monad-kicker {
@@ -69,7 +69,11 @@
 
 .monad-docs-layout #nd-page {
   background:
-    linear-gradient(180deg, color-mix(in oklab, var(--monad-section-accent-soft) 16%, transparent), transparent 20rem),
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--monad-section-accent-soft) 16%, transparent),
+      transparent 20rem
+    ),
     transparent;
 }
 
@@ -90,8 +94,12 @@
   z-index: -1;
   inset: -2rem -2rem auto;
   height: 13rem;
-  content: '';
-  background: radial-gradient(circle at 18% 0%, color-mix(in oklab, var(--monad-section-accent) 14%, transparent), transparent 60%);
+  content: "";
+  background: radial-gradient(
+    circle at 18% 0%,
+    color-mix(in oklab, var(--monad-section-accent) 14%, transparent),
+    transparent 60%
+  );
   pointer-events: none;
 }
 
@@ -158,7 +166,7 @@
   aspect-ratio: 1;
   border: 1px solid color-mix(in oklab, var(--monad-section-accent) 25%, transparent);
   border-radius: 999px;
-  content: '';
+  content: "";
   transition: transform 240ms ease;
 }
 

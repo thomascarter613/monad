@@ -50,7 +50,9 @@ function renderPlan(entries) {
       'Suggested missing metadata:',
       '',
       '```yaml',
-      serializeFrontmatter(entry.suggestion).replace(/^---\n|\n---\n$/g, '').trim(),
+      serializeFrontmatter(entry.suggestion)
+        .replace(/^---\n|\n---\n$/g, '')
+        .trim(),
       '```',
       '',
     );

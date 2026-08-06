@@ -8,8 +8,8 @@ export function EditionIndex({ manifest }: { manifest: EditionManifest }) {
         <p className="monad-kicker">Derived publications</p>
         <h1 className="monad-display">Editions of the Monad engineering record</h1>
         <p>
-          Reproducible publication profiles turn the governed corpus into print, PDF, EPUB,
-          offline, and canonical-source editions without changing the source documents.
+          Reproducible publication profiles turn the governed corpus into print, PDF, EPUB, offline,
+          and canonical-source editions without changing the source documents.
         </p>
       </header>
       <div className="monad-editions__grid">

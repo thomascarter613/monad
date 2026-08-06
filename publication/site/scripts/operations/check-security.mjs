@@ -1,12 +1,12 @@
 import { withProductionServer, writeReport } from './lib/runtime.mjs';
 
 const required = {
-  'content-security-policy': (value) => value.includes("default-src 'self'") && value.includes("frame-ancestors 'none'"),
+  'content-security-policy': (value) =>
+    value.includes("default-src 'self'") && value.includes("frame-ancestors 'none'"),
   'referrer-policy': (value) => value === 'strict-origin-when-cross-origin',
   'x-content-type-options': (value) => value === 'nosniff',
   'x-frame-options': (value) => value === 'DENY',
-  'permissions-policy': (value) =>
-    value.includes('camera=()') && value.includes('microphone=()'),
+  'permissions-policy': (value) => value.includes('camera=()') && value.includes('microphone=()'),
 };
 
 await withProductionServer(async (baseUrl) => {

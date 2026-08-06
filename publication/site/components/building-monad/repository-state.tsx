@@ -43,8 +43,7 @@ export function RepositoryState({ installment }: RepositoryStateProps) {
         </dl>
       ) : (
         <p className="monad-repository-state__empty">
-          No commit, branch, release, or reproduction command was recorded in the canonical
-          article.
+          No commit, branch, release, or reproduction command was recorded in the canonical article.
         </p>
       )}
     </section>

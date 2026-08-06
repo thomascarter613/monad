@@ -1,15 +1,13 @@
 import { dirname, normalize, resolve } from 'node:path';
-import { buildingMonadSeries } from '../../building-monad.config.mjs';
 import { fileURLToPath } from 'node:url';
+import { buildingMonadSeries } from '../../building-monad.config.mjs';
+import { contentContractVersion, serializableIdentifierFamilies } from '../../content.families.mjs';
+import { contentIngestionConfig, publicationContentSources } from '../../content.sources.mjs';
 import {
-  contentContractVersion,
-  serializableIdentifierFamilies,
-} from '../../content.families.mjs';
-import {
-  contentIngestionConfig,
-  publicationContentSources,
-} from '../../content.sources.mjs';
-import { discoverSourceFiles, readDiscoveredFile, resolveRepositoryRoot } from './lib/discovery.mjs';
+  discoverSourceFiles,
+  readDiscoveredFile,
+  resolveRepositoryRoot,
+} from './lib/discovery.mjs';
 import { splitFrontmatter } from './lib/frontmatter.mjs';
 import {
   buildRelationshipGraph,
@@ -177,7 +175,12 @@ async function normalizeDocument(repositoryRoot, discovered, previousById, issue
   const body = stripMatchingFirstHeading(parsed.body, title);
   if (!body.trim()) {
     issues.push(
-      issue('warning', 'CONTENT_EMPTY_BODY', 'Document has no body content.', discovered.canonicalPath),
+      issue(
+        'warning',
+        'CONTENT_EMPTY_BODY',
+        'Document has no body content.',
+        discovered.canonicalPath,
+      ),
     );
   }
 
@@ -204,13 +207,15 @@ async function normalizeDocument(repositoryRoot, discovered, previousById, issue
     seriesInfo: undefined,
     tags: normalizeStringArray(parsed.attributes.tags),
     references: [
-      ...new Set([
-        ...normalizeStringArray(parsed.attributes.references),
-        ...normalizeStringArray(parsed.attributes.relationships?.references),
-        ...normalizeStringArray(parsed.attributes.relationships?.depends_on),
-        ...normalizeStringArray(parsed.attributes.relationships?.enables),
-        ...normalizeStringArray(parsed.attributes.related),
-      ].map((entry) => entry.toUpperCase())),
+      ...new Set(
+        [
+          ...normalizeStringArray(parsed.attributes.references),
+          ...normalizeStringArray(parsed.attributes.relationships?.references),
+          ...normalizeStringArray(parsed.attributes.relationships?.depends_on),
+          ...normalizeStringArray(parsed.attributes.relationships?.enables),
+          ...normalizeStringArray(parsed.attributes.related),
+        ].map((entry) => entry.toUpperCase()),
+      ),
     ].sort(),
     referencedBy: [],
     related: normalizeRelated(parsed.attributes.related, parsed.attributes),
@@ -338,7 +343,9 @@ export async function syncContent(options = {}) {
     families: serializableIdentifierFamilies(),
     series,
     redirects,
-    documents: allDocuments.map(registryEntry).sort((left, right) => left.route.localeCompare(right.route)),
+    documents: allDocuments
+      .map(registryEntry)
+      .sort((left, right) => left.route.localeCompare(right.route)),
     issues,
   };
 

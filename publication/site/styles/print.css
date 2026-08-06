@@ -8,7 +8,7 @@
   }
 
   body {
-    background: white !important;
+    background: white;
     color: black;
     font-size: 10.5pt;
   }
@@ -20,11 +20,11 @@
   .monad-skip-link,
   .monad-section-badge,
   .monad-section-discovery {
-    display: none !important;
+    display: none;
   }
 
   a {
-    color: black !important;
+    color: black;
     text-decoration: underline;
   }
 
@@ -38,7 +38,7 @@
   }
 
   :where(.prose) {
-    max-width: none !important;
+    max-width: none;
     font-size: 10.5pt;
     line-height: 1.5;
   }
@@ -74,6 +74,11 @@
     background: #eee;
   }
 
-  .monad-terminal__lights { display: none; }
-  .monad-artifact-reference { border-color: #777; background: transparent; }
+  .monad-terminal__lights {
+    display: none;
+  }
+  .monad-artifact-reference {
+    border-color: #777;
+    background: transparent;
+  }
 }

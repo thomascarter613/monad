@@ -31,9 +31,7 @@ export function DocumentMetadata({
     <div className="monad-metadata-strip space-y-3 text-xs text-fd-muted-foreground">
       <div className="flex flex-wrap items-center gap-2">
         {id ? (
-          <span className="monad-metadata-chip monad-metadata-chip--identity font-mono">
-            {id}
-          </span>
+          <span className="monad-metadata-chip monad-metadata-chip--identity font-mono">{id}</span>
         ) : null}
         {kind ? <span className="monad-metadata-chip capitalize">{label(kind)}</span> : null}
         {family && family !== 'untracked' ? (

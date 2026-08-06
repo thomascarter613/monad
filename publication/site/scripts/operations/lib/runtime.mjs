@@ -13,7 +13,11 @@ export async function withProductionServer(callback, options = {}) {
     baseUrl: options.baseUrl ?? process.env.MONAD_OPERATIONS_BASE_URL,
     port: options.port ?? Number(process.env.MONAD_OPERATIONS_PORT ?? 4327),
   });
-  try { return await callback(server.baseUrl); } finally { await server.close(); }
+  try {
+    return await callback(server.baseUrl);
+  } finally {
+    await server.close();
+  }
 }
 
 export async function writeReport(filename, body) {

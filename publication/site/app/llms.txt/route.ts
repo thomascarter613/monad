@@ -1,5 +1,5 @@
-import { getAllPublicationPages } from '@/lib/discovery/pages';
 import { siteConfig } from '@/lib/config/site';
+import { getAllPublicationPages } from '@/lib/discovery/pages';
 import { publicEnvironment } from '@/lib/environment';
 
 export const revalidate = false;

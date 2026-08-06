@@ -226,7 +226,7 @@
   padding: 1.15rem;
 }
 
-.monad-installment-card[data-current='true'] {
+.monad-installment-card[data-current="true"] {
   border-color: color-mix(in oklab, var(--monad-section-accent) 55%, var(--color-fd-border));
   box-shadow: inset 0.25rem 0 0 var(--monad-section-accent);
 }
@@ -453,7 +453,7 @@
   .monad-installment-card__read-state,
   .monad-series-navigation,
   .monad-current-installment > a {
-    display: none !important;
+    display: none;
   }
 
   .monad-series-index {

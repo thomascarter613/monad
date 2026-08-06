@@ -17,9 +17,7 @@ describe('STAB-0007 release gate contract', () => {
   });
 
   it('documents intentional native image and JSON-LD exceptions locally', () => {
-    expect(text('components/mdx.tsx')).toContain(
-      'biome-ignore lint/performance/noImgElement',
-    );
+    expect(text('components/mdx.tsx')).toContain('biome-ignore lint/performance/noImgElement');
     expect(text('components/discovery/structured-data.tsx')).toContain(
       'biome-ignore lint/security/noDangerouslySetInnerHtml',
     );

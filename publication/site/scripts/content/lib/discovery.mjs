@@ -1,6 +1,6 @@
+import { spawnSync } from 'node:child_process';
 import { readdir, readFile, stat } from 'node:fs/promises';
 import { extname, join, relative, resolve } from 'node:path';
-import { spawnSync } from 'node:child_process';
 import { contentIngestionConfig } from '../../../content.sources.mjs';
 import { normalizePath } from './normalize.mjs';
 
@@ -60,7 +60,9 @@ export async function discoverSourceFiles(repositoryRoot, source) {
       const canonicalPath = normalizePath(relative(repositoryRoot, absolutePath));
       const excluded = (source.excludedCanonicalPrefixes ?? []).some((prefix) => {
         const normalizedPrefix = normalizePath(prefix).replace(/\/$/, '');
-        return canonicalPath === normalizedPrefix || canonicalPath.startsWith(`${normalizedPrefix}/`);
+        return (
+          canonicalPath === normalizedPrefix || canonicalPath.startsWith(`${normalizedPrefix}/`)
+        );
       });
       if (excluded) continue;
 

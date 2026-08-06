@@ -26,7 +26,9 @@ const baseDocument = {
 describe('MDX projection validity', () => {
   it('uses an MDX-safe JSX comment instead of an HTML comment', () => {
     const output = createGeneratedDocument(baseDocument);
-    expect(output).toContain('{/* Generated from engineering/adrs/ADR-0001-projection-boundary.md.');
+    expect(output).toContain(
+      '{/* Generated from engineering/adrs/ADR-0001-projection-boundary.md.',
+    );
     expect(output).not.toContain('<!--');
   });
 

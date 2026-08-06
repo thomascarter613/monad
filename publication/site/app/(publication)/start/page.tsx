@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { readingPaths } from '@/information-architecture.mjs';
 import { MonadMark } from '@/components/brand/monad-mark';
 import { PublicationMasthead } from '@/components/brand/publication-masthead';
+import { readingPaths } from '@/information-architecture.mjs';
 import { publicationMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = publicationMetadata({
@@ -28,9 +28,9 @@ export default function StartPage() {
           Choose the path that matches your purpose.
         </h1>
         <p className="mt-6 max-w-3xl text-pretty font-serif text-lg leading-8 text-fd-muted-foreground">
-          Monad can be read as a build narrative, a system reference, a governed artifact set,
-          or an operational project record. These paths provide a deliberate starting sequence
-          without changing the canonical organization of the documents.
+          Monad can be read as a build narrative, a system reference, a governed artifact set, or an
+          operational project record. These paths provide a deliberate starting sequence without
+          changing the canonical organization of the documents.
         </p>
       </header>
 
@@ -44,7 +44,9 @@ export default function StartPage() {
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="monad-kicker text-[var(--monad-section-accent)]">{path.audience}</p>
-                <h2 className="monad-display mt-3 text-3xl font-semibold tracking-tight">{path.title}</h2>
+                <h2 className="monad-display mt-3 text-3xl font-semibold tracking-tight">
+                  {path.title}
+                </h2>
               </div>
               <span className="font-mono text-sm text-fd-muted-foreground">0{pathIndex + 1}</span>
             </div>
@@ -74,8 +76,8 @@ export default function StartPage() {
       </div>
 
       <footer className="mt-12 border-t border-fd-border pt-8 pb-4 text-sm text-fd-muted-foreground">
-        Reading paths are presentation-layer guides. Canonical document identity and source
-        location remain unchanged.
+        Reading paths are presentation-layer guides. Canonical document identity and source location
+        remain unchanged.
       </footer>
     </main>
   );

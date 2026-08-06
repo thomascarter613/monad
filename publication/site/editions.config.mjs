@@ -7,8 +7,7 @@ export const publicationEditions = [
     key: 'building-monad',
     title: 'Building Monad',
     subtitle: 'The chronological engineering narrative',
-    description:
-      'The complete Building Monad serial, ordered by installment and project phase.',
+    description: 'The complete Building Monad serial, ordered by installment and project phase.',
     defaultVersion: 'continuous',
     selectors: {
       surfaces: ['building-monad'],

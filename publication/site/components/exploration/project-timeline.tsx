@@ -38,10 +38,22 @@ export function ProjectTimeline({ manifest }: { manifest: ExplorationManifest })
   return (
     <div className="monad-project-timeline" data-testid="project-timeline">
       <section className="monad-explorer__metrics" aria-label="Timeline summary">
-        <div><strong>{manifest.timeline.eventCount}</strong><span>dated events</span></div>
-        <div><strong>{manifest.timeline.undatedDocumentCount}</strong><span>undated documents</span></div>
-        <div><strong>{manifest.facets.kinds.length}</strong><span>document kinds</span></div>
-        <div><strong>{manifest.documentCount}</strong><span>registered documents</span></div>
+        <div>
+          <strong>{manifest.timeline.eventCount}</strong>
+          <span>dated events</span>
+        </div>
+        <div>
+          <strong>{manifest.timeline.undatedDocumentCount}</strong>
+          <span>undated documents</span>
+        </div>
+        <div>
+          <strong>{manifest.facets.kinds.length}</strong>
+          <span>document kinds</span>
+        </div>
+        <div>
+          <strong>{manifest.documentCount}</strong>
+          <span>registered documents</span>
+        </div>
       </section>
 
       <div className="monad-project-timeline__filters">
@@ -50,7 +62,9 @@ export function ProjectTimeline({ manifest }: { manifest: ExplorationManifest })
           <select value={kind} onChange={(event) => setKind(event.target.value)}>
             <option value="">All kinds</option>
             {manifest.facets.kinds.map((facet) => (
-              <option key={facet.value} value={facet.value}>{facet.value} ({facet.count})</option>
+              <option key={facet.value} value={facet.value}>
+                {facet.value} ({facet.count})
+              </option>
             ))}
           </select>
         </label>
@@ -77,16 +91,28 @@ export function ProjectTimeline({ manifest }: { manifest: ExplorationManifest })
                 <time dateTime={event.date}>{formatDate(event.date)}</time>
                 <article>
                   <div>
-                    <span>{event.type}{event.inferred ? ' · inferred date' : ''}</span>
+                    <span>
+                      {event.type}
+                      {event.inferred ? ' · inferred date' : ''}
+                    </span>
                     <span>{event.kind}</span>
                     <span>{event.status}</span>
                   </div>
-                  <h3><Link href={event.route}>{event.documentId} — {event.title}</Link></h3>
+                  <h3>
+                    <Link href={event.route}>
+                      {event.documentId} — {event.title}
+                    </Link>
+                  </h3>
                   <p>{event.description}</p>
                   {event.repository ? (
                     <dl>
                       {Object.entries(event.repository).map(([key, value]) => (
-                        <div key={key}><dt>{key}</dt><dd><code>{value}</code></dd></div>
+                        <div key={key}>
+                          <dt>{key}</dt>
+                          <dd>
+                            <code>{value}</code>
+                          </dd>
+                        </div>
                       ))}
                     </dl>
                   ) : null}
@@ -108,11 +134,15 @@ export function ProjectTimeline({ manifest }: { manifest: ExplorationManifest })
         <ul>
           {manifest.timeline.undated.map((document) => (
             <li key={document.id}>
-              <Link href={document.route}>{document.id} — {document.title}</Link>
+              <Link href={document.route}>
+                {document.id} — {document.title}
+              </Link>
               <span>{document.kind}</span>
             </li>
           ))}
-          {manifest.timeline.undated.length === 0 ? <li>All canonical documents are dated.</li> : null}
+          {manifest.timeline.undated.length === 0 ? (
+            <li>All canonical documents are dated.</li>
+          ) : null}
         </ul>
       </section>
     </div>

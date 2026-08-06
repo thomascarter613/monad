@@ -1,6 +1,6 @@
+import { RootProvider } from 'fumadocs-ui/provider/next';
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
-import { RootProvider } from 'fumadocs-ui/provider/next';
 import { SiteStructuredData } from '@/components/discovery/structured-data';
 import { SkipLink } from '@/components/layout/skip-link';
 import { siteConfig } from '@/lib/config/site';

@@ -44,7 +44,9 @@ try {
     for (const series of registry.series ?? []) {
       console.log(`${series.key} (${series.documentCount}/${series.total})`);
       for (const document of series.documents) {
-        console.log(`  ${String(document.position ?? '-').padStart(4)} ${document.id} ${document.route}`);
+        console.log(
+          `  ${String(document.position ?? '-').padStart(4)} ${document.id} ${document.route}`,
+        );
       }
     }
     process.exit(0);
@@ -115,15 +117,15 @@ try {
     process.exit(0);
   }
 
-
-
   if (flags.has('--editions')) {
     const manifest = JSON.parse(await readFile(editionsPath, 'utf8'));
     console.log(`Edition contract: ${manifest.contractVersion}`);
     console.log(`Editions:         ${manifest.editionCount}`);
     console.log('');
     for (const edition of manifest.editions) {
-      console.log(`${edition.key.padEnd(18)} ${String(edition.documentCount).padStart(4)} document(s)  ${edition.sourceDigest.slice(0, 12)}`);
+      console.log(
+        `${edition.key.padEnd(18)} ${String(edition.documentCount).padStart(4)} document(s)  ${edition.sourceDigest.slice(0, 12)}`,
+      );
       console.log(`  ${edition.title}`);
       console.log(`  formats: ${edition.formats.join(', ')}`);
     }
@@ -136,7 +138,9 @@ try {
     console.log('');
     for (const route of navigation.routes) {
       const marker = route.available ? 'active' : 'empty ';
-      console.log(`${marker} ${route.route.padEnd(34)} ${String(route.documentCount).padStart(4)} canonical`);
+      console.log(
+        `${marker} ${route.route.padEnd(34)} ${String(route.documentCount).padStart(4)} canonical`,
+      );
     }
     console.log('');
     for (const path of navigation.readingPaths) {
@@ -151,7 +155,9 @@ try {
   for (const document of registry.documents) {
     const marker = document.synthetic ? 'generated' : document.kind;
     const family = document.family ? `/${document.family}` : '';
-    console.log(`${document.id.padEnd(26)} ${(marker + family).padEnd(28)} ${document.status.padEnd(11)} ${document.route}`);
+    console.log(
+      `${document.id.padEnd(26)} ${(marker + family).padEnd(28)} ${document.status.padEnd(11)} ${document.route}`,
+    );
   }
 } catch (error) {
   console.error('No generated registry exists. Run `bun run content:sync` first.');

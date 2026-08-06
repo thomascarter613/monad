@@ -17,37 +17,35 @@ export async function GET(request: Request) {
   const section = clean(url.searchParams.get('section'), 'MONAD', 48);
 
   return new ImageResponse(
-    (
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          background: '#f8f5ee',
-          color: '#201d19',
-          padding: '64px 72px',
-          border: '18px solid #201d19',
-          fontFamily: 'Georgia, serif',
-        }}
-      >
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'monospace' }}>
-          <span style={{ fontSize: 24, letterSpacing: 4, color: '#9a5c31' }}>{identifier}</span>
-          <span style={{ fontSize: 22, letterSpacing: 3 }}>{section.toUpperCase()}</span>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <div style={{ fontSize: title.length > 72 ? 54 : 66, lineHeight: 1.08, maxWidth: 1000 }}>
-            {title}
-          </div>
-          <div style={{ width: 180, height: 8, background: '#9a5c31' }} />
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'monospace' }}>
-          <span style={{ fontSize: 22 }}>{siteConfig.name}</span>
-          <span style={{ fontSize: 18, letterSpacing: 2 }}>ARCHITECTURE · DECISIONS · EVIDENCE</span>
-        </div>
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        background: '#f8f5ee',
+        color: '#201d19',
+        padding: '64px 72px',
+        border: '18px solid #201d19',
+        fontFamily: 'Georgia, serif',
+      }}
+    >
+      <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'monospace' }}>
+        <span style={{ fontSize: 24, letterSpacing: 4, color: '#9a5c31' }}>{identifier}</span>
+        <span style={{ fontSize: 22, letterSpacing: 3 }}>{section.toUpperCase()}</span>
       </div>
-    ),
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+        <div style={{ fontSize: title.length > 72 ? 54 : 66, lineHeight: 1.08, maxWidth: 1000 }}>
+          {title}
+        </div>
+        <div style={{ width: 180, height: 8, background: '#9a5c31' }} />
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'monospace' }}>
+        <span style={{ fontSize: 22 }}>{siteConfig.name}</span>
+        <span style={{ fontSize: 18, letterSpacing: 2 }}>ARCHITECTURE · DECISIONS · EVIDENCE</span>
+      </div>
+    </div>,
     {
       ...size,
       headers: {

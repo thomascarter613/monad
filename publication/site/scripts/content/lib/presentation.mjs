@@ -28,8 +28,7 @@ function extractTitle(lines) {
   const copy = [...lines];
   while (copy[0]?.trim() === '') copy.shift();
   const match =
-    copy[0]?.match(/^\*\*Title(?::)?\*\*(?::)?\s+(.+)$/i) ??
-    copy[0]?.match(/^Title:\s*(.+)$/i);
+    copy[0]?.match(/^\*\*Title(?::)?\*\*(?::)?\s+(.+)$/i) ?? copy[0]?.match(/^Title:\s*(.+)$/i);
   if (!match) return { title: undefined, lines };
   copy.shift();
   while (copy[0]?.trim() === '') copy.shift();
@@ -109,7 +108,10 @@ export function transformTerminalFences(body) {
 
     const [, indent, fence, language, rawMeta] = opening;
     let cursor = index + 1;
-    while (cursor < lines.length && !new RegExp(`^${indent}${fence[0]}{${fence.length},}\\s*$`).test(lines[cursor])) {
+    while (
+      cursor < lines.length &&
+      !new RegExp(`^${indent}${fence[0]}{${fence.length},}\\s*$`).test(lines[cursor])
+    ) {
       cursor += 1;
     }
 
@@ -120,7 +122,10 @@ export function transformTerminalFences(body) {
 
     const title = readMetaValue(rawMeta, 'title') ?? 'Terminal session';
     const prompt = readMetaValue(rawMeta, 'prompt');
-    const cleanedMeta = removeMetaKey(removeMetaKey(rawMeta.replace(/(?:^|\s)terminal(?=\s|$)/g, ' '), 'title'), 'prompt');
+    const cleanedMeta = removeMetaKey(
+      removeMetaKey(rawMeta.replace(/(?:^|\s)terminal(?=\s|$)/g, ' '), 'title'),
+      'prompt',
+    );
     const attributes = [
       `title=${jsxAttribute(title)}`,
       language ? `language=${jsxAttribute(language)}` : undefined,

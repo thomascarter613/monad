@@ -59,7 +59,10 @@ export async function GET(request: Request) {
     tag: normalized(url.searchParams.get('tag')),
   };
   const offset = positiveInteger(url.searchParams.get('offset'), 0);
-  const limit = Math.min(maximumLimit, positiveInteger(url.searchParams.get('limit'), defaultLimit));
+  const limit = Math.min(
+    maximumLimit,
+    positiveInteger(url.searchParams.get('limit'), defaultLimit),
+  );
 
   const ranked = manifest.documents
     .filter((document) => matches(document.surface, filters.surface))
@@ -68,8 +71,7 @@ export async function GET(request: Request) {
     .filter((document) => matches(document.family, filters.family))
     .filter((document) => matches(document.series, filters.series))
     .filter(
-      (document) =>
-        !filters.tag || document.tags.some((tag) => tag.toLowerCase() === filters.tag),
+      (document) => !filters.tag || document.tags.some((tag) => tag.toLowerCase() === filters.tag),
     )
     .map((document) => ({ document, score: queryScore(document, query) }))
     .filter((entry) => entry.score > 0)

@@ -1,10 +1,10 @@
+import { DocsBody, DocsPage } from 'fumadocs-ui/page';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { DocsBody, DocsPage } from 'fumadocs-ui/page';
 import { DocumentHeader } from '@/components/content/document-header';
-import { DocumentDiscovery } from '@/components/discovery/document-discovery';
 import { DocumentMetadata } from '@/components/content/document-metadata';
 import { DocumentRelationships } from '@/components/content/document-relationships';
+import { DocumentDiscovery } from '@/components/discovery/document-discovery';
 import { RelationshipExplorer } from '@/components/exploration/relationship-explorer';
 import { SeriesDashboard } from '@/components/exploration/series-dashboard';
 import { getMDXComponents } from '@/components/mdx';

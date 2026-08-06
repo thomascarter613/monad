@@ -1,4 +1,9 @@
-import { ciPolicy, deploymentProfiles, operationsContractVersion, releasePolicy } from '@/operations.config.mjs';
+import {
+  ciPolicy,
+  deploymentProfiles,
+  operationsContractVersion,
+  releasePolicy,
+} from '@/operations.config.mjs';
 import { securityContractVersion } from '@/security.config.mjs';
 
 export const dynamic = 'force-static';

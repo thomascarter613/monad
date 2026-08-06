@@ -17,9 +17,7 @@ function loadState(storageKey: string): BuildingMonadReadingState {
     const value = window.localStorage.getItem(storageKey);
     if (!value) return { version: 1, installments: {} };
     const parsed = JSON.parse(value) as BuildingMonadReadingState;
-    return parsed.version === 1 && parsed.installments
-      ? parsed
-      : { version: 1, installments: {} };
+    return parsed.version === 1 && parsed.installments ? parsed : { version: 1, installments: {} };
   } catch {
     return { version: 1, installments: {} };
   }
@@ -63,7 +61,9 @@ export function ContinueReading({ storageKey, installments }: ReadStateProps) {
   return (
     <Link className="monad-continue-reading" href={target.route}>
       <span className="monad-kicker">{record ? 'Continue reading' : 'Begin the series'}</span>
-      <strong>{target.id} — {target.title}</strong>
+      <strong>
+        {target.id} — {target.title}
+      </strong>
       <span>
         Installment {target.position} of {target.total}
         {record && !record.completed ? ` · ${progress}% read` : ''}

@@ -14,7 +14,10 @@ export async function ArtifactReference({ id, children, compact = false }: Artif
 
   if (!document) {
     return (
-      <span className="monad-artifact-reference monad-artifact-reference--missing" title="Unknown artifact">
+      <span
+        className="monad-artifact-reference monad-artifact-reference--missing"
+        title="Unknown artifact"
+      >
         <EngineeringIcon name="artifact" />
         <code>{children ?? id}</code>
       </span>

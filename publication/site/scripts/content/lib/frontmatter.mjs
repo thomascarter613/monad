@@ -49,7 +49,7 @@ function splitInlineList(value) {
     const previous = value[index - 1];
 
     if ((character === '"' || character === "'") && previous !== '\\') {
-      quote = quote === character ? null : quote ?? character;
+      quote = quote === character ? null : (quote ?? character);
     }
 
     if (!quote) {
@@ -107,7 +107,10 @@ function parseScalar(rawValue) {
       for (const entry of splitInlineList(value.slice(1, -1))) {
         const separator = entry.indexOf(':');
         if (separator < 0) continue;
-        const key = entry.slice(0, separator).trim().replace(/^['"]|['"]$/g, '');
+        const key = entry
+          .slice(0, separator)
+          .trim()
+          .replace(/^['"]|['"]$/g, '');
         result[key] = parseScalar(entry.slice(separator + 1));
       }
       return result;
@@ -223,7 +226,11 @@ function parseLegacyFlatFrontmatter(lines) {
 
   const targetFor = () => {
     if (!currentSection) return root;
-    if (!root[currentSection] || typeof root[currentSection] !== 'object' || Array.isArray(root[currentSection])) {
+    if (
+      !root[currentSection] ||
+      typeof root[currentSection] !== 'object' ||
+      Array.isArray(root[currentSection])
+    ) {
       root[currentSection] = {};
     }
     return root[currentSection];

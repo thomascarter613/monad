@@ -28,8 +28,12 @@ describe('generated navigation manifest', () => {
 
     expect(manifest.schemaVersion).toBe(1);
     expect(manifest.routes.find((entry) => entry.route === '/system')?.available).toBe(true);
-    expect(manifest.routes.find((entry) => entry.route === '/building-monad')?.documentCount).toBe(1);
-    expect(manifest.routes.find((entry) => entry.route === '/project/status')?.documentCount).toBe(0);
+    expect(manifest.routes.find((entry) => entry.route === '/building-monad')?.documentCount).toBe(
+      1,
+    );
+    expect(manifest.routes.find((entry) => entry.route === '/project/status')?.documentCount).toBe(
+      0,
+    );
     expect(manifest.readingPaths.find((entry) => entry.key === 'builder')?.steps[0].available).toBe(
       false,
     );

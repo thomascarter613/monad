@@ -33,7 +33,13 @@ type EngineeringNoteProps = ComponentPropsWithoutRef<'aside'> & {
   children: ReactNode;
 };
 
-export function EngineeringNote({ kind, title, children, className, ...props }: EngineeringNoteProps) {
+export function EngineeringNote({
+  kind,
+  title,
+  children,
+  className,
+  ...props
+}: EngineeringNoteProps) {
   const heading = title ?? labels[kind];
 
   return (

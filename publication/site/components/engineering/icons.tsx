@@ -22,7 +22,9 @@ const paths: Record<EngineeringIconName, ReactNode> = {
   decision: <path d="m7 12 3 3 7-7M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z" />,
   constraint: <path d="M8 3v4m8-4v4M5 7h14M6 7v12h12V7M9 11h6m-6 4h4" />,
   experiment: <path d="M9 3h6m-5 0v5l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3M8 14h8" />,
-  failure: <path d="M12 9v4m0 4h.01M10.2 3.9 2.8 17a2 2 0 0 0 1.7 3h15a2 2 0 0 0 1.7-3L13.8 3.9a2 2 0 0 0-3.6 0Z" />,
+  failure: (
+    <path d="M12 9v4m0 4h.01M10.2 3.9 2.8 17a2 2 0 0 0 1.7 3h15a2 2 0 0 0 1.7-3L13.8 3.9a2 2 0 0 0-3.6 0Z" />
+  ),
   implementation: <path d="m8 9-4 3 4 3m8-6 4 3-4 3m-2-9-4 12" />,
   action: <path d="M5 4h14v16H5zM8 8h8m-8 4h5m-5 4h7" />,
   checkpoint: <path d="M6 4v16m0-14h11l-2 4 2 4H6" />,

@@ -1,5 +1,5 @@
-import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -46,7 +46,9 @@ function argumentsFrom(argv) {
 }
 
 function usage() {
-  console.log(`Build a reproducible Monad publication edition.\n\nUsage:\n  bun run scripts/publications/build.mjs [options]\n\nOptions:\n  --edition KEY          Edition key (default: complete)\n  --version VALUE        Output version label\n  --formats LIST         pdf,epub,offline,source\n  --article-pdfs         Also generate one PDF per document\n  --base-url URL         Use an already-running production site\n  --port NUMBER          Temporary Next.js server port\n  --output PATH          Output root (default: dist/publications)\n`);
+  console.log(
+    `Build a reproducible Monad publication edition.\n\nUsage:\n  bun run scripts/publications/build.mjs [options]\n\nOptions:\n  --edition KEY          Edition key (default: complete)\n  --version VALUE        Output version label\n  --formats LIST         pdf,epub,offline,source\n  --article-pdfs         Also generate one PDF per document\n  --base-url URL         Use an already-running production site\n  --port NUMBER          Temporary Next.js server port\n  --output PATH          Output root (default: dist/publications)\n`,
+  );
 }
 
 function sha256(body) {
@@ -131,7 +133,11 @@ async function selfContainedHtml(page, edition) {
     const styles = [];
     for (const sheet of Array.from(document.styleSheets)) {
       try {
-        styles.push(Array.from(sheet.cssRules).map((rule) => rule.cssText).join('\n'));
+        styles.push(
+          Array.from(sheet.cssRules)
+            .map((rule) => rule.cssText)
+            .join('\n'),
+        );
       } catch {}
     }
     for (const image of Array.from(document.images)) {
@@ -178,10 +184,7 @@ function verifyArtifactSignature(format, body, filename) {
   if (format === 'epub' && !(body[0] === 0x50 && body[1] === 0x4b)) {
     throw new Error(`Invalid EPUB ZIP signature: ${filename}`);
   }
-  if (
-    (format === 'offline' || format === 'source') &&
-    !(body[0] === 0x1f && body[1] === 0x8b)
-  ) {
+  if ((format === 'offline' || format === 'source') && !(body[0] === 0x1f && body[1] === 0x8b)) {
     throw new Error(`Invalid gzip signature: ${filename}`);
   }
   if (format === 'manifest') JSON.parse(body.toString('utf8'));
@@ -216,12 +219,7 @@ async function main() {
   const version = safeVersion(
     options.version ?? process.env.MONAD_EDITION_VERSION ?? edition.defaultVersion,
   );
-  const outputRoot = resolve(
-    siteRoot,
-    options.output ?? 'dist/publications',
-    edition.key,
-    version,
-  );
+  const outputRoot = resolve(siteRoot, options.output ?? 'dist/publications', edition.key, version);
   await rm(outputRoot, { recursive: true, force: true });
   await mkdir(outputRoot, { recursive: true });
   const timestamp = sourceTimestamp();

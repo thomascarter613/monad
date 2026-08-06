@@ -84,7 +84,8 @@ export const identifierFamilies = Object.freeze([
   Object.freeze({
     key: 'specification',
     label: 'Monad Governed Artifact',
-    pattern: /^(?!ADR-|MJ-|ARCH-|ARC-|ENG-|ELOG-|VER-|TEST-|RES-|RSR-|KNOW-|KNO-|KB-|BLD-|BUILD-|LOG-)[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)*-\d{4}$/,
+    pattern:
+      /^(?!ADR-|MJ-|ARCH-|ARC-|ENG-|ELOG-|VER-|TEST-|RES-|RSR-|KNOW-|KNO-|KB-|BLD-|BUILD-|LOG-)[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)*-\d{4}$/,
     patternSource:
       '^(?!ADR-|MJ-|ARCH-|ARC-|ENG-|ELOG-|VER-|TEST-|RES-|RSR-|KNOW-|KNO-|KB-|BLD-|BUILD-|LOG-)[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)*-\\d{4}$',
     kinds: ['specification', 'engineering', 'research', 'knowledge', 'build-log'],

@@ -1,8 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import {
-  serializeFrontmatter,
-  splitFrontmatter,
-} from '../../scripts/content/lib/frontmatter.mjs';
+import { serializeFrontmatter, splitFrontmatter } from '../../scripts/content/lib/frontmatter.mjs';
 
 describe('canonical frontmatter support', () => {
   it('parses scalar, list, and nested relationship metadata', () => {
@@ -99,7 +96,6 @@ status: ready
   expect(parsed.attributes.title).toBe('Bootstrap MSL Markdown Syntax Baseline');
   expect(parsed.body).toContain('# WP-MSL-0001');
 });
-
 
 it('accepts Markdown asterisk bullets in frontmatter lists', () => {
   const parsed = splitFrontmatter(`---

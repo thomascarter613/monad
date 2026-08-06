@@ -27,8 +27,8 @@ export default function GlobalErrorPage({ error, reset }: GlobalErrorPageProps) 
             The publication shell failed.
           </h1>
           <p style={{ fontSize: '1.125rem', lineHeight: 1.7, opacity: 0.75 }}>
-            Retry the application. If the failure persists, preserve the digest and inspect the server
-            output.
+            Retry the application. If the failure persists, preserve the digest and inspect the
+            server output.
           </p>
           <button
             type="button"

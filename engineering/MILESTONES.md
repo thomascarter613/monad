@@ -97,3 +97,11 @@ Completion criteria:
 - MKE stores the resulting knowledge;
 - documentation is projected from that knowledge;
 - changes remain governed by Work Packets, ADRs, specifications, and the Constitution.
+
+<!-- WP-MSC-0007-STATUS:BEGIN -->
+
+## M-002 Reconciliation Gate
+
+WP-MSC-0007 passed static and publication-content validation. The compiler implementation threshold is declared. M-002 is eligible for closure, and WP-MSC-0001 is eligible for activation; WP-MSC-0002 through WP-MSC-0006 remain dependency-gated.
+
+<!-- WP-MSC-0007-STATUS:END -->

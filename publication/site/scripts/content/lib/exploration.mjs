@@ -149,9 +149,8 @@ function seriesProgress(series) {
     const statusCounts = countBy(entry.documents, (document) => document.status).sort(
       (left, right) => statusOrder(left.value) - statusOrder(right.value),
     );
-    const completionPercent = entry.total > 0
-      ? Math.min(100, Math.round((entry.documentCount / entry.total) * 100))
-      : 0;
+    const completionPercent =
+      entry.total > 0 ? Math.min(100, Math.round((entry.documentCount / entry.total) * 100)) : 0;
     return {
       ...entry,
       completionPercent,
@@ -240,10 +239,11 @@ function buildTimeline(documents) {
     }
   }
 
-  events.sort((left, right) =>
-    right.date.localeCompare(left.date) ||
-    left.documentId.localeCompare(right.documentId, undefined, { numeric: true }) ||
-    left.type.localeCompare(right.type),
+  events.sort(
+    (left, right) =>
+      right.date.localeCompare(left.date) ||
+      left.documentId.localeCompare(right.documentId, undefined, { numeric: true }) ||
+      left.type.localeCompare(right.type),
   );
 
   return {
@@ -258,13 +258,14 @@ function buildTimeline(documents) {
 
 export function buildExplorationManifest(registry) {
   const canonical = registry.documents.filter((document) => !document.synthetic);
-  const documents = canonical.map(compactDocument).sort((left, right) =>
-    left.id.localeCompare(right.id, undefined, { numeric: true }),
-  );
-  const edges = compactEdges(canonical).sort((left, right) =>
-    left.sourceId.localeCompare(right.sourceId, undefined, { numeric: true }) ||
-    left.kind.localeCompare(right.kind) ||
-    left.targetId.localeCompare(right.targetId, undefined, { numeric: true }),
+  const documents = canonical
+    .map(compactDocument)
+    .sort((left, right) => left.id.localeCompare(right.id, undefined, { numeric: true }));
+  const edges = compactEdges(canonical).sort(
+    (left, right) =>
+      left.sourceId.localeCompare(right.sourceId, undefined, { numeric: true }) ||
+      left.kind.localeCompare(right.kind) ||
+      left.targetId.localeCompare(right.targetId, undefined, { numeric: true }),
   );
 
   return {

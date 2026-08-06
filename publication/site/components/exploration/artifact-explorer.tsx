@@ -2,10 +2,7 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import type {
-  ExplorationDocument,
-  ExplorationManifest,
-} from '@/lib/exploration/types';
+import type { ExplorationDocument, ExplorationManifest } from '@/lib/exploration/types';
 
 type ArtifactExplorerProps = {
   manifest: ExplorationManifest;
@@ -60,14 +57,9 @@ export function ArtifactExplorer({ manifest }: ArtifactExplorerProps) {
     [connectedOnly, kind, manifest.documents, query, series, status, surface],
   );
 
-  const selected =
-    manifest.documents.find((document) => document.id === selectedId) ?? filtered[0];
-  const incoming = selected
-    ? manifest.edges.filter((edge) => edge.targetId === selected.id)
-    : [];
-  const outgoing = selected
-    ? manifest.edges.filter((edge) => edge.sourceId === selected.id)
-    : [];
+  const selected = manifest.documents.find((document) => document.id === selectedId) ?? filtered[0];
+  const incoming = selected ? manifest.edges.filter((edge) => edge.targetId === selected.id) : [];
+  const outgoing = selected ? manifest.edges.filter((edge) => edge.sourceId === selected.id) : [];
 
   function clearFilters() {
     setQuery('');
@@ -81,10 +73,22 @@ export function ArtifactExplorer({ manifest }: ArtifactExplorerProps) {
   return (
     <div className="monad-explorer" data-testid="artifact-explorer">
       <section className="monad-explorer__metrics" aria-label="Corpus summary">
-        <div><strong>{manifest.documentCount}</strong><span>documents</span></div>
-        <div><strong>{manifest.relationshipCount}</strong><span>relationships</span></div>
-        <div><strong>{manifest.connectedDocumentCount}</strong><span>connected</span></div>
-        <div><strong>{manifest.series.length}</strong><span>series</span></div>
+        <div>
+          <strong>{manifest.documentCount}</strong>
+          <span>documents</span>
+        </div>
+        <div>
+          <strong>{manifest.relationshipCount}</strong>
+          <span>relationships</span>
+        </div>
+        <div>
+          <strong>{manifest.connectedDocumentCount}</strong>
+          <span>connected</span>
+        </div>
+        <div>
+          <strong>{manifest.series.length}</strong>
+          <span>series</span>
+        </div>
       </section>
 
       <form className="monad-explorer__filters" onSubmit={(event) => event.preventDefault()}>
@@ -194,11 +198,28 @@ export function ArtifactExplorer({ manifest }: ArtifactExplorerProps) {
               <p className="font-mono text-sm">{selected.id}</p>
               <p>{selected.description}</p>
               <dl>
-                <div><dt>Kind</dt><dd>{selected.kind}</dd></div>
-                <div><dt>Status</dt><dd>{selected.status}</dd></div>
-                <div><dt>Family</dt><dd>{selected.family}</dd></div>
-                <div><dt>Series</dt><dd>{selected.series ?? 'None'}</dd></div>
-                <div><dt>Source</dt><dd><code>{selected.canonicalPath}</code></dd></div>
+                <div>
+                  <dt>Kind</dt>
+                  <dd>{selected.kind}</dd>
+                </div>
+                <div>
+                  <dt>Status</dt>
+                  <dd>{selected.status}</dd>
+                </div>
+                <div>
+                  <dt>Family</dt>
+                  <dd>{selected.family}</dd>
+                </div>
+                <div>
+                  <dt>Series</dt>
+                  <dd>{selected.series ?? 'None'}</dd>
+                </div>
+                <div>
+                  <dt>Source</dt>
+                  <dd>
+                    <code>{selected.canonicalPath}</code>
+                  </dd>
+                </div>
               </dl>
               <Link className="monad-explorer__open" href={selected.route}>
                 Open canonical page

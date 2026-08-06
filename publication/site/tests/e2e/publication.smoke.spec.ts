@@ -31,7 +31,9 @@ test('renders the system reference through Fumadocs', async ({ page }) => {
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /\/system$/);
 });
 
-test('renders every generated collection index before canonical sources exist', async ({ page }) => {
+test('renders every generated collection index before canonical sources exist', async ({
+  page,
+}) => {
   for (const [route, heading] of [
     ['/building-monad', 'Building Monad'],
     ['/artifacts', 'Artifacts'],
@@ -56,7 +58,9 @@ test('exposes registry and navigation manifests', async ({ page }) => {
   expect(navigationResponse.ok()).toBe(true);
   const navigation = await navigationResponse.json();
   expect(navigation.schemaVersion).toBe(1);
-  expect(navigation.routes.some((route: { route: string }) => route.route === '/project')).toBe(true);
+  expect(navigation.routes.some((route: { route: string }) => route.route === '/project')).toBe(
+    true,
+  );
 });
 
 test('renders the controlled not-found experience', async ({ page }) => {

@@ -22,7 +22,7 @@ series:
   - id: MSC-CORE
     title: Monad Specification Compiler Core
     path: specifications/MSC/core
-    status: active
+    status: complete
 
   - id: MART-CORE
     title: Monad Artifact Model Core
@@ -284,10 +284,43 @@ artifacts:
 
 
 
-planned_artifacts:
-  - id: MSC-CORE-0003
-    title: Artifact Discovery and Compilation Units
+  - id: MSC-CORE-0008
+    title: Semantic Graph Construction
+    series: MSC-CORE
+    path: specifications/MSC/core/MSC-CORE-0008.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
 
+
+
+
+
+  - id: MSC-CORE-0009
+    title: Diagnostics, Incrementality, and Reproducibility
+    series: MSC-CORE
+    path: specifications/MSC/core/MSC-CORE-0009.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+
+
+
+
+  - id: MSC-CORE-0010
+    title: KIR Lowering, Backend Contracts, and Self-Hosting
+    series: MSC-CORE
+    path: specifications/MSC/core/MSC-CORE-0010.md
+    version: 0.1.0
+    lifecycle: draft
+    compilation_status: bootstrap
+
+
+
+
+
+planned_artifacts:
   - id: MART-CORE-0001
     title: Artifact Model Vision and Design Principles
 

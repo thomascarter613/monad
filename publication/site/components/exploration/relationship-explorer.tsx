@@ -11,7 +11,8 @@ type RelationshipExplorerProps = {
 export function RelationshipExplorer({ manifest }: RelationshipExplorerProps) {
   const connected = manifest.documents.filter((document) => document.relationshipCount > 0);
   const [selectedId, setSelectedId] = useState(
-    [...connected].sort((left, right) => right.relationshipCount - left.relationshipCount)[0]?.id ?? '',
+    [...connected].sort((left, right) => right.relationshipCount - left.relationshipCount)[0]?.id ??
+      '',
   );
   const [relationshipKind, setRelationshipKind] = useState('');
 

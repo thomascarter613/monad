@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { ciPolicy, deploymentProfile, deploymentProfiles, releasePolicy } from '@/operations.config.mjs';
+import {
+  ciPolicy,
+  deploymentProfile,
+  deploymentProfiles,
+  releasePolicy,
+} from '@/operations.config.mjs';
 
 describe('operations contract', () => {
   it('defines managed and portable production profiles', () => {

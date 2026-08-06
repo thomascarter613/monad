@@ -150,13 +150,13 @@
 .monad-edition-print__cover h1 {
   max-width: 12ch;
   margin-top: 0.35in;
-  font: 700 42pt/0.98 var(--font-monad-editorial);
+  font: 700 42pt / 0.98 var(--font-monad-editorial);
   letter-spacing: -0.035em;
 }
 
 .monad-edition-print__cover > p:nth-of-type(2) {
   margin-top: 0.2in;
-  font: 17pt/1.35 var(--font-monad-editorial);
+  font: 17pt / 1.35 var(--font-monad-editorial);
 }
 
 .monad-edition-print__cover dl {
@@ -224,14 +224,14 @@
 
 .monad-edition-print__document > header h1 {
   margin-top: 0.12in;
-  font: 700 28pt/1.04 var(--font-monad-editorial);
+  font: 700 28pt / 1.04 var(--font-monad-editorial);
   letter-spacing: -0.025em;
 }
 
 .monad-edition-print__document > header > p:not(.monad-edition-print__eyebrow) {
   margin-top: 0.12in;
   color: #4f4a43;
-  font: 12pt/1.45 var(--font-monad-editorial);
+  font: 12pt / 1.45 var(--font-monad-editorial);
 }
 
 .monad-edition-print__document > header dl {
@@ -247,7 +247,7 @@
 }
 
 .monad-edition-print__body {
-  max-width: none !important;
+  max-width: none;
   padding-top: 0.18in;
   font-size: 10pt;
   line-height: 1.52;
@@ -317,6 +317,6 @@
   }
 
   .monad-edition-print a {
-    color: #171512 !important;
+    color: #171512;
   }
 }

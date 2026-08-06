@@ -12,7 +12,10 @@ export function SectionDiscovery({ currentRoute }: SectionDiscoveryProps) {
   );
 
   return (
-    <aside className="monad-section-discovery monad-surface mt-12 rounded-2xl p-5 sm:p-7" aria-labelledby="continue-exploring">
+    <aside
+      className="monad-section-discovery monad-surface mt-12 rounded-2xl p-5 sm:p-7"
+      aria-labelledby="continue-exploring"
+    >
       <p className="font-mono text-xs tracking-[0.14em] text-fd-muted-foreground uppercase">
         Across the publication
       </p>

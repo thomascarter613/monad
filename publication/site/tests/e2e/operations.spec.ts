@@ -13,5 +13,7 @@ test('publishes security headers', async ({ page }) => {
   expect(response?.status()).toBe(200);
   expect(response?.headers()['content-security-policy']).toContain("default-src 'self'");
   expect(response?.headers()['x-content-type-options']).toBe('nosniff');
-  await expect(page.getByRole('heading', { level: 1, name: 'Publication Operations' })).toBeVisible();
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'Publication Operations' }),
+  ).toBeVisible();
 });

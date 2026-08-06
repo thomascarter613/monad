@@ -14,9 +14,11 @@ describe('build pipeline regeneration', () => {
 
   it('clears stale Fumadocs and Turbopack state after content synchronization', () => {
     const source = read('scripts/build.mjs');
-    expect(source).toContain("await syncContent({ siteRoot })");
+    expect(source).toContain('await syncContent({ siteRoot })');
     expect(source).toContain("resolve(siteRoot, '.source')");
     expect(source).toContain("resolve(siteRoot, '.next')");
-    expect(source.indexOf('await syncContent')).toBeLessThan(source.indexOf("resolve(siteRoot, '.source')"));
+    expect(source.indexOf('await syncContent')).toBeLessThan(
+      source.indexOf("resolve(siteRoot, '.source')"),
+    );
   });
 });

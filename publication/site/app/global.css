@@ -1,14 +1,14 @@
-@import 'tailwindcss';
-@import 'fumadocs-ui/css/neutral.css';
-@import 'fumadocs-ui/css/preset.css';
-@import '../styles/tokens.css';
-@import '../styles/base.css';
-@import '../styles/components.css';
-@import '../styles/building-monad.css';
-@import '../styles/engineering.css';
-@import '../styles/exploration.css';
-@import '../styles/discovery-seo.css';
-@import '../styles/editions.css';
-@import '../styles/print.css';
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+@import "../styles/tokens.css";
+@import "../styles/base.css";
+@import "../styles/components.css";
+@import "../styles/building-monad.css";
+@import "../styles/engineering.css";
+@import "../styles/exploration.css";
+@import "../styles/discovery-seo.css";
+@import "../styles/editions.css";
+@import "../styles/print.css";
 
-@import '../styles/operations.css';
+@import "../styles/operations.css";

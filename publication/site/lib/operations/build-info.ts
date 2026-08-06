@@ -33,7 +33,8 @@ export async function operationalSnapshot() {
     process.env.VERCEL_GIT_COMMIT_SHA ??
     process.env.GITHUB_SHA ??
     'unknown';
-  const version = process.env.MONAD_BUILD_VERSION ?? process.env.MONAD_EDITION_VERSION ?? 'continuous';
+  const version =
+    process.env.MONAD_BUILD_VERSION ?? process.env.MONAD_EDITION_VERSION ?? 'continuous';
   const target = process.env.MONAD_DEPLOYMENT_TARGET ?? (process.env.VERCEL ? 'vercel' : 'local');
   const healthy = registry.available && registry.errorCount === 0;
 

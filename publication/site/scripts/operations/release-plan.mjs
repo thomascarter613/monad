@@ -1,10 +1,14 @@
 import { execFileSync } from 'node:child_process';
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { releasePolicy } from '../../operations.config.mjs';
 import { repositoryRoot, siteRoot } from './lib/runtime.mjs';
 
-const options = { edition: releasePolicy.defaultEdition, version: process.env.MONAD_EDITION_VERSION ?? 'continuous', allowDirty: false };
+const options = {
+  edition: releasePolicy.defaultEdition,
+  version: process.env.MONAD_EDITION_VERSION ?? 'continuous',
+  allowDirty: false,
+};
 for (let i = 2; i < process.argv.length; i += 1) {
   const value = process.argv[i];
   if (value === '--edition') options.edition = process.argv[++i];
@@ -12,10 +16,17 @@ for (let i = 2; i < process.argv.length; i += 1) {
   else if (value === '--allow-dirty') options.allowDirty = true;
   else throw new Error(`Unknown release-plan option: ${value}`);
 }
-function git(args) { return execFileSync('git', args, { cwd: repositoryRoot, encoding: 'utf8' }).trim(); }
+function git(args) {
+  return execFileSync('git', args, { cwd: repositoryRoot, encoding: 'utf8' }).trim();
+}
 const status = git(['status', '--porcelain']);
-if (status && !options.allowDirty) throw new Error('Release plan requires a clean Git worktree. Use --allow-dirty only for diagnostics.');
-const editions = JSON.parse(await readFile(resolve(siteRoot, '.generated', 'registry', 'editions.json'), 'utf8'));
+if (status && !options.allowDirty)
+  throw new Error(
+    'Release plan requires a clean Git worktree. Use --allow-dirty only for diagnostics.',
+  );
+const editions = JSON.parse(
+  await readFile(resolve(siteRoot, '.generated', 'registry', 'editions.json'), 'utf8'),
+);
 const edition = editions.editions.find((entry) => entry.key === options.edition);
 if (!edition) throw new Error(`Unknown edition: ${options.edition}`);
 const commit = git(['rev-parse', 'HEAD']);

@@ -2,11 +2,7 @@ import { remarkMdxFiles } from 'fumadocs-core/mdx-plugins/remark-mdx-files';
 import { pageSchema } from 'fumadocs-core/source/schema';
 import { defineConfig, defineDocs } from 'fumadocs-mdx/config';
 import { z } from 'zod';
-import {
-  documentKinds,
-  documentStatuses,
-  relationshipKinds,
-} from './lib/content/constants';
+import { documentKinds, documentStatuses, relationshipKinds } from './lib/content/constants';
 
 const relatedDocumentsSchema = z.record(z.string(), z.array(z.string())).default({});
 

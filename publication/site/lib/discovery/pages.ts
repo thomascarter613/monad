@@ -1,9 +1,4 @@
-import {
-  artifactSource,
-  buildingMonadSource,
-  projectSource,
-  systemSource,
-} from '@/lib/source';
+import { artifactSource, buildingMonadSource, projectSource, systemSource } from '@/lib/source';
 
 export const publicationPageSources = [
   { key: 'building-monad', label: 'Building Monad', source: buildingMonadSource },

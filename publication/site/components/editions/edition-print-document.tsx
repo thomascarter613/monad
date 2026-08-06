@@ -12,10 +12,7 @@ export function EditionPrintDocument({
 }) {
   const MDX = page.data.body as ComponentType<{ components?: Record<string, unknown> }>;
   return (
-    <article
-      className="monad-edition-print__document"
-      id={`document-${record.id.toLowerCase()}`}
-    >
+    <article className="monad-edition-print__document" id={`document-${record.id.toLowerCase()}`}>
       <header>
         <p className="monad-edition-print__eyebrow">
           {record.id} · {record.kind} · {record.status}

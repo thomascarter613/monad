@@ -54,6 +54,28 @@ Backends
 | MSC-CORE-0009 | Diagnostics, Incrementality, and Reproducibility |
 | MSC-CORE-0010 | KIR Lowering, Backend Contracts, and Self-Hosting |
 
+
+<!-- WP-MSC-0007:BEGIN -->
+
+## Reconciled Series Status
+
+| Position | Artifact | Title | State |
+| ---: | --- | --- | --- |
+| 1 | MSC-CORE-0001 | Compiler Vision and Architecture | draft/reconciled |
+| 2 | MSC-CORE-0002 | Pipeline and Phase Model | draft/reconciled |
+| 3 | MSC-CORE-0003 | Artifact Discovery and Compilation Units | draft |
+| 4 | MSC-CORE-0004 | Frontend and Normalizer Orchestration | draft/reconciled |
+| 5 | MSC-CORE-0005 | Declaration Collection and Symbol Binding | draft |
+| 6 | MSC-CORE-0006 | Namespace, Import, and Reference Resolution | draft/reconciled |
+| 7 | MSC-CORE-0007 | Type, Constraint, and Semantic Analysis | draft/reconciled |
+| 8 | MSC-CORE-0008 | Semantic Graph Construction | draft/reconciled |
+| 9 | MSC-CORE-0009 | Diagnostics, Incrementality, and Reproducibility | draft/reconciled |
+| 10 | MSC-CORE-0010 | KIR Lowering, Backend Contracts, and Self-Hosting | draft/reconciled |
+
+The second PI-002 consistency review passed; the MSC-CORE series is complete at the specification threshold.
+
+<!-- WP-MSC-0007:END -->
+
 ## Status
 
 Active.

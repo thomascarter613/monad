@@ -17,7 +17,9 @@ describe('presentation projection', () => {
     expect(transformSemanticBlockquotes(source)).toContain(
       '<Decision title="Keep canonical Markdown outside the site">',
     );
-    expect(transformSemanticBlockquotes(source)).toContain('The repository remains the source of truth.');
+    expect(transformSemanticBlockquotes(source)).toContain(
+      'The repository remains the source of truth.',
+    );
   });
 
   it('keeps unknown blockquote markers unchanged', () => {
@@ -34,7 +36,9 @@ describe('presentation projection', () => {
     ].join('\n');
     const result = transformTerminalFences(source);
 
-    expect(result).toContain('<TerminalSession title="Inspect Monad" language="console" prompt="$">');
+    expect(result).toContain(
+      '<TerminalSession title="Inspect Monad" language="console" prompt="$">',
+    );
     expect(result).toContain('```console');
     expect(result).toContain('$ monad inspect');
     expect(result).toContain('</TerminalSession>');

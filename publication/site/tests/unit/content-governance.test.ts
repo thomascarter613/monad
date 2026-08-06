@@ -68,9 +68,9 @@ describe('content governance', () => {
     const issues: Array<Record<string, unknown>> = [];
     const current = document({ status: 'proposed' });
     validateIdentifierAndLifecycle(current, { status: 'accepted' }, issues);
-    expect(
-      issues.some((issue) => issue.code === 'CONTENT_LIFECYCLE_TRANSITION_INVALID'),
-    ).toBe(true);
+    expect(issues.some((issue) => issue.code === 'CONTENT_LIFECYCLE_TRANSITION_INVALID')).toBe(
+      true,
+    );
   });
 
   it('builds reverse references and supersession inverses', () => {

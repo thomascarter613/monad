@@ -14,8 +14,8 @@ describe('generated document presentation', () => {
   });
 
   it('normalizes lightweight Markdown emphasis while matching', () => {
-    expect(stripLeadingTitleHeading('# **Monad System Model**\n\nBody.', 'Monad System Model')).toBe(
-      'Body.',
-    );
+    expect(
+      stripLeadingTitleHeading('# **Monad System Model**\n\nBody.', 'Monad System Model'),
+    ).toBe('Body.');
   });
 });

@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getContentRegistry } from '@/lib/content/registry';
 
-
 export async function GET(request: Request) {
   const registry = await getContentRegistry();
   const url = new URL(request.url);

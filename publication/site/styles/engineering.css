@@ -10,21 +10,40 @@
   box-shadow: 0 12px 35px color-mix(in oklab, var(--monad-note-accent) 8%, transparent);
 }
 
-.monad-engineering-note[data-note-kind='decision'] { --monad-note-accent: var(--monad-note-decision); }
-.monad-engineering-note[data-note-kind='constraint'] { --monad-note-accent: var(--monad-note-constraint); }
-.monad-engineering-note[data-note-kind='experiment'] { --monad-note-accent: var(--monad-note-experiment); }
-.monad-engineering-note[data-note-kind='failure'] { --monad-note-accent: var(--monad-note-failure); }
-.monad-engineering-note[data-note-kind='implementation'] { --monad-note-accent: var(--monad-note-implementation); }
-.monad-engineering-note[data-note-kind='action'] { --monad-note-accent: var(--monad-note-action); }
-.monad-engineering-note[data-note-kind='checkpoint'] { --monad-note-accent: var(--monad-note-checkpoint); }
-.monad-engineering-note[data-note-kind='result'] { --monad-note-accent: var(--monad-note-result); }
-.monad-engineering-note[data-note-kind='evidence'] { --monad-note-accent: var(--monad-note-evidence); }
+.monad-engineering-note[data-note-kind="decision"] {
+  --monad-note-accent: var(--monad-note-decision);
+}
+.monad-engineering-note[data-note-kind="constraint"] {
+  --monad-note-accent: var(--monad-note-constraint);
+}
+.monad-engineering-note[data-note-kind="experiment"] {
+  --monad-note-accent: var(--monad-note-experiment);
+}
+.monad-engineering-note[data-note-kind="failure"] {
+  --monad-note-accent: var(--monad-note-failure);
+}
+.monad-engineering-note[data-note-kind="implementation"] {
+  --monad-note-accent: var(--monad-note-implementation);
+}
+.monad-engineering-note[data-note-kind="action"] {
+  --monad-note-accent: var(--monad-note-action);
+}
+.monad-engineering-note[data-note-kind="checkpoint"] {
+  --monad-note-accent: var(--monad-note-checkpoint);
+}
+.monad-engineering-note[data-note-kind="result"] {
+  --monad-note-accent: var(--monad-note-result);
+}
+.monad-engineering-note[data-note-kind="evidence"] {
+  --monad-note-accent: var(--monad-note-evidence);
+}
 
 .monad-engineering-note__header {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  border-block-end: 1px solid color-mix(in oklab, var(--monad-note-accent) 20%, var(--color-fd-border));
+  border-block-end: 1px solid
+    color-mix(in oklab, var(--monad-note-accent) 20%, var(--color-fd-border));
   padding: 0.9rem 1rem 0.8rem;
 }
 
@@ -56,8 +75,12 @@
   padding: 0.9rem 1rem 1rem;
 }
 
-.monad-engineering-note__body > :first-child { margin-block-start: 0; }
-.monad-engineering-note__body > :last-child { margin-block-end: 0; }
+.monad-engineering-note__body > :first-child {
+  margin-block-start: 0;
+}
+.monad-engineering-note__body > :last-child {
+  margin-block-end: 0;
+}
 
 .monad-terminal {
   overflow: hidden;
@@ -82,10 +105,22 @@
   font-size: 0.72rem;
 }
 
-.monad-terminal__lights { display: flex; gap: 0.32rem; }
-.monad-terminal__lights i { width: 0.58rem; aspect-ratio: 1; border-radius: 999px; background: oklch(0.64 0.12 30); }
-.monad-terminal__lights i:nth-child(2) { background: oklch(0.76 0.12 85); }
-.monad-terminal__lights i:nth-child(3) { background: oklch(0.67 0.12 150); }
+.monad-terminal__lights {
+  display: flex;
+  gap: 0.32rem;
+}
+.monad-terminal__lights i {
+  width: 0.58rem;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: oklch(0.64 0.12 30);
+}
+.monad-terminal__lights i:nth-child(2) {
+  background: oklch(0.76 0.12 85);
+}
+.monad-terminal__lights i:nth-child(3) {
+  background: oklch(0.67 0.12 150);
+}
 
 .monad-terminal__title {
   display: flex;
@@ -97,10 +132,21 @@
   white-space: nowrap;
 }
 
-.monad-terminal__title svg { width: 0.95rem; flex: 0 0 auto; }
-.monad-terminal__prompt { color: color-mix(in oklab, var(--monad-terminal-foreground) 65%, transparent); }
+.monad-terminal__title svg {
+  width: 0.95rem;
+  flex: 0 0 auto;
+}
+.monad-terminal__prompt {
+  color: color-mix(in oklab, var(--monad-terminal-foreground) 65%, transparent);
+}
 .monad-terminal__body [data-rehype-pretty-code-figure],
-.monad-terminal__body pre { margin: 0; border: 0; border-radius: 0; background: transparent !important; box-shadow: none; }
+.monad-terminal__body pre {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
 
 .monad-artifact-reference {
   display: inline-flex;
@@ -116,13 +162,39 @@
   vertical-align: middle;
 }
 
-.monad-artifact-reference:hover { border-color: var(--monad-section-accent); }
-.monad-artifact-reference > svg { width: 1rem; flex: 0 0 auto; color: var(--monad-section-accent); }
-.monad-artifact-reference > span { display: grid; min-width: 0; gap: 0.08rem; }
-.monad-artifact-reference code { font-size: 0.75rem; font-weight: 750; }
-.monad-artifact-reference small { overflow: hidden; color: var(--color-fd-muted-foreground); font-size: 0.73rem; text-overflow: ellipsis; white-space: nowrap; }
-.monad-artifact-reference[data-compact] { border: 0; background: transparent; padding: 0.1rem 0.2rem; }
-.monad-artifact-reference--missing { border-style: dashed; color: var(--color-fd-muted-foreground); }
+.monad-artifact-reference:hover {
+  border-color: var(--monad-section-accent);
+}
+.monad-artifact-reference > svg {
+  width: 1rem;
+  flex: 0 0 auto;
+  color: var(--monad-section-accent);
+}
+.monad-artifact-reference > span {
+  display: grid;
+  min-width: 0;
+  gap: 0.08rem;
+}
+.monad-artifact-reference code {
+  font-size: 0.75rem;
+  font-weight: 750;
+}
+.monad-artifact-reference small {
+  overflow: hidden;
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.73rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.monad-artifact-reference[data-compact] {
+  border: 0;
+  background: transparent;
+  padding: 0.1rem 0.2rem;
+}
+.monad-artifact-reference--missing {
+  border-style: dashed;
+  color: var(--color-fd-muted-foreground);
+}
 
 .monad-artifact-references {
   margin-block: 1.5rem;
@@ -139,7 +211,11 @@
   text-transform: uppercase;
 }
 
-.monad-artifact-references__items { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+.monad-artifact-references__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
 
 .monad-timeline {
   margin-block: 1.75rem;
@@ -149,10 +225,26 @@
   padding: 1rem;
 }
 
-.monad-timeline__header { display: flex; align-items: center; gap: 0.55rem; margin-block-end: 1rem; }
-.monad-timeline__header svg { width: 1.1rem; color: var(--monad-section-accent); }
-.monad-timeline__header h3 { margin: 0; font-family: var(--font-monad-editorial); font-size: 1.2rem; }
-.monad-timeline__events { margin: 0; padding: 0; list-style: none; }
+.monad-timeline__header {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-block-end: 1rem;
+}
+.monad-timeline__header svg {
+  width: 1.1rem;
+  color: var(--monad-section-accent);
+}
+.monad-timeline__header h3 {
+  margin: 0;
+  font-family: var(--font-monad-editorial);
+  font-size: 1.2rem;
+}
+.monad-timeline__events {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
 .monad-timeline-event {
   position: relative;
@@ -166,7 +258,7 @@
   position: absolute;
   inset: 0.9rem auto 0 0.42rem;
   width: 1px;
-  content: '';
+  content: "";
   background: var(--color-fd-border);
 }
 
@@ -180,14 +272,34 @@
   background: var(--color-fd-background);
 }
 
-.monad-timeline-event[data-status='current'] .monad-timeline-event__marker { box-shadow: 0 0 0 4px var(--monad-section-accent-soft); }
-.monad-timeline-event[data-status='planned'] .monad-timeline-event__marker { border-style: dashed; }
-.monad-timeline-event[data-status='blocked'] .monad-timeline-event__marker { border-color: var(--monad-note-failure); }
-.monad-timeline-event__meta { display: flex; flex-wrap: wrap; gap: 0.45rem 0.75rem; margin: 0 0 0.35rem; font-size: 0.75rem; }
+.monad-timeline-event[data-status="current"] .monad-timeline-event__marker {
+  box-shadow: 0 0 0 4px var(--monad-section-accent-soft);
+}
+.monad-timeline-event[data-status="planned"] .monad-timeline-event__marker {
+  border-style: dashed;
+}
+.monad-timeline-event[data-status="blocked"] .monad-timeline-event__marker {
+  border-color: var(--monad-note-failure);
+}
+.monad-timeline-event__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.75rem;
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+}
 .monad-timeline-event__meta time,
-.monad-timeline-event__meta span { color: var(--color-fd-muted-foreground); font-family: var(--font-monad-mono); text-transform: uppercase; }
-.monad-timeline-event__content > div > :first-child { margin-block-start: 0; }
-.monad-timeline-event__content > div > :last-child { margin-block-end: 0; }
+.monad-timeline-event__meta span {
+  color: var(--color-fd-muted-foreground);
+  font-family: var(--font-monad-mono);
+  text-transform: uppercase;
+}
+.monad-timeline-event__content > div > :first-child {
+  margin-block-start: 0;
+}
+.monad-timeline-event__content > div > :last-child {
+  margin-block-end: 0;
+}
 
 .monad-architecture-figure {
   margin-block: 2rem;
@@ -197,13 +309,40 @@
   padding: 0.8rem;
 }
 
-.monad-architecture-figure__label { display: flex; align-items: center; gap: 0.45rem; margin: 0.1rem 0.2rem 0.7rem; color: var(--monad-section-accent); font-family: var(--font-monad-mono); font-size: 0.68rem; font-weight: 750; letter-spacing: 0.1em; text-transform: uppercase; }
-.monad-architecture-figure__label svg { width: 1rem; }
-.monad-architecture-figure__body { overflow: auto; border: 1px solid var(--color-fd-border); border-radius: 0.65rem; background: var(--color-fd-background); padding: 1rem; }
-.monad-architecture-figure figcaption { display: grid; gap: 0.25rem; padding: 0.8rem 0.25rem 0.15rem; }
-.monad-architecture-figure figcaption strong { font-family: var(--font-monad-editorial); }
+.monad-architecture-figure__label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0.1rem 0.2rem 0.7rem;
+  color: var(--monad-section-accent);
+  font-family: var(--font-monad-mono);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.monad-architecture-figure__label svg {
+  width: 1rem;
+}
+.monad-architecture-figure__body {
+  overflow: auto;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 0.65rem;
+  background: var(--color-fd-background);
+  padding: 1rem;
+}
+.monad-architecture-figure figcaption {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.8rem 0.25rem 0.15rem;
+}
+.monad-architecture-figure figcaption strong {
+  font-family: var(--font-monad-editorial);
+}
 .monad-architecture-figure figcaption span,
-.monad-architecture-figure figcaption small { color: var(--color-fd-muted-foreground); }
+.monad-architecture-figure figcaption small {
+  color: var(--color-fd-muted-foreground);
+}
 
 .monad-specification-summary {
   margin-block: 1.75rem;
@@ -213,15 +352,53 @@
   padding: 1rem;
 }
 
-.monad-specification-summary > header { display: flex; align-items: center; gap: 0.7rem; margin-block-end: 0.85rem; }
-.monad-specification-summary > header svg { width: 1.2rem; color: var(--monad-note-constraint); }
-.monad-specification-summary > header div { display: grid; gap: 0.1rem; }
-.monad-specification-summary > header span { color: var(--monad-note-constraint); font-family: var(--font-monad-mono); font-size: 0.68rem; font-weight: 750; letter-spacing: 0.1em; text-transform: uppercase; }
-.monad-specification-summary dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 0.65rem; margin: 0; }
-.monad-specification-summary dl div { border-inline-start: 2px solid color-mix(in oklab, var(--monad-note-constraint) 35%, var(--color-fd-border)); padding-inline-start: 0.65rem; }
-.monad-specification-summary dt { color: var(--color-fd-muted-foreground); font-family: var(--font-monad-mono); font-size: 0.65rem; text-transform: uppercase; }
-.monad-specification-summary dd { margin: 0.2rem 0 0; }
-.monad-specification-summary__body { margin-block-start: 0.9rem; border-block-start: 1px solid var(--color-fd-border); padding-block-start: 0.8rem; }
+.monad-specification-summary > header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-block-end: 0.85rem;
+}
+.monad-specification-summary > header svg {
+  width: 1.2rem;
+  color: var(--monad-note-constraint);
+}
+.monad-specification-summary > header div {
+  display: grid;
+  gap: 0.1rem;
+}
+.monad-specification-summary > header span {
+  color: var(--monad-note-constraint);
+  font-family: var(--font-monad-mono);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.monad-specification-summary dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.65rem;
+  margin: 0;
+}
+.monad-specification-summary dl div {
+  border-inline-start: 2px solid
+    color-mix(in oklab, var(--monad-note-constraint) 35%, var(--color-fd-border));
+  padding-inline-start: 0.65rem;
+}
+.monad-specification-summary dt {
+  color: var(--color-fd-muted-foreground);
+  font-family: var(--font-monad-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+}
+.monad-specification-summary dd {
+  margin: 0.2rem 0 0;
+}
+.monad-specification-summary__body {
+  margin-block-start: 0.9rem;
+  border-block-start: 1px solid var(--color-fd-border);
+  padding-block-start: 0.8rem;
+}
 
 .monad-figure-diagram {
   display: grid;
@@ -232,12 +409,28 @@
   text-align: center;
 }
 
-.monad-figure-diagram > span { border: 1px solid var(--color-fd-border); border-radius: 0.55rem; padding: 0.8rem; background: var(--color-fd-card); font-family: var(--font-monad-mono); font-size: 0.76rem; }
-.monad-figure-diagram > i { height: 1px; background: var(--monad-section-accent); }
+.monad-figure-diagram > span {
+  border: 1px solid var(--color-fd-border);
+  border-radius: 0.55rem;
+  padding: 0.8rem;
+  background: var(--color-fd-card);
+  font-family: var(--font-monad-mono);
+  font-size: 0.76rem;
+}
+.monad-figure-diagram > i {
+  height: 1px;
+  background: var(--monad-section-accent);
+}
 
 @media (max-width: 40rem) {
-  .monad-terminal__header { grid-template-columns: auto minmax(0, 1fr); }
-  .monad-terminal__prompt { display: none; }
+  .monad-terminal__header {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  .monad-terminal__prompt {
+    display: none;
+  }
   .monad-engineering-note__header,
-  .monad-engineering-note__body { padding-inline: 0.8rem; }
+  .monad-engineering-note__body {
+    padding-inline: 0.8rem;
+  }
 }

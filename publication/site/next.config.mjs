@@ -8,8 +8,14 @@ async function generatedRedirects() {
     const path = resolve(process.cwd(), '.generated', 'registry', 'redirects.json');
     const redirects = JSON.parse(await readFile(path, 'utf8'));
     if (!Array.isArray(redirects)) return [];
-    return redirects.map(({ source, destination, permanent = true }) => ({ source, destination, permanent }));
-  } catch { return []; }
+    return redirects.map(({ source, destination, permanent = true }) => ({
+      source,
+      destination,
+      permanent,
+    }));
+  } catch {
+    return [];
+  }
 }
 
 const markdownRewrites = ['building-monad', 'system', 'artifacts', 'project'].flatMap((section) => [
@@ -29,17 +35,64 @@ const nextConfig = {
   output: deploymentTarget === 'container' ? 'standalone' : undefined,
   outputFileTracingRoot: resolve(process.cwd(), '..', '..'),
   redirects: generatedRedirects,
-  async rewrites() { return markdownRewrites; },
+  async rewrites() {
+    return markdownRewrites;
+  },
   async headers() {
     return [
       { source: '/:path*', headers: baseSecurityHeaders },
-      { source: '/llms.mdx/:path*', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] },
-      { source: '/editions/:edition/print', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] },
-      { source: '/api/:path*', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }, { key: 'Cache-Control', value: 'no-store' }] },
-      { source: '/api/operations', headers: [{ key: 'X-Robots-Tag', value: 'noindex, follow' }, { key: 'Cache-Control', value: 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' }] },
-      { source: '/feeds/:path*', headers: [{ key: 'Cache-Control', value: 'public, max-age=0, s-maxage=300, stale-while-revalidate=3600' }] },
-      { source: '/llms.txt', headers: [{ key: 'Cache-Control', value: 'public, max-age=0, s-maxage=300, stale-while-revalidate=3600' }] },
-      { source: '/llms-full.txt', headers: [{ key: 'Cache-Control', value: 'public, max-age=0, s-maxage=300, stale-while-revalidate=3600' }] },
+      {
+        source: '/llms.mdx/:path*',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
+      {
+        source: '/editions/:edition/print',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
+      {
+        source: '/api/:path*',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+          { key: 'Cache-Control', value: 'no-store' },
+        ],
+      },
+      {
+        source: '/api/operations',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, follow' },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/feeds/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, s-maxage=300, stale-while-revalidate=3600',
+          },
+        ],
+      },
+      {
+        source: '/llms.txt',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, s-maxage=300, stale-while-revalidate=3600',
+          },
+        ],
+      },
+      {
+        source: '/llms-full.txt',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, s-maxage=300, stale-while-revalidate=3600',
+          },
+        ],
+      },
     ];
   },
 };
