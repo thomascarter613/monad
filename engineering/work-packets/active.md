@@ -1,49 +1,54 @@
-# Active Work Packets
+---
+title: "Active Engineering Work"
+description: "Canonical register of work currently authorized or in progress."
+date: 2026-08-06
+status: active
+program_increment: PI-002
+milestone: M-002
+current_work_cycle: WC-0002
+---
 
-**Project:** Monad Engineering Program  
-**Current Program Increment:** PI-002 — Semantic Compiler Foundation  
-**Current Milestone:** M-002 — Compiler Specification Complete  
-**Status:** Active
+# Active Engineering Work
 
-## Current Objective
+## Current focus
 
-Complete the final MSC-CORE specifications required to authorize compiler-bootstrap implementation.
+| Field | State |
+| --- | --- |
+| Program increment | **PI-002 — Semantic Compiler Foundation** |
+| Milestone | **M-002 — Compiler Specification Complete** |
+| Active work cycle | **WC-0002 — Diagnostics, Incrementality, and Reproducibility** |
+| Immediate specification | **MSC-CORE-0009 of 10** |
+| Implementation packets in progress | **None recorded** |
 
-## Active Queue
+The active engineering stream is specification work for MSC-CORE-0009. WC-0001 is planning-complete and is not active implementation work. WP-MSC-0001 through WP-MSC-0006 remain in the backlog until implementation is explicitly started and an owner, execution state, and evidence path are recorded.
 
-| Order | Work Packet / Artifact | Status | Priority |
-|---:|---|---|---:|
-| 1 | MSC-CORE-0008 — Semantic Graph Construction | Active | P0 |
-| 2 | MSC-CORE-0009 — Diagnostics, Incrementality, and Reproducibility | Ready | P0 |
-| 3 | MSC-CORE-0010 — KIR Lowering, Backend Contracts, and Self-Hosting | Ready | P0 |
-| 4 | PI-002 Compiler Consistency Review | Planned | P0 |
-| 5 | Compiler Implementation Threshold Declaration | Planned | P0 |
-| 6 | Compiler Bootstrap Work Packet Set | Planned | P1 |
+## Active control item
 
-## Execution Order
+| ID | Type | Title | State | Required outcome |
+| --- | --- | --- | --- | --- |
+| WC-0002 | Work cycle | Diagnostics, Incrementality, and Reproducibility | Active / next for execution | Specify MSC-CORE-0009 and reconcile compiler-wide reproducibility with MSC-CORE-0008 |
 
-```text
-MSC-CORE-0008
-        ↓
-MSC-CORE-0009
-        ↓
-MSC-CORE-0010
-        ↓
-Compiler consistency review
-        ↓
-Implementation threshold
-        ↓
-Compiler bootstrap work packets
-```
+## Entry criteria for implementation packets
 
-## Completed Architecture Freeze Work
+A WP-MSC packet may move from `backlog.md` into this register only when:
 
-WP-AF-0001 through WP-AF-0009 have moved to `completed.md`.
+1. implementation work has been explicitly authorized;
+2. its prerequisite packets and specification dependencies are satisfied or explicitly waived through governance;
+3. an accountable owner or execution agent is recorded;
+4. acceptance criteria and required evidence are linked; and
+5. its state is accurately set to ready, in progress, blocked, or review.
 
-## Current Blockers
+Moving a packet here does not imply completion. Completion requires accepted source changes, automated tests, conformance evidence, and a packet-specific acceptance result.
 
-None.
+## Current blockers
 
-## Activation Rule
+No P0 or P1 planning blocker was identified by the WC-0001 construction review. The remaining open gates are planned work rather than recorded blockers:
 
-Do not activate unrelated subsystem work until the compiler implementation threshold is declared, except for work required to resolve a P0 contradiction or security issue.
+- completion and review of MSC-CORE-0009;
+- completion and review of MSC-CORE-0010;
+- the combined MSC-CORE-0008–0010 consistency review; and
+- an explicit compiler implementation-threshold decision.
+
+## Next update trigger
+
+Update this register when WC-0002 formally begins, an implementation packet is authorized, an active item becomes blocked or enters review, or MSC-CORE-0009 receives a disposition.
