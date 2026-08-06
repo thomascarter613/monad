@@ -38,7 +38,7 @@ export const publicationContentSources = Object.freeze([
     description:
       'Durable architectural and engineering decisions recorded as ADRs.',
     kind: 'decision',
-    canonicalRoots: ['adrs'],
+    canonicalRoots: ['adrs', 'engineering/adrs'],
     generatedCollection: 'artifacts',
     generatedPrefix: 'decisions',
     routeBase: '/artifacts/decisions',
@@ -65,6 +65,7 @@ export const publicationContentSources = Object.freeze([
       'Implementation plans, verification records, experiments, and engineering notes.',
     kind: 'engineering',
     canonicalRoots: ['engineering'],
+    excludedCanonicalPrefixes: ['engineering/adrs'],
     generatedCollection: 'artifacts',
     generatedPrefix: 'engineering',
     routeBase: '/artifacts/engineering',

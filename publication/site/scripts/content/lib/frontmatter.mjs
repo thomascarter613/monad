@@ -1,3 +1,23 @@
+const LEGACY_SECTION_KEYS = new Set([
+  'artifact',
+  'metadata',
+  'relationships',
+  'compilation',
+  'publication',
+  'repository',
+  'related',
+]);
+
+const LIST_ITEM_PATTERN = /^[-*+]\s+/;
+
+function isListItem(value) {
+  return LIST_ITEM_PATTERN.test(value);
+}
+
+function listItemText(value) {
+  return value.replace(LIST_ITEM_PATTERN, '').trim();
+}
+
 function stripInlineComment(value) {
   let singleQuoted = false;
   let doubleQuoted = false;
@@ -111,7 +131,7 @@ function significantLines(raw) {
 
 function parseBlock(lines, startIndex, indent) {
   const first = lines[startIndex];
-  const arrayMode = first?.indent === indent && first.trimmed.startsWith('- ');
+  const arrayMode = first?.indent === indent && isListItem(first.trimmed);
   const container = arrayMode ? [] : {};
   let index = startIndex;
 
@@ -123,11 +143,11 @@ function parseBlock(lines, startIndex, indent) {
     }
 
     if (arrayMode) {
-      if (!line.trimmed.startsWith('- ')) {
+      if (!isListItem(line.trimmed)) {
         throw new Error(`Expected a list item at frontmatter line ${line.lineNumber}.`);
       }
 
-      const itemText = line.trimmed.slice(2).trim();
+      const itemText = listItemText(line.trimmed);
       if (itemText === '') {
         const next = lines[index + 1];
         if (!next || next.indent <= indent) {
@@ -185,10 +205,122 @@ function parseBlock(lines, startIndex, indent) {
   return { value: container, nextIndex: index };
 }
 
+function hasLegacyFlatStructure(lines) {
+  for (let index = 0; index < lines.length - 1; index += 1) {
+    const line = lines[index];
+    const separator = line.trimmed.indexOf(':');
+    if (separator <= 0 || line.trimmed.slice(separator + 1).trim() !== '') continue;
+    const next = lines[index + 1];
+    if (next.indent === line.indent) return true;
+  }
+  return false;
+}
+
+function parseLegacyFlatFrontmatter(lines) {
+  const root = {};
+  let currentSection = null;
+  let index = 0;
+
+  const targetFor = () => {
+    if (!currentSection) return root;
+    if (!root[currentSection] || typeof root[currentSection] !== 'object' || Array.isArray(root[currentSection])) {
+      root[currentSection] = {};
+    }
+    return root[currentSection];
+  };
+
+  while (index < lines.length) {
+    const line = lines[index];
+    if (isListItem(line.trimmed)) {
+      throw new Error(`List item has no owning key at frontmatter line ${line.lineNumber}.`);
+    }
+
+    const separator = line.trimmed.indexOf(':');
+    if (separator <= 0) {
+      throw new Error(`Expected "key: value" at frontmatter line ${line.lineNumber}.`);
+    }
+
+    const key = line.trimmed.slice(0, separator).trim();
+    const rawValue = line.trimmed.slice(separator + 1).trim();
+    const next = lines[index + 1];
+
+    if (rawValue !== '') {
+      targetFor()[key] = parseScalar(rawValue);
+      index += 1;
+      continue;
+    }
+
+    if (next && isListItem(next.trimmed) && next.indent >= line.indent) {
+      const values = [];
+      let listIndex = index + 1;
+      while (listIndex < lines.length) {
+        const item = lines[listIndex];
+        if (!isListItem(item.trimmed) || item.indent < line.indent) break;
+        values.push(parseScalar(listItemText(item.trimmed)));
+        listIndex += 1;
+      }
+      targetFor()[key] = values;
+      index = listIndex;
+      continue;
+    }
+
+    if (LEGACY_SECTION_KEYS.has(key)) {
+      currentSection = key;
+      if (next && next.indent > line.indent) {
+        const nested = parseBlock(lines, index + 1, next.indent);
+        root[key] = nested.value;
+        index = nested.nextIndex;
+      } else {
+        root[key] = root[key] && typeof root[key] === 'object' ? root[key] : {};
+        index += 1;
+      }
+      continue;
+    }
+
+    if (next && next.indent > line.indent) {
+      const nested = parseBlock(lines, index + 1, next.indent);
+      targetFor()[key] = nested.value;
+      index = nested.nextIndex;
+      continue;
+    }
+
+    targetFor()[key] = null;
+    index += 1;
+  }
+
+  return root;
+}
+
 export function parseFrontmatter(raw) {
   const lines = significantLines(raw);
   if (lines.length === 0) return {};
+  if (hasLegacyFlatStructure(lines)) return parseLegacyFlatFrontmatter(lines);
   return parseBlock(lines, 0, lines[0].indent).value;
+}
+
+function objectValue(value) {
+  return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+}
+
+/**
+ * Promote the repository's established grouped frontmatter fields into the
+ * canonical ingestion view while preserving the original group objects.
+ */
+export function normalizeFrontmatterAttributes(attributes) {
+  const artifact = objectValue(attributes.artifact);
+  const metadata = objectValue(attributes.metadata);
+  const publication = objectValue(attributes.publication);
+  const repository = objectValue(attributes.repository);
+
+  return {
+    ...attributes,
+    ...artifact,
+    ...metadata,
+    publication,
+    repository,
+    relationships: objectValue(attributes.relationships),
+    compilation: objectValue(attributes.compilation),
+  };
 }
 
 export function splitFrontmatter(source) {
@@ -197,7 +329,7 @@ export function splitFrontmatter(source) {
     return { attributes: {}, body: normalized, rawFrontmatter: null };
   }
 
-  const closingMatch = normalized.slice(4).match(/^---\s*$/m);
+  const closingMatch = normalized.slice(4).match(/^-{3,}\s*$/m);
   if (!closingMatch || closingMatch.index === undefined) {
     throw new Error('Frontmatter begins with --- but has no closing delimiter.');
   }
@@ -208,7 +340,7 @@ export function splitFrontmatter(source) {
   const body = normalized.slice(closingEnd).replace(/^\n+/, '');
 
   return {
-    attributes: parseFrontmatter(rawFrontmatter),
+    attributes: normalizeFrontmatterAttributes(parseFrontmatter(rawFrontmatter)),
     body,
     rawFrontmatter,
   };

@@ -133,11 +133,18 @@ export function extractIdentifier(attributes, title, relativePath, body) {
     return attributes.id.trim().toUpperCase();
   }
 
-  const candidates = [
-    normalizePath(relativePath).replace(/\.(?:md|mdx)$/i, ''),
-    title,
-    body.slice(0, 1500),
-  ];
+  const normalizedPath = normalizePath(relativePath);
+  const candidates = [normalizedPath.replace(/\.(?:md|mdx)$/i, ''), title];
+
+  // Identity must come from identity-bearing locations. Arbitrary body text
+  // often mentions the current work packet, related ADRs, planned documents,
+  // or status targets; treating the first such reference as this document's
+  // own ID creates false duplicates. Preserve support for an explicit leading
+  // `ID: ...`, `Document ID: ...`, or `Artifact ID: ...` declaration only.
+  const explicitBodyId = body.slice(0, 2500).match(
+    /^(?:\*\*)?(?:(?:document|artifact)\s+)?id(?:\*\*)?\s*:\s*([A-Z][A-Z0-9]*(?:-[A-Z0-9]+)*-\d{4})\s*$/im,
+  );
+  if (explicitBodyId?.[1]) candidates.push(explicitBodyId[1]);
 
   for (const candidate of candidates) {
     const match = candidate.match(DOCUMENT_IDENTIFIER_PATTERN);

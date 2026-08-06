@@ -50,6 +50,94 @@ describe('canonical content synchronization', () => {
     );
     expect(artifactsMeta.pages).toContain('---Normative---');
   });
+
+  it('classifies engineering/adrs as decisions and excludes them from engineering records', async () => {
+    const repositoryRoot = await mkdtemp(join(tmpdir(), 'monad-content-adr-layout-'));
+    const siteRoot = join(repositoryRoot, 'publication', 'site');
+    await mkdir(join(repositoryRoot, 'engineering', 'adrs'), { recursive: true });
+    await mkdir(join(repositoryRoot, 'engineering', 'notes'), { recursive: true });
+    await mkdir(siteRoot, { recursive: true });
+
+    await writeFile(
+      join(repositoryRoot, 'engineering', 'adrs', 'ADR-0001-foundation.md'),
+      `# ADR-0001 — Foundation
+
+Status: Accepted
+
+Decision body.
+`,
+    );
+    await writeFile(
+      join(repositoryRoot, 'engineering', 'notes', 'ENG-0001-note.md'),
+      `# ENG-0001 — Note
+
+Engineering body.
+`,
+    );
+
+    const result = await syncContent({ siteRoot, repositoryRoot });
+    const decision = result.registry.documents.find((document) => document.id === 'ADR-0001');
+    const engineering = result.registry.documents.find((document) => document.id === 'ENG-0001');
+
+    expect(decision?.kind).toBe('decision');
+    expect(decision?.route).toBe('/artifacts/decisions/adr-0001-foundation');
+    expect(engineering?.kind).toBe('engineering');
+    expect(result.registry.documents.filter((document) => document.id === 'ADR-0001')).toHaveLength(1);
+  });
+
+  it('accepts legacy grouped frontmatter and avoids README identifier collisions', async () => {
+    const repositoryRoot = await mkdtemp(join(tmpdir(), 'monad-content-legacy-'));
+    const siteRoot = join(repositoryRoot, 'publication', 'site');
+    await mkdir(join(repositoryRoot, 'specifications', 'MSC', 'core'), { recursive: true });
+    await mkdir(siteRoot, { recursive: true });
+
+    await writeFile(
+      join(repositoryRoot, 'specifications', 'MSC', 'core', 'MSC-CORE-0001.md'),
+      `---
+
+artifact:
+id: MSC-CORE-0001
+type: knowledge.specification
+
+metadata:
+title: Compiler Vision
+status: draft
+authors:
+- Monad Architecture Team
+
+relationships:
+depends_on:
+- ADR-0001
+
+compilation:
+language: msl-markdown
+status: bootstrap
+---
+# MSC-CORE-0001 — Compiler Vision
+
+Body.
+`,
+    );
+    await writeFile(
+      join(repositoryRoot, 'specifications', 'MSC', 'core', 'README.md'),
+      `# MSC-CORE — Compiler Core
+
+| ID | Title |
+|---|---|
+| MSC-CORE-0001 | Compiler Vision |
+`,
+    );
+
+    const result = await syncContent({ siteRoot, repositoryRoot });
+    expect(result.registry.errorCount).toBe(0);
+    expect(result.registry.documents.filter((document) => document.id === 'MSC-CORE-0001')).toHaveLength(1);
+    expect(
+      result.registry.documents.some(
+        (document) => document.canonicalPath === 'specifications/MSC/core/README.md' && document.id.startsWith('UNTRACKED-'),
+      ),
+    ).toBe(true);
+  });
+
 });
 
 // SITE-0006 presentation contract: canonical title headings are removed from generated bodies

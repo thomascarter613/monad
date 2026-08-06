@@ -203,7 +203,15 @@ async function normalizeDocument(repositoryRoot, discovered, previousById, issue
     seriesTotal: inferSeriesTotal(parsed.attributes),
     seriesInfo: undefined,
     tags: normalizeStringArray(parsed.attributes.tags),
-    references: normalizeStringArray(parsed.attributes.references).map((entry) => entry.toUpperCase()),
+    references: [
+      ...new Set([
+        ...normalizeStringArray(parsed.attributes.references),
+        ...normalizeStringArray(parsed.attributes.relationships?.references),
+        ...normalizeStringArray(parsed.attributes.relationships?.depends_on),
+        ...normalizeStringArray(parsed.attributes.relationships?.enables),
+        ...normalizeStringArray(parsed.attributes.related),
+      ].map((entry) => entry.toUpperCase())),
+    ].sort(),
     referencedBy: [],
     related: normalizeRelated(parsed.attributes.related, parsed.attributes),
     relationships: { outgoing: [], incoming: [] },

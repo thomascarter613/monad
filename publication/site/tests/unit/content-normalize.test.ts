@@ -27,3 +27,37 @@ describe('canonical document normalization', () => {
     expect(normalizeStatus(undefined, 'decision', 'Status: Accepted')).toBe('accepted');
   });
 });
+
+it('does not assign an enumerated identifier to README index documents', () => {
+  expect(
+    extractIdentifier(
+      {},
+      'MSC-CORE — Monad Specification Compiler Core',
+      'MSC/core/README.md',
+      '| MSC-CORE-0001 | Vision |\n| MSC-CORE-0002 | Pipeline |',
+    ),
+  ).toBeNull();
+});
+
+it('does not adopt a current work packet reference as the identity of a status document', () => {
+  expect(
+    extractIdentifier(
+      {},
+      'Project Status',
+      'PROJECT-STATUS.md',
+      'CURRENT WORK PACKET\n\nWP-AF-0004\n\nACTIVE TASK\n\nWrite glossary',
+    ),
+  ).toBeNull();
+});
+
+it('still accepts an explicit leading body identity declaration', () => {
+  expect(
+    extractIdentifier(
+      {},
+      'Architecture Record',
+      'architecture-record.md',
+      'Document ID: ARCH-CORE-0007\n\n# Architecture Record',
+    ),
+  ).toBe('ARCH-CORE-0007');
+});
+

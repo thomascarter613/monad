@@ -57,13 +57,20 @@ export async function discoverSourceFiles(repositoryRoot, source) {
     await walkDirectory(absoluteRoot, files);
 
     for (const absolutePath of files) {
+      const canonicalPath = normalizePath(relative(repositoryRoot, absolutePath));
+      const excluded = (source.excludedCanonicalPrefixes ?? []).some((prefix) => {
+        const normalizedPrefix = normalizePath(prefix).replace(/\/$/, '');
+        return canonicalPath === normalizedPrefix || canonicalPath.startsWith(`${normalizedPrefix}/`);
+      });
+      if (excluded) continue;
+
       const fileStat = await stat(absolutePath);
       discovered.push({
         source,
         sourceRoot: normalizePath(rootPath),
         absoluteRoot,
         absolutePath,
-        canonicalPath: normalizePath(relative(repositoryRoot, absolutePath)),
+        canonicalPath,
         relativePath: normalizePath(relative(absoluteRoot, absolutePath)),
         size: fileStat.size,
       });

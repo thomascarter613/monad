@@ -1,6 +1,6 @@
 {
   "name": "@monad/publication-site",
-  "version": "0.12.0",
+  "version": "0.12.3",
   "private": true,
   "description": "The documentation and engineering-log publication site for Monad.",
   "packageManager": "bun@1.3.14",
