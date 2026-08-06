@@ -1,0 +1,94 @@
+name: Documentation CI
+
+on:
+  pull_request:
+    paths:
+      - 'publication/site/**'
+      - 'journal/**'
+      - 'architecture/**'
+      - 'adrs/**'
+      - 'specifications/**'
+      - 'engineering/**'
+      - 'research/**'
+      - 'knowledge/**'
+      - 'build-log/**'
+      - '.github/workflows/docs-*.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'publication/site/**'
+      - 'journal/**'
+      - 'architecture/**'
+      - 'adrs/**'
+      - 'specifications/**'
+      - 'engineering/**'
+      - 'research/**'
+      - 'knowledge/**'
+      - 'build-log/**'
+      - '.github/workflows/docs-*.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: publication/site
+
+jobs:
+  quality:
+    name: Quality and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - run: bun install --frozen-lockfile
+      - run: bun run verify:ci
+      - name: Upload coverage and content reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-quality-${{ github.run_id }}
+          path: |
+            publication/site/coverage
+            publication/site/.generated/reports
+          if-no-files-found: ignore
+          retention-days: 14
+
+  browser-and-operations:
+    name: Browser and operations
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - run: bun install --frozen-lockfile
+      - run: bun run test:e2e:install
+      - run: bun run build
+      - run: bun run test:e2e
+      - run: bun run operations:links
+      - run: bun run operations:security
+      - name: Upload browser and operational reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-browser-${{ github.run_id }}
+          path: |
+            publication/site/playwright-report
+            publication/site/test-results
+            publication/site/.artifacts/operations
+          if-no-files-found: ignore
+          retention-days: 14

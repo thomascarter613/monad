@@ -1,0 +1,63 @@
+name: Documentation Preview
+
+on:
+  pull_request:
+    paths:
+      - 'publication/site/**'
+      - 'journal/**'
+      - 'architecture/**'
+      - 'adrs/**'
+      - 'specifications/**'
+      - 'engineering/**'
+      - 'research/**'
+      - 'knowledge/**'
+      - 'build-log/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-preview-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    if: ${{ vars.MONAD_DOCS_PREVIEW_ENABLED == 'true' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) }}
+    runs-on: ubuntu-latest
+    environment: docs-preview
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: publication/site
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      MONAD_BUILD_COMMIT: ${{ github.sha }}
+      MONAD_BUILD_CHANNEL: preview
+      MONAD_DEPLOYMENT_TARGET: vercel
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - run: bun install --frozen-lockfile
+      - run: bun run verify
+      - name: Pull Vercel preview settings
+        run: bunx vercel@56.5.0 pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Vercel preview
+        run: bunx vercel@56.5.0 build --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Vercel preview
+        id: deploy
+        run: |
+          url=$(bunx vercel@56.5.0 deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "## Documentation preview" >> "$GITHUB_STEP_SUMMARY"
+          echo "$url" >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: docs-preview-url-${{ github.run_id }}
+          path: publication/site/.vercel/output
+          retention-days: 7

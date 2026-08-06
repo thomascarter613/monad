@@ -1,0 +1,97 @@
+name: Documentation Release
+
+on:
+  push:
+    tags:
+      - 'docs-v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Publication version without the docs-v prefix
+        required: true
+        type: string
+      edition:
+        description: Edition profile
+        required: true
+        default: complete
+        type: choice
+        options: [complete, building-monad, reference]
+      article_pdfs:
+        description: Generate one PDF per document
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: docs-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: docs-release
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: publication/site
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+      - run: bun install --frozen-lockfile
+      - run: bun run test:e2e:install
+      - name: Resolve release inputs
+        id: release
+        shell: bash
+        run: |
+          if [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
+            version="${GITHUB_REF_NAME#docs-v}"
+            edition="complete"
+            article_pdfs="true"
+            tag="$GITHUB_REF_NAME"
+          else
+            version="${{ inputs.version }}"
+            edition="${{ inputs.edition }}"
+            article_pdfs="${{ inputs.article_pdfs }}"
+            tag="docs-v${version}"
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "edition=$edition" >> "$GITHUB_OUTPUT"
+          echo "article_pdfs=$article_pdfs" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "source_date_epoch=$(git show -s --format=%ct HEAD)" >> "$GITHUB_OUTPUT"
+      - run: bun run verify:release
+      - name: Build publication artifacts
+        env:
+          SOURCE_DATE_EPOCH: ${{ steps.release.outputs.source_date_epoch }}
+          MONAD_BUILD_VERSION: ${{ steps.release.outputs.version }}
+          MONAD_BUILD_CHANNEL: tagged
+          MONAD_BUILD_COMMIT: ${{ github.sha }}
+        shell: bash
+        run: |
+          args=(--edition "${{ steps.release.outputs.edition }}" --version "${{ steps.release.outputs.version }}")
+          if [[ "${{ steps.release.outputs.article_pdfs }}" == "true" ]]; then args+=(--article-pdfs); fi
+          bun run publication:build -- "${args[@]}"
+      - run: bun run publication:verify -- "dist/publications/${{ steps.release.outputs.edition }}/${{ steps.release.outputs.version }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: monad-docs-${{ steps.release.outputs.edition }}-${{ steps.release.outputs.version }}
+          path: publication/site/dist/publications/${{ steps.release.outputs.edition }}/${{ steps.release.outputs.version }}
+          retention-days: 30
+      - name: Publish GitHub release assets
+        if: ${{ github.ref_type == 'tag' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          output="dist/publications/${{ steps.release.outputs.edition }}/${{ steps.release.outputs.version }}"
+          if ! gh release view "${{ steps.release.outputs.tag }}" >/dev/null 2>&1; then
+            gh release create "${{ steps.release.outputs.tag }}" --title "Monad Documentation ${{ steps.release.outputs.version }}" --generate-notes
+          fi
+          find "$output" -maxdepth 2 -type f -print0 | xargs -0 gh release upload "${{ steps.release.outputs.tag }}" --clobber

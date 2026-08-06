@@ -1,0 +1,11 @@
+**/.git
+**/.next
+**/.source
+**/.generated
+**/node_modules
+**/dist
+**/.artifacts
+**/coverage
+**/playwright-report
+**/test-results
+.monad/backups
