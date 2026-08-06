@@ -1009,3 +1009,444 @@ Complete before continuing.
 ---
 
 ---
+# 18. Assessment 9 — Cardinal Directions and Orientation
+
+**Competency:** Use beginning cardinal-direction concepts to orient a map or describe relative movement.
+
+**Suggested time:** 10–15 minutes
+
+**Materials:**
+
+* compass, if available;
+* map with a north arrow;
+* four cards labeled North, South, East, and West;
+* familiar indoor or outdoor space.
+
+## Purpose
+
+To determine whether the student recognizes cardinal directions as stable geographical references distinct from personal left and right.
+
+Mastery is not expected at this age. The assessment identifies familiarity, misconceptions, and readiness for systematic instruction.
+
+## Preparation
+
+Determine approximate north in the assessment area.
+
+Place the four direction cards around the student according to the actual directions when practical.
+
+If actual orientation cannot be established safely or reliably, use a clearly defined pretend orientation and explain it before beginning.
+
+## Administration script
+
+Say:
+
+> “Maps often use north, south, east, and west to describe directions. These directions stay the same even when a person turns around.”
+
+Ask:
+
+1. Can you point north?
+2. What direction is opposite north?
+3. What direction is opposite east?
+4. If the map’s north arrow points toward the top of the page, which direction is at the bottom?
+5. Which direction is on the right side of that map?
+6. Which direction is on the left side?
+7. What happens to north if you turn around?
+8. Is north always the same as your left side?
+
+Do not correct the first response before recording it.
+
+## Movement task
+
+Give simple directions:
+
+* Take two steps north.
+* Turn toward east.
+* Take one step south.
+* Face west.
+
+Record whether the student uses environmental cues, card labels, a compass, or guesses.
+
+## Recording table
+
+| Direction concept                                            |  I  |  P  |  A  |  N  |
+| ------------------------------------------------------------ | :-: | :-: | :-: | :-: |
+| Identifies north                                             |  ☐  |  ☐  |  ☐  |  ☐  |
+| Identifies south as opposite north                           |  ☐  |  ☐  |  ☐  |  ☐  |
+| Identifies west as opposite east                             |  ☐  |  ☐  |  ☐  |  ☐  |
+| Reads top of north-oriented map as north                     |  ☐  |  ☐  |  ☐  |  ☐  |
+| Reads bottom as south                                        |  ☐  |  ☐  |  ☐  |  ☐  |
+| Reads right side as east                                     |  ☐  |  ☐  |  ☐  |  ☐  |
+| Reads left side as west                                      |  ☐  |  ☐  |  ☐  |  ☐  |
+| Understands directions remain stable when turning            |  ☐  |  ☐  |  ☐  |  ☐  |
+| Distinguishes cardinal direction from personal left or right |  ☐  |  ☐  |  ☐  |  ☐  |
+
+## Strategy observed
+
+☐ Uses compass
+☐ Uses direction cards
+☐ Uses north arrow
+☐ Uses known environmental cue
+☐ Rotates body or map
+☐ Relies on left and right
+☐ Guesses
+☐ Self-corrects
+
+## Student explanation
+
+---
+
+---
+
+## Interpretation
+
+Do not expect automatic recall.
+
+A beginning learner may use labels or a compass successfully before internalizing the directions. That is an appropriate developmental stage.
+
+---
+
+# 19. Assessment 10 — Near, Far, Distance, and Scale
+
+**Competency:** Compare relative distance and recognize that map distance represents real-world distance.
+
+**Suggested time:** 10–15 minutes
+
+**Materials:**
+
+* familiar room;
+* simple map with three destinations at visibly different distances;
+* ruler or nonstandard measuring units, such as blocks or paper clips.
+
+## Purpose
+
+To determine whether the student can compare distances and understand the beginning idea that maps reduce large spaces.
+
+## Administration script — Real-space comparison
+
+Ask:
+
+* Which is nearer to you: the door or the window?
+* Which is farther away?
+* How could we check?
+* Would counting steps help?
+* Would everyone take the same number of steps? Why or why not?
+
+Invite the student to estimate and then measure using steps or another nonstandard unit.
+
+## Recording table
+
+| Task                  | Estimate | Measured result | Student conclusion |
+| --------------------- | -------- | --------------- | ------------------ |
+| Student to door       |          |                 |                    |
+| Student to window     |          |                 |                    |
+| Chosen third location |          |                 |                    |
+
+## Administration script — Map comparison
+
+Present a simple map showing a house, park, library, and store.
+
+Ask:
+
+1. Which place appears nearest the house?
+2. Which appears farthest?
+3. How can you tell?
+4. Does one inch on the map mean the real place is only one inch away?
+5. Why must a map make real distances smaller?
+6. Which route would probably take longer to travel?
+
+## Scale concept prompts
+
+Say:
+
+> “This small map shows a place much larger than the paper. How is that possible?”
+
+Record the response.
+
+---
+
+Ask:
+
+> “If two places are close together on the map, what might that tell us about the real places?”
+
+---
+
+## Observation checklist
+
+| Distance-and-scale behavior                      |  I  |  P  |  A  |  N  |
+| ------------------------------------------------ | :-: | :-: | :-: | :-: |
+| Compares near and far in real space              |  ☐  |  ☐  |  ☐  |  ☐  |
+| Suggests a way to measure                        |  ☐  |  ☐  |  ☐  |  ☐  |
+| Estimates before measuring                       |  ☐  |  ☐  |  ☐  |  ☐  |
+| Compares map distances visually                  |  ☐  |  ☐  |  ☐  |  ☐  |
+| Understands map is reduced                       |  ☐  |  ☐  |  ☐  |  ☐  |
+| Recognizes map distance represents real distance |  ☐  |  ☐  |  ☐  |  ☐  |
+| Compares route length                            |  ☐  |  ☐  |  ☐  |  ☐  |
+
+## Interpretation
+
+Formal scale calculations are not expected.
+
+Look for the emerging understanding that a map is a smaller representation and that spacing on the map conveys relative distance.
+
+---
+
+# 20. Assessment 11 — Landforms and Bodies of Water
+
+**Competency:** Recognize and describe common physical features of Earth’s surface.
+
+**Suggested time:** 10–15 minutes
+
+**Materials:**
+
+Use photographs, drawings, models, or an atlas showing:
+
+* mountain;
+* hill;
+* valley;
+* plain;
+* island;
+* peninsula;
+* river;
+* lake;
+* ocean;
+* stream;
+* waterfall;
+* coast.
+
+## Purpose
+
+To identify the student’s prior knowledge of physical geography and ability to compare natural features.
+
+## Administration script
+
+Present one image at a time.
+
+Ask:
+
+> “What kind of place or feature is this?”
+
+If the student does not know the name, ask:
+
+> “What do you notice about it?”
+
+Then ask selected comparison questions:
+
+* How is a mountain different from a hill?
+* How is a river different from a lake?
+* How is an island different from land beside an ocean?
+* Where might water flow?
+* Which places appear high?
+* Which places appear low?
+* Where might people build a bridge?
+* Which features might affect travel?
+
+## Recording table
+
+| Feature   | Names independently | Recognizes after prompt | Describes accurately | Not yet |
+| --------- | :-----------------: | :---------------------: | :------------------: | :-----: |
+| Mountain  |          ☐          |            ☐            |           ☐          |    ☐    |
+| Hill      |          ☐          |            ☐            |           ☐          |    ☐    |
+| Valley    |          ☐          |            ☐            |           ☐          |    ☐    |
+| Plain     |          ☐          |            ☐            |           ☐          |    ☐    |
+| Island    |          ☐          |            ☐            |           ☐          |    ☐    |
+| Peninsula |          ☐          |            ☐            |           ☐          |    ☐    |
+| River     |          ☐          |            ☐            |           ☐          |    ☐    |
+| Lake      |          ☐          |            ☐            |           ☐          |    ☐    |
+| Ocean     |          ☐          |            ☐            |           ☐          |    ☐    |
+| Stream    |          ☐          |            ☐            |           ☐          |    ☐    |
+| Waterfall |          ☐          |            ☐            |           ☐          |    ☐    |
+| Coast     |          ☐          |            ☐            |           ☐          |    ☐    |
+
+## Comparison record
+
+### Mountain and hill
+
+---
+
+### River and lake
+
+---
+
+### Island and peninsula
+
+---
+
+## Geographical reasoning prompts
+
+Ask:
+
+1. Where might a town get water?
+2. How could a mountain make travel harder?
+3. Why might people settle near a river?
+4. What could happen if a river floods?
+5. Which landform would you most like to visit? Why?
+
+## Student responses
+
+---
+
+---
+
+---
+
+## Observation checklist
+
+☐ Uses visual evidence
+☐ Compares height
+☐ Compares flowing and still water
+☐ Recognizes land surrounded by water
+☐ Connects features with human activity
+☐ Expresses interest in natural places
+
+---
+
+# 21. Assessment 12 — Natural and Human-Made Features
+
+**Competency:** Distinguish naturally occurring geographical features from features created or substantially modified by people.
+
+**Suggested time:** 10 minutes
+
+**Materials:**
+
+Photographs or drawings of:
+
+* river;
+* mountain;
+* forest;
+* road;
+* bridge;
+* house;
+* farm;
+* dam;
+* park;
+* canal;
+* lake;
+* playground.
+
+## Purpose
+
+To determine whether the student recognizes that places contain both natural and human-made features and that people may modify environments.
+
+## Administration script
+
+Present the images.
+
+Say:
+
+> “Sort these into features made by nature and features made by people.”
+
+After sorting, ask:
+
+* Which were made mostly by natural processes?
+* Which were built or changed by people?
+* Are any difficult to place?
+* Could people change a natural feature?
+* Could a park contain both natural and human-made parts?
+* Is every lake completely natural?
+* Why might people build a bridge, road, farm, or dam?
+
+## Sorting record
+
+| Feature    | Natural | Human-made | Both or uncertain | Student reason |
+| ---------- | :-----: | :--------: | :---------------: | -------------- |
+| River      |    ☐    |      ☐     |         ☐         |                |
+| Mountain   |    ☐    |      ☐     |         ☐         |                |
+| Forest     |    ☐    |      ☐     |         ☐         |                |
+| Road       |    ☐    |      ☐     |         ☐         |                |
+| Bridge     |    ☐    |      ☐     |         ☐         |                |
+| House      |    ☐    |      ☐     |         ☐         |                |
+| Farm       |    ☐    |      ☐     |         ☐         |                |
+| Dam        |    ☐    |      ☐     |         ☐         |                |
+| Park       |    ☐    |      ☐     |         ☐         |                |
+| Canal      |    ☐    |      ☐     |         ☐         |                |
+| Lake       |    ☐    |      ☐     |         ☐         |                |
+| Playground |    ☐    |      ☐     |         ☐         |                |
+
+## Human-environment reasoning
+
+Ask:
+
+> “How might building a road change a place?”
+
+Student response:
+
+---
+
+Ask:
+
+> “How might creating a park help people or animals?”
+
+---
+
+Ask:
+
+> “Can people change a place in helpful and harmful ways?”
+
+---
+
+## Observation checklist
+
+| Human-environment concept                 |  I  |  P  |  A  |  N  |
+| ----------------------------------------- | :-: | :-: | :-: | :-: |
+| Identifies clearly natural features       |  ☐  |  ☐  |  ☐  |  ☐  |
+| Identifies clearly human-made features    |  ☐  |  ☐  |  ☐  |  ☐  |
+| Recognizes mixed or modified environments |  ☐  |  ☐  |  ☐  |  ☐  |
+| Explains why people build features        |  ☐  |  ☐  |  ☐  |  ☐  |
+| Identifies possible environmental change  |  ☐  |  ☐  |  ☐  |  ☐  |
+| Considers helpful and harmful effects     |  ☐  |  ☐  |  ☐  |  ☐  |
+
+## Interpretation
+
+Some features are intentionally ambiguous.
+
+A lake may be natural or created by a dam. A park may combine vegetation, paths, playgrounds, and buildings. Recognizing complexity demonstrates stronger reasoning than forcing every feature into a simple category.
+
+---
+
+# 22. Part 3 Review
+
+Complete before continuing.
+
+| Competency                        | Current code or level | Evidence |
+| --------------------------------- | --------------------- | -------- |
+| Cardinal-direction familiarity    |                       |          |
+| Map orientation                   |                       |          |
+| Near-and-far comparison           |                       |          |
+| Distance measurement              |                       |          |
+| Beginning scale concept           |                       |          |
+| Landform recognition              |                       |          |
+| Body-of-water recognition         |                       |          |
+| Physical-feature comparison       |                       |          |
+| Natural-feature classification    |                       |          |
+| Human-made-feature classification |                       |          |
+| Human-environment reasoning       |                       |          |
+
+## Strengths demonstrated in Part 3
+
+---
+
+---
+
+## Areas requiring more observation
+
+---
+
+---
+
+## Misconceptions or vocabulary needs
+
+---
+
+---
+
+## Student geographical interests
+
+---
+
+---
+
+## Parent-teacher notes before Part 4
+
+---
+
+---
