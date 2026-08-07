@@ -112,11 +112,3 @@ specifications/MSC/core/MSC-CORE-0009.md
 ```
 
 Do not close PI-002 or M-002, declare the compiler specification complete, or promote WP-MSC-0001 through WP-MSC-0006 to completed until the relevant gates and evidence exist.
-
-<!-- WP-MSC-0007-STATUS:BEGIN -->
-
-## WP-MSC-0007 Reconciliation Status
-
-WP-MSC-0007 applied static reconciliation, but a required validation gate did not pass. The implementation threshold remains undeclared, M-002 remains active, and WP-MSC-0001 through WP-MSC-0006 remain planned.
-
-<!-- WP-MSC-0007-STATUS:END -->

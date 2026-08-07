@@ -52,11 +52,3 @@ No P0 or P1 planning blocker was identified by the WC-0001 construction review. 
 ## Next update trigger
 
 Update this register when WC-0002 formally begins, an implementation packet is authorized, an active item becomes blocked or enters review, or MSC-CORE-0009 receives a disposition.
-
-<!-- WP-MSC-0007-STATUS:BEGIN -->
-
-## WP-MSC-0007 Status
-
-WP-MSC-0007 applied static reconciliation, but a required validation gate did not pass. The implementation threshold remains undeclared, M-002 remains active, and WP-MSC-0001 through WP-MSC-0006 remain planned.
-
-<!-- WP-MSC-0007-STATUS:END -->

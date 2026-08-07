@@ -79,11 +79,3 @@ Across the six packets, the combined evidence must demonstrate:
 ## Backlog maintenance
 
 Update this file when a packet is added, split, superseded, reprioritized, or promoted into `active.md`. Preserve its historical identity and link any governing decision; do not silently reinterpret the accepted WC-0001 ownership model.
-
-<!-- WP-MSC-0007-STATUS:BEGIN -->
-
-## MSC Bootstrap Activation Gate
-
-WP-MSC-0007 applied static reconciliation, but a required validation gate did not pass. The implementation threshold remains undeclared, M-002 remains active, and WP-MSC-0001 through WP-MSC-0006 remain planned.
-
-<!-- WP-MSC-0007-STATUS:END -->
