@@ -4,7 +4,7 @@ artifact:
   type: engineering.report
 metadata:
   title: WP-MSC-0007 Execution Report
-  status: blocked
+  status: published
   executed: 2026-08-06
 ---
 
@@ -38,7 +38,7 @@ Strategy B: preserve legacy source while defining deterministic, lossless compat
 | Static reconciliation | 0 | PASS |
 | Publication content validation | 1 | FAIL or SKIPPED |
 
-Logs: `.monad/backups/wp-msc-0007/20260808T152459Z`
+Logs: `.monad/backups/wp-msc-0007/20260806T215829Z`
 
 ## Second Review
 
