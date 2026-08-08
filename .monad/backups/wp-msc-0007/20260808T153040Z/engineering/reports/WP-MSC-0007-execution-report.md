@@ -39,7 +39,7 @@ Strategy B: preserve legacy source while defining deterministic, lossless compat
 | Static reconciliation | 0 | PASS |
 | Publication content validation | 1 | FAIL or SKIPPED |
 
-Logs: `.monad/backups/wp-msc-0007/20260808T153040Z`
+Logs: `.monad/backups/wp-msc-0007/20260808T153005Z`
 
 ## Second Review
 

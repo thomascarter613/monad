@@ -333,7 +333,7 @@ artifact:
   type: engineering.report
 metadata:
   title: WP-MSC-0007 Execution Report
-  status: completed\n  outcome: {'pass' if passed else 'conditional-fail'}
+  status: {'completed' if passed else 'blocked'}
   executed: 2026-08-06
 ---
 

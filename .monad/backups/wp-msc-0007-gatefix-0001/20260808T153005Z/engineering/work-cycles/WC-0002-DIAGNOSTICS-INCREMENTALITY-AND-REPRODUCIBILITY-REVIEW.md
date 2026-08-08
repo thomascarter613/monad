@@ -1,8 +1,5 @@
 ---
 title: "WC-0002 — Diagnostics, Incrementality, and Reproducibility Review"
-id: WC-REVIEW-0002
-series: WC-REVIEW
-series_position: 2
 description: "Acceptance and consistency review for MSC-CORE-0009 and its seven implementation work packets."
 date: 2026-08-06
 status: accepted
