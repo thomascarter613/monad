@@ -1,89 +1,69 @@
 ---
 title: "Engineering Work-Packet Backlog"
-description: "Ordered register of planned implementation work that has not yet started."
-date: 2026-08-06
+description: "Ordered register of PI-002 work packets that have not entered accepted implementation."
+date: 2026-08-08
 status: active
 program_increment: PI-002
 milestone: M-002
-governing_specification: MSC-CORE-0008
+governing_specifications: [MSC-CORE-0008, MSC-CORE-0009, MSC-CORE-0010]
 ---
 
 # Engineering Work-Packet Backlog
 
 ## Backlog policy
 
-This register contains planned implementation work with accepted decomposition but without accepted implementation evidence. A planning-complete work cycle does not complete its implementation packets.
+This register contains the 20 accepted PI-002 packet definitions without claiming implementation delivery. Planning closure, document validation, or review readiness does not constitute implementation authorization or completion.
 
-WP-MSC-0001 through WP-MSC-0006 are ordered producer-consumer work. Their sequence is normative unless a later reviewed decision changes it:
+## WC-0001 — Semantic Graph Construction
 
-```text
-WP-MSC-0001 → WP-MSC-0002 → WP-MSC-0003
-            → WP-MSC-0004 → WP-MSC-0005 → WP-MSC-0006
-```
+| Order | Packet | Title | State |
+| ---: | --- | --- | --- |
+| 1 | [`WP-MSC-0001`](WP-MSC-0001.md) | Semantic Graph Model | Planned; not started |
+| 2 | [`WP-MSC-0002`](WP-MSC-0002.md) | Semantic Entity Extraction | Planned; not started |
+| 3 | [`WP-MSC-0003`](WP-MSC-0003.md) | Semantic Relationship Construction | Planned; not started |
+| 4 | [`WP-MSC-0004`](WP-MSC-0004.md) | Semantic Identity Assignment | Planned; not started |
+| 5 | [`WP-MSC-0005`](WP-MSC-0005.md) | Semantic Graph Validation | Planned; not started |
+| 6 | [`WP-MSC-0006`](WP-MSC-0006.md) | Immutable MSG Snapshot Construction | Planned; not started |
 
-## PI-002 semantic-graph implementation backlog
+## WC-0002 — Diagnostics, Incrementality, and Reproducibility
 
-| Order | Packet | Title | Depends on | State | Primary acceptance focus |
-| ---: | --- | --- | --- | --- | --- |
-| 1 | [`WP-MSC-0001`](WP-MSC-0001.md) | Semantic Graph Model | MSC-CORE-0008 | Planned; not started | Canonical value model, metadata, builders, interfaces, and immutability boundary |
-| 2 | [`WP-MSC-0002`](WP-MSC-0002.md) | Implement Semantic Entity Extraction | WP-MSC-0001 | Planned; not started | Graph-eligible entities with typed, governed, incomplete, and source-derived state |
-| 3 | [`WP-MSC-0003`](WP-MSC-0003.md) | Implement Semantic Relationship Construction | WP-MSC-0001–0002 | Planned; not started | Relationships, claims, reification, qualifiers, and preserved conflict/uncertainty state |
-| 4 | [`WP-MSC-0004`](WP-MSC-0004.md) | Implement Semantic Identity Assignment | WP-MSC-0001–0003 | Planned; not started | Durable identity, aliases, equivalence, merges, collisions, lineage, and graph-local IDs |
-| 5 | [`WP-MSC-0005`](WP-MSC-0005.md) | Implement Semantic Graph Validation | WP-MSC-0001–0004 | Planned; not started | Whole-graph invariants, completeness, diagnostics, and consumer-specific output readiness |
-| 6 | [`WP-MSC-0006`](WP-MSC-0006.md) | Implement Immutable MSG Snapshot Construction | WP-MSC-0001–0005 | Planned; not started | Canonicalization, graph identity, fingerprint, immutability, round trips, records, and MKE handoff |
+| Order | Packet | Title | State |
+| ---: | --- | --- | --- |
+| 7 | [`WP-MSC-0007`](WP-MSC-0007.md) | Reconcile MSC-CORE Phase, Representation, and Backend Contracts | Review-ready; execution incomplete; implementation prohibited |
+| 8 | [`WP-MSC-0008`](WP-MSC-0008.md) | Implement Compilation Manifests | Planned; not started |
+| 9 | [`WP-MSC-0009`](WP-MSC-0009.md) | Implement Dependency Observation and Invalidation | Planned; not started |
+| 10 | [`WP-MSC-0010`](WP-MSC-0010.md) | Implement Incremental Planning | Planned; not started |
+| 11 | [`WP-MSC-0011`](WP-MSC-0011.md) | Implement Verified Compilation Caching | Planned; not started |
+| 12 | [`WP-MSC-0012`](WP-MSC-0012.md) | Implement Deterministic Execution and Reproducibility | Planned; not started |
+| 13 | [`WP-MSC-0013`](WP-MSC-0013.md) | Build Incremental and Reproducibility Conformance Suite | Planned; not started |
 
-The dependency expressions above summarize the accepted construction order. Packet-local prerequisites remain authoritative when the individual work-packet files are created or updated.
+## WC-0003 — KIR, Backends, and Self-Hosting
 
-## Evidence required before completion
+| Order | Packet | Title | State |
+| ---: | --- | --- | --- |
+| 14 | [`WP-MSC-0014`](WP-MSC-0014.md) | Implement the Kernel Intermediate Representation | Planned; not started |
+| 15 | [`WP-MSC-0015`](WP-MSC-0015.md) | Implement Deterministic MSG-to-KIR Lowering | Planned; not started |
+| 16 | [`WP-MSC-0016`](WP-MSC-0016.md) | Implement Target Profiles and the Governed Backend Protocol | Planned; not started |
+| 17 | [`WP-MSC-0017`](WP-MSC-0017.md) | Implement Backend Planning, Invalidation, and Verified Reuse | Planned; not started |
+| 18 | [`WP-MSC-0018`](WP-MSC-0018.md) | Implement Artifact Validation and Atomic Publication | Planned; not started |
+| 19 | [`WP-MSC-0019`](WP-MSC-0019.md) | Implement Bootstrap and Bounded Self-Hosting Evidence | Planned; not started |
+| 20 | [`WP-MSC-0020`](WP-MSC-0020.md) | Build KIR, Backend, Artifact, and Self-Hosting Conformance Suite | Planned; not started |
 
-No packet may move directly from backlog to completed. Each packet must first enter active execution and ultimately provide:
+Packet-local dependency declarations remain authoritative. At the program level, implementation progresses from canonical MSG construction through manifests, dependency/invalidation, incremental planning, verified caching and reproducibility, then KIR/lowering, governed backends, publication, self-hosting evidence, and end-to-end conformance.
 
-- reviewed production source changes;
+## Promotion gates
+
+No implementation packet may be promoted until the PI-002 consistency and acceptance gates permit it. After threshold declaration, packets remain dependency-gated according to their own `depends_on` metadata; packets must not move directly from backlog to completed.
+
+Each completed implementation packet must provide:
+
+- reviewed production changes;
 - passing unit, integration, and applicable conformance tests;
-- completed packet checklist and acceptance criteria;
-- traceability to MSC-CORE-0008 requirements;
-- evidence for failure, partial-knowledge, and boundary cases in its scope; and
+- completed acceptance criteria;
+- traceability to its governing MSC requirements;
+- negative, partial-state, and boundary evidence appropriate to its scope; and
 - a recorded packet-specific acceptance disposition.
-
-Across the six packets, the combined evidence must demonstrate:
-
-- semantic identity continuity, aliases, equivalence, merges, and collisions;
-- deterministic graph-local identity allocation;
-- graph identity distinct from canonical-content fingerprint;
-- preservation of unresolved, ambiguous, external, invalid, unsupported, uncertain, and conflicting states;
-- output-specific completeness and readiness;
-- deterministic construction and stable canonical serialization;
-- deep immutability and canonical JSON round-trip equivalence;
-- parent lineage, construction, reproducibility, output-availability, and MKE-handoff records; and
-- an MSG/MKE boundary that does not transfer persistence ownership to the compiler.
-
-## Promotion order and gates
-
-| Packet | Promotion gate |
-| --- | --- |
-| WP-MSC-0001 | Implementation threshold and model contract authorized |
-| WP-MSC-0002 | WP-MSC-0001 interfaces stable enough for extraction work |
-| WP-MSC-0003 | Entity representation and extraction outputs available |
-| WP-MSC-0004 | Entity and relationship inputs available for identity assignment |
-| WP-MSC-0005 | Constructed, identified graph available for whole-graph validation |
-| WP-MSC-0006 | Validation outputs available for immutable snapshot finalization |
-
-## Carried-forward constraints
-
-- WP-MSC-0004 owns semantic and graph-local member identity; WP-MSC-0006 owns graph identity finalization and fingerprint calculation.
-- WP-MSC-0005 determines completeness and consumer-specific readiness; WP-MSC-0006 records those results in the snapshot.
-- WP-MSC-0006 produces an MKE ingestion handoff; it does not implement MKE persistence, indexing, transactions, or queries.
-- MSC-CORE-0009 may extend compiler-wide reproducibility policy and must be reconciled before final PI-002 acceptance.
-- MSC-CORE-0010 governs KIR, backend, target-support, and self-hosting behavior and must not be pulled into MSG construction.
 
 ## Backlog maintenance
 
-Update this file when a packet is added, split, superseded, reprioritized, or promoted into `active.md`. Preserve its historical identity and link any governing decision; do not silently reinterpret the accepted WC-0001 ownership model.
-
-<!-- WP-MSC-0007-STATUS:BEGIN -->
-
-## MSC Bootstrap Activation Gate
-
-WP-MSC-0007 passed static and publication-content validation. The compiler implementation threshold is declared. M-002 is eligible for closure, and WP-MSC-0001 is eligible for activation; WP-MSC-0002 through WP-MSC-0006 remain dependency-gated.
-
-<!-- WP-MSC-0007-STATUS:END -->
+Update this register when a packet is added, split, superseded, reprioritized, authorized, blocked, or accepted. Preserve packet identities and link governing decisions; never infer delivery from planning status.

@@ -1,11 +1,11 @@
 ---
 title: "Active Engineering Work"
 description: "Canonical register of work currently authorized or in progress."
-date: 2026-08-06
+date: 2026-08-08
 status: active
 program_increment: PI-002
 milestone: M-002
-current_work_cycle: WC-0002
+active_gate: PI-002-CROSS-SPECIFICATION-CONSISTENCY-REVIEW
 ---
 
 # Active Engineering Work
@@ -16,47 +16,45 @@ current_work_cycle: WC-0002
 | --- | --- |
 | Program increment | **PI-002 — Semantic Compiler Foundation** |
 | Milestone | **M-002 — Compiler Specification Complete** |
-| Active work cycle | **WC-0002 — Diagnostics, Incrementality, and Reproducibility** |
-| Immediate specification | **MSC-CORE-0009 of 10** |
-| Implementation packets in progress | **None recorded** |
+| Completed planning cycles | **WC-0001–WC-0003** |
+| Active control activity | **MSC-CORE-0008–0010 cross-specification consistency review** |
+| Implementation packets in progress | **None** |
+| Implementation threshold | **Not declared** |
 
-The active engineering stream is specification work for MSC-CORE-0009. WC-0001 is planning-complete and is not active implementation work. WP-MSC-0001 through WP-MSC-0006 remain in the backlog until implementation is explicitly started and an owner, execution state, and evidence path are recorded.
+The active stream is the final PI-002 consistency gate. All three work cycles are planning-complete. No WP-MSC implementation packet is authorized or in progress.
 
 ## Active control item
 
-| ID | Type | Title | State | Required outcome |
-| --- | --- | --- | --- | --- |
-| WC-0002 | Work cycle | Diagnostics, Incrementality, and Reproducibility | Active / next for execution | Specify MSC-CORE-0009 and reconcile compiler-wide reproducibility with MSC-CORE-0008 |
+| ID | Type | State | Required outcome |
+| --- | --- | --- | --- |
+| PI-002-CROSS-SPECIFICATION-CONSISTENCY-REVIEW | Review | Next for execution | Reconcile MSC-CORE-0008–0010 and classify every finding; no unresolved P0/P1 contradiction |
 
-## Entry criteria for implementation packets
+## Implementation activation criteria
 
-A WP-MSC packet may move from `backlog.md` into this register only when:
+A packet may move from `backlog.md` into this register only when:
 
-1. implementation work has been explicitly authorized;
-2. its prerequisite packets and specification dependencies are satisfied or explicitly waived through governance;
-3. an accountable owner or execution agent is recorded;
-4. acceptance criteria and required evidence are linked; and
-5. its state is accurately set to ready, in progress, blocked, or review.
+1. the PI-002 consistency review and acceptance review permit implementation;
+2. the compiler implementation threshold is explicitly declared;
+3. packet prerequisites are satisfied or governed by an accepted waiver;
+4. an accountable owner and evidence path are recorded; and
+5. the packet state is accurately set to ready, in progress, blocked, or review.
 
-Moving a packet here does not imply completion. Completion requires accepted source changes, automated tests, conformance evidence, and a packet-specific acceptance result.
+Activation does not imply completion. Completion requires accepted source changes, automated tests, conformance evidence, and packet-specific acceptance.
 
-## Current blockers
+## Open gates
 
-No P0 or P1 planning blocker was identified by the WC-0001 construction review. The remaining open gates are planned work rather than recorded blockers:
+- PI-002 cross-specification consistency review;
+- disposition of all review findings;
+- PI-002 acceptance review;
+- explicit compiler implementation-threshold decision; and
+- M-002 acceptance and closure decision.
 
-- completion and review of MSC-CORE-0009;
-- completion and review of MSC-CORE-0010;
-- the combined MSC-CORE-0008–0010 consistency review; and
-- an explicit compiler implementation-threshold decision.
+No P0 or P1 contradiction is currently recorded, but absence of a recorded blocker is not a substitute for conducting the final review.
+
+## WP-MSC-0007 clarification
+
+WP-MSC-0007 is a planning-only reconciliation packet. Static or publication-content validation may make that review packet ready, but it does not activate WP-MSC-0001, declare the implementation threshold, or make M-002 eligible for closure before the governing review and acceptance gates pass.
 
 ## Next update trigger
 
-Update this register when WC-0002 formally begins, an implementation packet is authorized, an active item becomes blocked or enters review, or MSC-CORE-0009 receives a disposition.
-
-<!-- WP-MSC-0007-STATUS:BEGIN -->
-
-## WP-MSC-0007 Status
-
-WP-MSC-0007 passed static and publication-content validation. The compiler implementation threshold is declared. M-002 is eligible for closure, and WP-MSC-0001 is eligible for activation; WP-MSC-0002 through WP-MSC-0006 remain dependency-gated.
-
-<!-- WP-MSC-0007-STATUS:END -->
+Update this register when the cross-specification review begins, a finding blocks progress, the review receives a disposition, or an implementation packet is explicitly authorized.

@@ -1,13 +1,12 @@
 ---
 title: "Monad Engineering Project Status"
 description: "Canonical current-state summary for active increments, milestones, work cycles, specifications, and implementation work."
-date: 2026-08-06
+date: 2026-08-08
 status: active
 current_program_increment: PI-002
 current_milestone: M-002
-current_work_cycle: WC-0002
-last_completed_planning_cycle: WC-0001
-next_specification: MSC-CORE-0009
+last_completed_planning_cycle: WC-0003
+next_gate: PI-002-CROSS-SPECIFICATION-CONSISTENCY-REVIEW
 ---
 
 # Monad Engineering Project Status
@@ -17,106 +16,71 @@ next_specification: MSC-CORE-0009
 | Control | Current state |
 | --- | --- |
 | Program increment | **PI-002 — Semantic Compiler Foundation: active** |
-| Milestone | **M-002 — Compiler Specification Complete: active** |
-| Most recently closed cycle | **WC-0001 — Semantic Graph Construction: planning complete** |
-| Most recently accepted specification | **MSC-CORE-0008 — Semantic Graph Construction: accepted for PI-002 planning** |
-| Current cycle | **WC-0002 — Diagnostics, Incrementality, and Reproducibility** |
-| Next specification | **MSC-CORE-0009 of 10** |
-| Following cycle | **WC-0003 — KIR, Backends, and Self-Hosting** |
-| Implementation status | **WP-MSC-0001–0006 planned; none started or completed by WC-0001** |
-| Architecture Freeze | **Intact; no amendment required by WC-0001** |
-| Open P0/P1 planning blockers | **None identified by the WC-0001 review** |
+| Milestone | **M-002 — Compiler Specification Complete: active; not complete** |
+| Planning cycles | **WC-0001–WC-0003 complete; all construction reviews PASS** |
+| Specification set | **MSC-CORE-0008–0010 accepted for PI-002 planning, subject to final reconciliation** |
+| Work-packet decomposition | **WP-MSC-0001–0020 defined** |
+| Implementation status | **No implementation packet started or completed** |
+| Current gate | **PI-002 cross-specification consistency review** |
+| Architecture Freeze | **Intact; no amendment required by WC-0001–WC-0003** |
+| Open P0/P1 planning blockers | **None recorded by the three cycle reviews** |
 
-Monad has completed the planning threshold for semantic-graph construction. The accepted WC-0001 decomposition is ready to inform implementation planning, but it is not implementation evidence. PI-002 and M-002 remain active while MSC-CORE-0009 and MSC-CORE-0010 are unfinished and the combined compiler-specification consistency review remains outstanding.
+PI-002 has completed its three specification-planning cycles. This is planning evidence, not implementation evidence and not yet final PI or milestone acceptance. The combined MSC-CORE-0008–0010 consistency review remains mandatory before the compiler implementation threshold can be declared.
 
-## Current disposition
+## Completed planning work
 
-### Completed planning work
+- WC-0001 specified semantic-graph construction in MSC-CORE-0008 and decomposed WP-MSC-0001–0006.
+- WC-0002 specified diagnostics, incrementality, caching, and reproducibility in MSC-CORE-0009 and decomposed WP-MSC-0007–0013.
+- WC-0003 specified KIR, backends, artifact publication, and bounded self-hosting in MSC-CORE-0010 and decomposed WP-MSC-0014–0020.
+- Journal entries 011–013 preserve the corresponding design narratives.
+- Each cycle has a PASS construction review and a planning-complete cycle ledger.
 
-- MSC-CORE-0008 defines the normative semantic-graph construction contract.
-- WP-MSC-0001 through WP-MSC-0006 form its accepted, ordered implementation decomposition.
-- `journal/011-designing-the-semantic-graph.md` provides narrative traceability.
-- `engineering/work-cycles/WC-0001-SEMANTIC-GRAPH-CONSTRUCTION-REVIEW.md` records a **PASS**.
-- `engineering/work-cycles/WC-0001.md` closes WC-0001 as planning-complete.
+## Current work
 
-### Active work
-
-WC-0002 is the active specification cycle. Its immediate deliverable is:
+The only active control activity is preparation and execution of:
 
 ```text
-specifications/MSC/core/MSC-CORE-0009.md
-MSC-CORE-0009 of 10
+engineering/reviews/PI-002-CROSS-SPECIFICATION-CONSISTENCY-REVIEW.md
 ```
 
-WC-0002 must reconcile compiler-wide diagnostics, incremental behavior, caching, and reproducibility with the construction and reproducibility records established by MSC-CORE-0008.
+It must reconcile terminology, authority, phase boundaries, identity domains, provenance, diagnostics, partial-state behavior, dependency/invalidation contracts, fingerprint domains, MSG-to-KIR eligibility, KIR/backend contracts, publication safety, and bootstrap evidence across MSC-CORE-0008–0010.
 
-### Planned implementation work
+## Implementation disposition
 
-| Packet | Responsibility | State |
+| Packet range | Governing cycle | State |
 | --- | --- | --- |
-| WP-MSC-0001 | Semantic Graph Model | Planned; not started |
-| WP-MSC-0002 | Semantic Entity Extraction | Planned; not started |
-| WP-MSC-0003 | Semantic Relationship Construction | Planned; not started |
-| WP-MSC-0004 | Semantic Identity Assignment | Planned; not started |
-| WP-MSC-0005 | Semantic Graph Validation | Planned; not started |
-| WP-MSC-0006 | Immutable MSG Snapshot Construction | Planned; not started |
+| WP-MSC-0001–0006 | WC-0001 / MSC-CORE-0008 | Planned; not started |
+| WP-MSC-0007–0013 | WC-0002 / MSC-CORE-0009 | Planned or review-ready; no implementation started |
+| WP-MSC-0014–0020 | WC-0003 / MSC-CORE-0010 | Planned; not started |
 
-These packets must not be reported as complete until code, automated tests, conformance evidence, and packet-specific acceptance results exist.
+WP-MSC-0007 is a planning-only reconciliation packet. Its existence or static validation does not declare the compiler implementation threshold, close M-002, or activate implementation packets.
 
-## PI-002 path to milestone completion
+## PI-002 path to completion
 
-| Gate | State | Evidence or required result |
+| Gate | State | Required evidence |
 | --- | --- | --- |
-| MSC-CORE-0008 specified and decomposed | Complete | WC-0001 PASS review and cycle record |
-| MSC-CORE-0009 completed | Open | WC-0002 specification and review evidence |
-| MSC-CORE-0010 completed | Open | WC-0003 specification and review evidence |
-| MSC-CORE-0008–0010 consistency review | Open | Combined boundary, terminology, and invariant reconciliation |
-| Compiler implementation threshold declared | Open | Explicit decision after specification consistency review |
-| M-002 completed | Open | All milestone acceptance criteria satisfied |
+| WC-0001 / MSC-CORE-0008 planning | Complete | PASS review and cycle ledger |
+| WC-0002 / MSC-CORE-0009 planning | Complete | PASS review and cycle ledger |
+| WC-0003 / MSC-CORE-0010 planning | Complete | PASS review and cycle ledger |
+| Project-control synchronization | Complete with this reconciliation | Four aligned control records |
+| MSC-CORE-0008–0010 consistency review | **Open; next** | Accepted review with no unresolved P0/P1 contradiction |
+| PI-002 acceptance review | Open | Accepted PI disposition and governed residual findings |
+| Compiler implementation threshold | Not declared | Explicit post-review authorization |
+| M-002 closure | Open | All milestone acceptance gates satisfied |
 
 ## Architectural constraints carried forward
 
 1. MSG remains the canonical, deterministic, immutable semantic output of one compilation snapshot.
-2. MSG remains distinct from AST/compiler-private state, MKE persistence, and KIR/backend lowering.
-3. Semantic identity, graph-local identity, graph identity, and canonical-content fingerprint remain distinct concepts.
+2. AST/compiler-private state, MSG, MKE persistence, KIR, backend state, and generated artifacts remain distinct authority domains.
+3. Semantic identity, graph-local identity, graph identity, representation fingerprints, and artifact identity remain distinct.
 4. Partial, unresolved, ambiguous, external, invalid, unsupported, uncertain, and conflicting knowledge remains representable and governed.
-5. Output readiness remains consumer-specific rather than a single universal Boolean.
-6. MKE ingestion handoff does not give MSC ownership of persistence or query behavior.
-7. AI may assist or propose but has no independent acceptance authority.
-8. Architecture remains frozen by default and changes only through constitutional governance.
-
-## Risks and watch items
-
-| Item | Current treatment |
-| --- | --- |
-| Reproducibility overlap between MSC-CORE-0008 and MSC-CORE-0009 | Reconcile during WC-0002 and the final PI-002 consistency review |
-| Output readiness and lowering boundary between MSC-CORE-0008 and MSC-CORE-0010 | Reconcile during WC-0003 and the final PI-002 consistency review |
-| Graph identity confused with graph fingerprint | Preserve separate model fields and prove behavior in WP-MSC-0004/WP-MSC-0006 tests |
-| Partial graphs treated as universally ready or unusable | Enforce consumer-specific readiness in WP-MSC-0005 and snapshot publication |
-| MKE concerns leaking into MSG construction | Keep persistence, indexing, transactions, and queries downstream of the MKE handoff |
-
-## Authoritative control artifacts
-
-- [`PI-002 — Semantic Compiler Foundation`](increments/PI-002.md)
-- [`WC-0001 — Semantic Graph Construction`](work-cycles/WC-0001.md)
-- [`WC-0001 — Semantic Graph Construction Review`](work-cycles/WC-0001-SEMANTIC-GRAPH-CONSTRUCTION-REVIEW.md)
-- [`Active work`](work-packets/active.md)
-- [`Work-packet backlog`](work-packets/backlog.md)
+5. Output readiness is consumer- and target-specific.
+6. KIR is downstream of MSG and cannot establish new semantic authority.
+7. Cached and generated outputs are candidates until validated; publication is atomic and does not elevate source authority.
+8. Self-hosting is a staged evidence program, not proof of correctness or authority to self-promote.
+9. AI may assist or propose but has no independent acceptance or promotion authority.
+10. Architecture remains frozen by default and changes only through constitutional governance.
 
 ## Next required action
 
-Begin WC-0002 by generating and reviewing:
-
-```text
-specifications/MSC/core/MSC-CORE-0009.md
-```
-
-Do not close PI-002 or M-002, declare the compiler specification complete, or promote WP-MSC-0001 through WP-MSC-0006 to completed until the relevant gates and evidence exist.
-
-<!-- WP-MSC-0007-STATUS:BEGIN -->
-
-## WP-MSC-0007 Reconciliation Status
-
-WP-MSC-0007 passed static and publication-content validation. The compiler implementation threshold is declared. M-002 is eligible for closure, and WP-MSC-0001 is eligible for activation; WP-MSC-0002 through WP-MSC-0006 remain dependency-gated.
-
-<!-- WP-MSC-0007-STATUS:END -->
+Generate and conduct the PI-002 cross-specification consistency review. Do not begin implementation, declare the implementation threshold, close PI-002/M-002, or claim self-hosting until the applicable review and acceptance evidence exists.
