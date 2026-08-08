@@ -72,7 +72,7 @@ Backends
 | 9 | MSC-CORE-0009 | Diagnostics, Incrementality, and Reproducibility | draft/reconciled |
 | 10 | MSC-CORE-0010 | KIR Lowering, Backend Contracts, and Self-Hosting | draft/reconciled |
 
-The second PI-002 consistency review passed; the MSC-CORE series is complete at the specification threshold.
+The series remains active until the second PI-002 consistency review passes.
 
 <!-- WP-MSC-0007:END -->
 

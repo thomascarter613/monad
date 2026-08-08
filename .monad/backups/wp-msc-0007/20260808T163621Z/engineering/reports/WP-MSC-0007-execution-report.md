@@ -5,7 +5,7 @@ artifact:
 metadata:
   title: WP-MSC-0007 Execution Report
   status: completed
-  outcome: pass
+  outcome: conditional-fail
   executed: 2026-08-06
 ---
 
@@ -14,7 +14,7 @@ metadata:
 ## Outcome
 
 ```text
-PASS — IMPLEMENTATION THRESHOLD DECLARED
+CONDITIONAL FAIL — IMPLEMENTATION THRESHOLD NOT DECLARED
 ```
 
 ## Applied Scope
@@ -37,17 +37,17 @@ Strategy B: preserve legacy source while defining deterministic, lossless compat
 | Gate | Exit | Result |
 | --- | ---: | --- |
 | Static reconciliation | 0 | PASS |
-| Publication content validation | 0 | PASS |
+| Publication content validation | 1 | FAIL or SKIPPED |
 
-Logs: `.monad/backups/wp-msc-0007/20260808T163621Z`
+Logs: `.monad/backups/wp-msc-0007/20260808T153040Z`
 
 ## Second Review
 
-Outcome: **PASS**.
+Outcome: **CONDITIONAL FAIL**.
 
 ## Threshold
 
-Created `engineering/increments/PI-002-COMPILER-IMPLEMENTATION-THRESHOLD.md`.
+Not created; M-002 remains blocked.
 
 ## Static Changes
 
